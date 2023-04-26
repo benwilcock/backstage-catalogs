@@ -13,13 +13,21 @@ metadata:
     - demo
   links:
     - url: https://via.vmw.com/tap-java-sc
-      title: Java Video
+      title: Java (Spring) Video
+    - url: https://github.com/benwilcock/springboot-maven
+      title: Java (Spring) Source Code
     - url: https://via.vmw.com/tap-dotnet-sc
       title: .Net Core Video
+    - url: https://github.com/benwilcock/dotnet-aspcore
+      title: .Net Core Source Code 
     - url: https://via.vmw.com/tap-python-sc
       title: Python Video
+    - url: https://github.com/benwilcock/python-pipenv
+      title: Python Source Code
     - url: https://via.vmw.com/tap-node-sc
       title: Node.js Video
+    - url: https://github.com/benwilcock/node-express
+      title: Node.js Source Code
 spec: 
   owner: user:ben.wilcock
   domain: dev-app-platforms
