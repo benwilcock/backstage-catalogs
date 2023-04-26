@@ -97,10 +97,10 @@ spec:
     paths:
       /messages:
         get:
-          description: Some preset information and items built from the code and runtime properties
+          description: Get an API response message.
           responses:
             '200':
-              description: A list of pets.
+              description: Information and items built from the code and runtime properties
               content:
                 application/json:
                   schema:
