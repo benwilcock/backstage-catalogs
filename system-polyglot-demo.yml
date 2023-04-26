@@ -60,7 +60,7 @@ metadata:
       title: Source Code on GitHub
       icon: github
       type: source
-    tags:
+  tags:
     - java
     - supply-chain
     - demo
