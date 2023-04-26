@@ -1,0 +1,38 @@
+---
+apiVersion: backstage.io/v1alpha1
+kind: System
+metadata:
+  name: polyglot-demo-apps
+  description: A series of simple apps written in different programming languages and designed to demonstrate the power of supply chains and buildpacks in the Tanzu Application Platform
+  tags:
+    - java
+    - dotnet
+    - nodejs
+    - python
+    - supply-chain
+    - demo
+  links:
+    - url: https://via.vmw.com/tap-java-sc
+      title: Website
+    - url: https://via.vmw.com/tap-dotnet-sc
+      title: Website
+    - url: https://via.vmw.com/tap-python-sc
+      title: Website
+    - url: https://via.vmw.com/tap-node-sc
+      title: Website
+spec: 
+  owner: user:ben.wilcock
+  domain: dev-app-platforms
+  profile:
+    displayName: Simple [Polyglot] Demo Applications
+
+
+
+# apiVersion: backstage.io/v1alpha1
+# kind: System
+# metadata:
+#   name: podcast
+#   description: Podcast playback
+# spec:
+#   owner: team-b
+#   domain: playback
