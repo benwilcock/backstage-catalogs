@@ -44,7 +44,7 @@ metadata:
 spec: 
   displayName: Polyglot Supply Chain Demo Applications
   owner: user:ben.wilcock
-  domain: dev-app-platforms
+  domain: developer-application-platforms
   profile:
     displayName: Simple [Polyglot] Demo Applications
 

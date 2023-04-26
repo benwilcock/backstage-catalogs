@@ -83,7 +83,7 @@ spec:
 apiVersion: backstage.io/v1alpha1
 kind: Domain
 metadata:
-  name: dev-app-platforms
+  name: developer-application-platforms
   description: The Developer Application Platforms domain brings together technologies including on TAS, TAP, and ASAe. 
 spec:
   owner: user:keith.lee
