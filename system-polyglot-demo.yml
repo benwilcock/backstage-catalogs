@@ -68,6 +68,9 @@ metadata:
     - java
     - supply-chain
     - demo
+  annotations:
+    'backstage.io/kubernetes-label-selector': 'app.kubernetes.io/part-of=springboot-maven'
+    #'backstage.io/techdocs-ref': dir:../../
 spec:
   type: service
   lifecycle: production
@@ -95,6 +98,9 @@ metadata:
     - dotnet
     - supply-chain
     - demo
+  annotations:
+    'backstage.io/kubernetes-label-selector': 'app.kubernetes.io/part-of=dotnet-aspcore'
+    #'backstage.io/techdocs-ref': dir:../../
 spec:
   type: service
   lifecycle: production
@@ -120,6 +126,9 @@ metadata:
     - nodejs
     - supply-chain
     - demo
+  annotations:
+    'backstage.io/kubernetes-label-selector': 'app.kubernetes.io/part-of=node-express'
+    #'backstage.io/techdocs-ref': dir:../../
 spec:
   type: service
   lifecycle: production
@@ -145,6 +154,9 @@ metadata:
     - nodejs
     - supply-chain
     - demo
+  annotations:
+    'backstage.io/kubernetes-label-selector': 'app.kubernetes.io/part-of=python-pipenv'
+    #'backstage.io/techdocs-ref': dir:../../
 spec:
   type: service
   lifecycle: production
