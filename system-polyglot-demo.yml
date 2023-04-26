@@ -14,6 +14,7 @@ metadata:
   links:
     - url: https://via.vmw.com/tap-java-sc
       title: Java (Spring) Video
+      icon: youtube
     - url: https://github.com/benwilcock/springboot-maven
       title: Java (Spring) Source Code
       icon: github
@@ -48,7 +49,7 @@ metadata:
     - [Watch it in action.](https://via.vmw.com/tap-java-sc)
   links:
     - url: https://github.com/benwilcock/springboot-maven
-      title: GitHub Repo
+      title: Source Code on GitHub
       icon: github
 spec:
   type: service
