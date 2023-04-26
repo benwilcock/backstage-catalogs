@@ -15,12 +15,12 @@ spec:
     displayName: Tanzu
     email: tanzu@vmware.com
     picture: https://pbs.twimg.com/profile_images/1233138813939146752/YPCsKoIa_400x400.png
-  children: [marketing]
+  children: [tanzu-marketing]
 ---
 apiVersion: backstage.io/v1alpha1
 kind: Group
 metadata:
-  name: marketing
+  name: tanzu-marketing
   description: The Tanzu Marketing department
 spec:
   type: department
@@ -28,12 +28,12 @@ spec:
     displayName: Tanzu Marketing
     email: tanzu-marketing@vmware.com
     picture: https://pbs.twimg.com/profile_images/1233138813939146752/YPCsKoIa_400x400.png
-  children: [tech-marketing]
+  children: [tanzu-tech-marketing]
 ---
 apiVersion: backstage.io/v1alpha1
 kind: Group
 metadata:
-  name: tech-marketing
+  name: tanzu-tech-marketing
   description: The Tanzu Technical Marketing Developer Application Platforms sub-team
 spec:
   type: team
@@ -42,7 +42,7 @@ spec:
     displayName: DAP Technical Marketing Team
     picture: https://pbs.twimg.com/profile_images/1233138813939146752/YPCsKoIa_400x400.png
   children: []
-  parent: marketing
+  parent: tanzu-marketing
 ---
 apiVersion: backstage.io/v1alpha1
 kind: User
@@ -54,7 +54,7 @@ spec:
     displayName: Ben Wilcock
     email: ben-wilcock@example.com
     picture: https://pbs.twimg.com/profile_images/1577303225677615107/f0lW_xGN_400x400.jpg
-  memberOf: [tech-marketing]
+  memberOf: [tanzu-tech-marketing]
 ---
 apiVersion: backstage.io/v1alpha1
 kind: User
@@ -66,7 +66,7 @@ spec:
     displayName: Myles Gray
     email: myles-gray@example.com
     picture: https://pbs.twimg.com/profile_images/1143994652296712198/fvfDS9k3_400x400.jpg
-  memberOf: [tech-marketing]
+  memberOf: [tanzu-tech-marketing]
 ---
 apiVersion: backstage.io/v1alpha1
 kind: User
@@ -78,7 +78,7 @@ spec:
     displayName: Keith Lee
     email: keith-lee@example.com
     picture: https://pbs.twimg.com/profile_images/1567175334063230976/BpcUztUb_400x400.jpg
-  memberOf: [tech-marketing]
+  memberOf: [tanzu-tech-marketing]
 
 
 
