@@ -44,8 +44,7 @@ metadata:
   name: java-spring-polyglot-demo
   # This is an extra long description with Markdown
   description: |
-     This app contains source code for a Java (Spring) application that can be built and deployed automatically by the Tanzu Application Platform.
-     The app includes a web page created using Thymeleaf and a basic REST API. It also includes Spring Boot Actuators and can be observed with LiveView in the TAP Portal.
+    This app contains source code for a Java (Spring) application that can be built and deployed automatically by the Tanzu Application Platform. The app includes a web page created using Thymeleaf and a basic REST API. It also includes Spring Boot Actuators and can be observed with LiveView in the TAP Portal.
     - [Watch it in action.](https://via.vmw.com/tap-java-sc)
   links:
     - url: https://github.com/benwilcock/springboot-maven
