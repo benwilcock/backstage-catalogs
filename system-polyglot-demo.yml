@@ -13,13 +13,13 @@ metadata:
     - demo
   links:
     - url: https://via.vmw.com/tap-java-sc
-      title: Website
+      title: Java Video
     - url: https://via.vmw.com/tap-dotnet-sc
-      title: Website
+      title: .Net Core Video
     - url: https://via.vmw.com/tap-python-sc
-      title: Website
+      title: Python Video
     - url: https://via.vmw.com/tap-node-sc
-      title: Website
+      title: Node.js Video
 spec: 
   owner: user:ben.wilcock
   domain: dev-app-platforms
