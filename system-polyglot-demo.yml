@@ -16,24 +16,70 @@ metadata:
       title: Java (Spring) Video
     - url: https://github.com/benwilcock/springboot-maven
       title: Java (Spring) Source Code
+      icon: github
     - url: https://via.vmw.com/tap-dotnet-sc
       title: .Net Core Video
     - url: https://github.com/benwilcock/dotnet-aspcore
       title: .Net Core Source Code 
+      icon: github
     - url: https://via.vmw.com/tap-python-sc
       title: Python Video
     - url: https://github.com/benwilcock/python-pipenv
       title: Python Source Code
+      icon: github
     - url: https://via.vmw.com/tap-node-sc
       title: Node.js Video
     - url: https://github.com/benwilcock/node-express
       title: Node.js Source Code
+      icon: github
 spec: 
   owner: user:ben.wilcock
   domain: dev-app-platforms
   profile:
     displayName: Simple [Polyglot] Demo Applications
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: java-spring-polyglot-demo
+  # This is an extra long description with Markdown
+  description: |
+     This app contains source code for a Java (Spring) application that can be built and deployed automatically by the Tanzu Application Platform.
+     The app includes a web page created using Thymeleaf and a basic REST API. It also includes Spring Boot Actuators and can be observed with LiveView in the TAP Portal.
+    - [Watch it in action.](https://via.vmw.com/tap-java-sc)
+  links:
+    - url: https://github.com/benwilcock/springboot-maven
+      title: GitHub Repo
+      icon: github
+spec:
+  type: service
+  lifecycle: experimental
+  owner: user:ben.wilcock
+  system: polyglot-demo-apps
+  providesApis:
+    - hello-world
 
+# apiVersion: backstage.io/v1alpha1
+# kind: Component
+# metadata:
+#   name: petstore
+#   # This is an extra long description with Markdown
+#   description: |
+#     [The Petstore](http://petstore.example.com) is an example API used to show features of the OpenAPI spec.
+#     - First item
+#     - Second item
+#   links:
+#     - url: https://github.com/swagger-api/swagger-petstore
+#       title: GitHub Repo
+#       icon: github
+# spec:
+#   type: service
+#   lifecycle: experimental
+#   owner: team-c
+#   providesApis:
+#     - petstore
+#     - streetlights
+#     - hello-world
 
 
 # apiVersion: backstage.io/v1alpha1
