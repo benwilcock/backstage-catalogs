@@ -37,6 +37,7 @@ metadata:
   description: The Tanzu Technical Marketing Developer Application Platforms sub-team
 spec:
   type: team
+  description: This team helps describe the features and benefits of VMware Tanzu platforms (TAP, TAS, etc) to audiences everywhere
   profile:
     displayName: DAP Technical Marketing Team
     picture: https://pbs.twimg.com/profile_images/1233138813939146752/YPCsKoIa_400x400.png
@@ -47,7 +48,7 @@ apiVersion: backstage.io/v1alpha1
 kind: User
 metadata:
   name: ben.wilcock
-  description: Ben specialises in articulating the virtues of platforms to developer audiences.
+  description: Ben specialises in articulating the virtues of the Tanzu Application Platform to developer audiences.
 spec:
   profile:
     displayName: Ben Wilcock
@@ -59,7 +60,7 @@ apiVersion: backstage.io/v1alpha1
 kind: User
 metadata:
   name: myles.gray
-  description: Myles specialises in articulating the virtues of platforms to operator audiences.
+  description: Myles specialises in articulating the virtues of the Tanzu Application Platform to operator audiences.
 spec:
   profile:
     displayName: Myles Gray
@@ -71,7 +72,7 @@ apiVersion: backstage.io/v1alpha1
 kind: User
 metadata:
   name: keith.lee
-  description: Keith is an alround platform expert and accredited VMware vExpert
+  description: Keith is an allround platform expert and accredited VMware vExpert
 spec:
   profile:
     displayName: Keith Lee
