@@ -1,0 +1,96 @@
+---
+apiVersion: backstage.io/v1alpha1
+kind: Group
+metadata:
+  name: tanzu
+  description: The Tanzu Organization
+  links:
+    - url: http://tanzu.vmware.com/
+      title: Website
+    - url: https://source.vmware.com/
+      title: Intranet
+spec: 
+  type: organization
+  profile:
+    displayName: Tanzu
+    email: tanzu@vmware.com
+    picture: https://pbs.twimg.com/profile_images/1233138813939146752/YPCsKoIa_400x400.png
+  children: [marketing]
+---
+apiVersion: backstage.io/v1alpha1
+kind: Group
+metadata:
+  name: marketing
+  description: The marketing department
+spec:
+  type: department
+  profile:
+    displayName: marketing
+    email: tanzu-marketing@vmware.com
+    picture: https://pbs.twimg.com/profile_images/1233138813939146752/YPCsKoIa_400x400.png
+  children: [tech-marketing]
+---
+apiVersion: backstage.io/v1alpha1
+kind: Group
+metadata:
+  name: tech-marketing
+spec:
+  type: team
+  profile:
+    displayName: DAP Technical Marketing Team
+    picture: https://pbs.twimg.com/profile_images/1233138813939146752/YPCsKoIa_400x400.png
+  children: []
+  parent: marketing
+---
+apiVersion: backstage.io/v1alpha1
+kind: User
+metadata:
+  name: ben.wilcock
+spec:
+  profile:
+    displayName: Ben Wilcock
+    email: ben-wilcock@example.com
+    picture: https://pbs.twimg.com/profile_images/1577303225677615107/f0lW_xGN_400x400.jpg
+  memberOf: [tech-marketing]
+---
+apiVersion: backstage.io/v1alpha1
+kind: User
+metadata:
+  name: myles.gray
+spec:
+  profile:
+    displayName: Myles Gray
+    email: myles-gray@example.com
+    picture: https://pbs.twimg.com/profile_images/1143994652296712198/fvfDS9k3_400x400.jpg
+  memberOf: [tech-marketing]
+---
+apiVersion: backstage.io/v1alpha1
+kind: User
+metadata:
+  name: keith.lee
+spec:
+  profile:
+    displayName: Keith Lee
+    email: keith-lee@example.com
+    picture: https://pbs.twimg.com/profile_images/1567175334063230976/BpcUztUb_400x400.jpg
+  memberOf: [tech-marketing]
+
+
+
+---
+# https://backstage.io/docs/features/software-catalog/descriptor-format#kind-group
+apiVersion: backstage.io/v1alpha1
+kind: Group
+metadata:
+  name: guests
+spec:
+  type: team
+  children: []
+---
+# https://backstage.io/docs/features/software-catalog/descriptor-format#kind-user
+apiVersion: backstage.io/v1alpha1
+kind: User
+metadata:
+  name: guest
+spec:
+  memberOf: [guests]
