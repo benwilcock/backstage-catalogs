@@ -1,3 +1,4 @@
+# SYSTEMS
 ---
 apiVersion: backstage.io/v1alpha1
 kind: System
@@ -46,6 +47,9 @@ spec:
   domain: dev-app-platforms
   profile:
     displayName: Simple [Polyglot] Demo Applications
+
+
+# COMPONENTS
 ---
 apiVersion: backstage.io/v1alpha1
 kind: Component
@@ -73,7 +77,83 @@ spec:
     - java-polyglot-app-api
   profile:
     displayName: Java (Spring) Demo Application
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: dotnet-aspcore-polyglot-demo
+  # This is an extra long description with Markdown
+  description: |
+    This app contains source code for a .Net ([ASP Core](https://learn.microsoft.com/en-us/aspnet/core/introduction-to-aspnet-core?view=aspnetcore-7.0)) application that can be built and deployed automatically by the Tanzu Application Platform. The app includes a web page and a basic REST API. 
+    - [Watch it deploy on Tanzu Application Platform.](https://via.vmw.com/tap-dotnet-sc)
+  links:
+    - url: https://github.com/benwilcock/dotnet-aspcore
+      title: Source Code on GitHub
+      icon: github
+      type: source
+  tags:
+    - dotnet
+    - supply-chain
+    - demo
+spec:
+  type: service
+  lifecycle: production
+  owner: user:ben.wilcock
+  system: polyglot-demo-apps
+  profile:
+    displayName: .Net ASP Core Demo Application
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: node-express-polyglot-demo
+  # This is an extra long description with Markdown
+  description: |
+    This app contains source code for a Node.js ([Express](https://expressjs.com/)) application that can be built and deployed automatically by the Tanzu Application Platform. The app includes a web page and a basic REST API. 
+    - [Watch it deploy on Tanzu Application Platform.](https://via.vmw.com/tap-node-sc)
+  links:
+    - url: https://github.com/benwilcock/node-express
+      title: Source Code on GitHub
+      icon: github
+      type: source
+  tags:
+    - nodejs
+    - supply-chain
+    - demo
+spec:
+  type: service
+  lifecycle: production
+  owner: user:ben.wilcock
+  system: polyglot-demo-apps
+  profile:
+    displayName: Node.js Express Demo Application
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: python-pipenv-polyglot-demo
+  # This is an extra long description with Markdown
+  description: |
+    This app contains source code for a Python ([Pipenv](https://pipenv.pypa.io/)) application that can be built and deployed automatically by the Tanzu Application Platform. The app includes a web page and a basic REST API. 
+    - [Watch it deploy on Tanzu Application Platform.](https://via.vmw.com/tap-python-sc)
+  links:
+    - url: https://github.com/benwilcock/python-pipenv
+      title: Source Code on GitHub
+      icon: github
+      type: source
+  tags:
+    - nodejs
+    - supply-chain
+    - demo
+spec:
+  type: service
+  lifecycle: production
+  owner: user:ben.wilcock
+  system: polyglot-demo-apps
+  profile:
+    displayName: Python Pipenv Demo Application
 
+# APIs
 ---
 apiVersion: backstage.io/v1alpha1
 kind: API
@@ -105,6 +185,7 @@ spec:
                 application/json:
                   schema:
                     type: array
+---
 
 
 
