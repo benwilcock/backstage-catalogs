@@ -79,7 +79,17 @@ spec:
     email: keith-lee@example.com
     picture: https://pbs.twimg.com/profile_images/1567175334063230976/BpcUztUb_400x400.jpg
   memberOf: [tanzu-tech-marketing]
-
+---
+apiVersion: backstage.io/v1alpha1
+kind: Domain
+metadata:
+  name: dev-app-platforms
+  description: The Developer Application Platforms domain brings together technologies including on TAS, TAP, and ASAe. 
+spec:
+  owner: user:keith.lee
+  profile:
+    displayName: Developer Application Platforms
+    picture: https://pbs.twimg.com/profile_images/1233138813939146752/YPCsKoIa_400x400.png
 
 
 ---
