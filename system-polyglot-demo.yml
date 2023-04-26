@@ -14,24 +14,32 @@ metadata:
   links:
     - url: https://via.vmw.com/tap-java-sc
       title: Java (Spring) Video
+      type: video
     - url: https://github.com/benwilcock/springboot-maven
       title: Java (Spring) Source Code
       icon: github
+      type: source
     - url: https://via.vmw.com/tap-dotnet-sc
       title: .Net Core Video
+      type: video
     - url: https://github.com/benwilcock/dotnet-aspcore
       title: .Net Core Source Code 
       icon: github
+      type: source
     - url: https://via.vmw.com/tap-python-sc
       title: Python Video
+      type: video
     - url: https://github.com/benwilcock/python-pipenv
       title: Python Source Code
       icon: github
+      type: source
     - url: https://via.vmw.com/tap-node-sc
       title: Node.js Video
+      type: video
     - url: https://github.com/benwilcock/node-express
       title: Node.js Source Code
       icon: github
+      type: source
 spec: 
   displayName: Polyglot Supply Chain Demo Applications
   owner: user:ben.wilcock
@@ -45,15 +53,20 @@ metadata:
   name: java-spring-polyglot-demo
   # This is an extra long description with Markdown
   description: |
-    This app contains source code for a Java (Spring) application that can be built and deployed automatically by the Tanzu Application Platform. The app includes a web page created using Thymeleaf and a basic REST API. It also includes Spring Boot Actuators and can be observed with LiveView in the TAP Portal.
-    - [Watch it in action.](https://via.vmw.com/tap-java-sc)
+    This app contains source code for a Java (Spring) application that can be built and deployed automatically by the Tanzu Application Platform. The app includes a web page created using [Thymeleaf](https://www.thymeleaf.org/) and a basic REST API. It also includes Spring Boot Actuators and can be observed with LiveView in the TAP Portal.
+    - [Watch it deploy on Tanzu Application Platform.](https://via.vmw.com/tap-java-sc)
   links:
     - url: https://github.com/benwilcock/springboot-maven
       title: Source Code on GitHub
       icon: github
+      type: source
+    tags:
+    - java
+    - supply-chain
+    - demo
 spec:
   type: service
-  lifecycle: experimental
+  lifecycle: production
   owner: user:ben.wilcock
   system: polyglot-demo-apps
   providesApis:
@@ -65,7 +78,7 @@ spec:
 
 
 
-    
+
 # apiVersion: backstage.io/v1alpha1
 # kind: Component
 # metadata:
