@@ -58,7 +58,14 @@ spec:
   system: polyglot-demo-apps
   providesApis:
     - hello-world
+  profile:
+    displayName: Java (Spring) Demo Application
 
+
+
+
+
+    
 # apiVersion: backstage.io/v1alpha1
 # kind: Component
 # metadata:
