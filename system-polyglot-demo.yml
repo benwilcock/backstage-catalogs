@@ -97,8 +97,14 @@ spec:
     paths:
       /messages:
         get:
-          summary: Some preset information and items built from the code
-
+          description: Some preset information and items built from the code and runtime properties
+          responses:
+            '200':
+              description: A list of pets.
+              content:
+                application/json:
+                  schema:
+                    type: array
 
 
 
