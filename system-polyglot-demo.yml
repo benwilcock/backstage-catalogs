@@ -14,7 +14,6 @@ metadata:
   links:
     - url: https://via.vmw.com/tap-java-sc
       title: Java (Spring) Video
-      icon: youtube
     - url: https://github.com/benwilcock/springboot-maven
       title: Java (Spring) Source Code
       icon: github
@@ -34,6 +33,7 @@ metadata:
       title: Node.js Source Code
       icon: github
 spec: 
+  displayName: Polyglot Supply Chain Demo Applications
   owner: user:ben.wilcock
   domain: dev-app-platforms
   profile:
