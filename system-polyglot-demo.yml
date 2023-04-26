@@ -70,7 +70,7 @@ spec:
   owner: user:ben.wilcock
   system: polyglot-demo-apps
   providesApis:
-    - hello-world
+    - java-polyglot-app-api
   profile:
     displayName: Java (Spring) Demo Application
 
