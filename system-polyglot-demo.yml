@@ -84,9 +84,7 @@ kind: Component
 metadata:
   name: dotnet-aspcore-polyglot-demo
   # This is an extra long description with Markdown
-  description: |
-    This app contains source code for a .Net ([ASP Core](https://learn.microsoft.com/en-us/aspnet/core/introduction-to-aspnet-core?view=aspnetcore-7.0)) application that can be built and deployed automatically by the Tanzu Application Platform. The app includes a web page and a basic REST API. 
-    - [Watch it deploy on Tanzu Application Platform.](https://via.vmw.com/tap-dotnet-sc)
+  description: '.Net ASP Core with Razer Pages'
   links:
     - url: https://github.com/benwilcock/dotnet-aspcore
       title: Source Code on GitHub
@@ -97,8 +95,8 @@ metadata:
     - supply-chain
     - demo
   annotations:
-    'backstage.io/kubernetes-label-selector': 'app.kubernetes.io/part-of=dotnet-aspcore'
-    #'backstage.io/techdocs-ref': dir:../../
+    backstage.io/kubernetes-label-selector: 'app.kubernetes.io/part-of=dotnet-aspcore'
+    #backstage.io/techdocs-ref: url:https://github.com/benwilcock/dotnet-aspcore/blob/main/
 spec:
   type: service
   lifecycle: production
@@ -112,9 +110,7 @@ kind: Component
 metadata:
   name: node-express-polyglot-demo
   # This is an extra long description with Markdown
-  description: |
-    This app contains source code for a Node.js ([Express](https://expressjs.com/)) application that can be built and deployed automatically by the Tanzu Application Platform. The app includes a web page and a basic REST API. 
-    - [Watch it deploy on Tanzu Application Platform.](https://via.vmw.com/tap-node-sc)
+  description: 'Node.js with Express'
   links:
     - url: https://github.com/benwilcock/node-express
       title: Source Code on GitHub
@@ -125,8 +121,8 @@ metadata:
     - supply-chain
     - demo
   annotations:
-    'backstage.io/kubernetes-label-selector': 'app.kubernetes.io/part-of=node-express'
-    #'backstage.io/techdocs-ref': dir:../../
+    backstage.io/kubernetes-label-selector: 'app.kubernetes.io/part-of=node-express'
+    backstage.io/techdocs-ref: url:https://github.com/benwilcock/node-express/blob/main/
 spec:
   type: service
   lifecycle: production
@@ -140,9 +136,7 @@ kind: Component
 metadata:
   name: python-pipenv-polyglot-demo
   # This is an extra long description with Markdown
-  description: |
-    This app contains source code for a Python ([Pipenv](https://pipenv.pypa.io/)) application that can be built and deployed automatically by the Tanzu Application Platform. The app includes a web page and a basic REST API. 
-    - [Watch it deploy on Tanzu Application Platform.](https://via.vmw.com/tap-python-sc)
+  description: 'Python (Pipenv) with Flask'
   links:
     - url: https://github.com/benwilcock/python-pipenv
       title: Source Code on GitHub
@@ -154,7 +148,7 @@ metadata:
     - demo
   annotations:
     'backstage.io/kubernetes-label-selector': 'app.kubernetes.io/part-of=python-pipenv'
-    #'backstage.io/techdocs-ref': dir:../../
+    #backstage.io/techdocs-ref: url:https://github.com/benwilcock/python-pipenv/blob/main/
 spec:
   type: service
   lifecycle: production
