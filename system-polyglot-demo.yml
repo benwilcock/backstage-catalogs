@@ -69,8 +69,8 @@ metadata:
     - supply-chain
     - demo
   annotations:
-    'backstage.io/kubernetes-label-selector': 'app.kubernetes.io/part-of=springboot-maven'
-    #'backstage.io/techdocs-ref': dir:../../
+    backstage.io/kubernetes-label-selector: "app.kubernetes.io/part-of=springboot-maven"
+    backstage.io/techdocs-ref: url:https://github.com/backstage/backstage/tree/master
 spec:
   type: service
   lifecycle: production
