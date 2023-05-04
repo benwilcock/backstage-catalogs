@@ -148,7 +148,7 @@ metadata:
     - demo
   annotations:
     'backstage.io/kubernetes-label-selector': 'app.kubernetes.io/part-of=python-pipenv'
-    #backstage.io/techdocs-ref: url:https://github.com/benwilcock/python-pipenv/blob/main/
+    backstage.io/techdocs-ref: url:https://github.com/benwilcock/python-pipenv/blob/main/
 spec:
   type: service
   lifecycle: production
