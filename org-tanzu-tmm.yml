@@ -52,7 +52,7 @@ metadata:
 spec:
   profile:
     displayName: Ben Wilcock
-    email: ben-wilcock@example.com
+    email: ben@blah.cloud
     picture: https://pbs.twimg.com/profile_images/1577303225677615107/f0lW_xGN_400x400.jpg
   memberOf: [tanzu-tech-marketing]
 ---
@@ -64,7 +64,7 @@ metadata:
 spec:
   profile:
     displayName: Myles Gray
-    email: myles-gray@example.com
+    email: myles@blah.cloud
     picture: https://pbs.twimg.com/profile_images/1143994652296712198/fvfDS9k3_400x400.jpg
   memberOf: [tanzu-tech-marketing]
 ---
@@ -76,7 +76,7 @@ metadata:
 spec:
   profile:
     displayName: Keith Lee
-    email: keith-lee@example.com
+    email: keith@blah.cloud
     picture: https://pbs.twimg.com/profile_images/1567175334063230976/BpcUztUb_400x400.jpg
   memberOf: [tanzu-tech-marketing]
 ---
