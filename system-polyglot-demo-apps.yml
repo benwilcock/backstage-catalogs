@@ -56,7 +56,7 @@ kind: Component
 metadata:
   name: java-spring-polyglot-demo
   # This is an extra long description with Markdown
-  description: Java (Spring Boot) with Maven
+  description: Java microservice (Spring Boot) built using Maven.
   links:
     - url: https://github.com/benwilcock/springboot-maven
       title: Source Code on GitHub
