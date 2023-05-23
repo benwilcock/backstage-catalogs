@@ -164,6 +164,11 @@ kind: API
 metadata:
   name: springboot-maven-messages-api
   description: Used to get a list of messages using a REST style API.
+  links:
+    - url: https://github.com/benwilcock/springboot-maven
+      title: Source Code on GitHub
+      icon: github
+      type: source
 spec:
   type: openapi
   lifecycle: production
