@@ -75,7 +75,7 @@ spec:
   owner: user:ben.wilcock
   system: polyglot-demo-apps
   providesApis:
-    - java-polyglot-app-api
+    - springboot-maven-messages-api
   profile:
     displayName: Java (Spring) Demo Application
 ---
@@ -187,7 +187,7 @@ spec:
 # apiVersion: backstage.io/v1alpha1
 # kind: API
 # metadata:
-#   name: java-polyglot-app-api
+#   name: developer-application-platformsglot-app-api
 #   description: Used to interact with the application in a non-fancy 'hello-world' fashion.
 # spec:
 #   type: openapi
