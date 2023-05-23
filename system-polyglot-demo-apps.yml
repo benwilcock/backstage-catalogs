@@ -169,28 +169,44 @@ spec:
   lifecycle: production
   owner: user:ben.wilcock
   system: polyglot-demo-apps
-  definition: |
-    openapi: "3.0.0"
-    info:
-      version: 1.0.0
-      title: Java (Spring) REST API
-      license:
-        name: Apache Commons 2.0
-    servers:
-      - url: https://springboot-maven-polyglot-demo.tap-next.blah.cloud
-    paths:
-      /messages:
-        get:
-          description: Get an API response message.
-          responses:
-            '200':
-              description: Information and items built from the code and runtime properties
-              content:
-                application/json:
-                  schema:
-                    type: array
+  definition:
+    $text: https://github.com/benwilcock/springboot-maven/blob/main/openapi/openapi.json
 ---
 
+
+# APIs
+# ---
+# apiVersion: backstage.io/v1alpha1
+# kind: API
+# metadata:
+#   name: java-polyglot-app-api
+#   description: Used to interact with the application in a non-fancy 'hello-world' fashion.
+# spec:
+#   type: openapi
+#   lifecycle: production
+#   owner: user:ben.wilcock
+#   system: polyglot-demo-apps
+#   definition: |
+#     openapi: "3.0.0"
+#     info:
+#       version: 1.0.0
+#       title: Java (Spring) REST API
+#       license:
+#         name: Apache Commons 2.0
+#     servers:
+#       - url: https://springboot-maven-polyglot-demo.tap-next.blah.cloud
+#     paths:
+#       /messages:
+#         get:
+#           description: Get an API response message.
+#           responses:
+#             '200':
+#               description: Information and items built from the code and runtime properties
+#               content:
+#                 application/json:
+#                   schema:
+#                     type: array
+# ---
 
 
 # apiVersion: backstage.io/v1alpha1
