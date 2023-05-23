@@ -162,8 +162,8 @@ spec:
 apiVersion: backstage.io/v1alpha1
 kind: API
 metadata:
-  name: java-polyglot-app-api
-  description: Used to interact with the application in a non-fancy 'hello-world' fashion.
+  name: springboot-maven-messages-api
+  description: Used to get a list of messages using a REST style API.
 spec:
   type: openapi
   lifecycle: production
