@@ -15,7 +15,7 @@ spec:
     displayName: Tanzu
     email: tanzu@vmware.com
     picture: https://pbs.twimg.com/profile_images/1233138813939146752/YPCsKoIa_400x400.png
-  children: [tanzu-marketing,tanzu-engineering]
+  children: [tanzu-marketing, tanzu-engineering]
 ---
 apiVersion: backstage.io/v1alpha1
 kind: Group
@@ -37,10 +37,13 @@ metadata:
   description: The Tanzu software engineering department
 spec:
   type: department
+  description: This team is responsible for engineering Tanzu products like Tanzu Application Platform.
   profile:
     displayName: Tanzu Engineering
     email: tanzu-engineering@vmware.com
     picture: https://pbs.twimg.com/profile_images/1233138813939146752/YPCsKoIa_400x400.png
+  childern: []
+  parent: tanzu
 ---
 apiVersion: backstage.io/v1alpha1
 kind: Group
