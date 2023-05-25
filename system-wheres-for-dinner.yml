@@ -195,31 +195,31 @@ spec:
 #     displayName: Python Pipenv Demo Application
 
 # APIs
-
----
-apiVersion: backstage.io/v1alpha1
-kind: API
-metadata:
-  name: where-for-dinner-search
-  description: The Search API
-  tags:
-    - api
-    - tanzu
-  links:
-    - url: https://github.com/vmware-tanzu/application-accelerator-samples/tree/main/where-for-dinner/where-for-dinner-search
-      title: Source Code on GitHub
-      icon: github
-      type: source
-  annotations:
-    backstage.io/kubernetes-label-selector: "app.kubernetes.io/part-of=where-for-dinner-search"
-    # backstage.io/techdocs-ref: url:https://github.com/benwilcock/springboot-maven/blob/main/
-spec:
-  type: openapi
-  lifecycle: experimental
-  owner: where-for-dinner-team
-  system: where-for-dinner
-  # definition:
-  #   $text: https://where-for-dinner.perfect300rock.com/api/search/v3/api-docs/
+# Made a start here but couldn't load from this URL given below in he def.
+# ---
+# apiVersion: backstage.io/v1alpha1
+# kind: API
+# metadata:
+#   name: where-for-dinner-search
+#   description: The Search API
+#   tags:
+#     - api
+#     - tanzu
+#   links:
+#     - url: https://github.com/vmware-tanzu/application-accelerator-samples/tree/main/where-for-dinner/where-for-dinner-search
+#       title: Source Code on GitHub
+#       icon: github
+#       type: source
+#   annotations:
+#     backstage.io/kubernetes-label-selector: "app.kubernetes.io/part-of=where-for-dinner-search"
+#     # backstage.io/techdocs-ref: url:https://github.com/benwilcock/springboot-maven/blob/main/
+# spec:
+#   type: openapi
+#   lifecycle: experimental
+#   owner: where-for-dinner-team
+#   system: where-for-dinner
+#   definition:
+#     $text: https://where-for-dinner.perfect300rock.com/api/search/v3/api-docs/
 
 
 
