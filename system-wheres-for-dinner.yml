@@ -142,7 +142,7 @@ spec:
   owner: user:greg.meyer
   system: where-for-dinner
   profile:
-    displayName: Spring Boot Notification Application
+    displayName: Spring Boot Search Notification Application
   dependsOn: 
     - resource:where-for-dinner-messaging
     - component:where-for-dinner-search-proc
