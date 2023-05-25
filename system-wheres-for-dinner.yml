@@ -1,4 +1,6 @@
+###############################
 # SYSTEMS
+###############################
 ---
 apiVersion: backstage.io/v1alpha1
 kind: System
@@ -23,8 +25,9 @@ spec:
   profile:
     displayName: Where For Dinner Reference Application
 
-
-# # COMPONENTS
+####################################
+# COMPONENTS
+####################################
 ---
 apiVersion: backstage.io/v1alpha1
 kind: Component
@@ -171,8 +174,36 @@ spec:
   dependsOn: 
     - resource:where-for-dinner-messaging
 
+##################################
+# Resources
+##################################
+---
+apiVersion: backstage.io/v1alpha1
+kind: Resource
+metadata:
+  name: where-for-dinner-db
+  description: Where for Dinner Database
+spec:
+  type: database
+  owner: user:greg.meyer
+  system: where-for-dinner
+---
+apiVersion: backstage.io/v1alpha1
+kind: Resource
+metadata:
+  name: where-for-dinner-messaging
+  description: Where for Dinner Async Messaging
+spec:
+  type: message-broker
+  owner: user:greg.meyer
+  system: where-for-dinner
+
+######################################
 # APIs
+######################################
+
 # Made a start here but couldn't load from this URL given below in he def.
+
 # ---
 # apiVersion: backstage.io/v1alpha1
 # kind: API
@@ -213,29 +244,3 @@ spec:
 #   system: where-for-dinner
 #   definition:
 #     $text: https://where-for-dinner.perfect300rock.com/api/availability/v3/api-docs/
-# ---
-
-
-##################################
-# Resources
-##################################
----
-apiVersion: backstage.io/v1alpha1
-kind: Resource
-metadata:
-  name: where-for-dinner-db
-  description: Where for Dinner Database
-spec:
-  type: database
-  owner: user:greg.meyer
-  system: where-for-dinner
----
-apiVersion: backstage.io/v1alpha1
-kind: Resource
-metadata:
-  name: where-for-dinner-messaging
-  description: Where for Dinner Async Messaging
-spec:
-  type: message-broker
-  owner: user:greg.meyer
-  system: where-for-dinner
