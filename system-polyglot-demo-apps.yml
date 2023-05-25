@@ -54,7 +54,7 @@ spec:
 apiVersion: backstage.io/v1alpha1
 kind: Component
 metadata:
-  name: springboot-maven-polyglot-demo
+  name: springboot-maven
   # This is an extra long description with Markdown
   description: Java microservice (Spring Boot) built using Maven.
   links:
@@ -82,7 +82,7 @@ spec:
 apiVersion: backstage.io/v1alpha1
 kind: Component
 metadata:
-  name: dotnet-aspcore-polyglot-demo
+  name: dotnet-aspcore
   # This is an extra long description with Markdown
   description: '.Net ASP Core with Razer Pages'
   links:
@@ -108,7 +108,7 @@ spec:
 apiVersion: backstage.io/v1alpha1
 kind: Component
 metadata:
-  name: node-express-polyglot-demo
+  name: node-express
   # This is an extra long description with Markdown
   description: 'Node.js with Express'
   links:
@@ -134,7 +134,7 @@ spec:
 apiVersion: backstage.io/v1alpha1
 kind: Component
 metadata:
-  name: python-pipenv-polyglot-demo
+  name: python-pipenv
   # This is an extra long description with Markdown
   description: 'Python (Pipenv) with Flask'
   links:
