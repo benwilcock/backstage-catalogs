@@ -10,7 +10,7 @@ metadata:
     - dotnet
   links:
     - url: https://www.youtube.com/watch?v=IY784cDq1E8
-      title: SpringOne Essentials Conference Talk (YouTube))
+      title: SpringOne Essentials Conference Talk (YouTube)
       type: video
     - url: https://github.com/vmware-tanzu/application-accelerator-samples/blob/main/where-for-dinner/README.md
       title: Application Source Code
@@ -218,8 +218,8 @@ spec:
   lifecycle: experimental
   owner: where-for-dinner-team
   system: where-for-dinner
-  definition:
-    $text: https://where-for-dinner.perfect300rock.com/api/search/v3/api-docs/
+  # definition:
+  #   $text: https://where-for-dinner.perfect300rock.com/api/search/v3/api-docs/
 
 
 
