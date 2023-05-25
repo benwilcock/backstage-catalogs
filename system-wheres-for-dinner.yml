@@ -160,6 +160,7 @@ metadata:
   tags:
     - springboot
     - springcloud
+    - streaming
     - demo
   annotations:
     backstage.io/kubernetes-label-selector: 'app.kubernetes.io/part-of=where-for-dinner-search-proc'
@@ -198,7 +199,32 @@ spec:
   system: where-for-dinner
   profile:
     displayName: Spring Boot Search Crawler Application
-
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: where-for-dinner-crawler-python
+  description: 'Search Crawler written in the Python language'
+  links:
+    - url: https://github.com/vmware-tanzu/application-accelerator-samples/tree/main/where-for-dinner/where-for-dinner-crawler-python
+      title: Source Code on GitHub
+      icon: github
+      type: source
+  tags:
+    - springboot
+    - springcloud
+    - demo
+  annotations:
+    backstage.io/kubernetes-label-selector: 'app.kubernetes.io/part-of=where-for-dinner-crawler-python'
+    # backstage.io/techdocs-ref: url:https://github.com/benwilcock/
+spec:
+  type: service
+  lifecycle: experimental
+  owner: user:greg.meyer
+  system: where-for-dinner
+  profile:
+    displayName: Python Search Crawler Application
+    
 ##################################
 # Resources
 ##################################
