@@ -18,6 +18,9 @@ metadata:
       title: Application Source Code
       icon: github
       type: source
+  annotations:
+    # backstage.io/kubernetes-label-selector: 'app.kubernetes.io/part-of=where-for-dinner'
+    backstage.io/techdocs-ref: url:https://github.com/benwilcock/where-for-dinner-techdocs
 spec: 
   displayName: Wheres For Dinner Application Reference System
   owner: user:greg.meyer
