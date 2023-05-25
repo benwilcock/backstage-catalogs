@@ -115,7 +115,36 @@ spec:
     - resource:where-for-dinner-db
     - resource:where-for-dinner-messaging
     - component:where-for-dinner-search-proc
-
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: where-for-dinner-notify
+  description: ''
+  links:
+    - url: https://github.com/vmware-tanzu/application-accelerator-samples/tree/main/where-for-dinner/where-for-dinner-notify
+      title: Source Code on GitHub
+      icon: github
+      type: source
+  tags:
+    - springboot
+    - springcloud
+    - demo
+  annotations:
+    backstage.io/kubernetes-label-selector: 'app.kubernetes.io/part-of=where-for-dinner-notify'
+    # backstage.io/techdocs-ref: url:https://github.com/benwilcock/
+spec:
+  type: service
+  lifecycle: experimental
+  owner: user:greg.meyer
+  system: where-for-dinner
+  profile:
+    displayName: Spring Boot Notification Application
+  providesApis:
+    - where-for-dinner-availability
+  dependsOn: 
+    - resource:where-for-dinner-messaging
+    - component:where-for-dinner-search-proc
 
 
 # APIs
