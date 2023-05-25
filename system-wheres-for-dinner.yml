@@ -25,35 +25,35 @@ spec:
 
 
 # # COMPONENTS
-# ---
-# apiVersion: backstage.io/v1alpha1
-# kind: Component
-# metadata:
-#   name: where-for-dinner-ui
-#   # This is an extra long description with Markdown
-#   description: 'Node.js application frontend built using the React framework'
-#   links:
-#     - url: https://github.com/vmware-tanzu/application-accelerator-samples/blob/main/where-for-dinner/where-for-dinner-ui
-#       title: Source Code on GitHub
-#       icon: github
-#       type: source
-#   tags:
-#     - nodejs
-#     - react
-#     - demo
-#   annotations:
-#     backstage.io/kubernetes-label-selector: 'app.kubernetes.io/part-of=where-for-dinner-ui'
-#     # backstage.io/techdocs-ref: url:https://github.com/benwilcock/
-# spec:
-#   type: service
-#   lifecycle: experimental
-#   owner: user:greg.meyer
-#   system: where-for-dinner
-#   profile:
-#     displayName: Node.js React UI Application
-#   dependsOn: 
-#     - component:where-for-dinner-search
-#     - component:where-for-dinner-availability
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: where-for-dinner-ui
+  # This is an extra long description with Markdown
+  description: 'Node.js application frontend built using the React framework'
+  links:
+    - url: https://github.com/vmware-tanzu/application-accelerator-samples/blob/main/where-for-dinner/where-for-dinner-ui
+      title: Source Code on GitHub
+      icon: github
+      type: source
+  tags:
+    - nodejs
+    - react
+    - demo
+  annotations:
+    backstage.io/kubernetes-label-selector: 'app.kubernetes.io/part-of=where-for-dinner-ui'
+    # backstage.io/techdocs-ref: url:https://github.com/benwilcock/
+spec:
+  type: service
+  lifecycle: experimental
+  owner: user:greg.meyer
+  system: where-for-dinner
+  profile:
+    displayName: Node.js React UI Application
+  dependsOn: 
+    - component:where-for-dinner-search
+    - component:where-for-dinner-availability
 # ---
 # apiVersion: backstage.io/v1alpha1
 # kind: Component
