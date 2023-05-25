@@ -45,7 +45,7 @@ metadata:
     - demo
   annotations:
     backstage.io/kubernetes-label-selector: 'app.kubernetes.io/part-of=where-for-dinner-ui'
-    # backstage.io/techdocs-ref: url:https://github.com/benwilcock/
+    backstage.io/techdocs-ref: url:https://github.com/benwilcock/where-for-dinner-techdocs
 spec:
   type: service
   lifecycle: experimental
@@ -73,7 +73,7 @@ metadata:
     - demo
   annotations:
     backstage.io/kubernetes-label-selector: 'app.kubernetes.io/part-of=where-for-dinner-search'
-    # backstage.io/techdocs-ref: url:https://github.com/benwilcock/
+    backstage.io/techdocs-ref: url:https://github.com/benwilcock/where-for-dinner-techdocs
 spec:
   type: service
   lifecycle: experimental
@@ -104,7 +104,7 @@ metadata:
     - demo
   annotations:
     backstage.io/kubernetes-label-selector: 'app.kubernetes.io/part-of=where-for-dinner-availability'
-    # backstage.io/techdocs-ref: url:https://github.com/benwilcock/
+    backstage.io/techdocs-ref: url:https://github.com/benwilcock/where-for-dinner-techdocs
 spec:
   type: service
   lifecycle: experimental
@@ -135,7 +135,7 @@ metadata:
     - demo
   annotations:
     backstage.io/kubernetes-label-selector: 'app.kubernetes.io/part-of=where-for-dinner-notify'
-    # backstage.io/techdocs-ref: url:https://github.com/benwilcock/
+    backstage.io/techdocs-ref: url:https://github.com/benwilcock/where-for-dinner-techdocs
 spec:
   type: service
   lifecycle: experimental
@@ -164,7 +164,7 @@ metadata:
     - demo
   annotations:
     backstage.io/kubernetes-label-selector: 'app.kubernetes.io/part-of=where-for-dinner-search-proc'
-    # backstage.io/techdocs-ref: url:https://github.com/benwilcock/
+    backstage.io/techdocs-ref: url:https://github.com/benwilcock/where-for-dinner-techdocs
 spec:
   type: service
   lifecycle: experimental
@@ -191,7 +191,7 @@ metadata:
     - demo
   annotations:
     backstage.io/kubernetes-label-selector: 'app.kubernetes.io/part-of=where-for-dinner-crawler'
-    # backstage.io/techdocs-ref: url:https://github.com/benwilcock/
+    backstage.io/techdocs-ref: url:https://github.com/benwilcock/where-for-dinner-techdocs
 spec:
   type: service
   lifecycle: experimental
@@ -216,7 +216,7 @@ metadata:
     - demo
   annotations:
     backstage.io/kubernetes-label-selector: 'app.kubernetes.io/part-of=where-for-dinner-crawler-python'
-    # backstage.io/techdocs-ref: url:https://github.com/benwilcock/
+    backstage.io/techdocs-ref: url:https://github.com/benwilcock/where-for-dinner-techdocs
 spec:
   type: service
   lifecycle: experimental
@@ -253,7 +253,7 @@ spec:
 # APIs
 ######################################
 
-# Made a start here but couldn't load from this URL given below in he def.
+# Made a start here but couldn't load from the URL in the definition.
 
 # ---
 # apiVersion: backstage.io/v1alpha1
