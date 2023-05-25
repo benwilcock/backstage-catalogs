@@ -6,7 +6,7 @@ apiVersion: backstage.io/v1alpha1
 kind: System
 metadata:
   name: where-for-dinner
-  description: A fully functional microservices application for reference purposes
+  description: A fully functional microservices reference application
   tags:
     - java
     - dotnet
@@ -22,7 +22,7 @@ metadata:
     # backstage.io/kubernetes-label-selector: 'app.kubernetes.io/part-of=where-for-dinner'
     backstage.io/techdocs-ref: url:https://github.com/benwilcock/where-for-dinner-techdocs
 spec: 
-  displayName: Wheres For Dinner Application Reference System
+  displayName: Where For Dinner Reference Application
   owner: user:greg.meyer
   domain: developer-experience
   profile:
