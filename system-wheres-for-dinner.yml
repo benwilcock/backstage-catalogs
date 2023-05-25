@@ -12,7 +12,7 @@ metadata:
     - url: https://www.youtube.com/watch?v=IY784cDq1E8
       title: SpringOne Essentials Conference Talk (YouTube))
       type: video
-    - url: https://github.com/vmware-tanzu/application-accelerator-samples/tree/main/where-for-dinner
+    - url: https://github.com/vmware-tanzu/application-accelerator-samples/blob/main/where-for-dinner/README.md
       title: Application Source Code
       icon: github
       type: source
