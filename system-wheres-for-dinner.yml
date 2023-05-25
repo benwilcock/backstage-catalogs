@@ -54,38 +54,38 @@ spec:
   dependsOn: 
     - component:where-for-dinner-search
     - component:where-for-dinner-availability
-# ---
-# apiVersion: backstage.io/v1alpha1
-# kind: Component
-# metadata:
-#   name: where-for-dinner-search
-#   # This is an extra long description with Markdown
-#   description: 'Spring Boot search component which also uses Spring Cloud components'
-#   links:
-#     - url: https://github.com/vmware-tanzu/application-accelerator-samples/tree/main/where-for-dinner/where-for-dinner-search
-#       title: Source Code on GitHub
-#       icon: github
-#       type: source
-#   tags:
-#     - springboot
-#     - springcloud
-#     - demo
-#   annotations:
-#     backstage.io/kubernetes-label-selector: 'app.kubernetes.io/part-of=where-for-dinner-search'
-#     # backstage.io/techdocs-ref: url:https://github.com/benwilcock/
-# spec:
-#   type: service
-#   lifecycle: experimental
-#   owner: user:greg.meyer
-#   system: where-for-dinner
-#   profile:
-#     displayName: Spring Boot Search Application
-#   providesApis:
-#     - where-for-dinner-search
-#   dependsOn: 
-#     - resource:where-for-dinner-db
-#     - resource:where-for-dinner-messaging
-#     - component:where-for-dinner-search-proc
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: where-for-dinner/where-for-dinner-search
+  # This is an extra long description with Markdown
+  description: 'Spring Boot search component which also uses Spring Cloud components'
+  links:
+    - url: https://github.com/vmware-tanzu/application-accelerator-samples/tree/main/where-for-dinner/where-for-dinner-search
+      title: Source Code on GitHub
+      icon: github
+      type: source
+  tags:
+    - springboot
+    - springcloud
+    - demo
+  annotations:
+    backstage.io/kubernetes-label-selector: 'app.kubernetes.io/part-of=where-for-dinner-search'
+    # backstage.io/techdocs-ref: url:https://github.com/benwilcock/
+spec:
+  type: service
+  lifecycle: experimental
+  owner: user:greg.meyer
+  system: where-for-dinner
+  profile:
+    displayName: Spring Boot Search Application
+  providesApis:
+    - where-for-dinner-search
+  dependsOn: 
+    - resource:where-for-dinner-db
+    - resource:where-for-dinner-messaging
+    - component:where-for-dinner-search-proc
 
 # ---
 # apiVersion: backstage.io/v1alpha1
