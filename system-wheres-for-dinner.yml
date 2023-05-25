@@ -84,113 +84,39 @@ spec:
     - resource:where-for-dinner-db
     - resource:where-for-dinner-messaging
     - component:where-for-dinner-search-proc
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: where-for-dinner-availability
+  description: ''
+  links:
+    - url: https://github.com/vmware-tanzu/application-accelerator-samples/tree/main/where-for-dinner/where-for-dinner-availability
+      title: Source Code on GitHub
+      icon: github
+      type: source
+  tags:
+    - springboot
+    - springcloud
+    - demo
+  annotations:
+    backstage.io/kubernetes-label-selector: 'app.kubernetes.io/part-of=where-for-dinner-availability'
+    # backstage.io/techdocs-ref: url:https://github.com/benwilcock/
+spec:
+  type: service
+  lifecycle: experimental
+  owner: user:greg.meyer
+  system: where-for-dinner
+  profile:
+    displayName: Spring Boot Availability Application
+  providesApis:
+    - where-for-dinner-availability
+  dependsOn: 
+    - resource:where-for-dinner-db
+    - resource:where-for-dinner-messaging
+    - component:where-for-dinner-search-proc
 
-# ---
-# apiVersion: backstage.io/v1alpha1
-# kind: Component
-# metadata:
-#   name: springboot-maven-polyglot-demo
-#   # This is an extra long description with Markdown
-#   description: Java microservice (Spring Boot) built using Maven.
-#   links:
-#     - url: https://github.com/benwilcock/springboot-maven
-#       title: Source Code on GitHub
-#       icon: github
-#       type: source
-#   tags:
-#     - java
-#     - supply-chain
-#     - demo
-#   annotations:
-#     backstage.io/kubernetes-label-selector: "app.kubernetes.io/part-of=springboot-maven"
-#     backstage.io/techdocs-ref: url:https://github.com/benwilcock/springboot-maven/blob/main/
-# spec:
-#   type: service
-#   lifecycle: production
-#   owner: user:ben.wilcock
-#   system: polyglot-demo-apps
-#   providesApis:
-#     - springboot-maven-messages-api
-#   profile:
-#     displayName: Java (Spring) Demo Application
-# ---
-# apiVersion: backstage.io/v1alpha1
-# kind: Component
-# metadata:
-#   name: dotnet-aspcore-polyglot-demo
-#   # This is an extra long description with Markdown
-#   description: '.Net ASP Core with Razer Pages'
-#   links:
-#     - url: https://github.com/benwilcock/dotnet-aspcore
-#       title: Source Code on GitHub
-#       icon: github
-#       type: source
-#   tags:
-#     - dotnet
-#     - supply-chain
-#     - demo
-#   annotations:
-#     backstage.io/kubernetes-label-selector: 'app.kubernetes.io/part-of=dotnet-aspcore'
-#     backstage.io/techdocs-ref: url:https://github.com/benwilcock/dotnet-aspcore/blob/main/
-# spec:
-#   type: service
-#   lifecycle: production
-#   owner: user:ben.wilcock
-#   system: polyglot-demo-apps
-#   profile:
-#     displayName: .Net ASP Core Demo Application
-# ---
-# apiVersion: backstage.io/v1alpha1
-# kind: Component
-# metadata:
-#   name: node-express-polyglot-demo
-#   # This is an extra long description with Markdown
-#   description: 'Node.js with Express'
-#   links:
-#     - url: https://github.com/benwilcock/node-express
-#       title: Source Code on GitHub
-#       icon: github
-#       type: source
-#   tags:
-#     - nodejs
-#     - supply-chain
-#     - demo
-#   annotations:
-#     backstage.io/kubernetes-label-selector: 'app.kubernetes.io/part-of=node-express'
-#     backstage.io/techdocs-ref: url:https://github.com/benwilcock/node-express/blob/main/
-# spec:
-#   type: service
-#   lifecycle: production
-#   owner: user:ben.wilcock
-#   system: polyglot-demo-apps
-#   profile:
-#     displayName: Node.js Express Demo Application
-# ---
-# apiVersion: backstage.io/v1alpha1
-# kind: Component
-# metadata:
-#   name: python-pipenv-polyglot-demo
-#   # This is an extra long description with Markdown
-#   description: 'Python (Pipenv) with Flask'
-#   links:
-#     - url: https://github.com/benwilcock/python-pipenv
-#       title: Source Code on GitHub
-#       icon: github
-#       type: source
-#   tags:
-#     - nodejs
-#     - supply-chain
-#     - demo
-#   annotations:
-#     'backstage.io/kubernetes-label-selector': 'app.kubernetes.io/part-of=python-pipenv'
-#     backstage.io/techdocs-ref: url:https://github.com/benwilcock/python-pipenv/blob/main/
-# spec:
-#   type: service
-#   lifecycle: production
-#   owner: user:ben.wilcock
-#   system: polyglot-demo-apps
-#   profile:
-#     displayName: Python Pipenv Demo Application
+
 
 # APIs
 # Made a start here but couldn't load from this URL given below in he def.
@@ -214,34 +140,24 @@ spec:
 # spec:
 #   type: openapi
 #   lifecycle: experimental
-#   owner: where-for-dinner-team
+#   owner: user:greg.meyer
 #   system: where-for-dinner
 #   definition:
 #     $text: https://where-for-dinner.perfect300rock.com/api/search/v3/api-docs/
-
-
-
-
-
-
+# ---
 # apiVersion: backstage.io/v1alpha1
 # kind: API
 # metadata:
-#   name: springboot-maven-messages-api
-#   description: Used to get a list of messages using a REST style API.
-#   links:
-#     - url: https://github.com/benwilcock/springboot-maven
-#       title: Source Code on GitHub
-#       icon: github
-#       type: source
-#   annotations:
-#     backstage.io/kubernetes-label-selector: "app.kubernetes.io/part-of=springboot-maven"
-#     backstage.io/techdocs-ref: url:https://github.com/benwilcock/springboot-maven/blob/main/
+#   name: where-for-dinner-availability
+#   description: The Availability API
+#   tags:
+#     - api
+#     - tanzu
 # spec:
 #   type: openapi
-#   lifecycle: production
-#   owner: user:ben.wilcock
-#   system: polyglot-demo-apps
+#   lifecycle: experimental
+#   owner: user:greg.meyer
+#   system: where-for-dinner
 #   definition:
-#     $text: https://github.com/benwilcock/springboot-maven/blob/main/openapi/openapi.json
----
+#     $text: https://where-for-dinner.perfect300rock.com/api/availability/v3/api-docs/
+# ---
