@@ -30,7 +30,6 @@ apiVersion: backstage.io/v1alpha1
 kind: Component
 metadata:
   name: where-for-dinner/where-for-dinner-ui
-  # This is an extra long description with Markdown
   description: 'Node.js application frontend built using the React framework'
   links:
     - url: https://github.com/vmware-tanzu/application-accelerator-samples/blob/main/where-for-dinner/where-for-dinner-ui
@@ -59,7 +58,6 @@ apiVersion: backstage.io/v1alpha1
 kind: Component
 metadata:
   name: where-for-dinner/where-for-dinner-search
-  # This is an extra long description with Markdown
   description: 'Spring Boot search component which also uses Spring Cloud components'
   links:
     - url: https://github.com/vmware-tanzu/application-accelerator-samples/tree/main/where-for-dinner/where-for-dinner-search
