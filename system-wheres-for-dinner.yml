@@ -57,7 +57,7 @@ spec:
 apiVersion: backstage.io/v1alpha1
 kind: Component
 metadata:
-  name: where-for-dinner/where-for-dinner-search
+  name: where-for-dinner-search
   description: 'Spring Boot search component which also uses Spring Cloud components'
   links:
     - url: https://github.com/vmware-tanzu/application-accelerator-samples/tree/main/where-for-dinner/where-for-dinner-search
