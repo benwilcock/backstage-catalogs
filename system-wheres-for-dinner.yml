@@ -29,7 +29,7 @@ spec:
 apiVersion: backstage.io/v1alpha1
 kind: Component
 metadata:
-  name: where-for-dinner/where-for-dinner-ui
+  name: where-for-dinner-ui
   description: 'Node.js application frontend built using the React framework'
   links:
     - url: https://github.com/vmware-tanzu/application-accelerator-samples/blob/main/where-for-dinner/where-for-dinner-ui
