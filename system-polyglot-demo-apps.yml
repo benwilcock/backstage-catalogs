@@ -171,7 +171,7 @@ metadata:
       type: source
   annotations:
     backstage.io/kubernetes-label-selector: "app.kubernetes.io/part-of=springboot-maven"
-    backstage.io/techdocs-ref: url:https://github.com/benwilcock/springboot-maven/blob/main/
+    # backstage.io/techdocs-ref: url:https://github.com/benwilcock/springboot-maven/blob/main/
 spec:
   type: openapi
   lifecycle: production
