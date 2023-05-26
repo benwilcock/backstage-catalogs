@@ -48,7 +48,7 @@ metadata:
     - demo
   annotations:
     backstage.io/kubernetes-label-selector: 'app.kubernetes.io/part-of=where-for-dinner-ui'
-    # backstage.io/techdocs-ref: url:https://github.com/benwilcock/where-for-dinner-techdocs
+    backstage.io/techdocs-ref: url:https://github.com/benwilcock/where-for-dinner-techdocs/where-for-dinner-ui
 spec:
   type: service
   lifecycle: experimental
