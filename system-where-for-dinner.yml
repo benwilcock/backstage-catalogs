@@ -6,7 +6,7 @@ apiVersion: backstage.io/v1alpha1
 kind: System
 metadata:
   name: where-for-dinner
-  description: A fully functional microservices reference application
+  description: 'A fully functional microservices reference application'
   tags:
     - java
     - dotnet

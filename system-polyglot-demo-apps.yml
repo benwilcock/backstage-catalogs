@@ -75,7 +75,7 @@ spec:
   owner: user:ben.wilcock
   system: polyglot-demo-apps
   providesApis:
-    - springboot-maven-messages-api
+    - messages-api
   profile:
     displayName: Java (Spring) Demo Application
 ---
@@ -128,6 +128,8 @@ spec:
   lifecycle: production
   owner: user:ben.wilcock
   system: polyglot-demo-apps
+  providesApis:
+    - messages-api
   profile:
     displayName: Node.js Express Demo Application
 ---
@@ -162,7 +164,7 @@ spec:
 apiVersion: backstage.io/v1alpha1
 kind: API
 metadata:
-  name: springboot-maven-messages-api
+  name: messages-api
   description: Used to get a list of messages using a REST style API.
   links:
     - url: https://github.com/benwilcock/springboot-maven
