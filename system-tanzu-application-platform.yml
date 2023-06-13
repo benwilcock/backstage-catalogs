@@ -47,7 +47,7 @@ metadata:
     - url: https://network.tanzu.vmware.com/products/tanzu-application-platform/
       title: Download Link
       type: binary
-      icon: @mui/icons-material/FileDownload
+      icon: FileDownload
     - url: https://via.vmw.com/tap
       title: Tanzu Application Platform Homepage
       type: website
