@@ -45,7 +45,7 @@ metadata:
   description: 'Tanzu CLI offers command line tools to create, run, and manage workloads on Tanzu Application Platform'
   links:
     - url: https://network.tanzu.vmware.com/products/tanzu-application-platform/
-      title: Download Tanzu Cli (Tanzu Network)
+      title: Download (Tanzu Network)
       type: binary
       icon: FileDownload
     - url: https://docs.vmware.com/en/VMware-Tanzu-Application-Platform/1.5/tap/cli-plugins-tanzu-cli.html
