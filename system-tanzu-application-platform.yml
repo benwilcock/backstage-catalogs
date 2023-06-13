@@ -10,6 +10,11 @@ metadata:
   tags:
     - java
     - dotnet
+    - python
+    - node.js
+    - go
+    - ruby
+    - php
   links:
     - url: https://youtu.be/SDobPYHk_sQ
       title: Introduction to Tanzu Application Platform (YouTube)
@@ -19,7 +24,7 @@ metadata:
       type: website
   annotations:
     # backstage.io/kubernetes-label-selector: 'app.kubernetes.io/part-of=where-for-dinner'
-    backstage.io/techdocs-ref: url:https://github.com/benwilcock/where-for-dinner-techdocs
+    # backstage.io/techdocs-ref: url:https://github.com/benwilcock/
 spec: 
   displayName: Tanzu Application Platform
   owner: group:tanzu-engineering
