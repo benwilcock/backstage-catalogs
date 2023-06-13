@@ -258,30 +258,30 @@ spec:
 
 # Made a start here but couldn't load from the URL in the definition.
 
-# ---
-# apiVersion: backstage.io/v1alpha1
-# kind: API
-# metadata:
-#   name: where-for-dinner-search
-#   description: The Search API
-#   tags:
-#     - api
-#     - tanzu
-#   links:
-#     - url: https://github.com/vmware-tanzu/application-accelerator-samples/tree/main/where-for-dinner/where-for-dinner-search
-#       title: Source Code on GitHub
-#       icon: github
-#       type: source
-#   annotations:
-#     backstage.io/kubernetes-label-selector: "app.kubernetes.io/part-of=where-for-dinner-search"
-#     # backstage.io/techdocs-ref: url:https://github.com/benwilcock/springboot-maven/blob/main/
-# spec:
-#   type: openapi
-#   lifecycle: experimental
-#   owner: user:greg.meyer
-#   system: where-for-dinner
-#   definition:
-#     $text: https://where-for-dinner.perfect300rock.com/api/search/v3/api-docs/
+---
+apiVersion: backstage.io/v1alpha1
+kind: API
+metadata:
+  name: where-for-dinner-search
+  description: The Search API
+  tags:
+    - api
+    - tanzu
+  links:
+    - url: https://github.com/vmware-tanzu/application-accelerator-samples/tree/main/where-for-dinner/where-for-dinner-search
+      title: Source Code on GitHub
+      icon: github
+      type: source
+  annotations:
+    backstage.io/kubernetes-label-selector: "app.kubernetes.io/part-of=where-for-dinner-search"
+    # backstage.io/techdocs-ref: url:https://github.com/benwilcock/springboot-maven/blob/main/
+spec:
+  type: openapi
+  lifecycle: experimental
+  owner: user:greg.meyer
+  system: where-for-dinner
+  definition:
+    $text: http://where-for-dinner-search.where-for-dinner.svc.cluster.local/v3/api-docs 
 # ---
 # apiVersion: backstage.io/v1alpha1
 # kind: API
