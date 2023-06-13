@@ -92,7 +92,7 @@ metadata:
       icon: YouTube
       type: video
     - url: https://via.vmw.com/tap
-      title: Tanzu Application Platform Homepage
+      title: Tanzu Application Platform (Product Homepage)
       type: website
       icon: WebAsset
   tags:
