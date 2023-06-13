@@ -1,0 +1,28 @@
+###############################
+# SYSTEMS
+###############################
+---
+apiVersion: backstage.io/v1alpha1
+kind: System
+metadata:
+  name: tanzu-application-platform
+  description: 'A platform for building, running, and maintaining applications on Kubernetes'
+  tags:
+    - java
+    - dotnet
+  links:
+    - url: https://youtu.be/SDobPYHk_sQ
+      title: Introduction to Tanzu Application Platform (YouTube)
+      type: video
+    - url: https://via.vmw.com/tap
+      title: Tanzu Application Platform Homepage
+      type: website
+  annotations:
+    # backstage.io/kubernetes-label-selector: 'app.kubernetes.io/part-of=where-for-dinner'
+    backstage.io/techdocs-ref: url:https://github.com/benwilcock/where-for-dinner-techdocs
+spec: 
+  displayName: Tanzu Application Platform
+  owner: group:tanzu-engineering
+  domain: developer-experience
+  profile:
+    displayName: Tanzu Application Platform
