@@ -11,7 +11,7 @@ metadata:
     - java
     - dotnet
     - python
-    - node.js
+    - node
     - go
     - ruby
     - php
@@ -22,7 +22,7 @@ metadata:
     - url: https://via.vmw.com/tap
       title: Tanzu Application Platform Homepage
       type: website
-  annotations:
+  # annotations:
     # backstage.io/kubernetes-label-selector: 'app.kubernetes.io/part-of=where-for-dinner'
     # backstage.io/techdocs-ref: url:https://github.com/benwilcock/
 spec: 
