@@ -24,9 +24,8 @@ metadata:
       title: Tanzu Application Platform Homepage
       type: website
       icon: WebAsset
-  # annotations:
-    # backstage.io/kubernetes-label-selector: 'app.kubernetes.io/part-of=where-for-dinner'
-    # backstage.io/techdocs-ref: url:https://github.com/benwilcock/
+  annotations:
+    backstage.io/techdocs-ref: url:https://github.com/benwilcock/where-for-dinner-techdocs/tanzu-application-platform-system
 spec: 
   displayName: Tanzu Application Platform
   owner: group:tanzu-engineering
