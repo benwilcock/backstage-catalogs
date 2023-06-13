@@ -66,10 +66,13 @@ apiVersion: backstage.io/v1alpha1
 kind: Component
 metadata:
   name: supply-chain-choreographer
-  description: 'Supply Chain Choreographer is based on open source Cartographer. It allows App Operators to create pre-approved paths to production by integrating Kubernetes resources with the elements of their existing toolchains.'
+  description: 'Supply Chain Choreographer is based on open source Cartographer. It allows you to create pre-approved paths to production by integrating Kubernetes resources with the elements of your existing toolchains.'
   links:
     - url: https://docs.vmware.com/en/VMware-Tanzu-Application-Platform/1.5/tap/scc-about.html
-      title: Componnt documentation (1.5)
+      title: Supply Chain Choreographer Docs (v1.5)
+      type: website
+    - url: https://tanzu.vmware.com/content/blog/what-is-supply-chain-choreography-and-why-should-you-care
+      title: 'What Is Supply Chain Choreography? (Blog)'
       type: website
   tags:
     - supply-chain-choreographer
