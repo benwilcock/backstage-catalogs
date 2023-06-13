@@ -49,7 +49,7 @@ metadata:
       type: binary
       icon: FileDownload
     - url: https://docs.vmware.com/en/VMware-Tanzu-Application-Platform/1.5/tap/cli-plugins-tanzu-cli.html
-      title: Tanzu CLI (Docs, v1.5)
+      title: Documentation (v1.5)
       type: website
       icon: WebAsset
     - url: https://via.vmw.com/tap
@@ -84,7 +84,7 @@ metadata:
       type: website
       icon: WebAsset
     - url: https://docs.vmware.com/en/VMware-Tanzu-Application-Platform/1.5/tap/scc-about.html
-      title: Supply Chain Choreographer (Docs, v1.5)
+      title: Documentation (v1.5)
       type: website
       icon: WebAsset
     - url: https://tanzu.vmware.com/content/blog/what-is-supply-chain-choreography-and-why-should-you-care
