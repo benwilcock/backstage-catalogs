@@ -47,6 +47,11 @@ metadata:
     - url: https://network.tanzu.vmware.com/products/tanzu-application-platform/
       title: Download Link
       type: binary
+      icon: @mui/icons-material/FileDownload
+    - url: https://via.vmw.com/tap
+      title: Tanzu Application Platform Homepage
+      type: website
+      icon: WebAsset
   tags:
     - tanzu-cli
     - tanzu-application-platform
@@ -70,6 +75,10 @@ metadata:
   name: supply-chain-choreographer
   description: 'Supply Chain Choreographer is based on open source Cartographer. It allows you to create pre-approved paths to production by integrating Kubernetes resources with the elements of your existing toolchains.'
   links:
+    - url: https://via.vmw.com/tap
+      title: Tanzu Application Platform Homepage
+      type: website
+      icon: WebAsset
     - url: https://docs.vmware.com/en/VMware-Tanzu-Application-Platform/1.5/tap/scc-about.html
       title: Supply Chain Choreographer (Docs, v1.5)
       type: website
