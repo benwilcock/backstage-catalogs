@@ -31,3 +31,34 @@ spec:
   domain: developer-experience
   profile:
     displayName: Tanzu Application Platform
+
+####################################
+# COMPONENTS
+####################################
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: tanzu-cli
+  description: 'Tanzu CLI offers command line tools to create, run, and manage workloads on Tanzu Application Platform'
+  links:
+    - url: https://network.tanzu.vmware.com/products/tanzu-application-platform/
+      title: Download Link
+      type: binary
+  tags:
+    - cli
+    - tanzu
+  # annotations:
+  #   backstage.io/kubernetes-label-selector: 'app.kubernetes.io/part-of=where-for-dinner-ui'
+  #   backstage.io/techdocs-ref: url:https://github.com/benwilcock/where-for-dinner-techdocs/where-for-dinner-ui
+spec:
+  type: service
+  lifecycle: production
+  owner: group:tanzu-engineering
+  system: tanzu-application-platform
+  profile:
+    displayName: Tanzu CLI Command Line
+  # dependsOn: 
+  #   - component:where-for-dinner-search
+  #   - component:where-for-dinner-availability
+---
