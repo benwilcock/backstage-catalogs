@@ -46,18 +46,44 @@ metadata:
       title: Download Link
       type: binary
   tags:
-    - cli
-    - tanzu
+    - tanzu-cli
+    - tanzu-application-platform
   # annotations:
   #   backstage.io/kubernetes-label-selector: 'app.kubernetes.io/part-of=where-for-dinner-ui'
   #   backstage.io/techdocs-ref: url:https://github.com/benwilcock/where-for-dinner-techdocs/where-for-dinner-ui
 spec:
-  type: service
+  type: library
   lifecycle: production
   owner: group:tanzu-engineering
   system: tanzu-application-platform
   profile:
     displayName: Tanzu CLI Command Line
+  # dependsOn: 
+  #   - component:where-for-dinner-search
+  #   - component:where-for-dinner-availability
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: supply-chain-choreographer
+  description: 'Supply Chain Choreographer is based on open source Cartographer. It allows App Operators to create pre-approved paths to production by integrating Kubernetes resources with the elements of their existing toolchains.'
+  links:
+    - url: https://docs.vmware.com/en/VMware-Tanzu-Application-Platform/1.5/tap/scc-about.html
+      title: Componnt documentation (1.5)
+      type: website
+  tags:
+    - supply-chain-choreographer
+    - tanzu-application-platform
+  # annotations:
+  #   backstage.io/kubernetes-label-selector: 'app.kubernetes.io/part-of=where-for-dinner-ui'
+  #   backstage.io/techdocs-ref: url:https://github.com/benwilcock/where-for-dinner-techdocs/where-for-dinner-ui
+spec:
+  type: library
+  lifecycle: production
+  owner: group:tanzu-engineering
+  system: tanzu-application-platform
+  profile:
+    displayName: Supply Chain Choreographer
   # dependsOn: 
   #   - component:where-for-dinner-search
   #   - component:where-for-dinner-availability
