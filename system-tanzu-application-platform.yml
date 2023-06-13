@@ -19,9 +19,11 @@ metadata:
     - url: https://youtu.be/SDobPYHk_sQ
       title: Introduction to Tanzu Application Platform (YouTube)
       type: video
+      icon: YouTube
     - url: https://via.vmw.com/tap
       title: Tanzu Application Platform Homepage
       type: website
+      icon: WebAsset
   # annotations:
     # backstage.io/kubernetes-label-selector: 'app.kubernetes.io/part-of=where-for-dinner'
     # backstage.io/techdocs-ref: url:https://github.com/benwilcock/
@@ -71,9 +73,11 @@ metadata:
     - url: https://docs.vmware.com/en/VMware-Tanzu-Application-Platform/1.5/tap/scc-about.html
       title: Supply Chain Choreographer Docs (v1.5)
       type: website
+      icon: WebAsset
     - url: https://tanzu.vmware.com/content/blog/what-is-supply-chain-choreography-and-why-should-you-care
       title: 'What Is Supply Chain Choreography? (Blog)'
       type: website
+      icon: WebAsset
   tags:
     - supply-chain-choreographer
     - tanzu-application-platform
