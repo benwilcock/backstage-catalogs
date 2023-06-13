@@ -78,6 +78,10 @@ metadata:
       title: 'What Is Supply Chain Choreography? (Blog)'
       type: website
       icon: WebAsset
+    - url: https://youtu.be/d8YMWmkKdes
+      title: 'What Is New for Platform Operators in VMware Tanzu Application Platform?'
+      icon: YouTube
+      type: video
   tags:
     - supply-chain-choreographer
     - tanzu-application-platform
