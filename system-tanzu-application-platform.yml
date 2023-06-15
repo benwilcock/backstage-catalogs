@@ -324,7 +324,174 @@ spec:
     - component:kubernetes
     - component:flux-cd-source-controller
 ---
-
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: supply-chain-security-policy
+  description: 'Supply Chain Security Tools - Policy Controller is a security tool that helps you ensure that the container images in their registry have not been tampered with. '
+  links:
+    - url: https://docs.vmware.com/en/VMware-Tanzu-Application-Platform/index.html
+      title: Documentation
+      type: website
+      icon: WebAsset
+  tags:
+    - tanzu-application-platform
+  # annotations:
+  #   backstage.io/techdocs-ref: url:https://github.com/benwilcock/where-for-dinner-techdocs/tanzu-application-platform-system
+spec:
+  type: service
+  lifecycle: production
+  owner: group:tanzu-engineering
+  system: tanzu-application-platform
+  profile:
+    displayName: supply-chain-security-policy
+  dependsOn: 
+    - component:kubernetes
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: supply-chain-security-scan
+  description: 'With Supply Chain Security Tools Scan, you can build and deploy secure, trusted software that complies with your corporate security requirements.'
+  links:
+    - url: https://docs.vmware.com/en/VMware-Tanzu-Application-Platform/index.html
+      title: Documentation
+      type: website
+      icon: WebAsset
+  tags:
+    - tanzu-application-platform
+  # annotations:
+  #   backstage.io/techdocs-ref: url:https://github.com/benwilcock/where-for-dinner-techdocs/tanzu-application-platform-system
+spec:
+  type: service
+  lifecycle: production
+  owner: group:tanzu-engineering
+  system: tanzu-application-platform
+  profile:
+    displayName: supply-chain-security-scan
+  dependsOn: 
+    - component:kubernetes
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: supply-chain-security-store
+  description: 'Supply Chain Security Tools Store saves software bills of materials (SBoMs) to a database and allows you to query for image, source code, package, and vulnerability relationships. '
+  links:
+    - url: https://docs.vmware.com/en/VMware-Tanzu-Application-Platform/index.html
+      title: Documentation
+      type: website
+      icon: WebAsset
+  tags:
+    - tanzu-application-platform
+  # annotations:
+  #   backstage.io/techdocs-ref: url:https://github.com/benwilcock/where-for-dinner-techdocs/tanzu-application-platform-system
+spec:
+  type: service
+  lifecycle: production
+  owner: group:tanzu-engineering
+  system: tanzu-application-platform
+  profile:
+    displayName: supply-chain-security-store
+  dependsOn: 
+    - component:kubernetes
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: tanzu-developer-portal
+  description: 'Tanzu Developer Portal (previously known as TAP GUI) is a tool for your developers to view your applications and services running for your organization.'
+  links:
+    - url: https://docs.vmware.com/en/VMware-Tanzu-Application-Platform/index.html
+      title: Documentation
+      type: website
+      icon: WebAsset
+  tags:
+    - tanzu-application-platform
+  # annotations:
+  #   backstage.io/techdocs-ref: url:https://github.com/benwilcock/where-for-dinner-techdocs/tanzu-application-platform-system
+spec:
+  type: service
+  lifecycle: production
+  owner: group:tanzu-engineering
+  system: tanzu-application-platform
+  profile:
+    displayName: tanzu-developer-portal
+  dependsOn: 
+    - component:kubernetes
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: tanzu-build-service
+  description: 'Tanzu Build Service automates container creation, management, and governance at enterprise scale. Tanzu Build Service uses the open-source Cloud Native Buildpacks project to turn application source code into container images.'
+  links:
+    - url: https://docs.vmware.com/en/VMware-Tanzu-Application-Platform/index.html
+      title: Documentation
+      type: website
+      icon: WebAsset
+  tags:
+    - tanzu-application-platform
+  # annotations:
+  #   backstage.io/techdocs-ref: url:https://github.com/benwilcock/where-for-dinner-techdocs/tanzu-application-platform-system
+spec:
+  type: service
+  lifecycle: production
+  owner: group:tanzu-engineering
+  system: tanzu-application-platform
+  profile:
+    displayName: tanzu-build-service
+  dependsOn: 
+    - component:kubernetes
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: tekton-pipelines
+  description: 'Tekton is a cloud-native, open-source framework for creating CI/CD systems. It allows developers to build, test, and deploy across cloud providers and on-premise systems. '
+  links:
+    - url: https://docs.vmware.com/en/VMware-Tanzu-Application-Platform/index.html
+      title: Documentation
+      type: website
+      icon: WebAsset
+  tags:
+    - tanzu-application-platform
+  # annotations:
+  #   backstage.io/techdocs-ref: url:https://github.com/benwilcock/where-for-dinner-techdocs/tanzu-application-platform-system
+spec:
+  type: service
+  lifecycle: production
+  owner: group:tanzu-engineering
+  system: tanzu-application-platform
+  profile:
+    displayName: tekton-pipelines
+  dependsOn: 
+    - component:kubernetes
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: application-configuration-service
+  description: 'Application Configuration Service (commonly known as App Config Service) provides a Kubernetes-native experience to enable the runtime configuration of existing Spring applications that were previously leveraged by using Spring Cloud Config Server.'
+  links:
+    - url: https://docs.vmware.com/en/VMware-Tanzu-Application-Platform/index.html
+      title: Documentation
+      type: website
+      icon: WebAsset
+  tags:
+    - tanzu-application-platform
+  # annotations:
+  #   backstage.io/techdocs-ref: url:https://github.com/benwilcock/where-for-dinner-techdocs/tanzu-application-platform-system
+spec:
+  type: service
+  lifecycle: production
+  owner: group:tanzu-engineering
+  system: tanzu-application-platform
+  profile:
+    displayName: application-configuration-service
+  dependsOn: 
+    - component:kubernetes
+---
 #####################################
 # Templates
 #####################################
@@ -341,8 +508,8 @@ spec:
 #       icon: WebAsset
 #   tags:
 #     - tanzu-application-platform
-#   annotations:
-#     backstage.io/techdocs-ref: url:https://github.com/benwilcock/where-for-dinner-techdocs/tanzu-application-platform-system
+#   # annotations:
+#   #   backstage.io/techdocs-ref: url:https://github.com/benwilcock/where-for-dinner-techdocs/tanzu-application-platform-system
 # spec:
 #   type: service
 #   lifecycle: production
