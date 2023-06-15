@@ -158,8 +158,8 @@ metadata:
 spec:
   type: cluster-programming-interface
   lifecycle: production
-#   owner: user:greg.meyer
+  owner: group:CNCF
   #  system: where-for-dinner
-#   definition:
-#     $text: http://where-for-dinner-search.where-for-dinner.svc.cluster.local/v3/api-docs 
+  definition:
+    $url: https://github.com/kubernetes-sigs/cluster-api
 ---
