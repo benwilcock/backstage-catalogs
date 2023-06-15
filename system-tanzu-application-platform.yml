@@ -155,9 +155,9 @@ metadata:
       title: Cluster API Source Code
       type: source
       icon: github
- spec:
+spec:
 #   type: openapi
-   lifecycle: production
+  lifecycle: production
 #   owner: user:greg.meyer
   #  system: where-for-dinner
 #   definition:
