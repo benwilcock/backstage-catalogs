@@ -71,7 +71,6 @@ spec:
     displayName: The Cloud Native Computing Foundation
     picture: https://pbs.twimg.com/profile_images/1664660606862131202/1P8iwkP1_400x400.jpg
   children: []
-  parent: 
 ---
 apiVersion: backstage.io/v1alpha1
 kind: User
