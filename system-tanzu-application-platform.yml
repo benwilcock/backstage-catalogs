@@ -40,6 +40,36 @@ spec:
 apiVersion: backstage.io/v1alpha1
 kind: Component
 metadata:
+  name: Kubernetes
+  description: 'Kubernetes is the underlying orchestrator for the Tanzu Application Platform'
+  links:
+    - url: https://kubernetes.io/
+      title: Website
+      type: website
+      icon: WebAsset
+    - url: https://kubernetes.io/docs/home/
+      title: Documentation
+      type: website
+      icon: WebAsset
+    - url: https://kube.academy/
+      title: VMware KubeAcademy Learning Zone
+      type: website
+      icon: WebAsset
+  tags:
+    - kubernetes
+spec:
+  type: service
+  lifecycle: production
+  providesApis:
+    - cluster-api
+  # owner: group:tanzu-engineering
+  # system: tanzu-application-platform
+  profile:
+    displayName: Kubernetes
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
   name: tanzu-cli
   description: 'Tanzu CLI offers command line tools to create, run, and manage workloads on Tanzu Application Platform'
   links:
@@ -74,20 +104,16 @@ metadata:
   name: supply-chain-choreographer
   description: 'Supply Chain Choreographer is based on open source Cartographer. It allows you to create pre-approved paths to production by integrating Kubernetes resources with the elements of your existing toolchains.'
   links:
-    - url: https://docs.vmware.com/en/VMware-Tanzu-Application-Platform/1.5/tap/scc-about.html
-      title: Documentation (v1.5)
+    - url: https://docs.vmware.com/en/VMware-Tanzu-Application-Platform/index.html
+      title: Documentation
       type: website
       icon: WebAsset
     - url: https://tanzu.vmware.com/content/blog/what-is-supply-chain-choreography-and-why-should-you-care
       title: 'What Is Supply Chain Choreography? (Blog)'
       type: website
       icon: WebAsset
-    - url: https://youtu.be/d8YMWmkKdes
-      title: 'What Is New for Platform Operators in VMware Tanzu Application Platform? (YouTube)'
-      icon: YouTube
-      type: video
     - url: https://via.vmw.com/tap
-      title: Tanzu Application Platform (Product Homepage)
+      title: Tanzu Application Platform (Homepage)
       type: website
       icon: WebAsset
   tags:
@@ -102,7 +128,38 @@ spec:
   system: tanzu-application-platform
   profile:
     displayName: Supply Chain Choreographer
-  # dependsOn: 
-  #   - component:where-for-dinner-search
-  #   - component:where-for-dinner-availability
+  dependsOn: 
+    - component:kubernetes
+---
+
+
+######################################
+# APIs
+######################################
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: API
+metadata:
+  name: cluster-api
+  description: The API provided by Kuberenetes to manipulate the Kubernetes system.
+  tags:
+    - api
+    - kubernetes
+  links:
+    - url: https://cluster-api.sigs.k8s.io/
+      title: Cluster API Book
+      type: website
+      icon: WebAsset
+    - url: https://github.com/kubernetes-sigs/cluster-api
+      title: Cluster API Source Code
+      type: source
+      icon: github
+# spec:
+#   type: openapi
+#   lifecycle: experimental
+#   owner: user:greg.meyer
+#   system: where-for-dinner
+#   definition:
+#     $text: http://where-for-dinner-search.where-for-dinner.svc.cluster.local/v3/api-docs 
 ---
