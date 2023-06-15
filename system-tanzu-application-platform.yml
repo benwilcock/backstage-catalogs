@@ -153,9 +153,32 @@ spec:
   profile:
     displayName: application-accelerator
   dependsOn: 
-    - component:name
+    - component:kubernetes
 ---
-
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: application-single-sign-on
+  description: 'Application Single Sign-On for VMware Tanzu (AppSSO) provides APIs for curating and consuming a “Single Sign-On as a service” offering on Tanzu Application Platform.'
+  links:
+    - url: https://docs.vmware.com/en/VMware-Tanzu-Application-Platform/index.html
+      title: Documentation
+      type: website
+      icon: WebAsset
+  tags:
+    - tanzu-application-platform
+  annotations:
+    backstage.io/techdocs-ref: url:https://github.com/benwilcock/where-for-dinner-techdocs/tanzu-application-platform-system
+spec:
+  type: service
+  lifecycle: production
+  owner: group:tanzu-engineering
+  system: tanzu-application-platform
+  profile:
+    displayName: application-single-sign-on
+  dependsOn: 
+    - component:kubernetes
+---
 
 #####################################
 # Templates
@@ -183,7 +206,7 @@ spec:
 #   profile:
 #     displayName: comp-name
 #   dependsOn: 
-#     - component:name
+#     - component:kubernetes
 # ---
 
 ######################################
