@@ -142,7 +142,7 @@ apiVersion: backstage.io/v1alpha1
 kind: API
 metadata:
   name: cluster-api
-  description: The API provided by Kuberenetes to manipulate the Kubernetes system.
+  description: 'Cluster API is a Kubernetes subproject focused on providing declarative APIs and tooling to simplify provisioning, upgrading, and operating multiple Kubernetes clusters.'
   tags:
     - api
     - kubernetes
@@ -156,7 +156,7 @@ metadata:
       type: source
       icon: github
 spec:
-#   type: openapi
+  type: cluster-programming-interface
   lifecycle: production
 #   owner: user:greg.meyer
   #  system: where-for-dinner
