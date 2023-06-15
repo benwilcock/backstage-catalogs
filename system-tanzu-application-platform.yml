@@ -131,7 +131,60 @@ spec:
   dependsOn: 
     - component:kubernetes
 ---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: application-accelerator
+  description: 'Application Accelerator for VMware Tanzu helps you bootstrap developing your applications and deploying them in a discoverable and repeatable way.'
+  links:
+    - url: https://docs.vmware.com/en/VMware-Tanzu-Application-Platform/index.html
+      title: Documentation
+      type: website
+      icon: WebAsset
+  tags:
+    - tanzu-application-platform
+  annotations:
+    backstage.io/techdocs-ref: url:https://github.com/benwilcock/where-for-dinner-techdocs/tanzu-application-platform-system
+spec:
+  type: service
+  lifecycle: production
+  owner: group:tanzu-engineering
+  system: tanzu-application-platform
+  profile:
+    displayName: application-accelerator
+  dependsOn: 
+    - component:name
+---
 
+
+#####################################
+# Templates
+#####################################
+
+# apiVersion: backstage.io/v1alpha1
+# kind: Component
+# metadata:
+#   name: comp-name
+#   description: ''
+#   links:
+#     - url: https://docs.vmware.com/en/VMware-Tanzu-Application-Platform/index.html
+#       title: Documentation
+#       type: website
+#       icon: WebAsset
+#   tags:
+#     - tanzu-application-platform
+#   annotations:
+#     backstage.io/techdocs-ref: url:https://github.com/benwilcock/where-for-dinner-techdocs/tanzu-application-platform-system
+# spec:
+#   type: service
+#   lifecycle: production
+#   owner: group:tanzu-engineering
+#   system: tanzu-application-platform
+#   profile:
+#     displayName: comp-name
+#   dependsOn: 
+#     - component:name
+# ---
 
 ######################################
 # APIs
