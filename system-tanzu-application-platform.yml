@@ -88,8 +88,8 @@ metadata:
   tags:
     - tanzu-cli
     - tanzu-application-platform
-  annotations:
-    backstage.io/techdocs-ref: url:https://github.com/benwilcock/where-for-dinner-techdocs/tanzu-application-platform-system
+  # annotations:
+  #   backstage.io/techdocs-ref: url:https://github.com/benwilcock/where-for-dinner-techdocs/tanzu-application-platform-system
 spec:
   type: library
   lifecycle: production
@@ -119,8 +119,8 @@ metadata:
   tags:
     - supply-chain-choreographer
     - tanzu-application-platform
-  annotations:
-    backstage.io/techdocs-ref: url:https://github.com/benwilcock/where-for-dinner-techdocs/tanzu-application-platform-system
+  # annotations:
+  #   backstage.io/techdocs-ref: url:https://github.com/benwilcock/where-for-dinner-techdocs/tanzu-application-platform-system
 spec:
   type: library
   lifecycle: production
@@ -143,8 +143,8 @@ metadata:
       icon: WebAsset
   tags:
     - tanzu-application-platform
-  annotations:
-    backstage.io/techdocs-ref: url:https://github.com/benwilcock/where-for-dinner-techdocs/tanzu-application-platform-system
+  # annotations:
+  #   backstage.io/techdocs-ref: url:https://github.com/benwilcock/where-for-dinner-techdocs/tanzu-application-platform-system
 spec:
   type: service
   lifecycle: production
@@ -167,8 +167,8 @@ metadata:
       icon: WebAsset
   tags:
     - tanzu-application-platform
-  annotations:
-    backstage.io/techdocs-ref: url:https://github.com/benwilcock/where-for-dinner-techdocs/tanzu-application-platform-system
+  # annotations:
+  #   backstage.io/techdocs-ref: url:https://github.com/benwilcock/where-for-dinner-techdocs/tanzu-application-platform-system
 spec:
   type: service
   lifecycle: production
@@ -191,8 +191,8 @@ metadata:
       icon: WebAsset
   tags:
     - tanzu-application-platform
-  annotations:
-    backstage.io/techdocs-ref: url:https://github.com/benwilcock/where-for-dinner-techdocs/tanzu-application-platform-system
+  # annotations:
+  #   backstage.io/techdocs-ref: url:https://github.com/benwilcock/where-for-dinner-techdocs/tanzu-application-platform-system
 spec:
   type: service
   lifecycle: production
@@ -215,8 +215,8 @@ metadata:
       icon: WebAsset
   tags:
     - tanzu-application-platform
-  annotations:
-    backstage.io/techdocs-ref: url:https://github.com/benwilcock/where-for-dinner-techdocs/tanzu-application-platform-system
+  # annotations:
+  #   backstage.io/techdocs-ref: url:https://github.com/benwilcock/where-for-dinner-techdocs/tanzu-application-platform-system
 spec:
   type: service
   lifecycle: production
@@ -239,8 +239,8 @@ metadata:
       icon: WebAsset
   tags:
     - tanzu-application-platform
-  annotations:
-    backstage.io/techdocs-ref: url:https://github.com/benwilcock/where-for-dinner-techdocs/tanzu-application-platform-system
+  # annotations:
+  #   backstage.io/techdocs-ref: url:https://github.com/benwilcock/where-for-dinner-techdocs/tanzu-application-platform-system
 spec:
   type: service
   lifecycle: production
@@ -263,8 +263,8 @@ metadata:
       icon: WebAsset
   tags:
     - tanzu-application-platform
-  annotations:
-    backstage.io/techdocs-ref: url:https://github.com/benwilcock/where-for-dinner-techdocs/tanzu-application-platform-system
+  # annotations:
+  #   backstage.io/techdocs-ref: url:https://github.com/benwilcock/where-for-dinner-techdocs/tanzu-application-platform-system
 spec:
   type: service
   lifecycle: production
@@ -287,8 +287,8 @@ metadata:
       icon: WebAsset
   tags:
     - tanzu-application-platform
-  annotations:
-    backstage.io/techdocs-ref: url:https://github.com/benwilcock/where-for-dinner-techdocs/tanzu-application-platform-system
+  # annotations:
+  #   backstage.io/techdocs-ref: url:https://github.com/benwilcock/where-for-dinner-techdocs/tanzu-application-platform-system
 spec:
   type: service
   lifecycle: production
@@ -311,8 +311,8 @@ metadata:
       icon: WebAsset
   tags:
     - tanzu-application-platform
-  annotations:
-    backstage.io/techdocs-ref: url:https://github.com/benwilcock/where-for-dinner-techdocs/tanzu-application-platform-system
+  # annotations:
+  #   backstage.io/techdocs-ref: url:https://github.com/benwilcock/where-for-dinner-techdocs/tanzu-application-platform-system
 spec:
   type: service
   lifecycle: production
