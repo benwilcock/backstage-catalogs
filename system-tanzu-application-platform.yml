@@ -62,7 +62,7 @@ spec:
   lifecycle: production
   providesApis:
     - cluster-api
-  # owner: group:tanzu-engineering
+  owner: group:CNCF
   system: tanzu-application-platform
   profile:
     displayName: Kubernetes
