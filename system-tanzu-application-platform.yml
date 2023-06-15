@@ -179,6 +179,151 @@ spec:
   dependsOn: 
     - component:kubernetes
 ---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: cloud-native-runtimes
+  description: 'Cloud Native Runtimes for Tanzu is a serverless application runtime for Kubernetes that is based on Knative and runs on a single Kubernetes cluster.'
+  links:
+    - url: https://docs.vmware.com/en/VMware-Tanzu-Application-Platform/index.html
+      title: Documentation
+      type: website
+      icon: WebAsset
+  tags:
+    - tanzu-application-platform
+  annotations:
+    backstage.io/techdocs-ref: url:https://github.com/benwilcock/where-for-dinner-techdocs/tanzu-application-platform-system
+spec:
+  type: service
+  lifecycle: production
+  owner: group:tanzu-engineering
+  system: tanzu-application-platform
+  profile:
+    displayName: cloud-native-runtimes
+  dependsOn: 
+    - component:kubernetes
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: contour
+  description: 'Contour is an ingress controller for Kubernetes that supports dynamic configuration updates and multi-team ingress delegation. It provides the control plane for the Envoy edge and service proxy.'
+  links:
+    - url: https://docs.vmware.com/en/VMware-Tanzu-Application-Platform/index.html
+      title: Documentation
+      type: website
+      icon: WebAsset
+  tags:
+    - tanzu-application-platform
+  annotations:
+    backstage.io/techdocs-ref: url:https://github.com/benwilcock/where-for-dinner-techdocs/tanzu-application-platform-system
+spec:
+  type: service
+  lifecycle: production
+  owner: group:tanzu-engineering
+  system: tanzu-application-platform
+  profile:
+    displayName: contour
+  dependsOn: 
+    - component:kubernetes
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: eventing
+  description: 'Eventing for Tanzu is a collection of APIs based on Knative Eventing that allows the use of an event-driven architecture with your applications.'
+  links:
+    - url: https://docs.vmware.com/en/VMware-Tanzu-Application-Platform/index.html
+      title: Documentation
+      type: website
+      icon: WebAsset
+  tags:
+    - tanzu-application-platform
+  annotations:
+    backstage.io/techdocs-ref: url:https://github.com/benwilcock/where-for-dinner-techdocs/tanzu-application-platform-system
+spec:
+  type: service
+  lifecycle: production
+  owner: group:tanzu-engineering
+  system: tanzu-application-platform
+  profile:
+    displayName: eventing
+  dependsOn: 
+    - component:kubernetes
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: flux-cd-source-controller
+  description: 'FluxCD Source Controller provides you with APIs for acquiring resources such as Git, Helm repositories and S3 buckets on the cluster.'
+  links:
+    - url: https://docs.vmware.com/en/VMware-Tanzu-Application-Platform/index.html
+      title: Documentation
+      type: website
+      icon: WebAsset
+  tags:
+    - tanzu-application-platform
+  annotations:
+    backstage.io/techdocs-ref: url:https://github.com/benwilcock/where-for-dinner-techdocs/tanzu-application-platform-system
+spec:
+  type: service
+  lifecycle: production
+  owner: group:tanzu-engineering
+  system: tanzu-application-platform
+  profile:
+    displayName: flux-cd-source-controller
+  dependsOn: 
+    - component:kubernetes
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: learning-center
+  description: 'Learning Center provides a platform for creating and self-hosting workshops. It allows you to create workshops from markdown files that are displayed to the learner in a terminal shell environment with an instructional wizard UI.'
+  links:
+    - url: https://docs.vmware.com/en/VMware-Tanzu-Application-Platform/index.html
+      title: Documentation
+      type: website
+      icon: WebAsset
+  tags:
+    - tanzu-application-platform
+  annotations:
+    backstage.io/techdocs-ref: url:https://github.com/benwilcock/where-for-dinner-techdocs/tanzu-application-platform-system
+spec:
+  type: service
+  lifecycle: production
+  owner: group:tanzu-engineering
+  system: tanzu-application-platform
+  profile:
+    displayName: learning-center
+  dependsOn: 
+    - component:kubernetes
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: source-controller
+  description: 'Tanzu Source Controller provides a standard interface for artifact acquisition and extends the function of FluxCD Source Controller. Tanzu Source Controller supports the following two resource types: ImageRepository & MavenArtifact'
+  links:
+    - url: https://docs.vmware.com/en/VMware-Tanzu-Application-Platform/index.html
+      title: Documentation
+      type: website
+      icon: WebAsset
+  tags:
+    - tanzu-application-platform
+  annotations:
+    backstage.io/techdocs-ref: url:https://github.com/benwilcock/where-for-dinner-techdocs/tanzu-application-platform-system
+spec:
+  type: service
+  lifecycle: production
+  owner: group:tanzu-engineering
+  system: tanzu-application-platform
+  profile:
+    displayName: source-controller
+  dependsOn: 
+    - component:kubernetes
+    - component:flux-cd-source-controller
+---
 
 #####################################
 # Templates
