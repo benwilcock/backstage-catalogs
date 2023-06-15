@@ -156,10 +156,10 @@ metadata:
       type: source
       icon: github
 spec:
-  type: cluster-programming-interface
+  type: openapi
   lifecycle: production
   owner: group:CNCF
   #  system: where-for-dinner
   definition:
-    $text: https://github.com/kubernetes-sigs/cluster-api
+    $text: https://github.com/kubernetes/kubernetes/blob/master/api/openapi-spec/swagger.json
 ---
