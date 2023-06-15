@@ -38,7 +38,7 @@ spec:
 ####################################
 ---
 apiVersion: backstage.io/v1alpha1
-kind: Component
+kind: Resource
 metadata:
   name: Kubernetes
   description: 'Kubernetes is the underlying orchestrator for the Tanzu Application Platform'
