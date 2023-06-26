@@ -68,6 +68,36 @@ spec:
     displayName: Kubernetes
 ---
 apiVersion: backstage.io/v1alpha1
+kind: Resource
+metadata:
+  name: Backstage
+  description: 'Backstage is the open-source CNCF project on which Tanzu Developer Portal is based.'
+  links:
+    - url: https://bckstage.io/
+      title: Website
+      type: website
+      icon: WebAsset
+    - url: https://backstage.io/docs/
+      title: Documentation
+      type: website
+      icon: WebAsset
+    - url: https://backstage.spotify.com/learn/
+      title: Backstage Learn
+      type: website
+      icon: WebAsset
+  tags:
+    - backstage
+spec:
+  type: service
+  lifecycle: production
+  providesApis:
+    - backstage-api
+  owner: group:CNCF
+  system: tanzu-developer-portal
+  profile:
+    displayName: Backstage
+---
+apiVersion: backstage.io/v1alpha1
 kind: Component
 metadata:
   name: backstage-catalog
@@ -98,7 +128,33 @@ spec:
   system: tanzu-developer-portal
   profile:
     displayName: Catalog (Backstage)
-
+  dependsOn: 
+    - component:backstage
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: application-accelerators
+  description: 'Application Accelerators are coding templates that help you start new projects quickly whilst still following the golden path.'
+  links:
+    - url: https://docs.vmware.com/en/VMware-Tanzu-Application-Platform/index.html
+      title: Documentation
+      type: website
+      icon: WebAsset
+  tags:
+    - tanzu-developer-portal
+  # annotations:
+  #   backstage.io/techdocs-ref: url:https://github.com/benwilcock/where-for-dinner-techdocs/tanzu-developer-portal-system
+spec:
+  type: service
+  lifecycle: production
+  owner: group:tanzu-engineering
+  system: tanzu-developer-portal
+  profile:
+    displayName: Application Accelerators
+  dependsOn: 
+    - component:backstage
+---
 #####################################
 # Templates
 #####################################
