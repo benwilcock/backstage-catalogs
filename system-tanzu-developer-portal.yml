@@ -96,6 +96,8 @@ spec:
   system: tanzu-developer-portal
   profile:
     displayName: Backstage
+  dependsOn: 
+    - component:kubernetes
 ---
 apiVersion: backstage.io/v1alpha1
 kind: Component
