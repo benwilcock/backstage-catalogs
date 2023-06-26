@@ -106,7 +106,7 @@ spec:
 apiVersion: backstage.io/v1alpha1
 kind: Component
 metadata:
-  name: backstage-catalog
+  name: software-catalog
   description: 'The catalog component of Tanzu Developer Portal acts as a centralized location for tracking registering applications, libraries, etc.'
   links:
     - url: https://backstage.io/docs/features/software-catalog/catalog-customization/ 
@@ -205,6 +205,52 @@ spec:
   system: tanzu-developer-portal
   profile:
     displayName: api-auto-registration
+  dependsOn: 
+    - component:backstage
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: resource-viewer
+  description: 'Resource Viewer allow you to inspect the status of your Kubernetes deployments.'
+  links:
+    - url: https://docs.vmware.com/en/VMware-tanzu-developer-portal/index.html
+      title: Documentation
+      type: website
+      icon: WebAsset
+  tags:
+    - tanzu-developer-portal
+    - resource-viewer
+spec:
+  type: service
+  lifecycle: production
+  owner: group:tanzu-engineering
+  system: tanzu-developer-portal
+  profile:
+    displayName: resource-viewer
+  dependsOn: 
+    - component:backstage
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: application-live-view
+  description: 'Application Live View lets you introspect the runtime status of any compatible apps. '
+  links:
+    - url: https://docs.vmware.com/en/VMware-tanzu-developer-portal/index.html
+      title: Documentation
+      type: website
+      icon: WebAsset
+  tags:
+    - tanzu-developer-portal
+    - application-live-view
+spec:
+  type: service
+  lifecycle: production
+  owner: group:tanzu-engineering
+  system: tanzu-developer-portal
+  profile:
+    displayName: application-live-view
   dependsOn: 
     - component:backstage
 ---
