@@ -281,6 +281,30 @@ spec:
   dependsOn: 
     - component:backstage
 ---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: tanzu-developer-portal-configurator
+  description: 'The Tanzu Developer Portal Configurator lets you choose which Backstage plugins to offer your developers.'
+  links:
+    - url: https://docs.vmware.com/en/VMware-tanzu-developer-portal/index.html
+      title: Documentation
+      type: website
+      icon: WebAsset
+  tags:
+    - tanzu-developer-portal
+    - backstage
+    - tanzu-developer-portal-configurator
+spec:
+  type: service
+  lifecycle: production
+  owner: group:tanzu-engineering
+  system: tanzu-developer-portal
+  profile:
+    displayName: tanzu-developer-portal-configurator
+  dependsOn: 
+    - component:backstage
+---
 #####################################
 # Templates
 #####################################
