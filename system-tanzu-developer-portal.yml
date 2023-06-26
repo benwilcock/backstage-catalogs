@@ -29,7 +29,7 @@ metadata:
 spec: 
   displayName: Tanzu Developer Portal
   owner: group:tanzu-engineering
-  domain: developer-experience
+  domain: developer-portal
   profile:
     displayName: Tanzu Developer Portal
 
