@@ -254,6 +254,29 @@ spec:
   dependsOn: 
     - component:backstage
 ---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: tech-docs
+  description: 'TechDocs allows you to create and share rich website content about your apps inside the Backstage portal.'
+  links:
+    - url: https://docs.vmware.com/en/VMware-tanzu-developer-portal/index.html
+      title: Documentation
+      type: website
+      icon: WebAsset
+  tags:
+    - tanzu-developer-portal
+    - tech-docs
+spec:
+  type: service
+  lifecycle: production
+  owner: group:tanzu-engineering
+  system: tanzu-developer-portal
+  profile:
+    displayName: tech-docs
+  dependsOn: 
+    - component:backstage
+---
 #####################################
 # Templates
 #####################################
@@ -278,7 +301,7 @@ spec:
 #   profile:
 #     displayName: comp-name
 #   dependsOn: 
-#     - component:kubernetes
+#     - component:backstage
 # ---
 
 ######################################
