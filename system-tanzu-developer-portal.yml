@@ -25,7 +25,7 @@ metadata:
       type: website 
       icon: WebAsset
   annotations:
-    backstage.io/techdocs-ref: url:https://github.com/benwilcock/where-for-dinner-techdocs/tanzu-developer-portal-system
+    backstage.io/techdocs-ref: url:https://github.com/benwilcock/tanzu-developer-portal-techdocs/tanzu-developer-portal-system
 spec: 
   displayName: Tanzu Developer Portal
   owner: group:tanzu-engineering
@@ -34,7 +34,7 @@ spec:
     displayName: Tanzu Developer Portal
 
 ####################################
-# COMPONENTS
+# RESOURCES
 ####################################
 ---
 apiVersion: backstage.io/v1alpha1
@@ -99,6 +99,10 @@ spec:
   dependsOn: 
     - component:kubernetes
 ---
+
+####################################
+# COMPONENTS
+####################################
 apiVersion: backstage.io/v1alpha1
 kind: Component
 metadata:
@@ -121,8 +125,6 @@ metadata:
     - backstage
     - tanzu-developer-portal
     - catalog
-  # annotations:
-  #   backstage.io/techdocs-ref: url:https://github.com/benwilcock/where-for-dinner-techdocs/tanzu-developer-portal-system
 spec:
   type: library
   lifecycle: production
@@ -149,8 +151,6 @@ metadata:
     - tanzu-developer-portal
     - backstage
     - application-accelerators
-  # annotations:
-  #   backstage.io/techdocs-ref: url:https://github.com/benwilcock/where-for-dinner-techdocs/tanzu-developer-portal-system
 spec:
   type: service
   lifecycle: production
@@ -158,6 +158,53 @@ spec:
   system: tanzu-developer-portal
   profile:
     displayName: Application Accelerators
+  dependsOn: 
+    - component:backstage
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: api-docs
+  description: 'API Docs provide a window into the APIs running on your systems.'
+  links:
+    - url: https://docs.vmware.com/en/VMware-tanzu-developer-portal/index.html
+      title: Documentation
+      type: website
+      icon: WebAsset
+  tags:
+    - tanzu-developer-portal
+    - api-docs
+spec:
+  type: service
+  lifecycle: production
+  owner: group:tanzu-engineering
+  system: tanzu-developer-portal
+  profile:
+    displayName: api-docs
+  dependsOn: 
+    - component:backstage
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: api-auto-registration
+  description: 'Automatically registers common API specifications into the API Docs viewer.'
+  links:
+    - url: https://docs.vmware.com/en/VMware-tanzu-developer-portal/index.html
+      title: Documentation
+      type: website
+      icon: WebAsset
+  tags:
+    - tanzu-developer-portal
+    - api-docs
+    - api-auto-registration
+spec:
+  type: service
+  lifecycle: production
+  owner: group:tanzu-engineering
+  system: tanzu-developer-portal
+  profile:
+    displayName: api-auto-registration
   dependsOn: 
     - component:backstage
 ---
@@ -177,8 +224,6 @@ spec:
 #       icon: WebAsset
 #   tags:
 #     - tanzu-developer-portal
-#   # annotations:
-#   #   backstage.io/techdocs-ref: url:https://github.com/benwilcock/where-for-dinner-techdocs/tanzu-developer-portal-system
 # spec:
 #   type: service
 #   lifecycle: production
@@ -216,7 +261,7 @@ spec:
   type: openapi
   lifecycle: production
   owner: group:CNCF
-  #  system: where-for-dinner
+  #  system: tanzu-developer-portal
   definition:
     $text: https://github.com/backstage/backstage/blob/master/plugins/catalog-backend/src/schema/openapi.yaml
 ---
@@ -241,7 +286,7 @@ spec:
   type: openapi
   lifecycle: production
   owner: group:CNCF
-  #  system: where-for-dinner
+  #  system: tanzu-developer-portal
   definition:
     $text: https://github.com/kubernetes/kubernetes/blob/master/api/openapi-spec/swagger.json
 ---
