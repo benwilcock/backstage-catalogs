@@ -6,32 +6,32 @@ apiVersion: backstage.io/v1alpha1
 kind: System
 metadata:
   name: tanzu-developer-portal
-  description: "A portal for creating, sharing, discovering, and managing your organization's code.""
+  description: "A portal for creating, sharing, discovering, and managing your organization's code. Based on Spotify Backstage."
   tags:
-    - java
-    - dotnet
-    - python
-    - node
-    - go
-    - ruby
-    - php
+    - backstage
+    - tanzu
+    - portal
   links:
     - url: https://youtu.be/GAzKCQO8Vt0
-      title: system-tanzu-application-platform.yml (YouTube)
+      title: Backstage In The VMware Tanzu Developer Portal Developer Portal (YouTube)
       type: video
       icon: YouTube
-    - url: https://via.vmw.com/tap
-      title: Tanzu Application Platform Homepage
+    - url: https://via.vmw.com/tdp
+      title: Tanzu Developer Portal Homepage
       type: website
+      icon: WebAsset
+    - url: https://backstage.io/docs/overview/what-is-backstage/ 
+      title: What is Backstage? 
+      type: website 
       icon: WebAsset
   annotations:
     backstage.io/techdocs-ref: url:https://github.com/benwilcock/where-for-dinner-techdocs/tanzu-developer-portal-system
 spec: 
-  displayName: Tanzu Application Platform
+  displayName: Tanzu Developer Portal
   owner: group:tanzu-engineering
   domain: developer-experience
   profile:
-    displayName: Tanzu Application Platform
+    displayName: Tanzu Developer Portal
 
 ####################################
 # COMPONENTS
@@ -41,7 +41,7 @@ apiVersion: backstage.io/v1alpha1
 kind: Resource
 metadata:
   name: Kubernetes
-  description: 'Kubernetes is the underlying orchestrator for the Tanzu Application Platform'
+  description: 'Kubernetes is the underlying orchestrator for the Tanzu Developer Portal'
   links:
     - url: https://kubernetes.io/
       title: Website
@@ -70,24 +70,25 @@ spec:
 apiVersion: backstage.io/v1alpha1
 kind: Component
 metadata:
-  name: tanzu-cli
-  description: 'Tanzu CLI offers command line tools to create, run, and manage workloads on Tanzu Application Platform'
+  name: backstage-catalog
+  description: 'The catalog component of Tanzu Developer Portal acts as a centralized location for tracking registering applications, libraries, etc.'
   links:
-    - url: https://network.tanzu.vmware.com/products/tanzu-developer-portal/
-      title: Download (Tanzu Network)
-      type: binary
-      icon: FileDownload
+    - url: https://backstage.io/docs/features/software-catalog/catalog-customization/ 
+      title: Catalog Customization 
+      type: website 
+      icon: WebAsset
     - url: https://docs.vmware.com/en/VMware-tanzu-developer-portal/1.5/tap/cli-plugins-tanzu-cli.html
       title: Documentation (v1.5)
       type: website
       icon: WebAsset
     - url: https://via.vmw.com/tap
-      title: Tanzu Application Platform (Product Homepage)
+      title: Tanzu Developer Portal (Product Homepage)
       type: website
       icon: WebAsset
   tags:
-    - tanzu-cli
+    - backstage
     - tanzu-developer-portal
+    - catalog
   # annotations:
   #   backstage.io/techdocs-ref: url:https://github.com/benwilcock/where-for-dinner-techdocs/tanzu-developer-portal-system
 spec:
@@ -96,402 +97,8 @@ spec:
   owner: group:tanzu-engineering
   system: tanzu-developer-portal
   profile:
-    displayName: Tanzu CLI Command Line
----
-apiVersion: backstage.io/v1alpha1
-kind: Component
-metadata:
-  name: supply-chain-choreographer
-  description: 'Supply Chain Choreographer is based on open source Cartographer. It allows you to create pre-approved paths to production by integrating Kubernetes resources with the elements of your existing toolchains.'
-  links:
-    - url: https://docs.vmware.com/en/VMware-tanzu-developer-portal/index.html
-      title: Documentation
-      type: website
-      icon: WebAsset
-    - url: https://tanzu.vmware.com/content/blog/what-is-supply-chain-choreography-and-why-should-you-care
-      title: 'What Is Supply Chain Choreography? (Blog)'
-      type: website
-      icon: WebAsset
-    - url: https://via.vmw.com/tap
-      title: Tanzu Application Platform (Homepage)
-      type: website
-      icon: WebAsset
-  tags:
-    - supply-chain-choreographer
-    - tanzu-developer-portal
-  # annotations:
-  #   backstage.io/techdocs-ref: url:https://github.com/benwilcock/where-for-dinner-techdocs/tanzu-developer-portal-system
-spec:
-  type: library
-  lifecycle: production
-  owner: group:tanzu-engineering
-  system: tanzu-developer-portal
-  profile:
-    displayName: Supply Chain Choreographer
-  dependsOn: 
-    - component:kubernetes
----
-apiVersion: backstage.io/v1alpha1
-kind: Component
-metadata:
-  name: application-accelerator
-  description: 'Application Accelerator for VMware Tanzu helps you bootstrap developing your applications and deploying them in a discoverable and repeatable way.'
-  links:
-    - url: https://docs.vmware.com/en/VMware-tanzu-developer-portal/index.html
-      title: Documentation
-      type: website
-      icon: WebAsset
-  tags:
-    - tanzu-developer-portal
-  # annotations:
-  #   backstage.io/techdocs-ref: url:https://github.com/benwilcock/where-for-dinner-techdocs/tanzu-developer-portal-system
-spec:
-  type: service
-  lifecycle: production
-  owner: group:tanzu-engineering
-  system: tanzu-developer-portal
-  profile:
-    displayName: application-accelerator
-  dependsOn: 
-    - component:kubernetes
----
-apiVersion: backstage.io/v1alpha1
-kind: Component
-metadata:
-  name: application-single-sign-on
-  description: 'Application Single Sign-On for VMware Tanzu (AppSSO) provides APIs for curating and consuming a “Single Sign-On as a service” offering on Tanzu Application Platform.'
-  links:
-    - url: https://docs.vmware.com/en/VMware-tanzu-developer-portal/index.html
-      title: Documentation
-      type: website
-      icon: WebAsset
-  tags:
-    - tanzu-developer-portal
-  # annotations:
-  #   backstage.io/techdocs-ref: url:https://github.com/benwilcock/where-for-dinner-techdocs/tanzu-developer-portal-system
-spec:
-  type: service
-  lifecycle: production
-  owner: group:tanzu-engineering
-  system: tanzu-developer-portal
-  profile:
-    displayName: application-single-sign-on
-  dependsOn: 
-    - component:kubernetes
----
-apiVersion: backstage.io/v1alpha1
-kind: Component
-metadata:
-  name: cloud-native-runtimes
-  description: 'Cloud Native Runtimes for Tanzu is a serverless application runtime for Kubernetes that is based on Knative and runs on a single Kubernetes cluster.'
-  links:
-    - url: https://docs.vmware.com/en/VMware-tanzu-developer-portal/index.html
-      title: Documentation
-      type: website
-      icon: WebAsset
-  tags:
-    - tanzu-developer-portal
-  # annotations:
-  #   backstage.io/techdocs-ref: url:https://github.com/benwilcock/where-for-dinner-techdocs/tanzu-developer-portal-system
-spec:
-  type: service
-  lifecycle: production
-  owner: group:tanzu-engineering
-  system: tanzu-developer-portal
-  profile:
-    displayName: cloud-native-runtimes
-  dependsOn: 
-    - component:kubernetes
----
-apiVersion: backstage.io/v1alpha1
-kind: Component
-metadata:
-  name: contour
-  description: 'Contour is an ingress controller for Kubernetes that supports dynamic configuration updates and multi-team ingress delegation. It provides the control plane for the Envoy edge and service proxy.'
-  links:
-    - url: https://docs.vmware.com/en/VMware-tanzu-developer-portal/index.html
-      title: Documentation
-      type: website
-      icon: WebAsset
-  tags:
-    - tanzu-developer-portal
-  # annotations:
-  #   backstage.io/techdocs-ref: url:https://github.com/benwilcock/where-for-dinner-techdocs/tanzu-developer-portal-system
-spec:
-  type: service
-  lifecycle: production
-  owner: group:tanzu-engineering
-  system: tanzu-developer-portal
-  profile:
-    displayName: contour
-  dependsOn: 
-    - component:kubernetes
----
-apiVersion: backstage.io/v1alpha1
-kind: Component
-metadata:
-  name: eventing
-  description: 'Eventing for Tanzu is a collection of APIs based on Knative Eventing that allows the use of an event-driven architecture with your applications.'
-  links:
-    - url: https://docs.vmware.com/en/VMware-tanzu-developer-portal/index.html
-      title: Documentation
-      type: website
-      icon: WebAsset
-  tags:
-    - tanzu-developer-portal
-  # annotations:
-  #   backstage.io/techdocs-ref: url:https://github.com/benwilcock/where-for-dinner-techdocs/tanzu-developer-portal-system
-spec:
-  type: service
-  lifecycle: production
-  owner: group:tanzu-engineering
-  system: tanzu-developer-portal
-  profile:
-    displayName: eventing
-  dependsOn: 
-    - component:kubernetes
----
-apiVersion: backstage.io/v1alpha1
-kind: Component
-metadata:
-  name: flux-cd-source-controller
-  description: 'FluxCD Source Controller provides you with APIs for acquiring resources such as Git, Helm repositories and S3 buckets on the cluster.'
-  links:
-    - url: https://docs.vmware.com/en/VMware-tanzu-developer-portal/index.html
-      title: Documentation
-      type: website
-      icon: WebAsset
-  tags:
-    - tanzu-developer-portal
-  # annotations:
-  #   backstage.io/techdocs-ref: url:https://github.com/benwilcock/where-for-dinner-techdocs/tanzu-developer-portal-system
-spec:
-  type: service
-  lifecycle: production
-  owner: group:tanzu-engineering
-  system: tanzu-developer-portal
-  profile:
-    displayName: flux-cd-source-controller
-  dependsOn: 
-    - component:kubernetes
----
-apiVersion: backstage.io/v1alpha1
-kind: Component
-metadata:
-  name: learning-center
-  description: 'Learning Center provides a platform for creating and self-hosting workshops. It allows you to create workshops from markdown files that are displayed to the learner in a terminal shell environment with an instructional wizard UI.'
-  links:
-    - url: https://docs.vmware.com/en/VMware-tanzu-developer-portal/index.html
-      title: Documentation
-      type: website
-      icon: WebAsset
-  tags:
-    - tanzu-developer-portal
-  # annotations:
-  #   backstage.io/techdocs-ref: url:https://github.com/benwilcock/where-for-dinner-techdocs/tanzu-developer-portal-system
-spec:
-  type: service
-  lifecycle: production
-  owner: group:tanzu-engineering
-  system: tanzu-developer-portal
-  profile:
-    displayName: learning-center
-  dependsOn: 
-    - component:kubernetes
----
-apiVersion: backstage.io/v1alpha1
-kind: Component
-metadata:
-  name: source-controller
-  description: 'Tanzu Source Controller provides a standard interface for artifact acquisition and extends the function of FluxCD Source Controller. Tanzu Source Controller supports the following two resource types: ImageRepository & MavenArtifact'
-  links:
-    - url: https://docs.vmware.com/en/VMware-tanzu-developer-portal/index.html
-      title: Documentation
-      type: website
-      icon: WebAsset
-  tags:
-    - tanzu-developer-portal
-  # annotations:
-  #   backstage.io/techdocs-ref: url:https://github.com/benwilcock/where-for-dinner-techdocs/tanzu-developer-portal-system
-spec:
-  type: service
-  lifecycle: production
-  owner: group:tanzu-engineering
-  system: tanzu-developer-portal
-  profile:
-    displayName: source-controller
-  dependsOn: 
-    - component:kubernetes
-    - component:flux-cd-source-controller
----
-apiVersion: backstage.io/v1alpha1
-kind: Component
-metadata:
-  name: supply-chain-security-policy
-  description: 'Supply Chain Security Tools - Policy Controller is a security tool that helps you ensure that the container images in their registry have not been tampered with. '
-  links:
-    - url: https://docs.vmware.com/en/VMware-tanzu-developer-portal/index.html
-      title: Documentation
-      type: website
-      icon: WebAsset
-  tags:
-    - tanzu-developer-portal
-  # annotations:
-  #   backstage.io/techdocs-ref: url:https://github.com/benwilcock/where-for-dinner-techdocs/tanzu-developer-portal-system
-spec:
-  type: service
-  lifecycle: production
-  owner: group:tanzu-engineering
-  system: tanzu-developer-portal
-  profile:
-    displayName: supply-chain-security-policy
-  dependsOn: 
-    - component:kubernetes
----
-apiVersion: backstage.io/v1alpha1
-kind: Component
-metadata:
-  name: supply-chain-security-scan
-  description: 'With Supply Chain Security Tools Scan, you can build and deploy secure, trusted software that complies with your corporate security requirements.'
-  links:
-    - url: https://docs.vmware.com/en/VMware-tanzu-developer-portal/index.html
-      title: Documentation
-      type: website
-      icon: WebAsset
-  tags:
-    - tanzu-developer-portal
-  # annotations:
-  #   backstage.io/techdocs-ref: url:https://github.com/benwilcock/where-for-dinner-techdocs/tanzu-developer-portal-system
-spec:
-  type: service
-  lifecycle: production
-  owner: group:tanzu-engineering
-  system: tanzu-developer-portal
-  profile:
-    displayName: supply-chain-security-scan
-  dependsOn: 
-    - component:kubernetes
----
-apiVersion: backstage.io/v1alpha1
-kind: Component
-metadata:
-  name: supply-chain-security-store
-  description: 'Supply Chain Security Tools Store saves software bills of materials (SBoMs) to a database and allows you to query for image, source code, package, and vulnerability relationships. '
-  links:
-    - url: https://docs.vmware.com/en/VMware-tanzu-developer-portal/index.html
-      title: Documentation
-      type: website
-      icon: WebAsset
-  tags:
-    - tanzu-developer-portal
-  # annotations:
-  #   backstage.io/techdocs-ref: url:https://github.com/benwilcock/where-for-dinner-techdocs/tanzu-developer-portal-system
-spec:
-  type: service
-  lifecycle: production
-  owner: group:tanzu-engineering
-  system: tanzu-developer-portal
-  profile:
-    displayName: supply-chain-security-store
-  dependsOn: 
-    - component:kubernetes
----
-apiVersion: backstage.io/v1alpha1
-kind: Component
-metadata:
-  name: tanzu-developer-portal
-  description: 'Tanzu Developer Portal (previously known as TAP GUI) is a tool for your developers to view your applications and services running for your organization.'
-  links:
-    - url: https://docs.vmware.com/en/VMware-tanzu-developer-portal/index.html
-      title: Documentation
-      type: website
-      icon: WebAsset
-  tags:
-    - tanzu-developer-portal
-  # annotations:
-  #   backstage.io/techdocs-ref: url:https://github.com/benwilcock/where-for-dinner-techdocs/tanzu-developer-portal-system
-spec:
-  type: service
-  lifecycle: production
-  owner: group:tanzu-engineering
-  system: tanzu-developer-portal
-  profile:
-    displayName: tanzu-developer-portal
-  dependsOn: 
-    - component:kubernetes
----
-apiVersion: backstage.io/v1alpha1
-kind: Component
-metadata:
-  name: tanzu-build-service
-  description: 'Tanzu Build Service automates container creation, management, and governance at enterprise scale. Tanzu Build Service uses the open-source Cloud Native Buildpacks project to turn application source code into container images.'
-  links:
-    - url: https://docs.vmware.com/en/VMware-tanzu-developer-portal/index.html
-      title: Documentation
-      type: website
-      icon: WebAsset
-  tags:
-    - tanzu-developer-portal
-  # annotations:
-  #   backstage.io/techdocs-ref: url:https://github.com/benwilcock/where-for-dinner-techdocs/tanzu-developer-portal-system
-spec:
-  type: service
-  lifecycle: production
-  owner: group:tanzu-engineering
-  system: tanzu-developer-portal
-  profile:
-    displayName: tanzu-build-service
-  dependsOn: 
-    - component:kubernetes
----
-apiVersion: backstage.io/v1alpha1
-kind: Component
-metadata:
-  name: tekton-pipelines
-  description: 'Tekton is a cloud-native, open-source framework for creating CI/CD systems. It allows developers to build, test, and deploy across cloud providers and on-premise systems. '
-  links:
-    - url: https://docs.vmware.com/en/VMware-tanzu-developer-portal/index.html
-      title: Documentation
-      type: website
-      icon: WebAsset
-  tags:
-    - tanzu-developer-portal
-  # annotations:
-  #   backstage.io/techdocs-ref: url:https://github.com/benwilcock/where-for-dinner-techdocs/tanzu-developer-portal-system
-spec:
-  type: service
-  lifecycle: production
-  owner: group:tanzu-engineering
-  system: tanzu-developer-portal
-  profile:
-    displayName: tekton-pipelines
-  dependsOn: 
-    - component:kubernetes
----
-apiVersion: backstage.io/v1alpha1
-kind: Component
-metadata:
-  name: application-configuration-service
-  description: 'Application Configuration Service (commonly known as App Config Service) provides a Kubernetes-native experience to enable the runtime configuration of existing Spring applications that were previously leveraged by using Spring Cloud Config Server.'
-  links:
-    - url: https://docs.vmware.com/en/VMware-tanzu-developer-portal/index.html
-      title: Documentation
-      type: website
-      icon: WebAsset
-  tags:
-    - tanzu-developer-portal
-  # annotations:
-  #   backstage.io/techdocs-ref: url:https://github.com/benwilcock/where-for-dinner-techdocs/tanzu-developer-portal-system
-spec:
-  type: service
-  lifecycle: production
-  owner: group:tanzu-engineering
-  system: tanzu-developer-portal
-  profile:
-    displayName: application-configuration-service
-  dependsOn: 
-    - component:kubernetes
----
+    displayName: Catalog (Backstage)
+
 #####################################
 # Templates
 #####################################
