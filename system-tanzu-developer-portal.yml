@@ -91,7 +91,7 @@ spec:
   type: service
   lifecycle: production
   providesApis:
-    - backstage-api
+    - catalog-api
   owner: group:CNCF
   system: tanzu-developer-portal
   profile:
@@ -126,6 +126,8 @@ metadata:
 spec:
   type: library
   lifecycle: production
+  providesApis:
+    - catalog-api
   owner: group:tanzu-engineering
   system: tanzu-developer-portal
   profile:
@@ -145,6 +147,8 @@ metadata:
       icon: WebAsset
   tags:
     - tanzu-developer-portal
+    - backstage
+    - application-accelerators
   # annotations:
   #   backstage.io/techdocs-ref: url:https://github.com/benwilcock/where-for-dinner-techdocs/tanzu-developer-portal-system
 spec:
@@ -190,6 +194,31 @@ spec:
 # APIs
 ######################################
 
+---
+apiVersion: backstage.io/v1alpha1
+kind: API
+metadata:
+  name: catalog-api
+  description: 'The software catalog backend has a JSON based REST API, which can be leveraged by external systems.'
+  tags:
+    - api
+    - catalog
+  links:
+    - url: https://backstage.io/docs/features/software-catalog/software-catalog-api/
+      title: Catalog API Documentation
+      type: website
+      icon: WebAsset
+    - url: https://github.com/kubernetes-sigs/cluster-api
+      title: Cluster API Source Code
+      type: source
+      icon: github
+spec:
+  type: openapi
+  lifecycle: production
+  owner: group:CNCF
+  #  system: where-for-dinner
+  definition:
+    $text: https://github.com/backstage/backstage/blob/master/plugins/catalog-backend/src/schema/openapi.yaml
 ---
 apiVersion: backstage.io/v1alpha1
 kind: API
