@@ -44,11 +44,11 @@ metadata:
   description: 'Kubernetes is the underlying orchestrator for the Tanzu Developer Portal'
   links:
     - url: https://kubernetes.io/
-      title: Website
+      title: Kubernetes Website
       type: website
       icon: WebAsset
     - url: https://kubernetes.io/docs/home/
-      title: Documentation
+      title: Kubernetes Documentation
       type: website
       icon: WebAsset
     - url: https://kube.academy/
@@ -74,15 +74,15 @@ metadata:
   description: 'Backstage is the open-source CNCF project on which Tanzu Developer Portal is based.'
   links:
     - url: https://bckstage.io/
-      title: Website
+      title: Backstage Website
       type: website
       icon: WebAsset
     - url: https://backstage.io/docs/
-      title: Documentation
+      title: Backstage Documentation
       type: website
       icon: WebAsset
     - url: https://backstage.spotify.com/learn/
-      title: Backstage Learn
+      title: Backstage Learning Zone
       type: website
       icon: WebAsset
   tags:
