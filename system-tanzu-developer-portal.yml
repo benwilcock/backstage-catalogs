@@ -173,6 +173,7 @@ metadata:
       icon: WebAsset
   tags:
     - tanzu-developer-portal
+    - backstage
     - api-docs
 spec:
   type: service
@@ -196,7 +197,7 @@ metadata:
       icon: WebAsset
   tags:
     - tanzu-developer-portal
-    - api-docs
+    - backstage
     - api-auto-registration
 spec:
   type: service
@@ -220,6 +221,7 @@ metadata:
       icon: WebAsset
   tags:
     - tanzu-developer-portal
+    - backstage
     - resource-viewer
 spec:
   type: service
@@ -243,6 +245,7 @@ metadata:
       icon: WebAsset
   tags:
     - tanzu-developer-portal
+    - backstage
     - application-live-view
 spec:
   type: service
@@ -258,7 +261,7 @@ apiVersion: backstage.io/v1alpha1
 kind: Component
 metadata:
   name: tech-docs
-  description: 'TechDocs allows you to create and share rich website content about your apps inside the Backstage portal.'
+  description: 'TechDocs allows you to create and share rich website content about your apps from within the Backstage portal.'
   links:
     - url: https://docs.vmware.com/en/VMware-tanzu-developer-portal/index.html
       title: Documentation
@@ -266,6 +269,7 @@ metadata:
       icon: WebAsset
   tags:
     - tanzu-developer-portal
+    - backstage
     - tech-docs
 spec:
   type: service
@@ -316,21 +320,17 @@ metadata:
   description: 'The software catalog backend has a JSON based REST API, which can be leveraged by external systems.'
   tags:
     - api
+    - catalog-api
     - catalog
   links:
     - url: https://backstage.io/docs/features/software-catalog/software-catalog-api/
       title: Catalog API Documentation
       type: website
       icon: WebAsset
-    - url: https://github.com/kubernetes-sigs/cluster-api
-      title: Cluster API Source Code
-      type: source
-      icon: github
 spec:
   type: openapi
   lifecycle: production
   owner: group:CNCF
-  #  system: tanzu-developer-portal
   definition:
     $text: https://github.com/backstage/backstage/blob/master/plugins/catalog-backend/src/schema/openapi.yaml
 ---
@@ -355,7 +355,6 @@ spec:
   type: openapi
   lifecycle: production
   owner: group:CNCF
-  #  system: tanzu-developer-portal
   definition:
     $text: https://github.com/kubernetes/kubernetes/blob/master/api/openapi-spec/swagger.json
 ---
