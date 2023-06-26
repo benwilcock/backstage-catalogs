@@ -126,7 +126,7 @@ metadata:
     - tanzu-developer-portal
     - catalog
 spec:
-  type: library
+  type: service
   lifecycle: production
   providesApis:
     - catalog-api
