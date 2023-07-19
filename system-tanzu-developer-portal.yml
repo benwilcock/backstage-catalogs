@@ -166,29 +166,29 @@ spec:
     displayName: Software Catalog
   subcomponentOf: Backstage
 ---
-# apiVersion: backstage.io/v1alpha1
-# kind: Component
-# metadata:
-#   name: application-accelerators
-#   description: 'Application Accelerators are coding templates that help you start new projects quickly whilst still following the golden path.'
-#   links:
-#     - url: https://docs.vmware.com/en/VMware-Tanzu-Application-Platform/index.html
-#       title: Documentation
-#       type: website
-#       icon: WebAsset
-#   tags:
-#     - tanzu-developer-portal
-#     - backstage
-#     - application-accelerators
-# spec:
-#   type: service
-#   lifecycle: production
-#   owner: group:tanzu-engineering
-#   system: tanzu-developer-portal
-#   profile:
-#     displayName: Application Accelerators
-#   # dependsOn: 
-#   #   - component:backstage
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: application-accelerators
+  description: 'Application Accelerators are coding templates that help you start new projects quickly whilst still following the golden path.'
+  links:
+    - url: https://docs.vmware.com/en/VMware-Tanzu-Application-Platform/index.html
+      title: Documentation
+      type: website
+      icon: WebAsset
+  tags:
+    - tanzu-developer-portal
+    - backstage
+    - application-accelerators
+spec:
+  type: service
+  lifecycle: production
+  owner: group:tanzu-engineering
+  system: tanzu-developer-portal
+  profile:
+    displayName: Application Accelerators
+  dependsOn: 
+    - component:backstage
 # ---
 # apiVersion: backstage.io/v1alpha1
 # kind: Component
