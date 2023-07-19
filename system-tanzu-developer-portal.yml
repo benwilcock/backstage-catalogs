@@ -126,8 +126,6 @@ spec:
   system: backstage
   profile:
     displayName: Backstage
-  dependsOn: 
-    - resource:kubernetes
 ---
 
 apiVersion: backstage.io/v1alpha1
