@@ -106,7 +106,7 @@ spec:
 apiVersion: backstage.io/v1alpha1
 kind: Component
 metadata:
-  name: Backstage
+  name: backstage
   description: 'Backstage is an open-source CNCF project often used by platform engineers to improving the developer experience '
   links:
     - url: https://bckstage.io/
@@ -129,6 +129,7 @@ spec:
   providesApis:
     - catalog-api
   owner: group:CNCF
+  system: tanzu-developer-portal
   profile:
     displayName: Backstage
   dependsOn: 
@@ -161,12 +162,11 @@ spec:
   providesApis:
     - catalog-api
   owner: group:cncf
-  system: tanzu-developer-portal
   profile:
     displayName: Software Catalog
   dependsOn:
-    - component:Backstage
-  subcomponentOf: Backstage
+    - component:backstage
+  subcomponentOf: backstage
 ---
 apiVersion: backstage.io/v1alpha1
 kind: Component
