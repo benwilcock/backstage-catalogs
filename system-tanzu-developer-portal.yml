@@ -167,6 +167,33 @@ spec:
   dependsOn:
     - component:backstage
   subcomponentOf: backstage
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: api-docs
+  description: 'API Docs provide a window into the APIs running on your systems.'
+  links:
+    - url: https://docs.vmware.com/en/VMware-tanzu-developer-portal/index.html
+      title: Documentation
+      type: website
+      icon: WebAsset
+  tags:
+    - tanzu-developer-portal
+    - backstage
+    - api-docs
+spec:
+  type: service
+  lifecycle: production
+  owner: group:cncf
+  profile:
+    displayName: API Docs
+  dependsOn:
+    - component:backstage
+  subcomponentOf: backstage
+
+
 ---
 apiVersion: backstage.io/v1alpha1
 kind: Component
@@ -191,30 +218,7 @@ spec:
     displayName: Application Accelerators
   dependsOn: 
     - component:backstage
-# ---
-# apiVersion: backstage.io/v1alpha1
-# kind: Component
-# metadata:
-#   name: api-docs
-#   description: 'API Docs provide a window into the APIs running on your systems.'
-#   links:
-#     - url: https://docs.vmware.com/en/VMware-tanzu-developer-portal/index.html
-#       title: Documentation
-#       type: website
-#       icon: WebAsset
-#   tags:
-#     - tanzu-developer-portal
-#     - backstage
-#     - api-docs
-# spec:
-#   type: service
-#   lifecycle: production
-#   owner: group:tanzu-engineering
-#   system: tanzu-developer-portal
-#   profile:
-#     displayName: api-docs
-#   subcomponentOf: 
-#     - backstage
+
 # ---
 # apiVersion: backstage.io/v1alpha1
 # kind: Component
