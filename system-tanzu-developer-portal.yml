@@ -154,19 +154,18 @@ metadata:
       icon: WebAsset
   tags:
     - backstage
-    - tanzu-developer-portal
     - catalog
 spec:
   type: service
   lifecycle: production
   providesApis:
     - catalog-api
-  owner: group:tanzu-engineering
+  owner: group:cncf
   system: tanzu-developer-portal
   profile:
     displayName: Software Catalog
   subcomponentOf: 
-    - backstage
+    - component:backstage
 ---
 # apiVersion: backstage.io/v1alpha1
 # kind: Component
