@@ -134,39 +134,39 @@ spec:
   dependsOn: 
     - resource:kubernetes
 ---
-# apiVersion: backstage.io/v1alpha1
-# kind: Component
-# metadata:
-#   name: software-catalog
-#   description: 'The catalog component of Tanzu Developer Portal acts as a centralized location for tracking registering applications, libraries, etc.'
-#   links:
-#     - url: https://backstage.io/docs/features/software-catalog/catalog-customization/ 
-#       title: Catalog Customization 
-#       type: website 
-#       icon: WebAsset
-#     - url: https://docs.vmware.com/en/VMware-tanzu-developer-portal/1.5/tap/cli-plugins-tanzu-cli.html
-#       title: Documentation (v1.5)
-#       type: website
-#       icon: WebAsset
-#     - url: https://via.vmw.com/tap
-#       title: Tanzu Developer Portal (Product Homepage)
-#       type: website
-#       icon: WebAsset
-#   tags:
-#     - backstage
-#     - tanzu-developer-portal
-#     - catalog
-# spec:
-#   type: service
-#   lifecycle: production
-#   providesApis:
-#     - catalog-api
-#   owner: group:tanzu-engineering
-#   system: tanzu-developer-portal
-#   profile:
-#     displayName: Catalog (Backstage)
-#   subcomponentOf: 
-#     - backstage
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: software-catalog
+  description: 'The catalog component of Tanzu Developer Portal acts as a centralized location for tracking registering applications, libraries, etc.'
+  links:
+    - url: https://backstage.io/docs/features/software-catalog/catalog-customization/ 
+      title: Catalog Customization 
+      type: website 
+      icon: WebAsset
+    - url: https://docs.vmware.com/en/VMware-tanzu-developer-portal/1.5/tap/cli-plugins-tanzu-cli.html
+      title: Documentation (v1.5)
+      type: website
+      icon: WebAsset
+    - url: https://via.vmw.com/tap
+      title: Tanzu Developer Portal (Product Homepage)
+      type: website
+      icon: WebAsset
+  tags:
+    - backstage
+    - tanzu-developer-portal
+    - catalog
+spec:
+  type: service
+  lifecycle: production
+  providesApis:
+    - catalog-api
+  owner: group:tanzu-engineering
+  system: tanzu-developer-portal
+  profile:
+    displayName: Catalog (Backstage)
+  subcomponentOf: 
+    - backstage
 # ---
 # apiVersion: backstage.io/v1alpha1
 # kind: Component
