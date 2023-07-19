@@ -133,6 +133,8 @@ spec:
     displayName: Backstage
   dependsOn: 
     - resource:kubernetes
+  subcomponentOf: 
+    - system:tanzu-developer-portal
 ---
 apiVersion: backstage.io/v1alpha1
 kind: Component
