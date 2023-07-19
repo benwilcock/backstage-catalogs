@@ -188,6 +188,34 @@ spec:
   subcomponentOf: backstage
 ---
 
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: search
+  description: 'Search through Backstage registered assets.'
+  links:
+    - url: https://docs.vmware.com/en/VMware-tanzu-developer-portal/index.html
+      title: Documentation
+      type: website
+      icon: WebAsset
+  tags:
+    - tanzu-developer-portal
+    - backstage
+    - search
+    - api-docs
+    - tech-docs
+    - software-catalog
+spec:
+  type: service
+  lifecycle: production
+  owner: group:cncf
+  profile:
+    displayName: Search
+  dependsOn:
+    - component:backstage
+  subcomponentOf: backstage
+---
+
 ####################################
 # DEV PORTAL COMPONENTS
 ####################################
