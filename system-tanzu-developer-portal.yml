@@ -26,11 +26,38 @@ metadata:
   annotations:
     backstage.io/techdocs-ref: url:https://github.com/benwilcock/where-for-dinner-techdocs/tanzu-developer-portal-system
 spec: 
-  displayName: Tanzu Developer Portal
   owner: group:tanzu-engineering
   domain: developer-portal
   profile:
     displayName: Tanzu Developer Portal
+---
+
+apiVersion: backstage.io/v1alpha1
+kind: System
+metadata:
+  name: backstage
+  description: 'Backstage is an open-source CNCF project often used by platform engineers to improving the developer experience'
+  tags:
+    - backstage
+  links:
+    - url: https://bckstage.io/
+      title: Backstage Website
+      type: website
+      icon: WebAsset
+    - url: https://backstage.io/docs/
+      title: Backstage Documentation
+      type: website
+      icon: WebAsset
+    - url: https://backstage.spotify.com/learn/
+      title: Backstage Learning Zone
+      type: website
+      icon: WebAsset
+  annotations:
+    backstage.io/techdocs-ref: url:https://github.com/backstage/backstage
+spec: 
+  owner: group:cncf
+  profile:
+    displayName: Backstage
 ---
 
 ####################################
@@ -67,7 +94,6 @@ spec:
     displayName: Kubernetes
 ---
 
-
 ####################################
 # BACKSTAGE COMPONENTS
 ####################################
@@ -75,7 +101,7 @@ apiVersion: backstage.io/v1alpha1
 kind: Component
 metadata:
   name: backstage
-  description: 'Backstage is an open-source CNCF project often used by platform engineers to improving the developer experience '
+  description: 'Backstage is an open-source CNCF project often used by platform engineers to improving the developer experience.'
   links:
     - url: https://bckstage.io/
       title: Backstage Website
@@ -97,7 +123,7 @@ spec:
   providesApis:
     - catalog-api
   owner: group:CNCF
-  system: tanzu-developer-portal
+  system: backstage
   profile:
     displayName: Backstage
   dependsOn: 
@@ -131,6 +157,7 @@ spec:
   providesApis:
     - catalog-api
   owner: group:cncf
+  system: backstage
   profile:
     displayName: Software Catalog
   dependsOn:
@@ -156,6 +183,7 @@ spec:
   type: service
   lifecycle: production
   owner: group:cncf
+  system: backstage
   profile:
     displayName: API Docs
   dependsOn:
@@ -181,6 +209,7 @@ spec:
   type: service
   lifecycle: production
   owner: group:cncf
+  system: backstage
   profile:
     displayName: Tech Docs
   dependsOn:
