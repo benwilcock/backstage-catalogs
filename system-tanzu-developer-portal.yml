@@ -98,7 +98,7 @@ spec:
 #     displayName: Backstage
 #   dependsOn: 
 #     - component:kubernetes
----
+# ---
 
 ####################################
 # COMPONENTS
@@ -133,8 +133,6 @@ spec:
     displayName: Backstage
   dependsOn: 
     - resource:kubernetes
-  subcomponentOf: 
-    - system:tanzu-developer-portal
 ---
 apiVersion: backstage.io/v1alpha1
 kind: Component
@@ -168,7 +166,7 @@ spec:
   profile:
     displayName: Catalog (Backstage)
   subcomponentOf: 
-    - component:backstage
+    - backstage
 ---
 apiVersion: backstage.io/v1alpha1
 kind: Component
@@ -216,7 +214,7 @@ spec:
   profile:
     displayName: api-docs
   subcomponentOf: 
-    - component:backstage
+    - backstage
 ---
 apiVersion: backstage.io/v1alpha1
 kind: Component
@@ -311,6 +309,8 @@ spec:
   system: tanzu-developer-portal
   profile:
     displayName: tech-docs
+  subcomponentOf:
+    - backstage
 ---
 apiVersion: backstage.io/v1alpha1
 kind: Component
