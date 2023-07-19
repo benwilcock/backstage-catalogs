@@ -67,11 +67,47 @@ spec:
   profile:
     displayName: Kubernetes
 ---
+# apiVersion: backstage.io/v1alpha1
+# kind: Resource
+# metadata:
+#   name: Backstage
+#   description: 'Backstage is the open-source CNCF project on which Tanzu Developer Portal is based.'
+#   links:
+#     - url: https://bckstage.io/
+#       title: Backstage Website
+#       type: website
+#       icon: WebAsset
+#     - url: https://backstage.io/docs/
+#       title: Backstage Documentation
+#       type: website
+#       icon: WebAsset
+#     - url: https://backstage.spotify.com/learn/
+#       title: Backstage Learning Zone
+#       type: website
+#       icon: WebAsset
+#   tags:
+#     - backstage
+# spec:
+#   type: service
+#   lifecycle: production
+#   providesApis:
+#     - catalog-api
+#   owner: group:CNCF
+#   system: tanzu-developer-portal
+#   profile:
+#     displayName: Backstage
+#   dependsOn: 
+#     - component:kubernetes
+---
+
+####################################
+# COMPONENTS
+####################################
 apiVersion: backstage.io/v1alpha1
-kind: Resource
+kind: Component
 metadata:
   name: Backstage
-  description: 'Backstage is the open-source CNCF project on which Tanzu Developer Portal is based.'
+  description: 'Backstage is an open-source CNCF project often used by platform engineers to improving the developer experience '
   links:
     - url: https://bckstage.io/
       title: Backstage Website
@@ -93,16 +129,11 @@ spec:
   providesApis:
     - catalog-api
   owner: group:CNCF
-  system: tanzu-developer-portal
   profile:
     displayName: Backstage
   dependsOn: 
-    - component:kubernetes
+    - resource:kubernetes
 ---
-
-####################################
-# COMPONENTS
-####################################
 apiVersion: backstage.io/v1alpha1
 kind: Component
 metadata:
@@ -134,7 +165,7 @@ spec:
   system: tanzu-developer-portal
   profile:
     displayName: Catalog (Backstage)
-  dependsOn: 
+  subcomponentOf: 
     - component:backstage
 ---
 apiVersion: backstage.io/v1alpha1
@@ -158,8 +189,8 @@ spec:
   system: tanzu-developer-portal
   profile:
     displayName: Application Accelerators
-  dependsOn: 
-    - component:backstage
+  # dependsOn: 
+  #   - component:backstage
 ---
 apiVersion: backstage.io/v1alpha1
 kind: Component
@@ -182,7 +213,7 @@ spec:
   system: tanzu-developer-portal
   profile:
     displayName: api-docs
-  dependsOn: 
+  subcomponentOf: 
     - component:backstage
 ---
 apiVersion: backstage.io/v1alpha1
@@ -206,8 +237,8 @@ spec:
   system: tanzu-developer-portal
   profile:
     displayName: api-auto-registration
-  dependsOn: 
-    - component:backstage
+  # dependsOn: 
+  #   - component:backstage
 ---
 apiVersion: backstage.io/v1alpha1
 kind: Component
@@ -230,8 +261,8 @@ spec:
   system: tanzu-developer-portal
   profile:
     displayName: resource-viewer
-  dependsOn: 
-    - component:backstage
+  # dependsOn: 
+  #   - component:backstage
 ---
 apiVersion: backstage.io/v1alpha1
 kind: Component
@@ -254,8 +285,8 @@ spec:
   system: tanzu-developer-portal
   profile:
     displayName: application-live-view
-  dependsOn: 
-    - component:backstage
+  # dependsOn: 
+  #   - component:backstage
 ---
 apiVersion: backstage.io/v1alpha1
 kind: Component
@@ -278,7 +309,7 @@ spec:
   system: tanzu-developer-portal
   profile:
     displayName: tech-docs
-  dependsOn: 
+  subcomponentOf: 
     - component:backstage
 ---
 apiVersion: backstage.io/v1alpha1
@@ -302,8 +333,8 @@ spec:
   system: tanzu-developer-portal
   profile:
     displayName: tanzu-developer-portal-configurator
-  dependsOn: 
-    - component:backstage
+  # dependsOn: 
+  #   - component:backstage
 ---
 #####################################
 # Templates
