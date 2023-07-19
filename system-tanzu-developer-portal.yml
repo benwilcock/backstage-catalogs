@@ -311,8 +311,6 @@ spec:
   system: tanzu-developer-portal
   profile:
     displayName: tech-docs
-  # subcomponentOf: 
-  #   - component:backstage
 ---
 apiVersion: backstage.io/v1alpha1
 kind: Component
