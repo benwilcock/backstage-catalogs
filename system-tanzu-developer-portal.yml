@@ -157,7 +157,6 @@ spec:
   providesApis:
     - catalog-api
   owner: group:cncf
-  system: backstage
   profile:
     displayName: Software Catalog
   dependsOn:
@@ -183,7 +182,6 @@ spec:
   type: service
   lifecycle: production
   owner: group:cncf
-  system: backstage
   profile:
     displayName: API Docs
   dependsOn:
@@ -209,7 +207,6 @@ spec:
   type: service
   lifecycle: production
   owner: group:cncf
-  system: backstage
   profile:
     displayName: Tech Docs
   dependsOn:
