@@ -164,6 +164,7 @@ spec:
   system: tanzu-developer-portal
   profile:
     displayName: Software Catalog
+  subcomponentOf: Backstage
 ---
 # apiVersion: backstage.io/v1alpha1
 # kind: Component
