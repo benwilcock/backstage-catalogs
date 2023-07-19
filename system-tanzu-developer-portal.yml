@@ -62,20 +62,16 @@ spec:
   providesApis:
     - cluster-api
   owner: group:CNCF
-  system: tanzu-developer-portal
+  # system: tanzu-developer-portal
   profile:
     displayName: Kubernetes
 ---
 
-
-####################################
-# BACKSTAGE COMPONENTS
-####################################
 apiVersion: backstage.io/v1alpha1
-kind: Component
+kind: Resource
 metadata:
   name: backstage
-  description: 'Backstage is an open-source CNCF project often used by platform engineers to improving the developer experience '
+  description: 'Backstage is an open-source CNCF project often used by platform engineers to improving the developer experience'
   links:
     - url: https://bckstage.io/
       title: Backstage Website
@@ -97,18 +93,41 @@ spec:
   providesApis:
     - catalog-api
   owner: group:CNCF
-  system: tanzu-developer-portal
+  # system: tanzu-developer-portal
   profile:
-    displayName: Backstage
-  dependsOn: 
-    - resource:kubernetes
+    displayName: Kubernetes
 ---
+
+
+####################################
+# BACKSTAGE COMPONENTS
+####################################
+# apiVersion: backstage.io/v1alpha1
+# kind: Component
+# metadata:
+#   name: backstage
+#   description: ' '
+
+#   tags:
+#     - backstage
+# spec:
+#   type: service
+#   lifecycle: production
+#   providesApis:
+#     - catalog-api
+#   owner: group:CNCF
+#   system: tanzu-developer-portal
+#   profile:
+#     displayName: Backstage
+#   dependsOn: 
+#     - resource:kubernetes
+# ---
 
 apiVersion: backstage.io/v1alpha1
 kind: Component
 metadata:
   name: software-catalog
-  description: 'The catalog component of Tanzu Developer Portal acts as a centralized location for tracking registering applications, libraries, etc.'
+  description: 'The software catalog acts as a centralized location for tracking registering applications, libraries, etc.'
   links:
     - url: https://backstage.io/docs/features/software-catalog/catalog-customization/ 
       title: Catalog Customization 
@@ -138,185 +157,185 @@ spec:
   subcomponentOf: backstage
 ---
 
-apiVersion: backstage.io/v1alpha1
-kind: Component
-metadata:
-  name: api-docs
-  description: 'API Docs provide a window into the APIs running on your systems.'
-  links:
-    - url: https://docs.vmware.com/en/VMware-tanzu-developer-portal/index.html
-      title: Documentation
-      type: website
-      icon: WebAsset
-  tags:
-    - tanzu-developer-portal
-    - backstage
-    - api-docs
-spec:
-  type: service
-  lifecycle: production
-  owner: group:cncf
-  profile:
-    displayName: API Docs
-  dependsOn:
-    - component:backstage
-  subcomponentOf: backstage
----
+# apiVersion: backstage.io/v1alpha1
+# kind: Component
+# metadata:
+#   name: api-docs
+#   description: 'API Docs provide a window into the APIs running on your systems.'
+#   links:
+#     - url: https://docs.vmware.com/en/VMware-tanzu-developer-portal/index.html
+#       title: Documentation
+#       type: website
+#       icon: WebAsset
+#   tags:
+#     - tanzu-developer-portal
+#     - backstage
+#     - api-docs
+# spec:
+#   type: service
+#   lifecycle: production
+#   owner: group:cncf
+#   profile:
+#     displayName: API Docs
+#   dependsOn:
+#     - component:backstage
+#   subcomponentOf: backstage
+# ---
 
-apiVersion: backstage.io/v1alpha1
-kind: Component
-metadata:
-  name: tech-docs
-  description: 'TechDocs allows you to create and share rich website content that describe your apps.'
-  links:
-    - url: https://docs.vmware.com/en/VMware-tanzu-developer-portal/index.html
-      title: Documentation
-      type: website
-      icon: WebAsset
-  tags:
-    - tanzu-developer-portal
-    - backstage
-    - tech-docs
-spec:
-  type: service
-  lifecycle: production
-  owner: group:cncf
-  profile:
-    displayName: Tech Docs
-  dependsOn:
-    - component:backstage
-  subcomponentOf: backstage
----
+# apiVersion: backstage.io/v1alpha1
+# kind: Component
+# metadata:
+#   name: tech-docs
+#   description: 'TechDocs allows you to create and share rich website content that describe your apps.'
+#   links:
+#     - url: https://docs.vmware.com/en/VMware-tanzu-developer-portal/index.html
+#       title: Documentation
+#       type: website
+#       icon: WebAsset
+#   tags:
+#     - tanzu-developer-portal
+#     - backstage
+#     - tech-docs
+# spec:
+#   type: service
+#   lifecycle: production
+#   owner: group:cncf
+#   profile:
+#     displayName: Tech Docs
+#   dependsOn:
+#     - component:backstage
+#   subcomponentOf: backstage
+# ---
 
 ####################################
 # DEV PORTAL COMPONENTS
 ####################################
 
-apiVersion: backstage.io/v1alpha1
-kind: Component
-metadata:
-  name: application-accelerators
-  description: 'Application Accelerators are coding templates that help you start new projects quickly whilst still following the golden path.'
-  links:
-    - url: https://docs.vmware.com/en/VMware-Tanzu-Application-Platform/index.html
-      title: Documentation
-      type: website
-      icon: WebAsset
-  tags:
-    - tanzu-developer-portal
-    - backstage
-    - application-accelerators
-spec:
-  type: service
-  lifecycle: production
-  owner: group:tanzu-engineering
-  system: tanzu-developer-portal
-  profile:
-    displayName: Application Accelerators
-  dependsOn: 
-    - component:backstage
----
+# apiVersion: backstage.io/v1alpha1
+# kind: Component
+# metadata:
+#   name: application-accelerators
+#   description: 'Application Accelerators are coding templates that help you start new projects quickly whilst still following the golden path.'
+#   links:
+#     - url: https://docs.vmware.com/en/VMware-Tanzu-Application-Platform/index.html
+#       title: Documentation
+#       type: website
+#       icon: WebAsset
+#   tags:
+#     - tanzu-developer-portal
+#     - backstage
+#     - application-accelerators
+# spec:
+#   type: service
+#   lifecycle: production
+#   owner: group:tanzu-engineering
+#   system: tanzu-developer-portal
+#   profile:
+#     displayName: Application Accelerators
+#   dependsOn: 
+#     - component:backstage
+# ---
 
-apiVersion: backstage.io/v1alpha1
-kind: Component
-metadata:
-  name: api-auto-registration
-  description: 'Automatically registers common API specifications into the API Docs viewer.'
-  links:
-    - url: https://docs.vmware.com/en/VMware-tanzu-developer-portal/index.html
-      title: Documentation
-      type: website
-      icon: WebAsset
-  tags:
-    - tanzu-developer-portal
-    - backstage
-    - api-auto-registration
-spec:
-  type: service
-  lifecycle: production
-  owner: group:tanzu-engineering
-  system: tanzu-developer-portal
-  profile:
-    displayName: API Auto-registration
-  dependsOn: 
-    - component:backstage
----
+# apiVersion: backstage.io/v1alpha1
+# kind: Component
+# metadata:
+#   name: api-auto-registration
+#   description: 'Automatically registers common API specifications into the API Docs viewer.'
+#   links:
+#     - url: https://docs.vmware.com/en/VMware-tanzu-developer-portal/index.html
+#       title: Documentation
+#       type: website
+#       icon: WebAsset
+#   tags:
+#     - tanzu-developer-portal
+#     - backstage
+#     - api-auto-registration
+# spec:
+#   type: service
+#   lifecycle: production
+#   owner: group:tanzu-engineering
+#   system: tanzu-developer-portal
+#   profile:
+#     displayName: API Auto-registration
+#   dependsOn: 
+#     - component:backstage
+# ---
 
-apiVersion: backstage.io/v1alpha1
-kind: Component
-metadata:
-  name: resource-viewer
-  description: 'Resource Viewer allow you to inspect the status of your Kubernetes deployments.'
-  links:
-    - url: https://docs.vmware.com/en/VMware-tanzu-developer-portal/index.html
-      title: Documentation
-      type: website
-      icon: WebAsset
-  tags:
-    - tanzu-developer-portal
-    - backstage
-    - resource-viewer
-spec:
-  type: service
-  lifecycle: production
-  owner: group:tanzu-engineering
-  system: tanzu-developer-portal
-  profile:
-    displayName: Runtime Resources
-  dependsOn: 
-    - component:backstage
-    - system:kubernetes
----
+# apiVersion: backstage.io/v1alpha1
+# kind: Component
+# metadata:
+#   name: resource-viewer
+#   description: 'Resource Viewer allow you to inspect the status of your Kubernetes deployments.'
+#   links:
+#     - url: https://docs.vmware.com/en/VMware-tanzu-developer-portal/index.html
+#       title: Documentation
+#       type: website
+#       icon: WebAsset
+#   tags:
+#     - tanzu-developer-portal
+#     - backstage
+#     - resource-viewer
+# spec:
+#   type: service
+#   lifecycle: production
+#   owner: group:tanzu-engineering
+#   system: tanzu-developer-portal
+#   profile:
+#     displayName: Runtime Resources
+#   dependsOn: 
+#     - component:backstage
+#     - system:kubernetes
+# ---
 
-apiVersion: backstage.io/v1alpha1
-kind: Component
-metadata:
-  name: application-live-view
-  description: 'Application Live View lets you introspect the runtime status of any compatible apps. '
-  links:
-    - url: https://docs.vmware.com/en/VMware-tanzu-developer-portal/index.html
-      title: Documentation
-      type: website
-      icon: WebAsset
-  tags:
-    - tanzu-developer-portal
-    - backstage
-    - application-live-view
-spec:
-  type: service
-  lifecycle: production
-  owner: group:tanzu-engineering
-  system: tanzu-developer-portal
-  profile:
-    displayName: Application Live View
-  dependsOn: 
-    - component:backstage
----
+# apiVersion: backstage.io/v1alpha1
+# kind: Component
+# metadata:
+#   name: application-live-view
+#   description: 'Application Live View lets you introspect the runtime status of any compatible apps. '
+#   links:
+#     - url: https://docs.vmware.com/en/VMware-tanzu-developer-portal/index.html
+#       title: Documentation
+#       type: website
+#       icon: WebAsset
+#   tags:
+#     - tanzu-developer-portal
+#     - backstage
+#     - application-live-view
+# spec:
+#   type: service
+#   lifecycle: production
+#   owner: group:tanzu-engineering
+#   system: tanzu-developer-portal
+#   profile:
+#     displayName: Application Live View
+#   dependsOn: 
+#     - component:backstage
+# ---
 
-apiVersion: backstage.io/v1alpha1
-kind: Component
-metadata:
-  name: tanzu-developer-portal-configurator
-  description: 'The Tanzu Developer Portal Configurator lets you choose which Backstage plugins to include in your portal.'
-  links:
-    - url: https://docs.vmware.com/en/VMware-tanzu-developer-portal/index.html
-      title: Documentation
-      type: website
-      icon: WebAsset
-  tags:
-    - tanzu-developer-portal
-    - backstage
-    - tanzu-developer-portal-configurator
-spec:
-  type: service
-  lifecycle: production
-  owner: group:tanzu-engineering
-  system: tanzu-developer-portal
-  profile:
-    displayName: Tanzu Developer Portal Configurator
-  dependsOn: 
-    - component:backstage
----
+# apiVersion: backstage.io/v1alpha1
+# kind: Component
+# metadata:
+#   name: tanzu-developer-portal-configurator
+#   description: 'The Tanzu Developer Portal Configurator lets you choose which Backstage plugins to include in your portal.'
+#   links:
+#     - url: https://docs.vmware.com/en/VMware-tanzu-developer-portal/index.html
+#       title: Documentation
+#       type: website
+#       icon: WebAsset
+#   tags:
+#     - tanzu-developer-portal
+#     - backstage
+#     - tanzu-developer-portal-configurator
+# spec:
+#   type: service
+#   lifecycle: production
+#   owner: group:tanzu-engineering
+#   system: tanzu-developer-portal
+#   profile:
+#     displayName: Tanzu Developer Portal Configurator
+#   dependsOn: 
+#     - component:backstage
+# ---
 
 ######################################
 # APIs
