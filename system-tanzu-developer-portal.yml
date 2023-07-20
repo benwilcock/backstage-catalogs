@@ -52,8 +52,6 @@ metadata:
       title: Backstage Learning Zone
       type: website
       icon: WebAsset
-  annotations:
-    backstage.io/techdocs-ref: url:https://github.com/backstage/backstage
 spec: 
   owner: group:cncf
   profile:
