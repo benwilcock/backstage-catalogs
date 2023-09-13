@@ -24,7 +24,7 @@ metadata:
       type: website 
       icon: WebAsset
   annotations:
-    backstage.io/techdocs-ref: url:https://github.com/benwilcock/where-for-dinner-techdocs/tanzu-developer-portal-system
+    backstage.io/techdocs-ref: url:https://github.com/benwilcock/systems-techdocs/tanzu-developer-portal-system
 spec: 
   owner: group:tanzu-engineering
   domain: developer-portal
