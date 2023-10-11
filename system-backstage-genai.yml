@@ -27,3 +27,60 @@ spec:
   profile:
     displayName: Backstage Generative AI
 ---
+####################################
+# COMPONENTS
+####################################
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: backchat
+  description: 'Backchat is a proof-of-concept plugin that integrates Generative AI into Backstage.'
+  links:
+    - url: https://bckstage.io/
+      title: Backstage Website
+      type: website
+      icon: WebAsset
+    - url: https://backstage.io/docs/plugins/
+      title: Backstage Plugin Documentation
+      type: website
+      icon: WebAsset
+  tags:
+    - backstage
+    - genai
+    - backchat
+spec:
+  type: service
+  lifecycle: production
+  owner: user:ben.wilcock
+  system: backstage-genai
+  profile:
+    displayName: "Backchat: Backstage GenAI Plugin"
+---
+####################################
+# RESOURCES
+####################################
+apiVersion: backstage.io/v1alpha1
+kind: Resource
+metadata:
+  name: LocalAI
+  description: 'LocalAI provides a OpenAI API compatible service for private AI (self-hosted) use.'
+  links:
+    - url: https://localai.io/
+      title: LocalAI Website
+      type: website
+      icon: WebAsset
+  tags:
+    - LocalAI
+    - PrivateAI
+    - genai
+spec:
+  type: service
+  lifecycle: production
+  providesApis:
+    - openai-api
+  owner: user:ben.wilcock
+  system: backstage-genai
+  profile:
+    displayName: "LocalAI: OpenAI API Server"
+---
+
