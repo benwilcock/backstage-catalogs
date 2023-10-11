@@ -53,7 +53,8 @@ spec:
   lifecycle: production
   owner: user:ben.wilcock
   system: backstage-genai
-  dependsOn: resource:localai
+  dependsOn: 
+    - resource:localai
   profile:
     displayName: "Backchat: Backstage GenAI Plugin"
 ---
@@ -81,7 +82,8 @@ spec:
     - openai-api
   owner: user:ben.wilcock
   system: backstage-genai
-  dependencyOf: component:backchat
+  dependencyOf: 
+    - component:backchat
   profile:
     displayName: "LocalAI: OpenAI API Server"
 ---
