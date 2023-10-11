@@ -72,8 +72,8 @@ metadata:
       type: website
       icon: WebAsset
   tags:
-    - LocalAI
-    - PrivateAI
+    - localai
+    - privateai
     - genai
 spec:
   type: service
