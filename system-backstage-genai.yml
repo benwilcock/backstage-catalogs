@@ -53,6 +53,7 @@ spec:
   lifecycle: production
   owner: user:ben.wilcock
   system: backstage-genai
+  dependsOn: localai
   profile:
     displayName: "Backchat: Backstage GenAI Plugin"
 ---
@@ -62,7 +63,7 @@ spec:
 apiVersion: backstage.io/v1alpha1
 kind: Resource
 metadata:
-  name: LocalAI
+  name: localai
   description: 'LocalAI provides a OpenAI API compatible service for private AI (self-hosted) use.'
   links:
     - url: https://localai.io/
@@ -80,6 +81,7 @@ spec:
     - openai-api
   owner: user:ben.wilcock
   system: backstage-genai
+  dependencyOf: backchat
   profile:
     displayName: "LocalAI: OpenAI API Server"
 ---
