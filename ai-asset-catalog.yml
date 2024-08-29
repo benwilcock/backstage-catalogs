@@ -5,7 +5,7 @@ apiVersion: backstage.io/v1alpha1
 kind: System
 metadata:
   name: developer-lightspeed
-  description: "Generative AI."
+  description: "Generative AI for Red Hat Developer Hub and Backstage."
   tags:
     - genai
   links:
@@ -35,6 +35,7 @@ metadata:
       icon: WebAsset
   tags:
     - genai
+    - vLLM
 spec:
   type: ai-model-server
   owner: user:benwilcock
@@ -46,7 +47,7 @@ spec:
     - resource:granite-code-model
     - api:openai-api
   profile:
-    displayName: "vLLM Model Server"
+    displayName: "vLLM AI Model Server"
 ---
 ####################################
 # RESOURCES
@@ -63,6 +64,8 @@ metadata:
       icon: WebAsset
   tags:
     - genai
+    - IBM
+    - LLM
 spec:
   type: ai-model
   owner: user:benwilcock
@@ -85,7 +88,7 @@ metadata:
   description: 'The REST API exposed by ChatGPT and compatible systems such as vLLM, Ollama, etc.'
   tags:
     - api
-    - openai-api
+    - openai
   links:
     - url: https://platform.openai.com/docs/api-reference
       title: OpenAI API Documentation
