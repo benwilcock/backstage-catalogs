@@ -16,8 +16,7 @@ metadata:
   # annotations:
   #   backstage.io/techdocs-ref: url:https://github.com/benwilcock/backstage-genai-talk
 spec: 
-  owner: user:bwilcock
-  domain: generative-ai
+  owner: user:benwilcock
   profile:
     displayName: Red Hat Developer Lightspeed
 ---
@@ -38,7 +37,7 @@ metadata:
     - genai
 spec:
   type: ai-model-server
-  owner: user:bwilcock
+  owner: user:benwilcock
   system: developer-lightspeed
   lifecycle: production
   providesApis:
@@ -66,7 +65,7 @@ metadata:
     - genai
 spec:
   type: ai-model
-  owner: user:bwilcock
+  owner: user:benwilcock
   system: developer-lightspeed
   lifecycle: production
   providesApis:
@@ -94,7 +93,7 @@ metadata:
       icon: WebAsset
 spec:
   type: api
-  owner: user:bwilcock
+  owner: user:benwilcock
   system: developer-lightspeed
   lifecycle: production
   dependencyOf: 
