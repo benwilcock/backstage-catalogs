@@ -15,6 +15,7 @@ metadata:
     - genai
 spec:
   type: ai-model-server
+  owner: user:bwilcock
   lifecycle: production
   providesApis:
     - openai-api
@@ -65,7 +66,8 @@ metadata:
       type: website
       icon: WebAsset
 spec:
-  type: openapi
+  type: api
+  owner: user:bwilcock
   lifecycle: production
   definition:
     $text: https://github.com/benwilcock/backstagecon-2023/blob/main/openai-api-spec/openapi.yaml
