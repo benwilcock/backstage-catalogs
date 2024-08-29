@@ -85,6 +85,7 @@ apiVersion: backstage.io/v1alpha1
 kind: API
 metadata:
   name: openai-api
+  title: OpenAI API
   description: 'The REST API exposed by ChatGPT and compatible systems such as vLLM, Ollama, etc.'
   tags:
     - api
