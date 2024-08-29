@@ -1,3 +1,26 @@
+###############################
+# SYSTEMS
+###############################
+apiVersion: backstage.io/v1alpha1
+kind: System
+metadata:
+  name: developer-lightspeed
+  description: "Generative AI."
+  tags:
+    - genai
+  links:
+    - url: https://backstage.io/docs/overview/what-is-backstage/ 
+      title: What is Backstage? 
+      type: website 
+      icon: WebAsset
+  # annotations:
+  #   backstage.io/techdocs-ref: url:https://github.com/benwilcock/backstage-genai-talk
+spec: 
+  owner: user:bwilcock
+  domain: generative-ai
+  profile:
+    displayName: Red Hat Developer Lightspeed
+---
 ####################################
 # COMPONENTS
 ####################################
@@ -16,6 +39,7 @@ metadata:
 spec:
   type: ai-model-server
   owner: user:bwilcock
+  system: developer-lightspeed
   lifecycle: production
   providesApis:
     - openai-api
@@ -43,6 +67,7 @@ metadata:
 spec:
   type: ai-model
   owner: user:bwilcock
+  system: developer-lightspeed
   lifecycle: production
   providesApis:
     - openai-api
@@ -70,6 +95,7 @@ metadata:
 spec:
   type: api
   owner: user:bwilcock
+  system: developer-lightspeed
   lifecycle: production
   dependencyOf: 
     - component:vLLM
