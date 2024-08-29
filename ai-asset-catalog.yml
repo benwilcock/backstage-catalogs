@@ -35,7 +35,6 @@ metadata:
       icon: WebAsset
   tags:
     - genai
-    - vLLM
 spec:
   type: ai-model-server
   owner: user:benwilcock
@@ -64,8 +63,8 @@ metadata:
       icon: WebAsset
   tags:
     - genai
-    - IBM
-    - LLM
+    - ibm
+    - llm
 spec:
   type: ai-model
   owner: user:benwilcock
