@@ -1,0 +1,71 @@
+####################################
+# COMPONENTS
+####################################
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: vLLM
+  description: 'AI Model server popular for hosting large language models in enterprise settings. OpenAI API compatible. '
+  links:
+    - url: https://docs.vllm.ai/en/stable/
+      title: vLLM Documentation
+      type: website
+      icon: WebAsset
+  tags:
+    - genai
+spec:
+  type: ai-model-server
+  lifecycle: production
+  providesApis:
+    - openai-api
+  dependsOn: 
+    - resource:granite-code-model
+  profile:
+    displayName: "vLLM Model Server"
+---
+####################################
+# RESOURCES
+####################################
+apiVersion: backstage.io/v1alpha1
+kind: Resource
+metadata:
+  name: granite-code-model
+  description: 'IBM Granite is a decoder-only code model for code generative tasks (e.g. fixing bugs, explaining code, documenting code. Trained with code written in 116 programming languages.'
+  links:
+    - url: https://github.com/ibm-granite/granite-code-models
+      title: IBM Granite Code Repository
+      type: website
+      icon: WebAsset
+  tags:
+    - genai
+spec:
+  type: ai-model
+  lifecycle: production
+  providesApis:
+    - openai-api
+  dependencyOf: 
+    - component:vLLM
+  profile:
+    displayName: "IBM Granite Code Model"
+######################################
+# APIs
+######################################
+---
+apiVersion: backstage.io/v1alpha1
+kind: API
+metadata:
+  name: openai-api
+  description: 'The REST API exposed by ChatGPT and compatible systems such as vLLM, Ollama, etc.'
+  tags:
+    - api
+    - openai-api
+  links:
+    - url: https://platform.openai.com/docs/api-reference
+      title: OpenAI API Documentation
+      type: website
+      icon: WebAsset
+spec:
+  type: openapi
+  lifecycle: production
+  definition:
+    $text: https://github.com/benwilcock/backstagecon-2023/blob/main/openai-api-spec/openapi.yaml
