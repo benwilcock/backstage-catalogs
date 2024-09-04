@@ -13,8 +13,6 @@ metadata:
       title: What is Backstage? 
       type: website 
       icon: WebAsset
-  # annotations:
-  #   backstage.io/techdocs-ref: url:https://github.com/benwilcock/backstage-genai-talk
 spec: 
   owner: user:benwilcock
   profile:
@@ -61,6 +59,8 @@ metadata:
       title: IBM Granite Code Repository
       type: website
       icon: WebAsset
+  annotations:
+    backstage.io/techdocs-ref: url:https://github.com/benwilcock/backstage-catalogs/ai-assets-techdocs/models/
   tags:
     - genai
     - ibm
