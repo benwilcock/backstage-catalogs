@@ -46,6 +46,31 @@ spec:
   profile:
     displayName: "vLLM AI Model Server"
 ---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: developer-hub-ai-assistant-plugin
+  description: 'Red Hat developer Hub AI Assistant Plugin for Backstage.'
+  # links:
+  #   - url: https://docs.vllm.ai/en/stable/
+  #     title: Code (Open Source)
+  #     type: website
+  #     icon: WebAsset
+  tags:
+    - genai
+    - devhub
+    - plugins
+spec:
+  type: backstage-plugin
+  owner: user:benwilcock
+  system: developer-hub-ai-assistant
+  lifecycle: production
+  dependsOn: 
+    - component:vllm
+    - api:openai-api
+  profile:
+    displayName: "Red Hat developer Hub AI Assistant Plugin for Backstage"
+---
 ####################################
 # RESOURCES
 ####################################
