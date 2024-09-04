@@ -50,7 +50,7 @@ apiVersion: backstage.io/v1alpha1
 kind: Component
 metadata:
   name: developer-hub-ai-assistant-plugin
-  description: 'Red Hat developer Hub AI Assistant Plugin for Backstage.'
+  description: 'Red Hat developer Hub AI Assistant Plugin for Backstage. Provides a convenient chat interface and works with multiple AI backends including ChatGPT, Ollama, vLLM, etc.'
   # links:
   #   - url: https://docs.vllm.ai/en/stable/
   #     title: Code (Open Source)
