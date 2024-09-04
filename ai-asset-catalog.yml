@@ -4,7 +4,7 @@
 apiVersion: backstage.io/v1alpha1
 kind: System
 metadata:
-  name: developer-lightspeed
+  name: developer-hub-ai-assistant
   description: "Generative AI for Red Hat Developer Hub and Backstage."
   tags:
     - genai
@@ -16,7 +16,7 @@ metadata:
 spec: 
   owner: user:benwilcock
   profile:
-    displayName: Red Hat Developer Lightspeed
+    displayName: Red Hat Developer Hub AI Assistant
 ---
 ####################################
 # COMPONENTS
@@ -36,7 +36,7 @@ metadata:
 spec:
   type: ai-model-server
   owner: user:benwilcock
-  system: developer-lightspeed
+  system: developer-hub-ai-assistant
   lifecycle: production
   providesApis:
     - openai-api
@@ -68,7 +68,7 @@ metadata:
 spec:
   type: ai-model
   owner: user:benwilcock
-  system: developer-lightspeed
+  system: developer-hub-ai-assistant
   lifecycle: production
   providesApis:
     - openai-api
@@ -97,7 +97,7 @@ metadata:
 spec:
   type: api
   owner: user:benwilcock
-  system: developer-lightspeed
+  system: developer-hub-ai-assistant
   lifecycle: production
   dependencyOf: 
     - component:vLLM
