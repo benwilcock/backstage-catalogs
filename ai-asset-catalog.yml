@@ -41,7 +41,7 @@ spec:
   providesApis:
     - openai-api
   dependsOn: 
-    - resource:granite-code-model
+    - resource:granite-8b-code-instruct
     - api:openai-api
   profile:
     displayName: "vLLM AI Model Server"
@@ -52,7 +52,7 @@ spec:
 apiVersion: backstage.io/v1alpha1
 kind: Resource
 metadata:
-  name: granite-code-model
+  name: granite-8b-code-instruct
   description: 'IBM Granite is a decoder-only code model for code generative tasks (e.g. fixing bugs, explaining code, documenting code. Trained with code written in 116 programming languages.'
   links:
     - url: https://github.com/ibm-granite/granite-code-models
@@ -75,7 +75,7 @@ spec:
   dependencyOf: 
     - component:vLLM
   profile:
-    displayName: "IBM Granite Code Model"
+    displayName: "IBM Granite 8B Code Instruct Model"
 ######################################
 # APIs
 ######################################
