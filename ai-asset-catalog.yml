@@ -78,7 +78,7 @@ apiVersion: backstage.io/v1alpha1
 kind: Resource
 metadata:
   name: granite-8b-code-instruct
-  description: 'IBM Granite is a decoder-only code model for code generative tasks (e.g. fixing bugs, explaining code, documenting code. Trained with code written in 116 programming languages.'
+  description: 'IBM Granite is a decoder-only code model for code generative tasks (e.g. fixing bugs, explaining code, documenting code, etc.). Trained with code written in 116 programming languages.'
   links:
     - url: https://github.com/ibm-granite/granite-code-models
       title: IBM Granite Code Repository
