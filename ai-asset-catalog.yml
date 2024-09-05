@@ -14,7 +14,7 @@ metadata:
       type: website 
       icon: WebAsset
 spec: 
-  owner: user:benwilcock
+  owner: user:bwilcock
   profile:
     displayName: Red Hat Developer Hub AI Assistant
 ---
@@ -35,7 +35,7 @@ metadata:
     - genai
 spec:
   type: ai-model-server
-  owner: user:benwilcock
+  owner: user:bwilcock
   system: developer-hub-ai-assistant
   lifecycle: production
   providesApis:
@@ -62,7 +62,7 @@ metadata:
     - plugins
 spec:
   type: backstage-plugin
-  owner: user:benwilcock
+  owner: user:bwilcock
   system: developer-hub-ai-assistant
   lifecycle: production
   dependsOn: 
@@ -85,14 +85,14 @@ metadata:
       type: website
       icon: WebAsset
   annotations:
-    backstage.io/techdocs-ref: url:https://github.com/benwilcock/backstage-catalogs/tree/main/ai-assets-techdocs/models
+    backstage.io/techdocs-ref: url:https://github.com/bwilcock/backstage-catalogs/tree/main/ai-assets-techdocs/models
   tags:
     - genai
     - ibm
     - llm
 spec:
   type: ai-model
-  owner: user:benwilcock
+  owner: user:bwilcock
   system: developer-hub-ai-assistant
   lifecycle: production
   providesApis:
@@ -121,10 +121,10 @@ metadata:
       icon: WebAsset
 spec:
   type: api
-  owner: user:benwilcock
+  owner: user:bwilcock
   system: developer-hub-ai-assistant
   lifecycle: production
   dependencyOf: 
     - component:vLLM
   definition:
-    $text: https://github.com/benwilcock/backstagecon-2023/blob/main/openai-api-spec/openapi.yaml
+    $text: https://github.com/bwilcock/backstagecon-2023/blob/main/openai-api-spec/openapi.yaml
