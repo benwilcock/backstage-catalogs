@@ -1,6 +1,7 @@
 site_name: ibm-granite-8b-code-instruct
 site_description: IBM Granite 8B Code Instruct
 # site_author: user:ben.wilcock
+docs_dir: models
 nav:
   - "IBM Granite 8B Code Instruct™": index.md
   
