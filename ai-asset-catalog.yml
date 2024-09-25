@@ -127,4 +127,4 @@ spec:
   dependencyOf: 
     - component:vLLM
   definition:
-    $text: https://raw.githubusercontent.com/benwilcock/backstagecon-2023/refs/heads/main/openai-api-spec/openapi.yaml
+    $text: https://github.com/openai/openai-openapi/blob/master/openapi.yaml
