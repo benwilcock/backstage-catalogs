@@ -120,7 +120,7 @@ metadata:
       type: website
       icon: WebAsset
 spec:
-  type: api
+  type: openapi
   owner: user:bwilcock
   system: developer-hub-ai-assistant
   lifecycle: production
