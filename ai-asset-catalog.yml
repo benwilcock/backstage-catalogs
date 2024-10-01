@@ -85,7 +85,7 @@ metadata:
       type: website
       icon: WebAsset
   annotations:
-    backstage.io/techdocs-ref: url:https://github.com/bwilcock/backstage-catalogs/tree/main/ai-assets-techdocs/models
+    backstage.io/techdocs-ref: url:https://github.com/benwilcock/backstage-catalogs/tree/main/ai-assets-techdocs
   tags:
     - genai
     - ibm
