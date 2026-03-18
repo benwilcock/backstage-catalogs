@@ -1,0 +1,726 @@
+# Parasol Insurance -- Commercial Lines & Specialty Lines Domain Components
+#
+# Covers all microservices in:
+#   commercial-lines:  commercial-policy-system, workers-comp-system,
+#                      commercial-fleet-system, commercial-risk-system
+#   specialty-lines:   cyber-insurance-system, marine-aviation-system,
+#                      trade-credit-system
+
+# ===========================================================================
+# COMMERCIAL POLICY SYSTEM
+# ===========================================================================
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: commercial-policy-issuance-service
+  title: Commercial Policy Issuance Service
+  description: |
+    Issues commercial property, liability, and package policies for SME and
+    mid-market business customers. Supports multi-location schedules, blanket
+    property coverage structures, and industry-specific endorsements.
+    Generates ACORD-compliant policy documents.
+  annotations:
+    backstage.io/source-location: url:https://github.parasol.com/parasol/commercial-policy-issuance-service
+  tags:
+    - commercial-lines
+    - policy
+    - java
+    - rest
+  links:
+    - url: https://confluence.parasol.com/display/COMMERCIAL/commercial-policy-issuance-service
+      title: Internal Confluence Docs
+      icon: docs
+    - url: https://github.parasol.com/parasol/commercial-policy-issuance-service
+      title: Source Code
+      icon: github
+spec:
+  type: service
+  lifecycle: production
+  owner: group:default/commercial-lines-engineering
+  system: commercial-policy-system
+  dependsOn:
+    - component:default/policy-inception-service
+    - component:default/certificate-of-insurance-service
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: business-classification-service
+  title: Business Classification Service
+  description: |
+    Classifies commercial risks by industry code (SIC/NAICS), business
+    activity, and turnover band. Classification determines applicable
+    underwriting guidelines, rating tables, and exclusion sets. Integrates
+    with Companies House and Dun & Bradstreet for business data enrichment.
+  annotations:
+    backstage.io/source-location: url:https://github.parasol.com/parasol/business-classification-service
+  tags:
+    - commercial-lines
+    - underwriting
+    - integration
+    - java
+    - rest
+  links:
+    - url: https://confluence.parasol.com/display/COMMERCIAL/business-classification-service
+      title: Internal Confluence Docs
+      icon: docs
+    - url: https://github.parasol.com/parasol/business-classification-service
+      title: Source Code
+      icon: github
+spec:
+  type: service
+  lifecycle: production
+  owner: group:default/commercial-lines-engineering
+  system: commercial-policy-system
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: commercial-property-survey-service
+  title: Commercial Property Survey Service
+  description: |
+    Manages the surveying workflow for commercial properties above the
+    automatic survey threshold. Schedules risk surveys, distributes
+    instructions to the panel surveyor network, ingests survey reports,
+    and applies survey requirements as policy conditions.
+  annotations:
+    backstage.io/source-location: url:https://github.parasol.com/parasol/commercial-property-survey-service
+  tags:
+    - commercial-lines
+    - property
+    - workflow
+    - java
+    - rest
+  links:
+    - url: https://confluence.parasol.com/display/COMMERCIAL/commercial-property-survey-service
+      title: Internal Confluence Docs
+      icon: docs
+    - url: https://github.parasol.com/parasol/commercial-property-survey-service
+      title: Source Code
+      icon: github
+spec:
+  type: service
+  lifecycle: production
+  owner: group:default/commercial-lines-engineering
+  system: commercial-policy-system
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: directors-officers-service
+  title: Directors & Officers Liability Service
+  description: |
+    Manages D&O, EPL, and management liability policy administration for
+    corporate clients. Handles the annual renewal cycle including financials
+    collection, claims history review, and capacity confirmation from the
+    D&O specialist underwriting team.
+  annotations:
+    backstage.io/source-location: url:https://github.parasol.com/parasol/directors-officers-service
+  tags:
+    - commercial-lines
+    - liability
+    - specialty
+    - java
+    - rest
+  links:
+    - url: https://confluence.parasol.com/display/COMMERCIAL/directors-officers-service
+      title: Internal Confluence Docs
+      icon: docs
+    - url: https://github.parasol.com/parasol/directors-officers-service
+      title: Source Code
+      icon: github
+spec:
+  type: service
+  lifecycle: production
+  owner: group:default/commercial-lines-engineering
+  system: commercial-policy-system
+
+# ===========================================================================
+# WORKERS' COMPENSATION SYSTEM
+# ===========================================================================
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: workers-comp-policy-service
+  title: Workers' Compensation Policy Service
+  description: |
+    Manages workers' compensation policy administration across all US
+    jurisdictions. Handles payroll-based policy issuance, class code
+    assignment, experience modification factor (EMF) calculation, and
+    state bureau reporting via WCIO statistical reporting formats.
+  annotations:
+    backstage.io/source-location: url:https://github.parasol.com/parasol/workers-comp-policy-service
+  tags:
+    - commercial-lines
+    - workers-comp
+    - policy
+    - java
+    - rest
+  links:
+    - url: https://confluence.parasol.com/display/COMMERCIAL/workers-comp-policy-service
+      title: Internal Confluence Docs
+      icon: docs
+    - url: https://github.parasol.com/parasol/workers-comp-policy-service
+      title: Source Code
+      icon: github
+spec:
+  type: service
+  lifecycle: production
+  owner: group:default/commercial-lines-engineering
+  system: workers-comp-system
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: payroll-audit-service
+  title: Payroll Audit Service
+  description: |
+    Manages the annual payroll audit process for workers' compensation
+    policies. Collects actual payroll data from employers at year end,
+    computes the final premium adjustment, and issues additional premium
+    or return premium invoices accordingly.
+  annotations:
+    backstage.io/source-location: url:https://github.parasol.com/parasol/payroll-audit-service
+  tags:
+    - commercial-lines
+    - workers-comp
+    - audit
+    - java
+    - rest
+  links:
+    - url: https://confluence.parasol.com/display/COMMERCIAL/payroll-audit-service
+      title: Internal Confluence Docs
+      icon: docs
+    - url: https://github.parasol.com/parasol/payroll-audit-service
+      title: Source Code
+      icon: github
+spec:
+  type: service
+  lifecycle: production
+  owner: group:default/commercial-lines-engineering
+  system: workers-comp-system
+  dependsOn:
+    - component:default/workers-comp-policy-service
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: emf-calculation-service
+  title: Experience Modification Factor Service
+  description: |
+    Calculates experience modification factors (EMFs) for workers'
+    compensation policyholders based on their actual versus expected loss
+    history. Integrates with NCCI and independent state rating bureaux
+    to retrieve unit statistical reports and bureau EMFs.
+  annotations:
+    backstage.io/source-location: url:https://github.parasol.com/parasol/emf-calculation-service
+  tags:
+    - commercial-lines
+    - workers-comp
+    - rating
+    - actuarial
+    - java
+    - rest
+  links:
+    - url: https://confluence.parasol.com/display/COMMERCIAL/emf-calculation-service
+      title: Internal Confluence Docs
+      icon: docs
+    - url: https://github.parasol.com/parasol/emf-calculation-service
+      title: Source Code
+      icon: github
+spec:
+  type: service
+  lifecycle: production
+  owner: group:default/commercial-lines-engineering
+  system: workers-comp-system
+
+# ===========================================================================
+# COMMERCIAL FLEET SYSTEM
+# ===========================================================================
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: fleet-vehicle-registry-service
+  title: Fleet Vehicle Registry Service
+  description: |
+    Manages the insured vehicle schedule for commercial fleet policies.
+    Supports on-demand vehicle additions and removals (fleet any-driver),
+    maintains VIN/registration records, and tracks fleet composition changes
+    for rating and reinsurance reporting purposes.
+  annotations:
+    backstage.io/source-location: url:https://github.parasol.com/parasol/fleet-vehicle-registry-service
+  tags:
+    - commercial-lines
+    - fleet
+    - motor
+    - java
+    - rest
+  links:
+    - url: https://confluence.parasol.com/display/COMMERCIAL/fleet-vehicle-registry-service
+      title: Internal Confluence Docs
+      icon: docs
+    - url: https://github.parasol.com/parasol/fleet-vehicle-registry-service
+      title: Source Code
+      icon: github
+spec:
+  type: service
+  lifecycle: production
+  owner: group:default/commercial-lines-engineering
+  system: commercial-fleet-system
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: fleet-telematics-analytics-service
+  title: Fleet Telematics Analytics Service
+  description: |
+    Aggregates telematics data from commercial fleet vehicles to produce
+    fleet-level driver risk reports for risk management programmes. Identifies
+    high-risk drivers, fuel inefficiency, and harsh driving events. Reports
+    are shared with fleet managers via the broker portal.
+  annotations:
+    backstage.io/source-location: url:https://github.parasol.com/parasol/fleet-telematics-analytics-service
+  tags:
+    - commercial-lines
+    - fleet
+    - telematics
+    - analytics
+    - python
+    - rest
+  links:
+    - url: https://confluence.parasol.com/display/COMMERCIAL/fleet-telematics-analytics-service
+      title: Internal Confluence Docs
+      icon: docs
+    - url: https://github.parasol.com/parasol/fleet-telematics-analytics-service
+      title: Source Code
+      icon: github
+spec:
+  type: service
+  lifecycle: production
+  owner: group:default/commercial-lines-engineering
+  system: commercial-fleet-system
+  dependsOn:
+    - component:default/telematics-data-ingestion-service
+
+# ===========================================================================
+# COMMERCIAL RISK ASSESSMENT SYSTEM
+# ===========================================================================
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: commercial-risk-scoring-service
+  title: Commercial Risk Scoring Service
+  description: |
+    Produces an automated underwriting risk score for commercial risks
+    combining business financials, claims history, industry loss ratios,
+    credit rating, and geographic exposure. Scores determine whether
+    risks proceed to automatic acceptance or senior underwriter referral.
+  annotations:
+    backstage.io/source-location: url:https://github.parasol.com/parasol/commercial-risk-scoring-service
+  tags:
+    - commercial-lines
+    - risk
+    - machine-learning
+    - python
+    - rest
+  links:
+    - url: https://confluence.parasol.com/display/COMMERCIAL/commercial-risk-scoring-service
+      title: Internal Confluence Docs
+      icon: docs
+    - url: https://github.parasol.com/parasol/commercial-risk-scoring-service
+      title: Source Code
+      icon: github
+spec:
+  type: service
+  lifecycle: production
+  owner: group:default/commercial-lines-engineering
+  system: commercial-risk-system
+  dependsOn:
+    - component:default/business-classification-service
+    - component:default/sanctions-screening-service
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: capacity-management-service
+  title: Capacity Management Service
+  description: |
+    Enforces underwriting capacity limits for commercial lines by account,
+    industry class, and geographic region. Coordinates with the reinsurance
+    team on facultative capacity for large risks and monitors aggregate
+    exposure against treaty and corporate risk appetite limits.
+  annotations:
+    backstage.io/source-location: url:https://github.parasol.com/parasol/capacity-management-service
+  tags:
+    - commercial-lines
+    - risk
+    - reinsurance
+    - java
+    - rest
+  links:
+    - url: https://confluence.parasol.com/display/COMMERCIAL/capacity-management-service
+      title: Internal Confluence Docs
+      icon: docs
+    - url: https://github.parasol.com/parasol/capacity-management-service
+      title: Source Code
+      icon: github
+spec:
+  type: service
+  lifecycle: production
+  owner: group:default/commercial-lines-engineering
+  system: commercial-risk-system
+  dependsOn:
+    - component:default/exposure-accumulation-service
+
+# ===========================================================================
+# CYBER INSURANCE SYSTEM
+# ===========================================================================
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: cyber-risk-questionnaire-service
+  title: Cyber Risk Questionnaire Service
+  description: |
+    Collects and evaluates cyber risk questionnaire responses from commercial
+    applicants seeking cyber liability coverage. Scores control maturity
+    across domains including endpoint security, backup practices, access
+    management, and incident response readiness.
+  annotations:
+    backstage.io/source-location: url:https://github.parasol.com/parasol/cyber-risk-questionnaire-service
+  tags:
+    - specialty-lines
+    - cyber
+    - risk
+    - java
+    - rest
+  links:
+    - url: https://confluence.parasol.com/display/SPECIALTY/cyber-risk-questionnaire-service
+      title: Internal Confluence Docs
+      icon: docs
+    - url: https://github.parasol.com/parasol/cyber-risk-questionnaire-service
+      title: Source Code
+      icon: github
+spec:
+  type: service
+  lifecycle: production
+  owner: group:default/specialty-lines-engineering
+  system: cyber-insurance-system
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: cyber-threat-intelligence-service
+  title: Cyber Threat Intelligence Service
+  description: |
+    Integrates real-time threat intelligence feeds (CISA KEV, FS-ISAC,
+    Recorded Future) to enrich cyber risk assessments with current threat
+    actor activity relevant to a prospective insured's industry and
+    technology stack. Feeds dynamic risk scores into pricing.
+  annotations:
+    backstage.io/source-location: url:https://github.parasol.com/parasol/cyber-threat-intelligence-service
+  tags:
+    - specialty-lines
+    - cyber
+    - threat-intelligence
+    - python
+    - experimental
+  links:
+    - url: https://confluence.parasol.com/display/SPECIALTY/cyber-threat-intelligence-service
+      title: Internal Confluence Docs
+      icon: docs
+    - url: https://github.parasol.com/parasol/cyber-threat-intelligence-service
+      title: Source Code
+      icon: github
+spec:
+  type: service
+  lifecycle: experimental
+  owner: group:default/specialty-lines-engineering
+  system: cyber-insurance-system
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: breach-response-coordinator-service
+  title: Breach Response Coordinator Service
+  description: |
+    Coordinates the first-response vendor panel following a cyber incident
+    notification. Engages forensics investigators, breach counsel, public
+    relations firms, and notification vendors. Tracks incident response
+    expenditure against sub-limits in the cyber policy.
+  annotations:
+    backstage.io/source-location: url:https://github.parasol.com/parasol/breach-response-coordinator-service
+  tags:
+    - specialty-lines
+    - cyber
+    - claims
+    - java
+    - rest
+  links:
+    - url: https://confluence.parasol.com/display/SPECIALTY/breach-response-coordinator-service
+      title: Internal Confluence Docs
+      icon: docs
+    - url: https://github.parasol.com/parasol/breach-response-coordinator-service
+      title: Source Code
+      icon: github
+spec:
+  type: service
+  lifecycle: production
+  owner: group:default/specialty-lines-engineering
+  system: cyber-insurance-system
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: cyber-accumulation-monitor
+  title: Cyber Accumulation Monitor
+  description: |
+    Monitors Parasol's aggregate cyber exposure to systemic events such as
+    widespread ransomware campaigns or cloud provider outages. Models
+    correlated loss scenarios and alerts the Chief Underwriting Officer
+    when modelled probable maximum loss approaches reinsurance treaty limits.
+  annotations:
+    backstage.io/source-location: url:https://github.parasol.com/parasol/cyber-accumulation-monitor
+  tags:
+    - specialty-lines
+    - cyber
+    - risk
+    - actuarial
+    - python
+    - rest
+  links:
+    - url: https://confluence.parasol.com/display/SPECIALTY/cyber-accumulation-monitor
+      title: Internal Confluence Docs
+      icon: docs
+    - url: https://github.parasol.com/parasol/cyber-accumulation-monitor
+      title: Source Code
+      icon: github
+spec:
+  type: service
+  lifecycle: production
+  owner: group:default/specialty-lines-engineering
+  system: cyber-insurance-system
+  dependsOn:
+    - component:default/exposure-accumulation-service
+
+# ===========================================================================
+# MARINE & AVIATION SYSTEM
+# ===========================================================================
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: marine-cargo-policy-service
+  title: Marine Cargo Policy Service
+  description: |
+    Issues open cover and voyage policies for marine cargo. Manages declaration
+    entries under open cover, calculates freight, insurance, and cost (CIF)
+    values for rating, and generates Institute Cargo Clauses certificates
+    for individual shipments.
+  annotations:
+    backstage.io/source-location: url:https://github.parasol.com/parasol/marine-cargo-policy-service
+  tags:
+    - specialty-lines
+    - marine
+    - cargo
+    - java
+    - rest
+  links:
+    - url: https://confluence.parasol.com/display/SPECIALTY/marine-cargo-policy-service
+      title: Internal Confluence Docs
+      icon: docs
+    - url: https://github.parasol.com/parasol/marine-cargo-policy-service
+      title: Source Code
+      icon: github
+spec:
+  type: service
+  lifecycle: production
+  owner: group:default/specialty-lines-engineering
+  system: marine-aviation-system
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: aviation-hull-policy-service
+  title: Aviation Hull & Liability Policy Service
+  description: |
+    Manages aviation hull all-risks and liability policy administration
+    for general aviation, business jets, and helicopter operators. Handles
+    agreed hull values, pilot warranty endorsements, geographic restrictions,
+    and annual hull value re-declarations.
+  annotations:
+    backstage.io/source-location: url:https://github.parasol.com/parasol/aviation-hull-policy-service
+  tags:
+    - specialty-lines
+    - aviation
+    - hull
+    - java
+    - rest
+  links:
+    - url: https://confluence.parasol.com/display/SPECIALTY/aviation-hull-policy-service
+      title: Internal Confluence Docs
+      icon: docs
+    - url: https://github.parasol.com/parasol/aviation-hull-policy-service
+      title: Source Code
+      icon: github
+spec:
+  type: service
+  lifecycle: production
+  owner: group:default/specialty-lines-engineering
+  system: marine-aviation-system
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: lloyds-market-gateway-service
+  title: Lloyd's Market Gateway Service
+  description: |
+    SOAP-based gateway providing Parasol's specialty lines systems with
+    connectivity to the Lloyd's market infrastructure for risk placement,
+    premiums, and claims. Supports LIMOSS messaging, DRI data standards,
+    and Lloyd's bureau processing via the Xchanging connection.
+  annotations:
+    backstage.io/source-location: url:https://github.parasol.com/parasol/lloyds-market-gateway-service
+  tags:
+    - specialty-lines
+    - lloyds
+    - integration
+    - soap
+    - legacy
+  links:
+    - url: https://confluence.parasol.com/display/SPECIALTY/lloyds-market-gateway-service
+      title: Internal Confluence Docs
+      icon: docs
+    - url: https://github.parasol.com/parasol/lloyds-market-gateway-service
+      title: Source Code
+      icon: github
+spec:
+  type: legacy
+  lifecycle: production
+  owner: group:default/specialty-lines-engineering
+  system: marine-aviation-system
+
+# ===========================================================================
+# TRADE CREDIT SYSTEM
+# ===========================================================================
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: buyer-credit-limit-service
+  title: Buyer Credit Limit Service
+  description: |
+    Manages credit limits on individual buyers for trade credit policyholders.
+    Evaluates buyer creditworthiness using financial statements, credit
+    bureau data, and country risk grades. Issues credit limit decisions and
+    manages the limit review and cancellation workflow.
+  annotations:
+    backstage.io/source-location: url:https://github.parasol.com/parasol/buyer-credit-limit-service
+  tags:
+    - specialty-lines
+    - trade-credit
+    - risk
+    - java
+    - rest
+  links:
+    - url: https://confluence.parasol.com/display/SPECIALTY/buyer-credit-limit-service
+      title: Internal Confluence Docs
+      icon: docs
+    - url: https://github.parasol.com/parasol/buyer-credit-limit-service
+      title: Source Code
+      icon: github
+spec:
+  type: service
+  lifecycle: production
+  owner: group:default/specialty-lines-engineering
+  system: trade-credit-system
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: protracted-default-monitor
+  title: Protracted Default Monitor
+  description: |
+    Monitors trade credit insured receivables for overdue invoices and
+    protracted default events. Triggers policyholder notification obligations,
+    tracks waiting period expiry, and creates trade credit claim records
+    when waiting periods are exhausted without payment.
+  annotations:
+    backstage.io/source-location: url:https://github.parasol.com/parasol/protracted-default-monitor
+  tags:
+    - specialty-lines
+    - trade-credit
+    - claims
+    - java
+    - rest
+  links:
+    - url: https://confluence.parasol.com/display/SPECIALTY/protracted-default-monitor
+      title: Internal Confluence Docs
+      icon: docs
+    - url: https://github.parasol.com/parasol/protracted-default-monitor
+      title: Source Code
+      icon: github
+spec:
+  type: service
+  lifecycle: production
+  owner: group:default/specialty-lines-engineering
+  system: trade-credit-system
+  dependsOn:
+    - component:default/buyer-credit-limit-service
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: country-risk-grading-service
+  title: Country Risk Grading Service
+  description: |
+    Maintains Parasol's country risk grading model for trade credit and
+    political risk underwriting. Aggregates sovereign credit ratings, IMF
+    country reports, and macroeconomic indicators to produce internal country
+    grades that apply maximum limits and premium loadings by jurisdiction.
+  annotations:
+    backstage.io/source-location: url:https://github.parasol.com/parasol/country-risk-grading-service
+  tags:
+    - specialty-lines
+    - trade-credit
+    - risk
+    - actuarial
+    - python
+    - rest
+  links:
+    - url: https://confluence.parasol.com/display/SPECIALTY/country-risk-grading-service
+      title: Internal Confluence Docs
+      icon: docs
+    - url: https://github.parasol.com/parasol/country-risk-grading-service
+      title: Source Code
+      icon: github
+spec:
+  type: service
+  lifecycle: production
+  owner: group:default/specialty-lines-engineering
+  system: trade-credit-system

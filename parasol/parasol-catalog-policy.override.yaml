@@ -1,0 +1,837 @@
+# Parasol Insurance -- Policy Administration & Billing/Payments Domain Components
+#
+# Covers all microservices in:
+#   policy-administration: policy-lifecycle-system, policy-search-system,
+#                          policy-document-system, cancellation-reinstatement-system
+#   billing-payments:      premium-collection-system, payment-processing-system,
+#                          refunds-adjustments-system, billing-account-system
+
+# ===========================================================================
+# POLICY LIFECYCLE SYSTEM
+# ===========================================================================
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: policy-inception-service
+  title: Policy Inception Service
+  description: |
+    Creates new policy records in the system of record when a risk is bound.
+    Assigns unique policy numbers, captures coverage terms, stores insured
+    details, and broadcasts a PolicyIncepted event to downstream systems
+    including billing, document, and reinsurance platforms.
+  annotations:
+    backstage.io/source-location: url:https://github.parasol.com/parasol/policy-inception-service
+  tags:
+    - policy
+    - lifecycle
+    - java
+    - rest
+    - event-driven
+  links:
+    - url: https://confluence.parasol.com/display/POLICY/policy-inception-service
+      title: Internal Confluence Docs
+      icon: docs
+    - url: https://github.parasol.com/parasol/policy-inception-service
+      title: Source Code
+      icon: github
+spec:
+  type: service
+  lifecycle: production
+  owner: group:default/policy-platform-engineering
+  system: policy-lifecycle-system
+  dependsOn:
+    - component:default/policy-coverage-query-service
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: policy-coverage-query-service
+  title: Policy Coverage Query Service
+  description: |
+    Provides real-time read access to active policy coverage details for
+    consuming services across the business. Used by claims intake to verify
+    coverage, by billing to retrieve premium schedules, and by the customer
+    portal to display policy information to policyholders.
+  annotations:
+    backstage.io/source-location: url:https://github.parasol.com/parasol/policy-coverage-query-service
+  tags:
+    - policy
+    - lifecycle
+    - java
+    - rest
+    - cqrs
+  links:
+    - url: https://confluence.parasol.com/display/POLICY/policy-coverage-query-service
+      title: Internal Confluence Docs
+      icon: docs
+    - url: https://github.parasol.com/parasol/policy-coverage-query-service
+      title: Source Code
+      icon: github
+spec:
+  type: service
+  lifecycle: production
+  owner: group:default/policy-platform-engineering
+  system: policy-lifecycle-system
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: policy-version-control-service
+  title: Policy Version Control Service
+  description: |
+    Maintains a complete audit-ready version history of every policy record.
+    Every change (endorsement, renewal, address update) creates a new
+    immutable version, enabling point-in-time policy reconstruction for
+    claims, regulatory audit, and litigation purposes.
+  annotations:
+    backstage.io/source-location: url:https://github.parasol.com/parasol/policy-version-control-service
+  tags:
+    - policy
+    - lifecycle
+    - audit
+    - java
+    - rest
+  links:
+    - url: https://confluence.parasol.com/display/POLICY/policy-version-control-service
+      title: Internal Confluence Docs
+      icon: docs
+    - url: https://github.parasol.com/parasol/policy-version-control-service
+      title: Source Code
+      icon: github
+spec:
+  type: service
+  lifecycle: production
+  owner: group:default/policy-platform-engineering
+  system: policy-lifecycle-system
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: named-insured-service
+  title: Named Insured & Party Service
+  description: |
+    Manages the insured party records attached to a policy including
+    policyholder, named insureds, additional insureds, loss payees, and
+    mortgagees. Maintains a deduplicated customer identity across all
+    policies using master data management linkage.
+  annotations:
+    backstage.io/source-location: url:https://github.parasol.com/parasol/named-insured-service
+  tags:
+    - policy
+    - lifecycle
+    - customer
+    - java
+    - rest
+  links:
+    - url: https://confluence.parasol.com/display/POLICY/named-insured-service
+      title: Internal Confluence Docs
+      icon: docs
+    - url: https://github.parasol.com/parasol/named-insured-service
+      title: Source Code
+      icon: github
+spec:
+  type: service
+  lifecycle: production
+  owner: group:default/policy-platform-engineering
+  system: policy-lifecycle-system
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: policy-event-streaming-service
+  title: Policy Event Streaming Service
+  description: |
+    Publishes all policy lifecycle domain events (incepted, endorsed, renewed,
+    cancelled, lapsed) to the enterprise event bus. Downstream consumers
+    include billing, reinsurance, data lake, and regulatory reporting. Ensures
+    at-least-once delivery with idempotent consumer support.
+  annotations:
+    backstage.io/source-location: url:https://github.parasol.com/parasol/policy-event-streaming-service
+  tags:
+    - policy
+    - lifecycle
+    - event-driven
+    - kafka
+    - java
+  links:
+    - url: https://confluence.parasol.com/display/POLICY/policy-event-streaming-service
+      title: Internal Confluence Docs
+      icon: docs
+    - url: https://github.parasol.com/parasol/policy-event-streaming-service
+      title: Source Code
+      icon: github
+spec:
+  type: service
+  lifecycle: production
+  owner: group:default/policy-platform-engineering
+  system: policy-lifecycle-system
+
+# ===========================================================================
+# POLICY SEARCH SYSTEM
+# ===========================================================================
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: policy-search-index-service
+  title: Policy Search Index Service
+  description: |
+    Maintains a real-time Elasticsearch search index of all policies across
+    all lines of business. Indexes policy number, policyholder name, address,
+    vehicle registration, and property postcode to enable sub-second lookups
+    by the call centre, claims intake, and broker portal.
+  annotations:
+    backstage.io/source-location: url:https://github.parasol.com/parasol/policy-search-index-service
+  tags:
+    - policy
+    - search
+    - elasticsearch
+    - java
+    - rest
+  links:
+    - url: https://confluence.parasol.com/display/POLICY/policy-search-index-service
+      title: Internal Confluence Docs
+      icon: docs
+    - url: https://github.parasol.com/parasol/policy-search-index-service
+      title: Source Code
+      icon: github
+spec:
+  type: service
+  lifecycle: production
+  owner: group:default/policy-platform-engineering
+  system: policy-search-system
+  dependsOn:
+    - component:default/policy-event-streaming-service
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: policy-lookup-api-gateway
+  title: Policy Lookup API Gateway
+  description: |
+    Exposes a secure, rate-limited policy lookup API consumed by all internal
+    systems and authorised third parties including loss adjusters and broker
+    management systems. Routes requests to the search index or authoritative
+    policy store depending on the required freshness and fields.
+  annotations:
+    backstage.io/source-location: url:https://github.parasol.com/parasol/policy-lookup-api-gateway
+  tags:
+    - policy
+    - search
+    - api-gateway
+    - java
+    - rest
+  links:
+    - url: https://confluence.parasol.com/display/POLICY/policy-lookup-api-gateway
+      title: Internal Confluence Docs
+      icon: docs
+    - url: https://github.parasol.com/parasol/policy-lookup-api-gateway
+      title: Source Code
+      icon: github
+spec:
+  type: service
+  lifecycle: production
+  owner: group:default/policy-platform-engineering
+  system: policy-search-system
+  dependsOn:
+    - component:default/policy-search-index-service
+    - component:default/policy-coverage-query-service
+
+# ===========================================================================
+# POLICY DOCUMENT SYSTEM
+# ===========================================================================
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: policy-schedule-generator
+  title: Policy Schedule Generator
+  description: |
+    Generates the policy schedule (declarations page) for each newly incepted,
+    endorsed, or renewed policy. Uses product-specific templates to produce
+    legally compliant schedule documents tailored to each jurisdiction.
+    Supports PDF and digital (HTML) output formats.
+  annotations:
+    backstage.io/source-location: url:https://github.parasol.com/parasol/policy-schedule-generator
+  tags:
+    - policy
+    - documents
+    - python
+    - rest
+  links:
+    - url: https://confluence.parasol.com/display/POLICY/policy-schedule-generator
+      title: Internal Confluence Docs
+      icon: docs
+    - url: https://github.parasol.com/parasol/policy-schedule-generator
+      title: Source Code
+      icon: github
+spec:
+  type: service
+  lifecycle: production
+  owner: group:default/policy-platform-engineering
+  system: policy-document-system
+  dependsOn:
+    - component:default/policy-inception-service
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: certificate-of-insurance-service
+  title: Certificate of Insurance Service
+  description: |
+    Issues certificates of insurance (COIs) to policyholders and designated
+    certificate holders. Validates certificate requests against policy coverage,
+    generates the COI in ACORD 25/28/101 format, and maintains a certificate
+    registry for audit and renewal tracking.
+  annotations:
+    backstage.io/source-location: url:https://github.parasol.com/parasol/certificate-of-insurance-service
+  tags:
+    - policy
+    - documents
+    - commercial
+    - java
+    - rest
+  links:
+    - url: https://confluence.parasol.com/display/POLICY/certificate-of-insurance-service
+      title: Internal Confluence Docs
+      icon: docs
+    - url: https://github.parasol.com/parasol/certificate-of-insurance-service
+      title: Source Code
+      icon: github
+spec:
+  type: service
+  lifecycle: production
+  owner: group:default/policy-platform-engineering
+  system: policy-document-system
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: policy-document-delivery-service
+  title: Policy Document Delivery Service
+  description: |
+    Delivers policy documents to customers via their preferred channel: email,
+    secure portal download, or physical mail via print-on-demand integration.
+    Tracks delivery status and maintains proof-of-delivery records for
+    regulatory compliance.
+  annotations:
+    backstage.io/source-location: url:https://github.parasol.com/parasol/policy-document-delivery-service
+  tags:
+    - policy
+    - documents
+    - notifications
+    - nodejs
+    - rest
+  links:
+    - url: https://confluence.parasol.com/display/POLICY/policy-document-delivery-service
+      title: Internal Confluence Docs
+      icon: docs
+    - url: https://github.parasol.com/parasol/policy-document-delivery-service
+      title: Source Code
+      icon: github
+spec:
+  type: service
+  lifecycle: production
+  owner: group:default/policy-platform-engineering
+  system: policy-document-system
+
+# ===========================================================================
+# CANCELLATION & REINSTATEMENT SYSTEM
+# ===========================================================================
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: cancellation-processing-service
+  title: Cancellation Processing Service
+  description: |
+    Processes voluntary and involuntary policy cancellations. Validates
+    statutory notice periods, calculates return premium on short-rate or
+    pro-rata basis, updates the policy record to cancelled status, and
+    triggers billing adjustments and cancellation notice generation.
+  annotations:
+    backstage.io/source-location: url:https://github.parasol.com/parasol/cancellation-processing-service
+  tags:
+    - policy
+    - cancellation
+    - compliance
+    - java
+    - rest
+  links:
+    - url: https://confluence.parasol.com/display/POLICY/cancellation-processing-service
+      title: Internal Confluence Docs
+      icon: docs
+    - url: https://github.parasol.com/parasol/cancellation-processing-service
+      title: Source Code
+      icon: github
+spec:
+  type: service
+  lifecycle: production
+  owner: group:default/policy-platform-engineering
+  system: cancellation-reinstatement-system
+  dependsOn:
+    - component:default/pro-rata-adjustment-service
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: lapse-management-service
+  title: Lapse Management Service
+  description: |
+    Monitors policies for non-payment of premium and manages the lapse
+    workflow including grace period tracking, final demand notices, and
+    policy lapse recording. Coordinates with the billing system to determine
+    when a policy should be lapsed versus referred for reinstatement.
+  annotations:
+    backstage.io/source-location: url:https://github.parasol.com/parasol/lapse-management-service
+  tags:
+    - policy
+    - cancellation
+    - billing
+    - java
+    - rest
+  links:
+    - url: https://confluence.parasol.com/display/POLICY/lapse-management-service
+      title: Internal Confluence Docs
+      icon: docs
+    - url: https://github.parasol.com/parasol/lapse-management-service
+      title: Source Code
+      icon: github
+spec:
+  type: service
+  lifecycle: production
+  owner: group:default/policy-platform-engineering
+  system: cancellation-reinstatement-system
+  dependsOn:
+    - component:default/arrears-tracking-service
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: reinstatement-eligibility-service
+  title: Reinstatement Eligibility Service
+  description: |
+    Assesses whether a lapsed policy is eligible for reinstatement based
+    on time since lapse, payment of outstanding arrears, and underwriting
+    criteria. Prevents reinstatement where a loss event has occurred during
+    the lapse period or where the risk profile has materially changed.
+  annotations:
+    backstage.io/source-location: url:https://github.parasol.com/parasol/reinstatement-eligibility-service
+  tags:
+    - policy
+    - cancellation
+    - java
+    - rest
+  links:
+    - url: https://confluence.parasol.com/display/POLICY/reinstatement-eligibility-service
+      title: Internal Confluence Docs
+      icon: docs
+    - url: https://github.parasol.com/parasol/reinstatement-eligibility-service
+      title: Source Code
+      icon: github
+spec:
+  type: service
+  lifecycle: production
+  owner: group:default/policy-platform-engineering
+  system: cancellation-reinstatement-system
+
+# ===========================================================================
+# PREMIUM COLLECTION SYSTEM
+# ===========================================================================
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: instalment-schedule-service
+  title: Instalment Schedule Service
+  description: |
+    Creates and manages premium instalment schedules for policies paying
+    on monthly or quarterly basis. Calculates instalment amounts including
+    APR disclosure, generates the schedule at policy inception, and recalculates
+    upon endorsement or renewal.
+  annotations:
+    backstage.io/source-location: url:https://github.parasol.com/parasol/instalment-schedule-service
+  tags:
+    - billing
+    - payments
+    - instalment
+    - java
+    - rest
+  links:
+    - url: https://confluence.parasol.com/display/BILLING/instalment-schedule-service
+      title: Internal Confluence Docs
+      icon: docs
+    - url: https://github.parasol.com/parasol/instalment-schedule-service
+      title: Source Code
+      icon: github
+spec:
+  type: service
+  lifecycle: production
+  owner: group:default/billing-payments-engineering
+  system: premium-collection-system
+  dependsOn:
+    - component:default/billing-account-ledger-service
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: arrears-tracking-service
+  title: Arrears Tracking Service
+  description: |
+    Monitors billing accounts for missed or late payments and manages the
+    arrears workflow. Issues payment reminder communications at configurable
+    intervals and escalates to the lapse management service after the grace
+    period expires without payment.
+  annotations:
+    backstage.io/source-location: url:https://github.parasol.com/parasol/arrears-tracking-service
+  tags:
+    - billing
+    - payments
+    - collections
+    - java
+    - rest
+  links:
+    - url: https://confluence.parasol.com/display/BILLING/arrears-tracking-service
+      title: Internal Confluence Docs
+      icon: docs
+    - url: https://github.parasol.com/parasol/arrears-tracking-service
+      title: Source Code
+      icon: github
+spec:
+  type: service
+  lifecycle: production
+  owner: group:default/billing-payments-engineering
+  system: premium-collection-system
+  dependsOn:
+    - component:default/billing-account-ledger-service
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: direct-debit-mandate-service
+  title: Direct Debit Mandate Service
+  description: |
+    Manages Bacs Direct Debit and SEPA Core mandates for customers paying
+    by recurring bank debit. Handles mandate setup, amendment, and cancellation,
+    and submits Bacs/SEPA file submissions to the payment processor.
+    Notifies customers of mandate changes in line with scheme rules.
+  annotations:
+    backstage.io/source-location: url:https://github.parasol.com/parasol/direct-debit-mandate-service
+  tags:
+    - billing
+    - payments
+    - direct-debit
+    - java
+    - rest
+  links:
+    - url: https://confluence.parasol.com/display/BILLING/direct-debit-mandate-service
+      title: Internal Confluence Docs
+      icon: docs
+    - url: https://github.parasol.com/parasol/direct-debit-mandate-service
+      title: Source Code
+      icon: github
+spec:
+  type: service
+  lifecycle: production
+  owner: group:default/billing-payments-engineering
+  system: premium-collection-system
+
+# ===========================================================================
+# PAYMENT PROCESSING SYSTEM
+# ===========================================================================
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: payment-gateway-service
+  title: Payment Gateway Service
+  description: |
+    Processes inbound premium payments via card, digital wallet, and bank
+    transfer. Integrates with Worldpay and Stripe for card acquiring, and
+    with Open Banking APIs for account-to-account payments. Handles 3DS2
+    authentication, tokenisation, and payment confirmation routing.
+  annotations:
+    backstage.io/source-location: url:https://github.parasol.com/parasol/payment-gateway-service
+  tags:
+    - billing
+    - payments
+    - card
+    - open-banking
+    - java
+    - rest
+  links:
+    - url: https://confluence.parasol.com/display/BILLING/payment-gateway-service
+      title: Internal Confluence Docs
+      icon: docs
+    - url: https://github.parasol.com/parasol/payment-gateway-service
+      title: Source Code
+      icon: github
+spec:
+  type: service
+  lifecycle: production
+  owner: group:default/billing-payments-engineering
+  system: payment-processing-system
+  dependsOn:
+    - component:default/billing-account-ledger-service
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: payment-reconciliation-service
+  title: Payment Reconciliation Service
+  description: |
+    Reconciles inbound payment files from banks, card acquirers, and direct
+    debit clearing houses against expected premium receipts in the billing
+    ledger. Identifies unmatched credits, duplicate payments, and underpayments,
+    and queues exceptions for the finance operations team.
+  annotations:
+    backstage.io/source-location: url:https://github.parasol.com/parasol/payment-reconciliation-service
+  tags:
+    - billing
+    - payments
+    - finance
+    - reconciliation
+    - java
+    - rest
+  links:
+    - url: https://confluence.parasol.com/display/BILLING/payment-reconciliation-service
+      title: Internal Confluence Docs
+      icon: docs
+    - url: https://github.parasol.com/parasol/payment-reconciliation-service
+      title: Source Code
+      icon: github
+spec:
+  type: service
+  lifecycle: production
+  owner: group:default/billing-payments-engineering
+  system: payment-processing-system
+  dependsOn:
+    - component:default/payment-gateway-service
+    - component:default/billing-account-ledger-service
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: payment-fraud-screening-service
+  title: Payment Fraud Screening Service
+  description: |
+    Screens premium payment transactions for card fraud and money laundering
+    indicators. Applies velocity rules, device fingerprinting, and behavioural
+    biometrics to flag suspicious transactions for manual review before
+    settlement is confirmed to the billing ledger.
+  annotations:
+    backstage.io/source-location: url:https://github.parasol.com/parasol/payment-fraud-screening-service
+  tags:
+    - billing
+    - payments
+    - fraud
+    - security
+    - python
+    - rest
+  links:
+    - url: https://confluence.parasol.com/display/BILLING/payment-fraud-screening-service
+      title: Internal Confluence Docs
+      icon: docs
+    - url: https://github.parasol.com/parasol/payment-fraud-screening-service
+      title: Source Code
+      icon: github
+spec:
+  type: service
+  lifecycle: production
+  owner: group:default/billing-payments-engineering
+  system: payment-processing-system
+
+# ===========================================================================
+# REFUNDS & ADJUSTMENTS SYSTEM
+# ===========================================================================
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: refund-processing-service
+  title: Refund Processing Service
+  description: |
+    Processes premium refunds arising from cancellations, mid-term endorsements,
+    and overpayments. Routes refunds back to the original payment method where
+    possible, or issues a cheque for legacy accounts. Enforces regulatory
+    refund timelines for each jurisdiction.
+  annotations:
+    backstage.io/source-location: url:https://github.parasol.com/parasol/refund-processing-service
+  tags:
+    - billing
+    - payments
+    - refunds
+    - java
+    - rest
+  links:
+    - url: https://confluence.parasol.com/display/BILLING/refund-processing-service
+      title: Internal Confluence Docs
+      icon: docs
+    - url: https://github.parasol.com/parasol/refund-processing-service
+      title: Source Code
+      icon: github
+spec:
+  type: service
+  lifecycle: production
+  owner: group:default/billing-payments-engineering
+  system: refunds-adjustments-system
+  dependsOn:
+    - component:default/billing-account-ledger-service
+    - component:default/payment-gateway-service
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: credit-note-service
+  title: Credit Note Service
+  description: |
+    Generates and manages credit notes for premium overcharges, goodwill
+    adjustments, and broker commission corrections. Credit notes can be
+    applied against future premium instalments or converted to a cash refund
+    at the policyholder's request.
+  annotations:
+    backstage.io/source-location: url:https://github.parasol.com/parasol/credit-note-service
+  tags:
+    - billing
+    - payments
+    - finance
+    - java
+    - rest
+  links:
+    - url: https://confluence.parasol.com/display/BILLING/credit-note-service
+      title: Internal Confluence Docs
+      icon: docs
+    - url: https://github.parasol.com/parasol/credit-note-service
+      title: Source Code
+      icon: github
+spec:
+  type: service
+  lifecycle: production
+  owner: group:default/billing-payments-engineering
+  system: refunds-adjustments-system
+
+# ===========================================================================
+# BILLING ACCOUNT SYSTEM
+# ===========================================================================
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: billing-account-ledger-service
+  title: Billing Account Ledger Service
+  description: |
+    Maintains the double-entry billing ledger for every customer billing
+    account. Records premium charges, instalment credits, refunds, fees,
+    and interest. Acts as the system of truth for billing balances and
+    provides statement data to the customer portal.
+  annotations:
+    backstage.io/source-location: url:https://github.parasol.com/parasol/billing-account-ledger-service
+  tags:
+    - billing
+    - payments
+    - finance
+    - ledger
+    - java
+    - rest
+  links:
+    - url: https://confluence.parasol.com/display/BILLING/billing-account-ledger-service
+      title: Internal Confluence Docs
+      icon: docs
+    - url: https://github.parasol.com/parasol/billing-account-ledger-service
+      title: Source Code
+      icon: github
+spec:
+  type: service
+  lifecycle: production
+  owner: group:default/billing-payments-engineering
+  system: billing-account-system
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: billing-statement-service
+  title: Billing Statement Service
+  description: |
+    Generates monthly billing statements and payment receipts for customers.
+    Provides transaction history and balance information consumed by the
+    customer portal and dispatched as printed statements for customers
+    without email or portal access.
+  annotations:
+    backstage.io/source-location: url:https://github.parasol.com/parasol/billing-statement-service
+  tags:
+    - billing
+    - payments
+    - documents
+    - java
+    - rest
+  links:
+    - url: https://confluence.parasol.com/display/BILLING/billing-statement-service
+      title: Internal Confluence Docs
+      icon: docs
+    - url: https://github.parasol.com/parasol/billing-statement-service
+      title: Source Code
+      icon: github
+spec:
+  type: service
+  lifecycle: production
+  owner: group:default/billing-payments-engineering
+  system: billing-account-system
+  dependsOn:
+    - component:default/billing-account-ledger-service
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: premium-finance-integration-service
+  title: Premium Finance Integration Service
+  description: |
+    Integrates with external premium finance providers (Close Brothers,
+    Premium Credit) to offer policyholder instalment credit as an alternative
+    to Parasol's own instalment scheme. Manages loan origination, commission
+    tracking, and cancellation notifications to finance companies.
+  annotations:
+    backstage.io/source-location: url:https://github.parasol.com/parasol/premium-finance-integration-service
+  tags:
+    - billing
+    - payments
+    - integration
+    - finance
+    - java
+    - rest
+  links:
+    - url: https://confluence.parasol.com/display/BILLING/premium-finance-integration-service
+      title: Internal Confluence Docs
+      icon: docs
+    - url: https://github.parasol.com/parasol/premium-finance-integration-service
+      title: Source Code
+      icon: github
+spec:
+  type: service
+  lifecycle: production
+  owner: group:default/billing-payments-engineering
+  system: billing-account-system

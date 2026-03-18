@@ -1,0 +1,671 @@
+# Parasol Insurance -- Customer Portal & Reinsurance Domain Components
+#
+# Covers all microservices in:
+#   customer-portal: web-portal-system, mobile-app-system, broker-portal-system
+#   reinsurance:     treaty-management-system, facultative-placement-system,
+#                    bordereau-reporting-system
+
+# ===========================================================================
+# WEB PORTAL SYSTEM
+# ===========================================================================
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: customer-portal-bff-service
+  title: Customer Portal Backend-for-Frontend Service
+  description: |
+    Backend-for-frontend (BFF) service aggregating data from multiple
+    domain APIs to serve the my.parasol.com customer web portal. Handles
+    session management, permission filtering, and request orchestration
+    to provide optimised API responses for each portal page.
+  annotations:
+    backstage.io/source-location: url:https://github.parasol.com/parasol/customer-portal-bff-service
+  tags:
+    - customer-portal
+    - web
+    - bff
+    - nodejs
+    - rest
+  links:
+    - url: https://confluence.parasol.com/display/DIGITAL/customer-portal-bff-service
+      title: Internal Confluence Docs
+      icon: docs
+    - url: https://github.parasol.com/parasol/customer-portal-bff-service
+      title: Source Code
+      icon: github
+spec:
+  type: service
+  lifecycle: production
+  owner: group:default/digital-channels-engineering
+  system: web-portal-system
+  dependsOn:
+    - component:default/policy-coverage-query-service
+    - component:default/billing-account-ledger-service
+    - component:default/customer-identity-service
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: customer-self-service-api
+  title: Customer Self-Service API
+  description: |
+    Exposes policy management self-service capabilities to authenticated
+    customers via the web portal and mobile app. Supports address updates,
+    named driver amendments, direct debit changes, and document download
+    requests, routing each action through the appropriate domain service.
+  annotations:
+    backstage.io/source-location: url:https://github.parasol.com/parasol/customer-self-service-api
+  tags:
+    - customer-portal
+    - web
+    - api
+    - java
+    - rest
+  links:
+    - url: https://confluence.parasol.com/display/DIGITAL/customer-self-service-api
+      title: Internal Confluence Docs
+      icon: docs
+    - url: https://github.parasol.com/parasol/customer-self-service-api
+      title: Source Code
+      icon: github
+spec:
+  type: service
+  lifecycle: production
+  owner: group:default/digital-channels-engineering
+  system: web-portal-system
+  dependsOn:
+    - component:default/endorsement-request-service
+    - component:default/policy-document-delivery-service
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: customer-identity-service
+  title: Customer Identity Service
+  description: |
+    Manages customer authentication and identity for the web portal and
+    mobile app. Supports password, social login, and biometric authentication.
+    Integrates with the enterprise IAM platform for single sign-on and
+    provides multi-factor authentication for sensitive policy changes.
+  annotations:
+    backstage.io/source-location: url:https://github.parasol.com/parasol/customer-identity-service
+  tags:
+    - customer-portal
+    - identity
+    - security
+    - java
+    - rest
+  links:
+    - url: https://confluence.parasol.com/display/DIGITAL/customer-identity-service
+      title: Internal Confluence Docs
+      icon: docs
+    - url: https://github.parasol.com/parasol/customer-identity-service
+      title: Source Code
+      icon: github
+spec:
+  type: service
+  lifecycle: production
+  owner: group:default/digital-channels-engineering
+  system: web-portal-system
+  dependsOn:
+    - component:default/iam-token-service
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: secure-messaging-service
+  title: Secure Messaging Service
+  description: |
+    Provides an in-portal secure messaging channel between customers and
+    the Parasol service centre. Manages message threading, read receipts,
+    file attachment handling, and SLA tracking for response time compliance.
+    Messages are archived for regulatory correspondence retention.
+  annotations:
+    backstage.io/source-location: url:https://github.parasol.com/parasol/secure-messaging-service
+  tags:
+    - customer-portal
+    - messaging
+    - compliance
+    - nodejs
+    - rest
+  links:
+    - url: https://confluence.parasol.com/display/DIGITAL/secure-messaging-service
+      title: Internal Confluence Docs
+      icon: docs
+    - url: https://github.parasol.com/parasol/secure-messaging-service
+      title: Source Code
+      icon: github
+spec:
+  type: service
+  lifecycle: production
+  owner: group:default/digital-channels-engineering
+  system: web-portal-system
+
+# ===========================================================================
+# MOBILE APP SYSTEM
+# ===========================================================================
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: mobile-api-gateway-service
+  title: Mobile API Gateway Service
+  description: |
+    Dedicated API gateway for the Parasol iOS and Android mobile apps.
+    Handles mobile-specific concerns including offline capability headers,
+    push notification registration, app version compatibility checks, and
+    bandwidth-optimised response payloads for cellular data connections.
+  annotations:
+    backstage.io/source-location: url:https://github.parasol.com/parasol/mobile-api-gateway-service
+  tags:
+    - customer-portal
+    - mobile
+    - api-gateway
+    - java
+    - rest
+  links:
+    - url: https://confluence.parasol.com/display/DIGITAL/mobile-api-gateway-service
+      title: Internal Confluence Docs
+      icon: docs
+    - url: https://github.parasol.com/parasol/mobile-api-gateway-service
+      title: Source Code
+      icon: github
+spec:
+  type: service
+  lifecycle: production
+  owner: group:default/digital-channels-engineering
+  system: mobile-app-system
+  dependsOn:
+    - component:default/customer-identity-service
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: push-notification-service
+  title: Push Notification Service
+  description: |
+    Delivers push notifications to Parasol mobile app users for claim status
+    updates, payment reminders, renewal invitations, and policy change
+    confirmations. Integrates with Apple APNs and Google FCM, tracks delivery
+    status, and handles opt-out preferences.
+  annotations:
+    backstage.io/source-location: url:https://github.parasol.com/parasol/push-notification-service
+  tags:
+    - customer-portal
+    - mobile
+    - notifications
+    - nodejs
+    - rest
+  links:
+    - url: https://confluence.parasol.com/display/DIGITAL/push-notification-service
+      title: Internal Confluence Docs
+      icon: docs
+    - url: https://github.parasol.com/parasol/push-notification-service
+      title: Source Code
+      icon: github
+spec:
+  type: service
+  lifecycle: production
+  owner: group:default/digital-channels-engineering
+  system: mobile-app-system
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: mobile-fnol-photo-service
+  title: Mobile FNOL Photo Capture Service
+  description: |
+    Receives vehicle damage photographs captured via the Parasol mobile app
+    at the scene of an accident. Performs metadata extraction, GPS coordinate
+    capture, timestamp validation, and forwards images to the claim document
+    capture service tagged to the relevant FNOL submission.
+  annotations:
+    backstage.io/source-location: url:https://github.parasol.com/parasol/mobile-fnol-photo-service
+  tags:
+    - customer-portal
+    - mobile
+    - claims
+    - fnol
+    - python
+    - rest
+  links:
+    - url: https://confluence.parasol.com/display/DIGITAL/mobile-fnol-photo-service
+      title: Internal Confluence Docs
+      icon: docs
+    - url: https://github.parasol.com/parasol/mobile-fnol-photo-service
+      title: Source Code
+      icon: github
+spec:
+  type: service
+  lifecycle: production
+  owner: group:default/digital-channels-engineering
+  system: mobile-app-system
+  dependsOn:
+    - component:default/claim-document-capture-service
+    - component:default/fnol-intake-service
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: roadside-assistance-service
+  title: Roadside Assistance Service
+  description: |
+    Allows policyholders to request breakdown and roadside assistance via
+    the Parasol mobile app. Captures GPS location, dispatches to the
+    assistance network provider (AA/RAC partnership), provides real-time
+    ETA updates, and tracks the assistance event against the policy.
+  annotations:
+    backstage.io/source-location: url:https://github.parasol.com/parasol/roadside-assistance-service
+  tags:
+    - customer-portal
+    - mobile
+    - motor
+    - integration
+    - java
+    - rest
+  links:
+    - url: https://confluence.parasol.com/display/DIGITAL/roadside-assistance-service
+      title: Internal Confluence Docs
+      icon: docs
+    - url: https://github.parasol.com/parasol/roadside-assistance-service
+      title: Source Code
+      icon: github
+spec:
+  type: service
+  lifecycle: production
+  owner: group:default/digital-channels-engineering
+  system: mobile-app-system
+
+# ===========================================================================
+# BROKER PORTAL SYSTEM
+# ===========================================================================
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: broker-authentication-service
+  title: Broker Authentication & Authorisation Service
+  description: |
+    Authenticates brokers and intermediaries accessing the Parasol broker
+    portal. Validates FCA/PRA registration status, manages firm and individual
+    agent credentials, enforces delegated authority scheme permissions, and
+    logs all broker access for regulatory audit.
+  annotations:
+    backstage.io/source-location: url:https://github.parasol.com/parasol/broker-authentication-service
+  tags:
+    - customer-portal
+    - broker
+    - identity
+    - security
+    - compliance
+    - java
+    - rest
+  links:
+    - url: https://confluence.parasol.com/display/DIGITAL/broker-authentication-service
+      title: Internal Confluence Docs
+      icon: docs
+    - url: https://github.parasol.com/parasol/broker-authentication-service
+      title: Source Code
+      icon: github
+spec:
+  type: service
+  lifecycle: production
+  owner: group:default/digital-channels-engineering
+  system: broker-portal-system
+  dependsOn:
+    - component:default/iam-token-service
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: broker-commission-service
+  title: Broker Commission Service
+  description: |
+    Calculates and tracks brokerage commission for new business, endorsements,
+    and renewals. Manages delegated authority binding limits, commission
+    statement generation, and month-end commission payment instructions
+    to the accounts payable system.
+  annotations:
+    backstage.io/source-location: url:https://github.parasol.com/parasol/broker-commission-service
+  tags:
+    - customer-portal
+    - broker
+    - finance
+    - java
+    - rest
+  links:
+    - url: https://confluence.parasol.com/display/DIGITAL/broker-commission-service
+      title: Internal Confluence Docs
+      icon: docs
+    - url: https://github.parasol.com/parasol/broker-commission-service
+      title: Source Code
+      icon: github
+spec:
+  type: service
+  lifecycle: production
+  owner: group:default/digital-channels-engineering
+  system: broker-portal-system
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: delegated-authority-management-service
+  title: Delegated Authority Management Service
+  description: |
+    Manages binding authority agreements between Parasol and coverholders.
+    Records facility terms, product classes, geographic restrictions,
+    maximum line sizes, and aggregate limits. Monitors coverholder usage
+    against binding authority limits and triggers breach alerts.
+  annotations:
+    backstage.io/source-location: url:https://github.parasol.com/parasol/delegated-authority-management-service
+  tags:
+    - customer-portal
+    - broker
+    - compliance
+    - java
+    - rest
+  links:
+    - url: https://confluence.parasol.com/display/DIGITAL/delegated-authority-management-service
+      title: Internal Confluence Docs
+      icon: docs
+    - url: https://github.parasol.com/parasol/delegated-authority-management-service
+      title: Source Code
+      icon: github
+spec:
+  type: service
+  lifecycle: production
+  owner: group:default/digital-channels-engineering
+  system: broker-portal-system
+  dependsOn:
+    - component:default/broker-authentication-service
+
+# ===========================================================================
+# TREATY MANAGEMENT SYSTEM
+# ===========================================================================
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: treaty-structure-service
+  title: Treaty Structure Service
+  description: |
+    Maintains the structure and terms of all outward reinsurance treaty
+    arrangements. Records treaty layers, limits, retentions, reinsurer
+    shares, and participation percentages. Provides treaty lookup for
+    cession calculations and premium/loss allocation.
+  annotations:
+    backstage.io/source-location: url:https://github.parasol.com/parasol/treaty-structure-service
+  tags:
+    - reinsurance
+    - treaty
+    - java
+    - rest
+  links:
+    - url: https://confluence.parasol.com/display/REINS/treaty-structure-service
+      title: Internal Confluence Docs
+      icon: docs
+    - url: https://github.parasol.com/parasol/treaty-structure-service
+      title: Source Code
+      icon: github
+spec:
+  type: service
+  lifecycle: production
+  owner: group:default/reinsurance-engineering
+  system: treaty-management-system
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: reinsurance-cession-service
+  title: Reinsurance Cession Service
+  description: |
+    Calculates and records reinsurance cessions for each in-force policy
+    against applicable treaty structures. Produces ceded premium and ceded
+    reserves entries consumed by the actuarial and finance reporting systems.
+    Handles complex multi-treaty arrangements and order-of-recovery logic.
+  annotations:
+    backstage.io/source-location: url:https://github.parasol.com/parasol/reinsurance-cession-service
+  tags:
+    - reinsurance
+    - treaty
+    - finance
+    - java
+    - rest
+  links:
+    - url: https://confluence.parasol.com/display/REINS/reinsurance-cession-service
+      title: Internal Confluence Docs
+      icon: docs
+    - url: https://github.parasol.com/parasol/reinsurance-cession-service
+      title: Source Code
+      icon: github
+spec:
+  type: service
+  lifecycle: production
+  owner: group:default/reinsurance-engineering
+  system: treaty-management-system
+  dependsOn:
+    - component:default/treaty-structure-service
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: reinsurer-counterparty-service
+  title: Reinsurer Counterparty Service
+  description: |
+    Manages the Parasol reinsurer counterparty register. Maintains reinsurer
+    credit ratings, authorised territories, contact details, and treaty
+    participation records. Triggers credit limit reviews when reinsurer
+    ratings are downgraded below Parasol's minimum security threshold.
+  annotations:
+    backstage.io/source-location: url:https://github.parasol.com/parasol/reinsurer-counterparty-service
+  tags:
+    - reinsurance
+    - treaty
+    - counterparty
+    - java
+    - rest
+  links:
+    - url: https://confluence.parasol.com/display/REINS/reinsurer-counterparty-service
+      title: Internal Confluence Docs
+      icon: docs
+    - url: https://github.parasol.com/parasol/reinsurer-counterparty-service
+      title: Source Code
+      icon: github
+spec:
+  type: service
+  lifecycle: production
+  owner: group:default/reinsurance-engineering
+  system: treaty-management-system
+
+# ===========================================================================
+# FACULTATIVE PLACEMENT SYSTEM
+# ===========================================================================
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: facultative-submission-service
+  title: Facultative Submission Service
+  description: |
+    Creates and manages facultative reinsurance submissions for individual
+    risks that exceed automatic binding limits. Packages risk data and
+    underwrites a proposed cession, distributes to market reinsurers,
+    and tracks acceptance responses and partial placements.
+  annotations:
+    backstage.io/source-location: url:https://github.parasol.com/parasol/facultative-submission-service
+  tags:
+    - reinsurance
+    - facultative
+    - java
+    - rest
+  links:
+    - url: https://confluence.parasol.com/display/REINS/facultative-submission-service
+      title: Internal Confluence Docs
+      icon: docs
+    - url: https://github.parasol.com/parasol/facultative-submission-service
+      title: Source Code
+      icon: github
+spec:
+  type: service
+  lifecycle: production
+  owner: group:default/reinsurance-engineering
+  system: facultative-placement-system
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: fac-placement-tracker
+  title: Facultative Placement Tracker
+  description: |
+    Tracks the status of open facultative placements. Monitors placement
+    percentage, identifies under-placed or unplaced risks approaching
+    inception dates, and escalates to the reinsurance team. Ensures Parasol
+    does not bind a risk without sufficient reinsurance protection in place.
+  annotations:
+    backstage.io/source-location: url:https://github.parasol.com/parasol/fac-placement-tracker
+  tags:
+    - reinsurance
+    - facultative
+    - java
+    - rest
+  links:
+    - url: https://confluence.parasol.com/display/REINS/fac-placement-tracker
+      title: Internal Confluence Docs
+      icon: docs
+    - url: https://github.parasol.com/parasol/fac-placement-tracker
+      title: Source Code
+      icon: github
+spec:
+  type: service
+  lifecycle: production
+  owner: group:default/reinsurance-engineering
+  system: facultative-placement-system
+  dependsOn:
+    - component:default/facultative-submission-service
+
+# ===========================================================================
+# BORDEREAU REPORTING SYSTEM
+# ===========================================================================
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: premium-bordereau-service
+  title: Premium Bordereau Service
+  description: |
+    Generates monthly and quarterly premium bordereau reports for treaty
+    reinsurers. Extracts ceded premium data by treaty layer, formats to
+    reinsurer-specific templates, and distributes via secure file transfer.
+    Tracks bordereau submission deadlines and acknowledgements.
+  annotations:
+    backstage.io/source-location: url:https://github.parasol.com/parasol/premium-bordereau-service
+  tags:
+    - reinsurance
+    - bordereau
+    - reporting
+    - java
+    - rest
+  links:
+    - url: https://confluence.parasol.com/display/REINS/premium-bordereau-service
+      title: Internal Confluence Docs
+      icon: docs
+    - url: https://github.parasol.com/parasol/premium-bordereau-service
+      title: Source Code
+      icon: github
+spec:
+  type: service
+  lifecycle: production
+  owner: group:default/reinsurance-engineering
+  system: bordereau-reporting-system
+  dependsOn:
+    - component:default/reinsurance-cession-service
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: loss-bordereau-service
+  title: Loss Bordereau Service
+  description: |
+    Generates loss bordereau and large loss notifications for reinsurers.
+    Extracts ceded claims data, applies treaty notification thresholds, and
+    produces loss statements with reserve movements. Manages cash call
+    processing when ceded reserves trigger reinsurer cash calls.
+  annotations:
+    backstage.io/source-location: url:https://github.parasol.com/parasol/loss-bordereau-service
+  tags:
+    - reinsurance
+    - bordereau
+    - claims
+    - reporting
+    - java
+    - rest
+  links:
+    - url: https://confluence.parasol.com/display/REINS/loss-bordereau-service
+      title: Internal Confluence Docs
+      icon: docs
+    - url: https://github.parasol.com/parasol/loss-bordereau-service
+      title: Source Code
+      icon: github
+spec:
+  type: service
+  lifecycle: production
+  owner: group:default/reinsurance-engineering
+  system: bordereau-reporting-system
+  dependsOn:
+    - component:default/reinsurance-cession-service
+    - component:default/claims-reserve-calculator
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: reinsurance-accounting-service
+  title: Reinsurance Accounting Service
+  description: |
+    Manages reinsurance accounting balances with counterparties. Produces
+    quarterly account current statements, tracks net balance positions,
+    and initiates settlement payments. Interfaces with the general ledger
+    for reinsurance debtor/creditor postings.
+  annotations:
+    backstage.io/source-location: url:https://github.parasol.com/parasol/reinsurance-accounting-service
+  tags:
+    - reinsurance
+    - bordereau
+    - finance
+    - accounting
+    - java
+    - rest
+  links:
+    - url: https://confluence.parasol.com/display/REINS/reinsurance-accounting-service
+      title: Internal Confluence Docs
+      icon: docs
+    - url: https://github.parasol.com/parasol/reinsurance-accounting-service
+      title: Source Code
+      icon: github
+spec:
+  type: service
+  lifecycle: production
+  owner: group:default/reinsurance-engineering
+  system: bordereau-reporting-system
+  dependsOn:
+    - component:default/premium-bordereau-service
+    - component:default/loss-bordereau-service

@@ -1,0 +1,1101 @@
+# Parasol Insurance -- Data & Analytics, Platform Engineering & Compliance Domain Components
+#
+# Covers all microservices in:
+#   data-analytics:       data-lake-system, actuarial-platform-system,
+#                         ml-pipeline-system, reporting-system
+#   platform-engineering: identity-access-system, api-gateway-system,
+#                         observability-system, developer-platform-system
+#   compliance-regulatory: regulatory-reporting-system, audit-trail-system,
+#                          gdpr-compliance-system
+
+# ===========================================================================
+# DATA LAKE SYSTEM
+# ===========================================================================
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: data-ingestion-platform-service
+  title: Data Ingestion Platform Service
+  description: |
+    Manages the ingestion of data from all Parasol operational systems into
+    the enterprise data lake. Supports real-time streaming via Kafka and
+    batch file ingestion via SFTP and S3. Applies schema validation, PII
+    detection, and data lineage tagging at the point of ingestion.
+  annotations:
+    backstage.io/source-location: url:https://github.parasol.com/parasol/data-ingestion-platform-service
+  tags:
+    - data-analytics
+    - data-lake
+    - ingestion
+    - kafka
+    - python
+  links:
+    - url: https://confluence.parasol.com/display/DATA/data-ingestion-platform-service
+      title: Internal Confluence Docs
+      icon: docs
+    - url: https://github.parasol.com/parasol/data-ingestion-platform-service
+      title: Source Code
+      icon: github
+spec:
+  type: service
+  lifecycle: production
+  owner: group:default/data-analytics-engineering
+  system: data-lake-system
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: data-catalogue-service
+  title: Data Catalogue Service
+  description: |
+    Maintains the enterprise data catalogue for all datasets in the data
+    lake, data warehouse, and operational stores. Provides data discovery,
+    lineage tracking, quality scoring, and ownership metadata. Enables
+    data consumers to find and understand certified data products.
+  annotations:
+    backstage.io/source-location: url:https://github.parasol.com/parasol/data-catalogue-service
+  tags:
+    - data-analytics
+    - data-lake
+    - governance
+    - python
+    - rest
+  links:
+    - url: https://confluence.parasol.com/display/DATA/data-catalogue-service
+      title: Internal Confluence Docs
+      icon: docs
+    - url: https://github.parasol.com/parasol/data-catalogue-service
+      title: Source Code
+      icon: github
+spec:
+  type: service
+  lifecycle: production
+  owner: group:default/data-analytics-engineering
+  system: data-lake-system
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: data-quality-monitoring-service
+  title: Data Quality Monitoring Service
+  description: |
+    Continuously monitors data quality across the lake and warehouse using
+    configurable rules for completeness, accuracy, consistency, and
+    timeliness. Raises data quality incidents, routes them to owning teams,
+    and tracks resolution to maintain trust in certified data products.
+  annotations:
+    backstage.io/source-location: url:https://github.parasol.com/parasol/data-quality-monitoring-service
+  tags:
+    - data-analytics
+    - data-lake
+    - governance
+    - python
+    - rest
+  links:
+    - url: https://confluence.parasol.com/display/DATA/data-quality-monitoring-service
+      title: Internal Confluence Docs
+      icon: docs
+    - url: https://github.parasol.com/parasol/data-quality-monitoring-service
+      title: Source Code
+      icon: github
+spec:
+  type: service
+  lifecycle: production
+  owner: group:default/data-analytics-engineering
+  system: data-lake-system
+  dependsOn:
+    - component:default/data-ingestion-platform-service
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: pii-masking-service
+  title: PII Masking & Anonymisation Service
+  description: |
+    Detects and applies masking, pseudonymisation, or anonymisation to
+    personally identifiable information in data lake datasets. Supports
+    GDPR and CCPA compliance by ensuring analytics workloads operate on
+    de-identified data unless explicit data subject consent is recorded.
+  annotations:
+    backstage.io/source-location: url:https://github.parasol.com/parasol/pii-masking-service
+  tags:
+    - data-analytics
+    - data-lake
+    - gdpr
+    - privacy
+    - python
+    - rest
+  links:
+    - url: https://confluence.parasol.com/display/DATA/pii-masking-service
+      title: Internal Confluence Docs
+      icon: docs
+    - url: https://github.parasol.com/parasol/pii-masking-service
+      title: Source Code
+      icon: github
+spec:
+  type: service
+  lifecycle: production
+  owner: group:default/data-analytics-engineering
+  system: data-lake-system
+
+# ===========================================================================
+# ACTUARIAL PLATFORM SYSTEM
+# ===========================================================================
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: reserving-model-service
+  title: Reserving Model Service
+  description: |
+    Executes actuarial reserving models (chain-ladder, Bornhuetter-Ferguson,
+    Cape Cod) on claims data to produce best-estimate reserves for financial
+    reporting. Maintains model run history, assumption sets, and sensitivity
+    analysis outputs for the actuarial sign-off process.
+  annotations:
+    backstage.io/source-location: url:https://github.parasol.com/parasol/reserving-model-service
+  tags:
+    - data-analytics
+    - actuarial
+    - reserving
+    - python
+    - rest
+  links:
+    - url: https://confluence.parasol.com/display/DATA/reserving-model-service
+      title: Internal Confluence Docs
+      icon: docs
+    - url: https://github.parasol.com/parasol/reserving-model-service
+      title: Source Code
+      icon: github
+spec:
+  type: service
+  lifecycle: production
+  owner: group:default/data-analytics-engineering
+  system: actuarial-platform-system
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: catastrophe-model-service
+  title: Catastrophe Modelling Service
+  description: |
+    Runs catastrophe model scenarios (RMS, AIR Worldwide) against Parasol's
+    in-force property portfolio to estimate probable maximum losses. Outputs
+    feed into reinsurance buying strategy, capital modelling, and pricing
+    adequacy assessment for catastrophe-exposed lines.
+  annotations:
+    backstage.io/source-location: url:https://github.parasol.com/parasol/catastrophe-model-service
+  tags:
+    - data-analytics
+    - actuarial
+    - catastrophe
+    - python
+    - rest
+  links:
+    - url: https://confluence.parasol.com/display/DATA/catastrophe-model-service
+      title: Internal Confluence Docs
+      icon: docs
+    - url: https://github.parasol.com/parasol/catastrophe-model-service
+      title: Source Code
+      icon: github
+spec:
+  type: service
+  lifecycle: production
+  owner: group:default/data-analytics-engineering
+  system: actuarial-platform-system
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: solvency-capital-model-service
+  title: Solvency II Capital Model Service
+  description: |
+    Produces Solvency II Solvency Capital Requirement (SCR) calculations
+    using the standard formula and Parasol's internal model overlays.
+    Generates QRT reporting inputs for EIOPA submission and supports
+    the ORSA process with scenario and stress test capabilities.
+  annotations:
+    backstage.io/source-location: url:https://github.parasol.com/parasol/solvency-capital-model-service
+  tags:
+    - data-analytics
+    - actuarial
+    - solvency-ii
+    - compliance
+    - python
+    - rest
+  links:
+    - url: https://confluence.parasol.com/display/DATA/solvency-capital-model-service
+      title: Internal Confluence Docs
+      icon: docs
+    - url: https://github.parasol.com/parasol/solvency-capital-model-service
+      title: Source Code
+      icon: github
+spec:
+  type: service
+  lifecycle: production
+  owner: group:default/data-analytics-engineering
+  system: actuarial-platform-system
+
+# ===========================================================================
+# ML PIPELINE SYSTEM
+# ===========================================================================
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: ml-feature-store-service
+  title: ML Feature Store Service
+  description: |
+    Central feature store providing pre-computed, versioned ML features
+    for model training and online inference. Manages feature definitions,
+    transformation pipelines, point-in-time correct feature retrieval,
+    and feature freshness SLOs for production models.
+  annotations:
+    backstage.io/source-location: url:https://github.parasol.com/parasol/ml-feature-store-service
+  tags:
+    - data-analytics
+    - machine-learning
+    - mlops
+    - python
+    - experimental
+  links:
+    - url: https://confluence.parasol.com/display/DATA/ml-feature-store-service
+      title: Internal Confluence Docs
+      icon: docs
+    - url: https://github.parasol.com/parasol/ml-feature-store-service
+      title: Source Code
+      icon: github
+spec:
+  type: service
+  lifecycle: production
+  owner: group:default/data-analytics-engineering
+  system: ml-pipeline-system
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: model-training-orchestrator
+  title: Model Training Orchestrator
+  description: |
+    Orchestrates ML model training pipelines across all business domains.
+    Manages experiment tracking, hyperparameter tuning, model versioning,
+    and champion/challenger comparison. Integrates with Parasol's GPU
+    compute cluster for deep learning workloads.
+  annotations:
+    backstage.io/source-location: url:https://github.parasol.com/parasol/model-training-orchestrator
+  tags:
+    - data-analytics
+    - machine-learning
+    - mlops
+    - python
+  links:
+    - url: https://confluence.parasol.com/display/DATA/model-training-orchestrator
+      title: Internal Confluence Docs
+      icon: docs
+    - url: https://github.parasol.com/parasol/model-training-orchestrator
+      title: Source Code
+      icon: github
+spec:
+  type: service
+  lifecycle: production
+  owner: group:default/data-analytics-engineering
+  system: ml-pipeline-system
+  dependsOn:
+    - component:default/ml-feature-store-service
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: model-serving-platform-service
+  title: Model Serving Platform Service
+  description: |
+    Hosts production ML models as low-latency inference endpoints consumed
+    by fraud scoring, retention prediction, pricing optimisation, and claims
+    triage. Manages canary deployments, A/B testing, SLO monitoring, and
+    automated rollback on model degradation.
+  annotations:
+    backstage.io/source-location: url:https://github.parasol.com/parasol/model-serving-platform-service
+  tags:
+    - data-analytics
+    - machine-learning
+    - mlops
+    - python
+    - rest
+  links:
+    - url: https://confluence.parasol.com/display/DATA/model-serving-platform-service
+      title: Internal Confluence Docs
+      icon: docs
+    - url: https://github.parasol.com/parasol/model-serving-platform-service
+      title: Source Code
+      icon: github
+spec:
+  type: service
+  lifecycle: production
+  owner: group:default/data-analytics-engineering
+  system: ml-pipeline-system
+  dependsOn:
+    - component:default/ml-feature-store-service
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: model-governance-service
+  title: Model Governance Service
+  description: |
+    Manages the model risk governance lifecycle for all production ML models.
+    Tracks model documentation, validation status, approval workflows, bias
+    and fairness assessments, and performance degradation monitoring.
+    Produces evidence packs for internal audit and regulatory review.
+  annotations:
+    backstage.io/source-location: url:https://github.parasol.com/parasol/model-governance-service
+  tags:
+    - data-analytics
+    - machine-learning
+    - governance
+    - compliance
+    - python
+    - rest
+  links:
+    - url: https://confluence.parasol.com/display/DATA/model-governance-service
+      title: Internal Confluence Docs
+      icon: docs
+    - url: https://github.parasol.com/parasol/model-governance-service
+      title: Source Code
+      icon: github
+spec:
+  type: service
+  lifecycle: production
+  owner: group:default/data-analytics-engineering
+  system: ml-pipeline-system
+
+# ===========================================================================
+# REPORTING SYSTEM
+# ===========================================================================
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: management-reporting-service
+  title: Management Reporting Service
+  description: |
+    Produces financial and operational management reports including GWP
+    by LoB, combined ratio, loss ratio by class, claims development, and
+    broker production reports. Delivers scheduled reports to executives
+    and LoB heads via email and the Parasol BI portal.
+  annotations:
+    backstage.io/source-location: url:https://github.parasol.com/parasol/management-reporting-service
+  tags:
+    - data-analytics
+    - reporting
+    - bi
+    - python
+    - rest
+  links:
+    - url: https://confluence.parasol.com/display/DATA/management-reporting-service
+      title: Internal Confluence Docs
+      icon: docs
+    - url: https://github.parasol.com/parasol/management-reporting-service
+      title: Source Code
+      icon: github
+spec:
+  type: service
+  lifecycle: production
+  owner: group:default/data-analytics-engineering
+  system: reporting-system
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: self-service-analytics-service
+  title: Self-Service Analytics Service
+  description: |
+    Provides business users with a governed self-service analytics environment.
+    Manages user provisioning to semantic data models, dataset sharing controls,
+    and query cost governance to prevent runaway queries on the data warehouse.
+  annotations:
+    backstage.io/source-location: url:https://github.parasol.com/parasol/self-service-analytics-service
+  tags:
+    - data-analytics
+    - reporting
+    - bi
+    - python
+    - rest
+  links:
+    - url: https://confluence.parasol.com/display/DATA/self-service-analytics-service
+      title: Internal Confluence Docs
+      icon: docs
+    - url: https://github.parasol.com/parasol/self-service-analytics-service
+      title: Source Code
+      icon: github
+spec:
+  type: service
+  lifecycle: production
+  owner: group:default/data-analytics-engineering
+  system: reporting-system
+
+# ===========================================================================
+# IDENTITY & ACCESS MANAGEMENT SYSTEM
+# ===========================================================================
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: iam-token-service
+  title: IAM Token Service
+  description: |
+    Issues and validates OAuth 2.0 and OIDC tokens for all internal and
+    external authentication flows. Manages access token lifetimes, refresh
+    token rotation, token revocation, and the JSON Web Key Set (JWKS)
+    endpoint consumed by all relying party services.
+  annotations:
+    backstage.io/source-location: url:https://github.parasol.com/parasol/iam-token-service
+  tags:
+    - platform-engineering
+    - identity
+    - security
+    - oauth
+    - java
+    - rest
+  links:
+    - url: https://confluence.parasol.com/display/PLATFORM/iam-token-service
+      title: Internal Confluence Docs
+      icon: docs
+    - url: https://github.parasol.com/parasol/iam-token-service
+      title: Source Code
+      icon: github
+spec:
+  type: service
+  lifecycle: production
+  owner: group:default/parasol-platform-engineering
+  system: identity-access-system
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: directory-sync-service
+  title: Directory Synchronisation Service
+  description: |
+    Synchronises user identities and group memberships between the Parasol
+    corporate Active Directory and the IAM platform. Provisions and
+    deprovisions service accounts for automated systems and manages
+    privileged access lifecycle in compliance with the joiners/movers/leavers process.
+  annotations:
+    backstage.io/source-location: url:https://github.parasol.com/parasol/directory-sync-service
+  tags:
+    - platform-engineering
+    - identity
+    - active-directory
+    - java
+    - rest
+  links:
+    - url: https://confluence.parasol.com/display/PLATFORM/directory-sync-service
+      title: Internal Confluence Docs
+      icon: docs
+    - url: https://github.parasol.com/parasol/directory-sync-service
+      title: Source Code
+      icon: github
+spec:
+  type: service
+  lifecycle: production
+  owner: group:default/parasol-platform-engineering
+  system: identity-access-system
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: secrets-management-service
+  title: Secrets Management Service
+  description: |
+    Provides centralised secret storage, rotation, and distribution for
+    all Parasol microservices. Manages database credentials, API keys,
+    TLS certificates, and encryption keys. Enforces secret rotation policies
+    and audit logs all secret access events.
+  annotations:
+    backstage.io/source-location: url:https://github.parasol.com/parasol/secrets-management-service
+  tags:
+    - platform-engineering
+    - security
+    - secrets
+    - java
+    - rest
+  links:
+    - url: https://confluence.parasol.com/display/PLATFORM/secrets-management-service
+      title: Internal Confluence Docs
+      icon: docs
+    - url: https://github.parasol.com/parasol/secrets-management-service
+      title: Source Code
+      icon: github
+spec:
+  type: service
+  lifecycle: production
+  owner: group:default/parasol-platform-engineering
+  system: identity-access-system
+
+# ===========================================================================
+# API GATEWAY SYSTEM
+# ===========================================================================
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: internal-api-gateway-service
+  title: Internal API Gateway Service
+  description: |
+    Centralised API gateway for all internal east-west service communication.
+    Provides mTLS enforcement, JWT validation, service-level rate limiting,
+    circuit breaking, and request/response logging for audit and debugging.
+    Serves as the single ingress for all microservice traffic.
+  annotations:
+    backstage.io/source-location: url:https://github.parasol.com/parasol/internal-api-gateway-service
+  tags:
+    - platform-engineering
+    - api-gateway
+    - service-mesh
+    - java
+    - rest
+  links:
+    - url: https://confluence.parasol.com/display/PLATFORM/internal-api-gateway-service
+      title: Internal Confluence Docs
+      icon: docs
+    - url: https://github.parasol.com/parasol/internal-api-gateway-service
+      title: Source Code
+      icon: github
+spec:
+  type: service
+  lifecycle: production
+  owner: group:default/parasol-platform-engineering
+  system: api-gateway-system
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: external-api-gateway-service
+  title: External API Gateway Service
+  description: |
+    Public-facing API gateway for third-party integrations: broker management
+    systems, aggregators, loss adjusters, and regulatory body APIs. Manages
+    API key issuance, OAuth client credentials, rate limiting by consumer,
+    and API usage analytics for commercial API products.
+  annotations:
+    backstage.io/source-location: url:https://github.parasol.com/parasol/external-api-gateway-service
+  tags:
+    - platform-engineering
+    - api-gateway
+    - security
+    - java
+    - rest
+  links:
+    - url: https://confluence.parasol.com/display/PLATFORM/external-api-gateway-service
+      title: Internal Confluence Docs
+      icon: docs
+    - url: https://github.parasol.com/parasol/external-api-gateway-service
+      title: Source Code
+      icon: github
+spec:
+  type: service
+  lifecycle: production
+  owner: group:default/parasol-platform-engineering
+  system: api-gateway-system
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: api-developer-portal-service
+  title: API Developer Portal Service
+  description: |
+    Self-service portal for internal and external API consumers to discover,
+    subscribe to, and test Parasol APIs. Hosts API documentation, interactive
+    try-it-out consoles, credential management, and usage dashboards.
+    Integrates with the external API gateway for subscription management.
+  annotations:
+    backstage.io/source-location: url:https://github.parasol.com/parasol/api-developer-portal-service
+  tags:
+    - platform-engineering
+    - api-gateway
+    - developer-portal
+    - nodejs
+    - rest
+  links:
+    - url: https://confluence.parasol.com/display/PLATFORM/api-developer-portal-service
+      title: Internal Confluence Docs
+      icon: docs
+    - url: https://github.parasol.com/parasol/api-developer-portal-service
+      title: Source Code
+      icon: github
+spec:
+  type: service
+  lifecycle: production
+  owner: group:default/parasol-platform-engineering
+  system: api-gateway-system
+
+# ===========================================================================
+# OBSERVABILITY SYSTEM
+# ===========================================================================
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: metrics-aggregation-service
+  title: Metrics Aggregation Service
+  description: |
+    Collects, aggregates, and stores time-series metrics from all Parasol
+    microservices. Supports Prometheus scraping and push-based metric
+    submission. Powers real-time dashboards, SLO burn rate alerts, and
+    capacity planning reports for the platform and engineering teams.
+  annotations:
+    backstage.io/source-location: url:https://github.parasol.com/parasol/metrics-aggregation-service
+  tags:
+    - platform-engineering
+    - observability
+    - metrics
+    - prometheus
+    - go
+  links:
+    - url: https://confluence.parasol.com/display/PLATFORM/metrics-aggregation-service
+      title: Internal Confluence Docs
+      icon: docs
+    - url: https://github.parasol.com/parasol/metrics-aggregation-service
+      title: Source Code
+      icon: github
+spec:
+  type: service
+  lifecycle: production
+  owner: group:default/parasol-platform-engineering
+  system: observability-system
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: distributed-tracing-service
+  title: Distributed Tracing Service
+  description: |
+    Provides distributed tracing across all Parasol microservices using
+    OpenTelemetry. Collects trace spans, stores them in a time-series backend,
+    and exposes a Jaeger-compatible query API for debugging latency issues
+    and visualising request flows through the microservice mesh.
+  annotations:
+    backstage.io/source-location: url:https://github.parasol.com/parasol/distributed-tracing-service
+  tags:
+    - platform-engineering
+    - observability
+    - tracing
+    - opentelemetry
+    - go
+  links:
+    - url: https://confluence.parasol.com/display/PLATFORM/distributed-tracing-service
+      title: Internal Confluence Docs
+      icon: docs
+    - url: https://github.parasol.com/parasol/distributed-tracing-service
+      title: Source Code
+      icon: github
+spec:
+  type: service
+  lifecycle: production
+  owner: group:default/parasol-platform-engineering
+  system: observability-system
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: alerting-oncall-service
+  title: Alerting & On-Call Management Service
+  description: |
+    Manages alerting rules, notification routing, and on-call schedules for
+    Parasol engineering teams. Integrates with PagerDuty for incident
+    escalation, maintains SLO breach runbooks, and tracks mean time to
+    acknowledge (MTTA) and mean time to resolve (MTTR) metrics.
+  annotations:
+    backstage.io/source-location: url:https://github.parasol.com/parasol/alerting-oncall-service
+  tags:
+    - platform-engineering
+    - observability
+    - alerting
+    - sre
+    - go
+    - rest
+  links:
+    - url: https://confluence.parasol.com/display/PLATFORM/alerting-oncall-service
+      title: Internal Confluence Docs
+      icon: docs
+    - url: https://github.parasol.com/parasol/alerting-oncall-service
+      title: Source Code
+      icon: github
+spec:
+  type: service
+  lifecycle: production
+  owner: group:default/parasol-platform-engineering
+  system: observability-system
+
+# ===========================================================================
+# DEVELOPER PLATFORM SYSTEM
+# ===========================================================================
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: infrastructure-provisioning-service
+  title: Infrastructure Provisioning Service
+  description: |
+    Self-service infrastructure provisioning for engineering teams. Accepts
+    infrastructure-as-code requests for Kubernetes namespaces, databases,
+    message queues, and storage buckets. Applies security baseline templates
+    and cost allocation tags before provisioning via Terraform.
+  annotations:
+    backstage.io/source-location: url:https://github.parasol.com/parasol/infrastructure-provisioning-service
+  tags:
+    - platform-engineering
+    - developer-platform
+    - infrastructure
+    - terraform
+    - go
+    - rest
+  links:
+    - url: https://confluence.parasol.com/display/PLATFORM/infrastructure-provisioning-service
+      title: Internal Confluence Docs
+      icon: docs
+    - url: https://github.parasol.com/parasol/infrastructure-provisioning-service
+      title: Source Code
+      icon: github
+spec:
+  type: service
+  lifecycle: production
+  owner: group:default/parasol-platform-engineering
+  system: developer-platform-system
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: cicd-pipeline-service
+  title: CI/CD Pipeline Orchestration Service
+  description: |
+    Manages CI/CD pipeline templates and execution for all Parasol
+    engineering teams. Provides golden path pipeline blueprints for
+    Java, Python, Node.js, and Go services. Enforces security scanning,
+    licence compliance, and deployment approval gates.
+  annotations:
+    backstage.io/source-location: url:https://github.parasol.com/parasol/cicd-pipeline-service
+  tags:
+    - platform-engineering
+    - developer-platform
+    - cicd
+    - devops
+    - go
+    - rest
+  links:
+    - url: https://confluence.parasol.com/display/PLATFORM/cicd-pipeline-service
+      title: Internal Confluence Docs
+      icon: docs
+    - url: https://github.parasol.com/parasol/cicd-pipeline-service
+      title: Source Code
+      icon: github
+spec:
+  type: service
+  lifecycle: production
+  owner: group:default/parasol-platform-engineering
+  system: developer-platform-system
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: container-registry-service
+  title: Container Registry Service
+  description: |
+    Hosts the internal container image registry for all Parasol microservices.
+    Enforces image scanning policies (no critical CVEs), manages image
+    promotion between environments, and maintains image provenance for
+    supply chain security.
+  annotations:
+    backstage.io/source-location: url:https://github.parasol.com/parasol/container-registry-service
+  tags:
+    - platform-engineering
+    - developer-platform
+    - containers
+    - security
+    - go
+    - rest
+  links:
+    - url: https://confluence.parasol.com/display/PLATFORM/container-registry-service
+      title: Internal Confluence Docs
+      icon: docs
+    - url: https://github.parasol.com/parasol/container-registry-service
+      title: Source Code
+      icon: github
+spec:
+  type: service
+  lifecycle: production
+  owner: group:default/parasol-platform-engineering
+  system: developer-platform-system
+
+# ===========================================================================
+# REGULATORY REPORTING SYSTEM
+# ===========================================================================
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: qrt-production-service
+  title: Solvency II QRT Production Service
+  description: |
+    Produces Solvency II Quantitative Reporting Templates (QRTs) for
+    submission to EIOPA and national supervisory authorities. Extracts
+    data from the actuarial and finance systems, transforms to XBRL format,
+    validates against EIOPA taxonomy, and manages the submission workflow.
+  annotations:
+    backstage.io/source-location: url:https://github.parasol.com/parasol/qrt-production-service
+  tags:
+    - compliance-regulatory
+    - regulatory-reporting
+    - solvency-ii
+    - eiopa
+    - python
+    - rest
+  links:
+    - url: https://confluence.parasol.com/display/COMPLIANCE/qrt-production-service
+      title: Internal Confluence Docs
+      icon: docs
+    - url: https://github.parasol.com/parasol/qrt-production-service
+      title: Source Code
+      icon: github
+spec:
+  type: service
+  lifecycle: production
+  owner: group:default/compliance-engineering
+  system: regulatory-reporting-system
+  dependsOn:
+    - component:default/solvency-capital-model-service
+    - component:default/reserving-model-service
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: state-regulatory-filing-service
+  title: State Regulatory Filing Service
+  description: |
+    Manages US state insurance department regulatory filings including
+    annual and quarterly financial statements (NAIC blanks), market conduct
+    report submissions, and rate/form filing via SERFF. Tracks filing
+    deadlines and maintains the filing register for audit purposes.
+  annotations:
+    backstage.io/source-location: url:https://github.parasol.com/parasol/state-regulatory-filing-service
+  tags:
+    - compliance-regulatory
+    - regulatory-reporting
+    - naic
+    - us-compliance
+    - java
+    - rest
+  links:
+    - url: https://confluence.parasol.com/display/COMPLIANCE/state-regulatory-filing-service
+      title: Internal Confluence Docs
+      icon: docs
+    - url: https://github.parasol.com/parasol/state-regulatory-filing-service
+      title: Source Code
+      icon: github
+spec:
+  type: service
+  lifecycle: production
+  owner: group:default/compliance-engineering
+  system: regulatory-reporting-system
+
+# ===========================================================================
+# AUDIT TRAIL SYSTEM
+# ===========================================================================
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: immutable-audit-log-service
+  title: Immutable Audit Log Service
+  description: |
+    Provides an append-only, tamper-evident audit log for all Parasol
+    systems. Accepts structured audit events via a high-throughput API,
+    stores them in write-once storage with cryptographic integrity proofs,
+    and provides a query API for compliance investigations and e-discovery.
+  annotations:
+    backstage.io/source-location: url:https://github.parasol.com/parasol/immutable-audit-log-service
+  tags:
+    - compliance-regulatory
+    - audit
+    - security
+    - sox
+    - java
+    - rest
+  links:
+    - url: https://confluence.parasol.com/display/COMPLIANCE/immutable-audit-log-service
+      title: Internal Confluence Docs
+      icon: docs
+    - url: https://github.parasol.com/parasol/immutable-audit-log-service
+      title: Source Code
+      icon: github
+spec:
+  type: service
+  lifecycle: production
+  owner: group:default/compliance-engineering
+  system: audit-trail-system
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: user-activity-monitoring-service
+  title: User Activity Monitoring Service
+  description: |
+    Monitors and analyses user activity patterns across internal systems
+    to detect insider threats, data exfiltration attempts, and policy
+    violations. Correlates access logs from the IAM platform, applications,
+    and data warehouse to flag anomalous behaviour for the security team.
+  annotations:
+    backstage.io/source-location: url:https://github.parasol.com/parasol/user-activity-monitoring-service
+  tags:
+    - compliance-regulatory
+    - audit
+    - security
+    - insider-threat
+    - python
+    - rest
+  links:
+    - url: https://confluence.parasol.com/display/COMPLIANCE/user-activity-monitoring-service
+      title: Internal Confluence Docs
+      icon: docs
+    - url: https://github.parasol.com/parasol/user-activity-monitoring-service
+      title: Source Code
+      icon: github
+spec:
+  type: service
+  lifecycle: production
+  owner: group:default/compliance-engineering
+  system: audit-trail-system
+  dependsOn:
+    - component:default/immutable-audit-log-service
+
+# ===========================================================================
+# GDPR & PRIVACY COMPLIANCE SYSTEM
+# ===========================================================================
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: data-subject-rights-service
+  title: Data Subject Rights Service
+  description: |
+    Manages GDPR and CCPA data subject rights requests: access, erasure
+    (right to be forgotten), rectification, portability, and objection.
+    Coordinates data discovery across all systems, compiles subject access
+    request responses within regulatory deadlines, and records outcomes.
+  annotations:
+    backstage.io/source-location: url:https://github.parasol.com/parasol/data-subject-rights-service
+  tags:
+    - compliance-regulatory
+    - gdpr
+    - privacy
+    - java
+    - rest
+  links:
+    - url: https://confluence.parasol.com/display/COMPLIANCE/data-subject-rights-service
+      title: Internal Confluence Docs
+      icon: docs
+    - url: https://github.parasol.com/parasol/data-subject-rights-service
+      title: Source Code
+      icon: github
+spec:
+  type: service
+  lifecycle: production
+  owner: group:default/compliance-engineering
+  system: gdpr-compliance-system
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: consent-management-service
+  title: Consent Management Service
+  description: |
+    Records and manages customer consent for marketing communications,
+    profiling, and third-party data sharing across all digital channels.
+    Provides a consent preference centre integrated with the customer
+    portal and maintains a consent audit history per data subject.
+  annotations:
+    backstage.io/source-location: url:https://github.parasol.com/parasol/consent-management-service
+  tags:
+    - compliance-regulatory
+    - gdpr
+    - privacy
+    - customer-portal
+    - java
+    - rest
+  links:
+    - url: https://confluence.parasol.com/display/COMPLIANCE/consent-management-service
+      title: Internal Confluence Docs
+      icon: docs
+    - url: https://github.parasol.com/parasol/consent-management-service
+      title: Source Code
+      icon: github
+spec:
+  type: service
+  lifecycle: production
+  owner: group:default/compliance-engineering
+  system: gdpr-compliance-system
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: data-retention-enforcement-service
+  title: Data Retention Enforcement Service
+  description: |
+    Enforces Parasol's data retention schedule across all storage systems.
+    Identifies data that has exceeded its retention period, triggers
+    anonymisation or deletion workflows, and produces retention compliance
+    reports for the Data Protection Officer and external auditors.
+  annotations:
+    backstage.io/source-location: url:https://github.parasol.com/parasol/data-retention-enforcement-service
+  tags:
+    - compliance-regulatory
+    - gdpr
+    - privacy
+    - python
+    - rest
+  links:
+    - url: https://confluence.parasol.com/display/COMPLIANCE/data-retention-enforcement-service
+      title: Internal Confluence Docs
+      icon: docs
+    - url: https://github.parasol.com/parasol/data-retention-enforcement-service
+      title: Source Code
+      icon: github
+spec:
+  type: service
+  lifecycle: production
+  owner: group:default/compliance-engineering
+  system: gdpr-compliance-system
+  dependsOn:
+    - component:default/pii-masking-service

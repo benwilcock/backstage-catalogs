@@ -1,0 +1,587 @@
+# Enterprise Software Catalog - Foundations
+# Groups, Domains, and Systems for organizing ~140 enterprise open-source components.
+# All projects are active and use OSI-approved licenses.
+
+# =============================================================================
+# GROUPS - Fictional enterprise teams that own catalog components
+# =============================================================================
+
+apiVersion: backstage.io/v1alpha1
+kind: Group
+metadata:
+  name: data-engineering
+  title: Data Engineering
+  description: Manages databases, data pipelines, ETL processes, and analytical platforms.
+spec:
+  type: team
+  children: []
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Group
+metadata:
+  name: platform-engineering
+  title: Platform Engineering
+  description: Builds and maintains the internal developer platform, container orchestration, and shared infrastructure services.
+spec:
+  type: team
+  children: []
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Group
+metadata:
+  name: security-operations
+  title: Security Operations
+  description: Manages identity, access control, secrets, vulnerability scanning, and compliance policy enforcement.
+spec:
+  type: team
+  children: []
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Group
+metadata:
+  name: devops-team
+  title: DevOps
+  description: Owns CI/CD pipelines, GitOps workflows, artifact registries, and release engineering tooling.
+spec:
+  type: team
+  children: []
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Group
+metadata:
+  name: ai-ml-team
+  title: AI & Machine Learning
+  description: Operates ML platforms, model training infrastructure, inference servers, and AI tooling.
+spec:
+  type: team
+  children: []
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Group
+metadata:
+  name: application-development
+  title: Application Development
+  description: Develops enterprise applications, microservices, and APIs using modern frameworks and developer tools.
+spec:
+  type: team
+  children: []
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Group
+metadata:
+  name: infrastructure-team
+  title: Infrastructure
+  description: Manages storage systems, networking, infrastructure-as-code, and serverless platforms.
+spec:
+  type: team
+  children: []
+
+# =============================================================================
+# DOMAINS - High-level enterprise capability areas
+# =============================================================================
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Domain
+metadata:
+  name: data-management
+  title: Data Management
+  description: |
+    Relational databases, NoSQL stores, key-value caches, time-series databases,
+    graph databases, and vector databases for enterprise data persistence.
+spec:
+  owner: group:default/data-engineering
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Domain
+metadata:
+  name: event-streaming-messaging
+  title: Event Streaming & Messaging
+  description: |
+    Message brokers and event streaming platforms for asynchronous communication,
+    event-driven architectures, and real-time data pipelines.
+spec:
+  owner: group:default/platform-engineering
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Domain
+metadata:
+  name: search-analytics
+  title: Search & Analytics
+  description: |
+    Full-text search engines, indexing libraries, and analytics platforms
+    for enterprise search and data discovery.
+spec:
+  owner: group:default/data-engineering
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Domain
+metadata:
+  name: cloud-infrastructure
+  title: Cloud Infrastructure
+  description: |
+    Container orchestration, service mesh, networking, storage systems,
+    infrastructure-as-code, and serverless platforms.
+spec:
+  owner: group:default/platform-engineering
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Domain
+metadata:
+  name: api-management
+  title: API Management
+  description: |
+    API gateways, ingress controllers, reverse proxies, and web servers
+    for managing traffic flow and API lifecycle.
+spec:
+  owner: group:default/platform-engineering
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Domain
+metadata:
+  name: observability
+  title: Observability
+  description: |
+    Monitoring, metrics collection, log aggregation, distributed tracing,
+    and alerting for enterprise systems visibility.
+spec:
+  owner: group:default/platform-engineering
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Domain
+metadata:
+  name: cicd-devops
+  title: CI/CD & DevOps
+  description: |
+    Continuous integration and delivery pipelines, GitOps tooling,
+    source control, artifact registries, and developer productivity tools.
+spec:
+  owner: group:default/devops-team
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Domain
+metadata:
+  name: security-identity
+  title: Security & Identity
+  description: |
+    Identity and access management, policy enforcement, secret management,
+    vulnerability scanning, and supply chain security.
+spec:
+  owner: group:default/security-operations
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Domain
+metadata:
+  name: ai-machine-learning
+  title: AI & Machine Learning
+  description: |
+    Machine learning platforms, model training infrastructure, inference servers,
+    and AI development tooling.
+spec:
+  owner: group:default/ai-ml-team
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Domain
+metadata:
+  name: data-engineering
+  title: Data Engineering
+  description: |
+    Data processing frameworks, ETL pipelines, change data capture,
+    workflow orchestration, and integration middleware.
+spec:
+  owner: group:default/data-engineering
+
+# =============================================================================
+# SYSTEMS - Groups of related components (max 5 components per system)
+# =============================================================================
+
+# --- Data Management Domain ---
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: System
+metadata:
+  name: relational-databases
+  title: Relational Databases
+  description: Enterprise-grade SQL databases for transactional and analytical workloads.
+spec:
+  owner: group:default/data-engineering
+  domain: data-management
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: System
+metadata:
+  name: nosql-databases
+  title: NoSQL & Document Databases
+  description: Distributed NoSQL databases for flexible schemas, wide-column, and document storage.
+spec:
+  owner: group:default/data-engineering
+  domain: data-management
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: System
+metadata:
+  name: key-value-cache
+  title: Key-Value Stores & Caches
+  description: In-memory data stores and caches for high-throughput, low-latency data access.
+spec:
+  owner: group:default/data-engineering
+  domain: data-management
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: System
+metadata:
+  name: time-series-databases
+  title: Time-Series Databases
+  description: Databases optimized for time-stamped data from IoT sensors, metrics, and financial systems.
+spec:
+  owner: group:default/data-engineering
+  domain: data-management
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: System
+metadata:
+  name: graph-databases
+  title: Graph Databases
+  description: Databases designed for storing and querying highly connected data and relationship-rich models.
+spec:
+  owner: group:default/data-engineering
+  domain: data-management
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: System
+metadata:
+  name: vector-databases
+  title: Vector Databases
+  description: Purpose-built databases for vector similarity search powering AI embeddings, RAG, and semantic search.
+spec:
+  owner: group:default/ai-ml-team
+  domain: data-management
+
+# --- Event Streaming & Messaging Domain ---
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: System
+metadata:
+  name: message-brokers
+  title: Message Brokers & Streaming
+  description: Distributed messaging and event streaming platforms for decoupled, event-driven architectures.
+spec:
+  owner: group:default/platform-engineering
+  domain: event-streaming-messaging
+
+# --- Search & Analytics Domain ---
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: System
+metadata:
+  name: search-engines
+  title: Search Engines
+  description: Full-text search engines and indexing platforms for enterprise search, log analytics, and discovery.
+spec:
+  owner: group:default/data-engineering
+  domain: search-analytics
+
+# --- Cloud Infrastructure Domain ---
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: System
+metadata:
+  name: container-orchestration
+  title: Container Orchestration
+  description: Container runtimes, orchestrators, package managers, and lightweight Kubernetes distributions.
+spec:
+  owner: group:default/platform-engineering
+  domain: cloud-infrastructure
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: System
+metadata:
+  name: service-mesh-networking
+  title: Service Mesh & Networking
+  description: Service mesh, network policy, DNS, and load balancing for cloud-native networking.
+spec:
+  owner: group:default/infrastructure-team
+  domain: cloud-infrastructure
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: System
+metadata:
+  name: storage-systems
+  title: Storage Systems
+  description: Distributed storage, block storage, and cloud-native storage orchestration.
+spec:
+  owner: group:default/infrastructure-team
+  domain: cloud-infrastructure
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: System
+metadata:
+  name: serverless-event-driven
+  title: Serverless & Event-Driven
+  description: Serverless platforms, event-driven autoscaling, and distributed application runtimes.
+spec:
+  owner: group:default/platform-engineering
+  domain: cloud-infrastructure
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: System
+metadata:
+  name: infrastructure-as-code
+  title: Infrastructure as Code
+  description: Declarative infrastructure provisioning, configuration management, and control plane tooling.
+spec:
+  owner: group:default/infrastructure-team
+  domain: cloud-infrastructure
+
+# --- API Management Domain ---
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: System
+metadata:
+  name: api-gateways
+  title: API Gateways & Ingress
+  description: API gateways, ingress controllers, and reverse proxies for traffic management and API lifecycle.
+spec:
+  owner: group:default/platform-engineering
+  domain: api-management
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: System
+metadata:
+  name: web-servers
+  title: Web Servers & Reverse Proxies
+  description: HTTP servers, reverse proxies, and caching layers for serving web traffic at scale.
+spec:
+  owner: group:default/infrastructure-team
+  domain: api-management
+
+# --- Observability Domain ---
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: System
+metadata:
+  name: monitoring-metrics
+  title: Monitoring & Metrics
+  description: Metrics collection, time-series monitoring, alerting, and dashboard visualization.
+spec:
+  owner: group:default/platform-engineering
+  domain: observability
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: System
+metadata:
+  name: logging-systems
+  title: Logging
+  description: Log collection, aggregation, indexing, and analysis platforms.
+spec:
+  owner: group:default/platform-engineering
+  domain: observability
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: System
+metadata:
+  name: tracing-systems
+  title: Distributed Tracing
+  description: Distributed tracing, telemetry collection, and request flow visualization.
+spec:
+  owner: group:default/platform-engineering
+  domain: observability
+
+# --- CI/CD & DevOps Domain ---
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: System
+metadata:
+  name: cicd-pipelines
+  title: CI/CD Pipelines
+  description: Continuous integration and delivery servers, pipeline engines, and GitOps controllers.
+spec:
+  owner: group:default/devops-team
+  domain: cicd-devops
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: System
+metadata:
+  name: source-control-registries
+  title: Source Control & Registries
+  description: Git hosting, container image registries, and artifact storage platforms.
+spec:
+  owner: group:default/devops-team
+  domain: cicd-devops
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: System
+metadata:
+  name: developer-tools
+  title: Developer Tools
+  description: Internal developer portals, progressive delivery, and local development tooling.
+spec:
+  owner: group:default/application-development
+  domain: cicd-devops
+
+# --- Security & Identity Domain ---
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: System
+metadata:
+  name: identity-access
+  title: Identity & Access Management
+  description: Authentication servers, identity providers, and SSO solutions for enterprise identity.
+spec:
+  owner: group:default/security-operations
+  domain: security-identity
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: System
+metadata:
+  name: policy-compliance
+  title: Policy & Compliance
+  description: Policy engines, admission controllers, and supply chain verification for Kubernetes governance.
+spec:
+  owner: group:default/security-operations
+  domain: security-identity
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: System
+metadata:
+  name: secret-management
+  title: Secret Management
+  description: Secrets storage, encryption, and external secret synchronization for sensitive configuration data.
+spec:
+  owner: group:default/security-operations
+  domain: security-identity
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: System
+metadata:
+  name: vulnerability-scanning
+  title: Vulnerability Scanning & Certificates
+  description: Container scanning, runtime threat detection, SBOM generation, and certificate management.
+spec:
+  owner: group:default/security-operations
+  domain: security-identity
+
+# --- AI & Machine Learning Domain ---
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: System
+metadata:
+  name: ml-platforms
+  title: ML Platforms & Inference
+  description: Machine learning training platforms, experiment tracking, distributed computing, and model serving.
+spec:
+  owner: group:default/ai-ml-team
+  domain: ai-machine-learning
+
+# --- Application Development Domain ---
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Domain
+metadata:
+  name: application-development
+  title: Application Development
+  description: |
+    Frameworks and platforms for building enterprise applications across all tiers:
+    backend services and microservices, frontend and GUI applications, and
+    low-code composition platforms for rapid internal tooling.
+spec:
+  owner: group:default/application-development
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: System
+metadata:
+  name: backend-frameworks
+  title: Backend & Microservice Frameworks
+  description: Server-side frameworks for building APIs, microservices, and multi-tier application backends.
+spec:
+  owner: group:default/application-development
+  domain: application-development
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: System
+metadata:
+  name: frontend-frameworks
+  title: Frontend & GUI Frameworks
+  description: Client-side frameworks and full-stack UI toolkits for building web applications and enterprise GUIs.
+spec:
+  owner: group:default/application-development
+  domain: application-development
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: System
+metadata:
+  name: low-code-platforms
+  title: Low-Code & Composition Platforms
+  description: Visual and low-code platforms for building internal tools, workflow automation, and business applications without heavy coding.
+spec:
+  owner: group:default/application-development
+  domain: application-development
+
+# --- Data Engineering Domain ---
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: System
+metadata:
+  name: data-processing
+  title: Data Processing
+  description: Batch and stream processing frameworks, workflow schedulers, and change data capture.
+spec:
+  owner: group:default/data-engineering
+  domain: data-engineering
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: System
+metadata:
+  name: integration-workflow
+  title: Integration & Workflow
+  description: Enterprise integration, Kubernetes operators for data systems, and workflow orchestration engines.
+spec:
+  owner: group:default/data-engineering
+  domain: data-engineering

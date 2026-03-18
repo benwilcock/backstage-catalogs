@@ -1,0 +1,894 @@
+# Parasol Insurance -- Claims Domain Components
+#
+# Covers all microservices in the claims domain:
+#   fnol-system, claims-assessment-system, claims-payment-system,
+#   claims-fraud-detection-system, claims-document-system, claims-litigation-system
+
+# ===========================================================================
+# FNOL SYSTEM
+# ===========================================================================
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: fnol-intake-service
+  title: FNOL Intake Service
+  description: |
+    Accepts first notice of loss submissions from all channels: web portal,
+    mobile app, broker portal, phone (via IVR integration), and third-party
+    loss adjusters. Validates mandatory FNOL fields, checks policy in-force
+    status, and creates the initial claim record.
+  annotations:
+    backstage.io/source-location: url:https://github.parasol.com/parasol/fnol-intake-service
+  tags:
+    - claims
+    - fnol
+    - java
+    - rest
+  links:
+    - url: https://confluence.parasol.com/display/CLAIMS/fnol-intake-service
+      title: Internal Confluence Docs
+      icon: docs
+    - url: https://github.parasol.com/parasol/fnol-intake-service
+      title: Source Code
+      icon: github
+spec:
+  type: service
+  lifecycle: production
+  owner: group:default/claims-engineering
+  system: fnol-system
+  dependsOn:
+    - component:default/policy-coverage-query-service
+    - component:default/policy-search-index-service
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: fnol-triage-router
+  title: FNOL Triage Router
+  description: |
+    Applies configurable triage rules to route newly created claims to the
+    correct handling queue: automated low-value fast-track, virtual desk
+    adjustment, or field adjuster dispatch. Rules are maintained by the
+    claims operations team without code deployments.
+  annotations:
+    backstage.io/source-location: url:https://github.parasol.com/parasol/fnol-triage-router
+  tags:
+    - claims
+    - fnol
+    - java
+    - rules-engine
+  links:
+    - url: https://confluence.parasol.com/display/CLAIMS/fnol-triage-router
+      title: Internal Confluence Docs
+      icon: docs
+    - url: https://github.parasol.com/parasol/fnol-triage-router
+      title: Source Code
+      icon: github
+spec:
+  type: service
+  lifecycle: production
+  owner: group:default/claims-engineering
+  system: fnol-system
+  dependsOn:
+    - component:default/fnol-intake-service
+    - component:default/fraud-score-service
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: fnol-channel-adapter-service
+  title: FNOL Channel Adapter Service
+  description: |
+    Normalises inbound FNOL payloads from heterogeneous sources (REST, SOAP,
+    flat-file, EDI) into the canonical Parasol Claims Data Model before
+    forwarding to the intake service. Supports legacy third-party adjuster
+    integrations that still use ACORD XML messaging.
+  annotations:
+    backstage.io/source-location: url:https://github.parasol.com/parasol/fnol-channel-adapter-service
+  tags:
+    - claims
+    - fnol
+    - java
+    - integration
+    - acord
+  links:
+    - url: https://confluence.parasol.com/display/CLAIMS/fnol-channel-adapter-service
+      title: Internal Confluence Docs
+      icon: docs
+    - url: https://github.parasol.com/parasol/fnol-channel-adapter-service
+      title: Source Code
+      icon: github
+spec:
+  type: service
+  lifecycle: production
+  owner: group:default/claims-engineering
+  system: fnol-system
+  dependsOn:
+    - component:default/fnol-intake-service
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: coverage-verification-service
+  title: Coverage Verification Service
+  description: |
+    Confirms that a reported loss event falls within the scope of the
+    policyholder's active coverage at the time of loss. Checks deductibles,
+    exclusions, geographic limits, and named-peril restrictions against
+    the policy record.
+  annotations:
+    backstage.io/source-location: url:https://github.parasol.com/parasol/coverage-verification-service
+  tags:
+    - claims
+    - fnol
+    - python
+    - rest
+  links:
+    - url: https://confluence.parasol.com/display/CLAIMS/coverage-verification-service
+      title: Internal Confluence Docs
+      icon: docs
+    - url: https://github.parasol.com/parasol/coverage-verification-service
+      title: Source Code
+      icon: github
+spec:
+  type: service
+  lifecycle: production
+  owner: group:default/claims-engineering
+  system: fnol-system
+  dependsOn:
+    - component:default/policy-coverage-query-service
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: claimant-notification-service
+  title: Claimant Notification Service
+  description: |
+    Sends acknowledgement notifications to claimants and policyholders at
+    key claim milestones: FNOL receipt, adjuster assignment, inspection
+    scheduling, and settlement offer. Supports email, SMS, push, and
+    letter channels with jurisdiction-specific statutory notice wording.
+  annotations:
+    backstage.io/source-location: url:https://github.parasol.com/parasol/claimant-notification-service
+  tags:
+    - claims
+    - notifications
+    - nodejs
+    - rest
+  links:
+    - url: https://confluence.parasol.com/display/CLAIMS/claimant-notification-service
+      title: Internal Confluence Docs
+      icon: docs
+    - url: https://github.parasol.com/parasol/claimant-notification-service
+      title: Source Code
+      icon: github
+spec:
+  type: service
+  lifecycle: production
+  owner: group:default/claims-engineering
+  system: fnol-system
+
+# ===========================================================================
+# CLAIMS ASSESSMENT SYSTEM
+# ===========================================================================
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: adjuster-assignment-service
+  title: Adjuster Assignment Service
+  description: |
+    Assigns claims to internal desk adjusters or dispatches field adjusters
+    based on claim type, severity, geography, adjuster workload, and
+    specialist skill requirements. Integrates with the field service
+    management system for appointment scheduling.
+  annotations:
+    backstage.io/source-location: url:https://github.parasol.com/parasol/adjuster-assignment-service
+  tags:
+    - claims
+    - assessment
+    - java
+    - rest
+  links:
+    - url: https://confluence.parasol.com/display/CLAIMS/adjuster-assignment-service
+      title: Internal Confluence Docs
+      icon: docs
+    - url: https://github.parasol.com/parasol/adjuster-assignment-service
+      title: Source Code
+      icon: github
+spec:
+  type: service
+  lifecycle: production
+  owner: group:default/claims-engineering
+  system: claims-assessment-system
+  dependsOn:
+    - component:default/fnol-triage-router
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: damage-estimation-service
+  title: Damage Estimation Service
+  description: |
+    Calculates repair cost estimates for vehicle and property losses using
+    integrated estimating platforms (Mitchell, Xactimate), supplier rate
+    cards, and postcode-based labour cost indices. Flags estimates that
+    exceed policy limits or settlement authority for adjuster review.
+  annotations:
+    backstage.io/source-location: url:https://github.parasol.com/parasol/damage-estimation-service
+  tags:
+    - claims
+    - assessment
+    - python
+    - rest
+  links:
+    - url: https://confluence.parasol.com/display/CLAIMS/damage-estimation-service
+      title: Internal Confluence Docs
+      icon: docs
+    - url: https://github.parasol.com/parasol/damage-estimation-service
+      title: Source Code
+      icon: github
+spec:
+  type: service
+  lifecycle: production
+  owner: group:default/claims-engineering
+  system: claims-assessment-system
+  dependsOn:
+    - component:default/adjuster-assignment-service
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: claims-reserve-calculator
+  title: Claims Reserve Calculator
+  description: |
+    Sets and updates the case reserve for each open claim based on damage
+    estimates, comparable settled claims, legal exposure factors, and
+    reinsurance treaty structure. Triggers reinsurance notification when
+    reserves breach facultative reporting thresholds.
+  annotations:
+    backstage.io/source-location: url:https://github.parasol.com/parasol/claims-reserve-calculator
+  tags:
+    - claims
+    - assessment
+    - finance
+    - java
+    - rest
+  links:
+    - url: https://confluence.parasol.com/display/CLAIMS/claims-reserve-calculator
+      title: Internal Confluence Docs
+      icon: docs
+    - url: https://github.parasol.com/parasol/claims-reserve-calculator
+      title: Source Code
+      icon: github
+spec:
+  type: service
+  lifecycle: production
+  owner: group:default/claims-engineering
+  system: claims-assessment-system
+  dependsOn:
+    - component:default/damage-estimation-service
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: medical-assessment-service
+  title: Medical Assessment Service
+  description: |
+    Manages medical evidence collection and independent medical examination
+    (IME) scheduling for bodily injury claims. Integrates with third-party
+    medical panel providers and applies Parasol's medical bill review
+    rules to determine reasonable and customary charges.
+  annotations:
+    backstage.io/source-location: url:https://github.parasol.com/parasol/medical-assessment-service
+  tags:
+    - claims
+    - assessment
+    - bodily-injury
+    - java
+    - rest
+  links:
+    - url: https://confluence.parasol.com/display/CLAIMS/medical-assessment-service
+      title: Internal Confluence Docs
+      icon: docs
+    - url: https://github.parasol.com/parasol/medical-assessment-service
+      title: Source Code
+      icon: github
+spec:
+  type: service
+  lifecycle: production
+  owner: group:default/claims-engineering
+  system: claims-assessment-system
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: total-loss-valuation-service
+  title: Total Loss Valuation Service
+  description: |
+    Determines actual cash value (ACV) for total loss vehicles and beyond
+    economic repair (BER) property. Uses market data, depreciation tables,
+    condition grading, and comparable sales to produce defensible valuations
+    compliant with state total loss threshold regulations.
+  annotations:
+    backstage.io/source-location: url:https://github.parasol.com/parasol/total-loss-valuation-service
+  tags:
+    - claims
+    - assessment
+    - motor
+    - python
+    - rest
+  links:
+    - url: https://confluence.parasol.com/display/CLAIMS/total-loss-valuation-service
+      title: Internal Confluence Docs
+      icon: docs
+    - url: https://github.parasol.com/parasol/total-loss-valuation-service
+      title: Source Code
+      icon: github
+spec:
+  type: service
+  lifecycle: production
+  owner: group:default/claims-engineering
+  system: claims-assessment-system
+  dependsOn:
+    - component:default/vehicle-valuation-feed-service
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: vehicle-valuation-feed-service
+  title: Vehicle Valuation Feed Service
+  description: |
+    Ingests and normalises real-time vehicle valuation data from CAP HPI,
+    Glass's Guide, and auction house feeds. Provides a market value lookup
+    API consumed by the total loss valuation service and the telematics
+    pricing engine.
+  annotations:
+    backstage.io/source-location: url:https://github.parasol.com/parasol/vehicle-valuation-feed-service
+  tags:
+    - claims
+    - assessment
+    - motor
+    - data-feed
+    - python
+  links:
+    - url: https://confluence.parasol.com/display/CLAIMS/vehicle-valuation-feed-service
+      title: Internal Confluence Docs
+      icon: docs
+    - url: https://github.parasol.com/parasol/vehicle-valuation-feed-service
+      title: Source Code
+      icon: github
+spec:
+  type: service
+  lifecycle: production
+  owner: group:default/claims-engineering
+  system: claims-assessment-system
+
+# ===========================================================================
+# CLAIMS PAYMENT SYSTEM
+# ===========================================================================
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: claims-settlement-service
+  title: Claims Settlement Service
+  description: |
+    Orchestrates the end-to-end settlement of approved claims. Calculates
+    net payable amounts after deductible, excess, co-insurance, and
+    subrogation recoveries. Creates payment instructions and triggers
+    claimant settlement offer communications.
+  annotations:
+    backstage.io/source-location: url:https://github.parasol.com/parasol/claims-settlement-service
+  tags:
+    - claims
+    - payment
+    - finance
+    - java
+    - rest
+  links:
+    - url: https://confluence.parasol.com/display/CLAIMS/claims-settlement-service
+      title: Internal Confluence Docs
+      icon: docs
+    - url: https://github.parasol.com/parasol/claims-settlement-service
+      title: Source Code
+      icon: github
+spec:
+  type: service
+  lifecycle: production
+  owner: group:default/claims-engineering
+  system: claims-payment-system
+  dependsOn:
+    - component:default/claims-reserve-calculator
+    - component:default/bank-account-validation-service
+    - component:default/claims-payment-disbursement-service
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: claims-payment-disbursement-service
+  title: Claims Payment Disbursement Service
+  description: |
+    Executes approved claim payment instructions via bank transfer (BACS/
+    SEPA/ACH), cheque generation, or digital wallet transfer. Enforces
+    dual-control approval for payments exceeding settlement authority limits
+    and maintains a full payment audit trail.
+  annotations:
+    backstage.io/source-location: url:https://github.parasol.com/parasol/claims-payment-disbursement-service
+  tags:
+    - claims
+    - payment
+    - finance
+    - java
+    - rest
+  links:
+    - url: https://confluence.parasol.com/display/CLAIMS/claims-payment-disbursement-service
+      title: Internal Confluence Docs
+      icon: docs
+    - url: https://github.parasol.com/parasol/claims-payment-disbursement-service
+      title: Source Code
+      icon: github
+spec:
+  type: service
+  lifecycle: production
+  owner: group:default/claims-engineering
+  system: claims-payment-system
+  dependsOn:
+    - component:default/bank-account-validation-service
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: bank-account-validation-service
+  title: Bank Account Validation Service
+  description: |
+    Validates claimant and repairer bank account details before payment
+    release. Performs sort code/routing number lookups, IBAN validation,
+    and real-time account verification via Open Banking APIs. Flags
+    mismatched or suspicious account details for fraud review.
+  annotations:
+    backstage.io/source-location: url:https://github.parasol.com/parasol/bank-account-validation-service
+  tags:
+    - claims
+    - payment
+    - finance
+    - security
+    - nodejs
+    - rest
+  links:
+    - url: https://confluence.parasol.com/display/CLAIMS/bank-account-validation-service
+      title: Internal Confluence Docs
+      icon: docs
+    - url: https://github.parasol.com/parasol/bank-account-validation-service
+      title: Source Code
+      icon: github
+spec:
+  type: service
+  lifecycle: production
+  owner: group:default/claims-engineering
+  system: claims-payment-system
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: supplier-payment-service
+  title: Supplier Payment Service
+  description: |
+    Manages direct payments to approved repair garages, contractors, medical
+    providers, and legal firms. Handles supplier onboarding, purchase order
+    matching, invoice validation, and payment batch processing.
+  annotations:
+    backstage.io/source-location: url:https://github.parasol.com/parasol/supplier-payment-service
+  tags:
+    - claims
+    - payment
+    - finance
+    - java
+    - rest
+  links:
+    - url: https://confluence.parasol.com/display/CLAIMS/supplier-payment-service
+      title: Internal Confluence Docs
+      icon: docs
+    - url: https://github.parasol.com/parasol/supplier-payment-service
+      title: Source Code
+      icon: github
+spec:
+  type: service
+  lifecycle: production
+  owner: group:default/claims-engineering
+  system: claims-payment-system
+  dependsOn:
+    - component:default/bank-account-validation-service
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: subrogation-recovery-service
+  title: Subrogation Recovery Service
+  description: |
+    Identifies and pursues subrogation and contribution recovery opportunities
+    after claim settlement. Tracks recovery actions against at-fault third
+    parties, insurers, and manufacturers. Manages inter-company arbitration
+    and recovery accounting back to the claim reserve.
+  annotations:
+    backstage.io/source-location: url:https://github.parasol.com/parasol/subrogation-recovery-service
+  tags:
+    - claims
+    - payment
+    - recovery
+    - java
+    - rest
+  links:
+    - url: https://confluence.parasol.com/display/CLAIMS/subrogation-recovery-service
+      title: Internal Confluence Docs
+      icon: docs
+    - url: https://github.parasol.com/parasol/subrogation-recovery-service
+      title: Source Code
+      icon: github
+spec:
+  type: service
+  lifecycle: production
+  owner: group:default/claims-engineering
+  system: claims-payment-system
+  dependsOn:
+    - component:default/claims-settlement-service
+
+# ===========================================================================
+# CLAIMS FRAUD DETECTION SYSTEM
+# ===========================================================================
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: fraud-score-service
+  title: Fraud Score Service
+  description: |
+    Produces a real-time fraud risk score for each submitted claim using an
+    ensemble of ML models trained on historical fraud outcomes. Features
+    include claim characteristics, claimant history, network relationships,
+    and third-party data signals. Scores are consumed by the FNOL triage
+    router and adjuster assignment service.
+  annotations:
+    backstage.io/source-location: url:https://github.parasol.com/parasol/fraud-score-service
+  tags:
+    - claims
+    - fraud
+    - machine-learning
+    - python
+    - rest
+    - experimental
+  links:
+    - url: https://confluence.parasol.com/display/CLAIMS/fraud-score-service
+      title: Internal Confluence Docs
+      icon: docs
+    - url: https://github.parasol.com/parasol/fraud-score-service
+      title: Source Code
+      icon: github
+spec:
+  type: service
+  lifecycle: production
+  owner: group:default/claims-engineering
+  system: claims-fraud-detection-system
+  dependsOn:
+    - component:default/fraud-network-graph-service
+    - component:default/third-party-data-enrichment-service
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: fraud-network-graph-service
+  title: Fraud Network Graph Service
+  description: |
+    Maintains a real-time graph of relationships between claimants, vehicles,
+    addresses, phone numbers, bank accounts, repair shops, and legal firms.
+    Detects fraud rings by identifying anomalous connectivity patterns that
+    signal organised fraud activity.
+  annotations:
+    backstage.io/source-location: url:https://github.parasol.com/parasol/fraud-network-graph-service
+  tags:
+    - claims
+    - fraud
+    - graph-database
+    - python
+    - experimental
+  links:
+    - url: https://confluence.parasol.com/display/CLAIMS/fraud-network-graph-service
+      title: Internal Confluence Docs
+      icon: docs
+    - url: https://github.parasol.com/parasol/fraud-network-graph-service
+      title: Source Code
+      icon: github
+spec:
+  type: service
+  lifecycle: experimental
+  owner: group:default/claims-engineering
+  system: claims-fraud-detection-system
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: third-party-data-enrichment-service
+  title: Third-Party Data Enrichment Service
+  description: |
+    Enriches claim and claimant records with data from external providers:
+    DVLA vehicle history, IDA fraud database, CIFAS fraud prevention service,
+    social media signals, and open-source intelligence feeds. Results feed
+    the fraud score model and adjuster dashboards.
+  annotations:
+    backstage.io/source-location: url:https://github.parasol.com/parasol/third-party-data-enrichment-service
+  tags:
+    - claims
+    - fraud
+    - integration
+    - java
+    - rest
+  links:
+    - url: https://confluence.parasol.com/display/CLAIMS/third-party-data-enrichment-service
+      title: Internal Confluence Docs
+      icon: docs
+    - url: https://github.parasol.com/parasol/third-party-data-enrichment-service
+      title: Source Code
+      icon: github
+spec:
+  type: service
+  lifecycle: production
+  owner: group:default/claims-engineering
+  system: claims-fraud-detection-system
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: siu-referral-service
+  title: SIU Referral Service
+  description: |
+    Manages referral of suspected fraudulent claims to the Special
+    Investigations Unit (SIU). Packages claim evidence, fraud scores, and
+    network analysis into referral packs, tracks investigation status, and
+    records outcomes for model feedback.
+  annotations:
+    backstage.io/source-location: url:https://github.parasol.com/parasol/siu-referral-service
+  tags:
+    - claims
+    - fraud
+    - compliance
+    - java
+    - rest
+  links:
+    - url: https://confluence.parasol.com/display/CLAIMS/siu-referral-service
+      title: Internal Confluence Docs
+      icon: docs
+    - url: https://github.parasol.com/parasol/siu-referral-service
+      title: Source Code
+      icon: github
+spec:
+  type: service
+  lifecycle: production
+  owner: group:default/claims-engineering
+  system: claims-fraud-detection-system
+  dependsOn:
+    - component:default/fraud-score-service
+
+# ===========================================================================
+# CLAIMS DOCUMENT SYSTEM
+# ===========================================================================
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: claim-document-capture-service
+  title: Claim Document Capture Service
+  description: |
+    Receives and stores documents submitted by claimants and third parties
+    via portal upload, email, post scanning, and mobile photo capture.
+    Performs virus scanning, format validation, and OCR-based classification
+    to tag documents to the correct claim and document type.
+  annotations:
+    backstage.io/source-location: url:https://github.parasol.com/parasol/claim-document-capture-service
+  tags:
+    - claims
+    - documents
+    - java
+    - rest
+  links:
+    - url: https://confluence.parasol.com/display/CLAIMS/claim-document-capture-service
+      title: Internal Confluence Docs
+      icon: docs
+    - url: https://github.parasol.com/parasol/claim-document-capture-service
+      title: Source Code
+      icon: github
+spec:
+  type: service
+  lifecycle: production
+  owner: group:default/claims-engineering
+  system: claims-document-system
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: claim-document-retrieval-service
+  title: Claim Document Retrieval Service
+  description: |
+    Provides authorised access to claim documents for internal adjusters,
+    legal teams, and external claimants via the customer portal. Enforces
+    role-based access controls and generates time-limited pre-signed download
+    URLs. Logs all document access for audit compliance.
+  annotations:
+    backstage.io/source-location: url:https://github.parasol.com/parasol/claim-document-retrieval-service
+  tags:
+    - claims
+    - documents
+    - java
+    - rest
+  links:
+    - url: https://confluence.parasol.com/display/CLAIMS/claim-document-retrieval-service
+      title: Internal Confluence Docs
+      icon: docs
+    - url: https://github.parasol.com/parasol/claim-document-retrieval-service
+      title: Source Code
+      icon: github
+spec:
+  type: service
+  lifecycle: production
+  owner: group:default/claims-engineering
+  system: claims-document-system
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: settlement-letter-generator
+  title: Settlement Letter Generator
+  description: |
+    Generates statutory settlement offer letters, denial letters, and
+    reservation of rights notices using templated documents with jurisdiction-
+    specific wording. Integrates with the claimant notification service
+    for multi-channel delivery.
+  annotations:
+    backstage.io/source-location: url:https://github.parasol.com/parasol/settlement-letter-generator
+  tags:
+    - claims
+    - documents
+    - compliance
+    - python
+    - rest
+  links:
+    - url: https://confluence.parasol.com/display/CLAIMS/settlement-letter-generator
+      title: Internal Confluence Docs
+      icon: docs
+    - url: https://github.parasol.com/parasol/settlement-letter-generator
+      title: Source Code
+      icon: github
+spec:
+  type: service
+  lifecycle: production
+  owner: group:default/claims-engineering
+  system: claims-document-system
+  dependsOn:
+    - component:default/claims-settlement-service
+
+# ===========================================================================
+# CLAIMS LITIGATION SYSTEM
+# ===========================================================================
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: litigation-case-management-service
+  title: Litigation Case Management Service
+  description: |
+    Manages claims that have escalated to legal proceedings. Tracks solicitor
+    appointments, court hearing dates, pleadings, expert witness instructions,
+    and settlement negotiations. Provides dashboards for the legal department
+    showing litigation reserve exposure and case age.
+  annotations:
+    backstage.io/source-location: url:https://github.parasol.com/parasol/litigation-case-management-service
+  tags:
+    - claims
+    - litigation
+    - legal
+    - java
+    - rest
+  links:
+    - url: https://confluence.parasol.com/display/CLAIMS/litigation-case-management-service
+      title: Internal Confluence Docs
+      icon: docs
+    - url: https://github.parasol.com/parasol/litigation-case-management-service
+      title: Source Code
+      icon: github
+spec:
+  type: service
+  lifecycle: production
+  owner: group:default/claims-engineering
+  system: claims-litigation-system
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: panel-solicitor-gateway
+  title: Panel Solicitor Gateway
+  description: |
+    SOAP-based integration gateway connecting Parasol's claims litigation
+    system to external panel law firms. Transmits claim instructions, receives
+    status updates and fee notes, and synchronises case milestones. Being
+    phased out in favour of a REST API as panel firms modernise.
+  annotations:
+    backstage.io/source-location: url:https://github.parasol.com/parasol/panel-solicitor-gateway
+  tags:
+    - claims
+    - litigation
+    - legal
+    - soap
+    - legacy
+  links:
+    - url: https://confluence.parasol.com/display/CLAIMS/panel-solicitor-gateway
+      title: Internal Confluence Docs
+      icon: docs
+    - url: https://github.parasol.com/parasol/panel-solicitor-gateway
+      title: Source Code
+      icon: github
+spec:
+  type: legacy
+  lifecycle: deprecated
+  owner: group:default/claims-engineering
+  system: claims-litigation-system
+  dependsOn:
+    - component:default/litigation-case-management-service
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: recovery-action-tracker
+  title: Recovery Action Tracker
+  description: |
+    Tracks inter-company recovery actions, subrogation demands, and
+    contribution claims against third-party insurers. Manages arbitration
+    submissions to ICA (Insurance Company Arbitration) and records
+    recoveries against the original claim reserve.
+  annotations:
+    backstage.io/source-location: url:https://github.parasol.com/parasol/recovery-action-tracker
+  tags:
+    - claims
+    - litigation
+    - recovery
+    - java
+    - rest
+  links:
+    - url: https://confluence.parasol.com/display/CLAIMS/recovery-action-tracker
+      title: Internal Confluence Docs
+      icon: docs
+    - url: https://github.parasol.com/parasol/recovery-action-tracker
+      title: Source Code
+      icon: github
+spec:
+  type: service
+  lifecycle: production
+  owner: group:default/claims-engineering
+  system: claims-litigation-system
+  dependsOn:
+    - component:default/subrogation-recovery-service

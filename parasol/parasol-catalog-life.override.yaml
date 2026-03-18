@@ -1,0 +1,529 @@
+# Parasol Insurance -- Life & Annuities Domain Components
+#
+# Covers all microservices in:
+#   life-annuities: life-policy-system, annuity-management-system,
+#                   pension-admin-system, mortality-risk-system
+
+# ===========================================================================
+# LIFE POLICY SYSTEM
+# ===========================================================================
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: life-policy-issuance-service
+  title: Life Policy Issuance Service
+  description: |
+    Issues term, whole-of-life, and universal life insurance policies after
+    underwriting acceptance. Creates the policy record with coverage amounts,
+    beneficiary designations, premium schedule, and policy loan provisions.
+    Dispatches policy documents and welcome pack to new policyholders.
+  annotations:
+    backstage.io/source-location: url:https://github.parasol.com/parasol/life-policy-issuance-service
+  tags:
+    - life-annuities
+    - life
+    - policy
+    - java
+    - rest
+  links:
+    - url: https://confluence.parasol.com/display/LIFE/life-policy-issuance-service
+      title: Internal Confluence Docs
+      icon: docs
+    - url: https://github.parasol.com/parasol/life-policy-issuance-service
+      title: Source Code
+      icon: github
+spec:
+  type: service
+  lifecycle: production
+  owner: group:default/life-annuities-engineering
+  system: life-policy-system
+  dependsOn:
+    - component:default/policy-inception-service
+    - component:default/beneficiary-management-service
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: beneficiary-management-service
+  title: Beneficiary Management Service
+  description: |
+    Manages beneficiary designations for life insurance and annuity contracts.
+    Handles primary and contingent beneficiary records, trust beneficiary
+    arrangements, and beneficiary update requests including identity
+    verification for changes to irrevocable beneficiary designations.
+  annotations:
+    backstage.io/source-location: url:https://github.parasol.com/parasol/beneficiary-management-service
+  tags:
+    - life-annuities
+    - life
+    - policy
+    - java
+    - rest
+  links:
+    - url: https://confluence.parasol.com/display/LIFE/beneficiary-management-service
+      title: Internal Confluence Docs
+      icon: docs
+    - url: https://github.parasol.com/parasol/beneficiary-management-service
+      title: Source Code
+      icon: github
+spec:
+  type: service
+  lifecycle: production
+  owner: group:default/life-annuities-engineering
+  system: life-policy-system
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: policy-loan-service
+  title: Policy Loan Service
+  description: |
+    Manages loans against the cash surrender value of whole-of-life and
+    universal life policies. Calculates available loan amount, tracks
+    outstanding loan balances and accrued interest, and processes loan
+    repayments. Triggers policy lapse if loan balance exceeds cash value.
+  annotations:
+    backstage.io/source-location: url:https://github.parasol.com/parasol/policy-loan-service
+  tags:
+    - life-annuities
+    - life
+    - policy
+    - finance
+    - java
+    - rest
+  links:
+    - url: https://confluence.parasol.com/display/LIFE/policy-loan-service
+      title: Internal Confluence Docs
+      icon: docs
+    - url: https://github.parasol.com/parasol/policy-loan-service
+      title: Source Code
+      icon: github
+spec:
+  type: service
+  lifecycle: production
+  owner: group:default/life-annuities-engineering
+  system: life-policy-system
+  dependsOn:
+    - component:default/life-policy-issuance-service
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: death-benefit-claim-service
+  title: Death Benefit Claim Service
+  description: |
+    Manages the death benefit claims process for life policies. Receives
+    death notifications, requests and validates death certificates, verifies
+    beneficiary identity, calculates the benefit payable including any
+    accelerated benefit riders, and initiates payment to beneficiaries.
+  annotations:
+    backstage.io/source-location: url:https://github.parasol.com/parasol/death-benefit-claim-service
+  tags:
+    - life-annuities
+    - life
+    - claims
+    - java
+    - rest
+  links:
+    - url: https://confluence.parasol.com/display/LIFE/death-benefit-claim-service
+      title: Internal Confluence Docs
+      icon: docs
+    - url: https://github.parasol.com/parasol/death-benefit-claim-service
+      title: Source Code
+      icon: github
+spec:
+  type: service
+  lifecycle: production
+  owner: group:default/life-annuities-engineering
+  system: life-policy-system
+  dependsOn:
+    - component:default/beneficiary-management-service
+    - component:default/bank-account-validation-service
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: life-in-force-reporting-service
+  title: Life In-Force Reporting Service
+  description: |
+    Produces in-force policy reports for the life actuarial and reinsurance
+    teams. Generates monthly extract files of active life policies with
+    coverage amounts, ages, benefit types, and reinsurance cession data
+    required for treaty bordereau and actuarial reserve calculations.
+  annotations:
+    backstage.io/source-location: url:https://github.parasol.com/parasol/life-in-force-reporting-service
+  tags:
+    - life-annuities
+    - life
+    - reporting
+    - actuarial
+    - python
+    - rest
+  links:
+    - url: https://confluence.parasol.com/display/LIFE/life-in-force-reporting-service
+      title: Internal Confluence Docs
+      icon: docs
+    - url: https://github.parasol.com/parasol/life-in-force-reporting-service
+      title: Source Code
+      icon: github
+spec:
+  type: service
+  lifecycle: production
+  owner: group:default/life-annuities-engineering
+  system: life-policy-system
+
+# ===========================================================================
+# ANNUITY MANAGEMENT SYSTEM
+# ===========================================================================
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: annuity-accumulation-service
+  title: Annuity Accumulation Service
+  description: |
+    Manages the accumulation phase of fixed and variable annuity contracts.
+    Processes premium contributions, applies guaranteed interest crediting
+    or fund unit allocation, tracks account values, and handles fund
+    transfer requests and surrender charge calculations.
+  annotations:
+    backstage.io/source-location: url:https://github.parasol.com/parasol/annuity-accumulation-service
+  tags:
+    - life-annuities
+    - annuity
+    - finance
+    - java
+    - rest
+  links:
+    - url: https://confluence.parasol.com/display/LIFE/annuity-accumulation-service
+      title: Internal Confluence Docs
+      icon: docs
+    - url: https://github.parasol.com/parasol/annuity-accumulation-service
+      title: Source Code
+      icon: github
+spec:
+  type: service
+  lifecycle: production
+  owner: group:default/life-annuities-engineering
+  system: annuity-management-system
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: annuitisation-election-service
+  title: Annuitisation Election Service
+  description: |
+    Processes annuitant elections to convert deferred annuity accumulation
+    values into income streams. Calculates annuity factor quotes for various
+    payout options (life, period-certain, joint-and-survivor) and manages
+    the irrevocable election confirmation workflow.
+  annotations:
+    backstage.io/source-location: url:https://github.parasol.com/parasol/annuitisation-election-service
+  tags:
+    - life-annuities
+    - annuity
+    - finance
+    - java
+    - rest
+  links:
+    - url: https://confluence.parasol.com/display/LIFE/annuitisation-election-service
+      title: Internal Confluence Docs
+      icon: docs
+    - url: https://github.parasol.com/parasol/annuitisation-election-service
+      title: Source Code
+      icon: github
+spec:
+  type: service
+  lifecycle: production
+  owner: group:default/life-annuities-engineering
+  system: annuity-management-system
+  dependsOn:
+    - component:default/annuity-accumulation-service
+    - component:default/mortality-table-service
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: annuity-payment-service
+  title: Annuity Payment Service
+  description: |
+    Manages recurring annuity income payments to annuitants. Processes
+    monthly, quarterly, and annual payment runs, applies cost-of-living
+    adjustments for index-linked annuities, handles death notifications
+    to suspend or redirect payments, and produces annual tax certificates.
+  annotations:
+    backstage.io/source-location: url:https://github.parasol.com/parasol/annuity-payment-service
+  tags:
+    - life-annuities
+    - annuity
+    - payments
+    - finance
+    - java
+    - rest
+  links:
+    - url: https://confluence.parasol.com/display/LIFE/annuity-payment-service
+      title: Internal Confluence Docs
+      icon: docs
+    - url: https://github.parasol.com/parasol/annuity-payment-service
+      title: Source Code
+      icon: github
+spec:
+  type: service
+  lifecycle: production
+  owner: group:default/life-annuities-engineering
+  system: annuity-management-system
+  dependsOn:
+    - component:default/annuitisation-election-service
+    - component:default/bank-account-validation-service
+
+# ===========================================================================
+# PENSION ADMINISTRATION SYSTEM
+# ===========================================================================
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: pension-member-enrolment-service
+  title: Pension Member Enrolment Service
+  description: |
+    Manages auto-enrolment and voluntary enrolment of employees into group
+    pension schemes. Handles re-enrolment cycles, opt-out recording,
+    postponement management, and employer contribution rate uploads. Meets
+    The Pensions Regulator (TPR) auto-enrolment compliance requirements.
+  annotations:
+    backstage.io/source-location: url:https://github.parasol.com/parasol/pension-member-enrolment-service
+  tags:
+    - life-annuities
+    - pension
+    - compliance
+    - java
+    - rest
+  links:
+    - url: https://confluence.parasol.com/display/LIFE/pension-member-enrolment-service
+      title: Internal Confluence Docs
+      icon: docs
+    - url: https://github.parasol.com/parasol/pension-member-enrolment-service
+      title: Source Code
+      icon: github
+spec:
+  type: service
+  lifecycle: production
+  owner: group:default/life-annuities-engineering
+  system: pension-admin-system
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: pension-contribution-processing-service
+  title: Pension Contribution Processing Service
+  description: |
+    Processes employer and employee pension contributions received from
+    payroll systems. Validates contribution amounts against scheme rules,
+    allocates contributions to member investment funds, and reconciles
+    receipts against the pension trust bank account.
+  annotations:
+    backstage.io/source-location: url:https://github.parasol.com/parasol/pension-contribution-processing-service
+  tags:
+    - life-annuities
+    - pension
+    - payments
+    - java
+    - rest
+  links:
+    - url: https://confluence.parasol.com/display/LIFE/pension-contribution-processing-service
+      title: Internal Confluence Docs
+      icon: docs
+    - url: https://github.parasol.com/parasol/pension-contribution-processing-service
+      title: Source Code
+      icon: github
+spec:
+  type: service
+  lifecycle: production
+  owner: group:default/life-annuities-engineering
+  system: pension-admin-system
+  dependsOn:
+    - component:default/pension-member-enrolment-service
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: pension-transfer-value-service
+  title: Pension Transfer Value Service
+  description: |
+    Calculates cash equivalent transfer values (CETVs) for defined benefit
+    pension scheme members and transfer values for defined contribution
+    schemes. Manages the transfer-in and transfer-out workflow including
+    safeguarded benefits advice requirements.
+  annotations:
+    backstage.io/source-location: url:https://github.parasol.com/parasol/pension-transfer-value-service
+  tags:
+    - life-annuities
+    - pension
+    - actuarial
+    - java
+    - rest
+  links:
+    - url: https://confluence.parasol.com/display/LIFE/pension-transfer-value-service
+      title: Internal Confluence Docs
+      icon: docs
+    - url: https://github.parasol.com/parasol/pension-transfer-value-service
+      title: Source Code
+      icon: github
+spec:
+  type: service
+  lifecycle: production
+  owner: group:default/life-annuities-engineering
+  system: pension-admin-system
+  dependsOn:
+    - component:default/mortality-table-service
+
+# ===========================================================================
+# MORTALITY & MORBIDITY RISK SYSTEM
+# ===========================================================================
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: life-underwriting-engine-service
+  title: Life Underwriting Engine Service
+  description: |
+    Applies Parasol's life underwriting guidelines to new applications.
+    Evaluates medical history, occupational hazards, foreign travel, and
+    lifestyle factors to produce a standard, rated, or declined decision.
+    Integrates with medical evidence providers for non-medical and full
+    medical underwriting workflows.
+  annotations:
+    backstage.io/source-location: url:https://github.parasol.com/parasol/life-underwriting-engine-service
+  tags:
+    - life-annuities
+    - underwriting
+    - mortality
+    - java
+    - rest
+  links:
+    - url: https://confluence.parasol.com/display/LIFE/life-underwriting-engine-service
+      title: Internal Confluence Docs
+      icon: docs
+    - url: https://github.parasol.com/parasol/life-underwriting-engine-service
+      title: Source Code
+      icon: github
+spec:
+  type: service
+  lifecycle: production
+  owner: group:default/life-annuities-engineering
+  system: mortality-risk-system
+  dependsOn:
+    - component:default/mortality-table-service
+    - component:default/reinsurance-binding-authority-service
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: mortality-table-service
+  title: Mortality Table Service
+  description: |
+    Provides access to the actuarial mortality and morbidity tables used
+    across the life and annuities business. Manages CMI mortality improvement
+    projections, standard table versions, and Parasol's own experience-based
+    table overlays derived from the life in-force portfolio.
+  annotations:
+    backstage.io/source-location: url:https://github.parasol.com/parasol/mortality-table-service
+  tags:
+    - life-annuities
+    - actuarial
+    - mortality
+    - python
+    - rest
+  links:
+    - url: https://confluence.parasol.com/display/LIFE/mortality-table-service
+      title: Internal Confluence Docs
+      icon: docs
+    - url: https://github.parasol.com/parasol/mortality-table-service
+      title: Source Code
+      icon: github
+spec:
+  type: service
+  lifecycle: production
+  owner: group:default/life-annuities-engineering
+  system: mortality-risk-system
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: reinsurance-binding-authority-service
+  title: Reinsurance Binding Authority Service
+  description: |
+    Manages the automatic binding authority limits agreed with life
+    reinsurers. Checks each new life application against treaty automatic
+    binding limits by age, sum assured, and benefit type. Flags cases
+    that require facultative reinsurance submission before cover is issued.
+  annotations:
+    backstage.io/source-location: url:https://github.parasol.com/parasol/reinsurance-binding-authority-service
+  tags:
+    - life-annuities
+    - reinsurance
+    - underwriting
+    - java
+    - rest
+  links:
+    - url: https://confluence.parasol.com/display/LIFE/reinsurance-binding-authority-service
+      title: Internal Confluence Docs
+      icon: docs
+    - url: https://github.parasol.com/parasol/reinsurance-binding-authority-service
+      title: Source Code
+      icon: github
+spec:
+  type: service
+  lifecycle: production
+  owner: group:default/life-annuities-engineering
+  system: mortality-risk-system
+  dependsOn:
+    - component:default/mortality-table-service
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: predictive-mortality-model-service
+  title: Predictive Mortality Model Service
+  description: |
+    Experimental ML service that augments traditional underwriting with
+    predictive mortality models trained on Parasol's own claims experience
+    and third-party lifestyle data. Currently in A/B testing against the
+    rules-based life underwriting engine for new-business decisions.
+  annotations:
+    backstage.io/source-location: url:https://github.parasol.com/parasol/predictive-mortality-model-service
+  tags:
+    - life-annuities
+    - actuarial
+    - mortality
+    - machine-learning
+    - python
+    - experimental
+  links:
+    - url: https://confluence.parasol.com/display/LIFE/predictive-mortality-model-service
+      title: Internal Confluence Docs
+      icon: docs
+    - url: https://github.parasol.com/parasol/predictive-mortality-model-service
+      title: Source Code
+      icon: github
+spec:
+  type: service
+  lifecycle: experimental
+  owner: group:default/life-annuities-engineering
+  system: mortality-risk-system

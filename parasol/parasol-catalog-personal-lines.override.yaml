@@ -1,0 +1,665 @@
+# Parasol Insurance -- Personal Lines Domain Components
+#
+# Covers all microservices in:
+#   personal-auto:     auto-policy-system, telematics-system, vehicle-data-system
+#   personal-property: property-policy-system, property-valuation-system, flood-risk-system
+
+# ===========================================================================
+# AUTO POLICY SYSTEM
+# ===========================================================================
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: auto-policy-issuance-service
+  title: Auto Policy Issuance Service
+  description: |
+    Issues personal motor insurance policies after quote acceptance and bind
+    confirmation. Assigns policy numbers, writes coverage schedules including
+    named drivers and vehicle details, and dispatches the policy to the
+    document delivery service for customer dispatch.
+  annotations:
+    backstage.io/source-location: url:https://github.parasol.com/parasol/auto-policy-issuance-service
+  tags:
+    - personal-auto
+    - motor
+    - policy
+    - java
+    - rest
+  links:
+    - url: https://confluence.parasol.com/display/PERSONAL/auto-policy-issuance-service
+      title: Internal Confluence Docs
+      icon: docs
+    - url: https://github.parasol.com/parasol/auto-policy-issuance-service
+      title: Source Code
+      icon: github
+spec:
+  type: service
+  lifecycle: production
+  owner: group:default/personal-lines-engineering
+  system: auto-policy-system
+  dependsOn:
+    - component:default/policy-inception-service
+    - component:default/vehicle-data-lookup-service
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: named-driver-management-service
+  title: Named Driver Management Service
+  description: |
+    Manages the named driver schedule for personal auto policies. Handles
+    driver additions, removals, and modifications including occupation, licence
+    history, and claims record updates. Re-rates the policy on each change and
+    triggers endorsement processing.
+  annotations:
+    backstage.io/source-location: url:https://github.parasol.com/parasol/named-driver-management-service
+  tags:
+    - personal-auto
+    - motor
+    - policy
+    - java
+    - rest
+  links:
+    - url: https://confluence.parasol.com/display/PERSONAL/named-driver-management-service
+      title: Internal Confluence Docs
+      icon: docs
+    - url: https://github.parasol.com/parasol/named-driver-management-service
+      title: Source Code
+      icon: github
+spec:
+  type: service
+  lifecycle: production
+  owner: group:default/personal-lines-engineering
+  system: auto-policy-system
+  dependsOn:
+    - component:default/endorsement-request-service
+    - component:default/dvla-driver-check-service
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: dvla-driver-check-service
+  title: DVLA Driver Check Service
+  description: |
+    Integrates with the DVLA My Licence API to retrieve driving licence
+    endorsements and penalty points for named drivers on personal motor
+    policies. Results feed into the underwriting eligibility check and
+    no-claims discount validation at renewal.
+  annotations:
+    backstage.io/source-location: url:https://github.parasol.com/parasol/dvla-driver-check-service
+  tags:
+    - personal-auto
+    - motor
+    - integration
+    - java
+    - rest
+  links:
+    - url: https://confluence.parasol.com/display/PERSONAL/dvla-driver-check-service
+      title: Internal Confluence Docs
+      icon: docs
+    - url: https://github.parasol.com/parasol/dvla-driver-check-service
+      title: Source Code
+      icon: github
+spec:
+  type: service
+  lifecycle: production
+  owner: group:default/personal-lines-engineering
+  system: auto-policy-system
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: no-claims-discount-service
+  title: No-Claims Discount Service
+  description: |
+    Maintains and validates the no-claims discount (NCD) entitlement for
+    personal motor policyholders. Tracks NCD years, applies discounts in
+    the rating engine, handles NCD protection add-ons, and manages NCD
+    surrender following an at-fault claim.
+  annotations:
+    backstage.io/source-location: url:https://github.parasol.com/parasol/no-claims-discount-service
+  tags:
+    - personal-auto
+    - motor
+    - rating
+    - java
+    - rest
+  links:
+    - url: https://confluence.parasol.com/display/PERSONAL/no-claims-discount-service
+      title: Internal Confluence Docs
+      icon: docs
+    - url: https://github.parasol.com/parasol/no-claims-discount-service
+      title: Source Code
+      icon: github
+spec:
+  type: service
+  lifecycle: production
+  owner: group:default/personal-lines-engineering
+  system: auto-policy-system
+  dependsOn:
+    - component:default/premium-rating-service
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: motor-mta-legacy-adapter
+  title: Motor MTA Legacy Adapter
+  description: |
+    SOAP-based legacy adapter bridging the modern auto policy system to the
+    previous-generation Motor Transaction Application (MTA) mainframe. Enables
+    the migration of historical motor policy records and supports policy lookup
+    for pre-2018 policies not yet migrated to the new platform.
+  annotations:
+    backstage.io/source-location: url:https://github.parasol.com/parasol/motor-mta-legacy-adapter
+  tags:
+    - personal-auto
+    - motor
+    - legacy
+    - soap
+    - mainframe
+  links:
+    - url: https://confluence.parasol.com/display/PERSONAL/motor-mta-legacy-adapter
+      title: Internal Confluence Docs
+      icon: docs
+    - url: https://github.parasol.com/parasol/motor-mta-legacy-adapter
+      title: Source Code
+      icon: github
+spec:
+  type: legacy
+  lifecycle: deprecated
+  owner: group:default/personal-lines-engineering
+  system: auto-policy-system
+
+# ===========================================================================
+# TELEMATICS SYSTEM
+# ===========================================================================
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: telematics-data-ingestion-service
+  title: Telematics Data Ingestion Service
+  description: |
+    Ingests high-frequency telematics data streams from in-vehicle black
+    boxes and the Parasol mobile app. Handles connection management, data
+    deduplication, and buffering before forwarding to the trip scoring
+    pipeline. Processes approximately 2 million events per hour at peak.
+  annotations:
+    backstage.io/source-location: url:https://github.parasol.com/parasol/telematics-data-ingestion-service
+  tags:
+    - personal-auto
+    - telematics
+    - ubi
+    - streaming
+    - java
+    - kafka
+  links:
+    - url: https://confluence.parasol.com/display/PERSONAL/telematics-data-ingestion-service
+      title: Internal Confluence Docs
+      icon: docs
+    - url: https://github.parasol.com/parasol/telematics-data-ingestion-service
+      title: Source Code
+      icon: github
+spec:
+  type: service
+  lifecycle: production
+  owner: group:default/personal-lines-engineering
+  system: telematics-system
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: trip-scoring-service
+  title: Trip Scoring Service
+  description: |
+    Analyses individual driving trips from the telematics data stream to
+    produce per-trip safety scores across dimensions including speed,
+    acceleration, braking, cornering, and time-of-day risk. Scores are
+    aggregated into a rolling driver score that feeds the UBI pricing model.
+  annotations:
+    backstage.io/source-location: url:https://github.parasol.com/parasol/trip-scoring-service
+  tags:
+    - personal-auto
+    - telematics
+    - ubi
+    - machine-learning
+    - python
+  links:
+    - url: https://confluence.parasol.com/display/PERSONAL/trip-scoring-service
+      title: Internal Confluence Docs
+      icon: docs
+    - url: https://github.parasol.com/parasol/trip-scoring-service
+      title: Source Code
+      icon: github
+spec:
+  type: service
+  lifecycle: production
+  owner: group:default/personal-lines-engineering
+  system: telematics-system
+  dependsOn:
+    - component:default/telematics-data-ingestion-service
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: ubi-premium-adjustment-service
+  title: UBI Premium Adjustment Service
+  description: |
+    Calculates usage-based insurance (UBI) premium adjustments based on
+    accumulated driver scores. Triggers mid-term pricing adjustments for
+    pay-how-you-drive (PHYD) policies and generates driver feedback reports
+    displayed in the customer mobile app.
+  annotations:
+    backstage.io/source-location: url:https://github.parasol.com/parasol/ubi-premium-adjustment-service
+  tags:
+    - personal-auto
+    - telematics
+    - ubi
+    - rating
+    - python
+    - rest
+  links:
+    - url: https://confluence.parasol.com/display/PERSONAL/ubi-premium-adjustment-service
+      title: Internal Confluence Docs
+      icon: docs
+    - url: https://github.parasol.com/parasol/ubi-premium-adjustment-service
+      title: Source Code
+      icon: github
+spec:
+  type: service
+  lifecycle: production
+  owner: group:default/personal-lines-engineering
+  system: telematics-system
+  dependsOn:
+    - component:default/trip-scoring-service
+    - component:default/premium-rating-service
+
+# ===========================================================================
+# VEHICLE DATA SYSTEM
+# ===========================================================================
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: vehicle-data-lookup-service
+  title: Vehicle Data Lookup Service
+  description: |
+    Provides vehicle specification data by registration number or VIN.
+    Integrates with the DVLA VES API and HPI vehicle data services to return
+    make, model, engine size, fuel type, security rating, and ABI group code
+    used in motor underwriting and rating.
+  annotations:
+    backstage.io/source-location: url:https://github.parasol.com/parasol/vehicle-data-lookup-service
+  tags:
+    - personal-auto
+    - vehicle-data
+    - integration
+    - java
+    - rest
+  links:
+    - url: https://confluence.parasol.com/display/PERSONAL/vehicle-data-lookup-service
+      title: Internal Confluence Docs
+      icon: docs
+    - url: https://github.parasol.com/parasol/vehicle-data-lookup-service
+      title: Source Code
+      icon: github
+spec:
+  type: service
+  lifecycle: production
+  owner: group:default/personal-lines-engineering
+  system: vehicle-data-system
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: vehicle-theft-risk-service
+  title: Vehicle Theft Risk Service
+  description: |
+    Calculates theft risk scores for vehicles based on DVLA theft statistics,
+    manufacturer security ratings, and Thatcham Research data. Scores are
+    used as underwriting factors and to determine security device requirements
+    as a condition of cover.
+  annotations:
+    backstage.io/source-location: url:https://github.parasol.com/parasol/vehicle-theft-risk-service
+  tags:
+    - personal-auto
+    - vehicle-data
+    - risk
+    - python
+    - rest
+  links:
+    - url: https://confluence.parasol.com/display/PERSONAL/vehicle-theft-risk-service
+      title: Internal Confluence Docs
+      icon: docs
+    - url: https://github.parasol.com/parasol/vehicle-theft-risk-service
+      title: Source Code
+      icon: github
+spec:
+  type: service
+  lifecycle: production
+  owner: group:default/personal-lines-engineering
+  system: vehicle-data-system
+  dependsOn:
+    - component:default/vehicle-data-lookup-service
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: classic-vehicle-registry-service
+  title: Classic Vehicle Registry Service
+  description: |
+    Maintains the Parasol internal registry of agreed-value classic and
+    collector vehicles. Stores vehicle descriptions, condition reports,
+    appraisal documents, and agreed values negotiated at policy inception
+    for classic car and motorcycle policies.
+  annotations:
+    backstage.io/source-location: url:https://github.parasol.com/parasol/classic-vehicle-registry-service
+  tags:
+    - personal-auto
+    - vehicle-data
+    - classic-car
+    - java
+    - rest
+  links:
+    - url: https://confluence.parasol.com/display/PERSONAL/classic-vehicle-registry-service
+      title: Internal Confluence Docs
+      icon: docs
+    - url: https://github.parasol.com/parasol/classic-vehicle-registry-service
+      title: Source Code
+      icon: github
+spec:
+  type: service
+  lifecycle: production
+  owner: group:default/personal-lines-engineering
+  system: vehicle-data-system
+
+# ===========================================================================
+# PROPERTY POLICY SYSTEM
+# ===========================================================================
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: property-policy-issuance-service
+  title: Property Policy Issuance Service
+  description: |
+    Issues home, renters, and landlord insurance policies after quote binding.
+    Writes buildings and contents coverage schedules, records property address
+    and construction details, and dispatches policy documents. Supports
+    multiple property locations under a single landlord policy.
+  annotations:
+    backstage.io/source-location: url:https://github.parasol.com/parasol/property-policy-issuance-service
+  tags:
+    - personal-property
+    - home
+    - policy
+    - java
+    - rest
+  links:
+    - url: https://confluence.parasol.com/display/PERSONAL/property-policy-issuance-service
+      title: Internal Confluence Docs
+      icon: docs
+    - url: https://github.parasol.com/parasol/property-policy-issuance-service
+      title: Source Code
+      icon: github
+spec:
+  type: service
+  lifecycle: production
+  owner: group:default/personal-lines-engineering
+  system: property-policy-system
+  dependsOn:
+    - component:default/policy-inception-service
+    - component:default/property-valuation-service
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: high-value-item-schedule-service
+  title: High-Value Item Schedule Service
+  description: |
+    Manages the scheduling of individually listed high-value items under
+    home contents policies: jewellery, art, antiques, sports equipment,
+    and musical instruments. Validates agreed values, tracks appraisal
+    document requirements, and applies correct premium loadings.
+  annotations:
+    backstage.io/source-location: url:https://github.parasol.com/parasol/high-value-item-schedule-service
+  tags:
+    - personal-property
+    - home
+    - policy
+    - java
+    - rest
+  links:
+    - url: https://confluence.parasol.com/display/PERSONAL/high-value-item-schedule-service
+      title: Internal Confluence Docs
+      icon: docs
+    - url: https://github.parasol.com/parasol/high-value-item-schedule-service
+      title: Source Code
+      icon: github
+spec:
+  type: service
+  lifecycle: production
+  owner: group:default/personal-lines-engineering
+  system: property-policy-system
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: mortgagee-notification-service
+  title: Mortgagee Notification Service
+  description: |
+    Notifies mortgage lenders (mortgagees) of policy changes affecting their
+    insured interest in a property. Sends endorsement notices, cancellation
+    warnings, and renewal confirmations to lenders in accordance with their
+    loss-payee clause requirements.
+  annotations:
+    backstage.io/source-location: url:https://github.parasol.com/parasol/mortgagee-notification-service
+  tags:
+    - personal-property
+    - home
+    - notifications
+    - integration
+    - java
+    - rest
+  links:
+    - url: https://confluence.parasol.com/display/PERSONAL/mortgagee-notification-service
+      title: Internal Confluence Docs
+      icon: docs
+    - url: https://github.parasol.com/parasol/mortgagee-notification-service
+      title: Source Code
+      icon: github
+spec:
+  type: service
+  lifecycle: production
+  owner: group:default/personal-lines-engineering
+  system: property-policy-system
+
+# ===========================================================================
+# PROPERTY VALUATION SYSTEM
+# ===========================================================================
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: property-valuation-service
+  title: Property Rebuild Cost Valuation Service
+  description: |
+    Calculates automated buildings rebuild cost estimates using property
+    data from Ordnance Survey AddressBase, Land Registry, and BCIS rebuild
+    cost indices. Reduces underinsurance by recommending appropriate sum
+    insured for buildings at quote and renewal.
+  annotations:
+    backstage.io/source-location: url:https://github.parasol.com/parasol/property-valuation-service
+  tags:
+    - personal-property
+    - home
+    - valuation
+    - python
+    - rest
+  links:
+    - url: https://confluence.parasol.com/display/PERSONAL/property-valuation-service
+      title: Internal Confluence Docs
+      icon: docs
+    - url: https://github.parasol.com/parasol/property-valuation-service
+      title: Source Code
+      icon: github
+spec:
+  type: service
+  lifecycle: production
+  owner: group:default/personal-lines-engineering
+  system: property-valuation-system
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: property-data-enrichment-service
+  title: Property Data Enrichment Service
+  description: |
+    Enriches property risk data with attributes from third-party sources:
+    construction type, roof type, listed building status, conservation area
+    restrictions, previous insurance claims history from CUE, and local
+    crime statistics for contents rating.
+  annotations:
+    backstage.io/source-location: url:https://github.parasol.com/parasol/property-data-enrichment-service
+  tags:
+    - personal-property
+    - home
+    - data-enrichment
+    - java
+    - rest
+  links:
+    - url: https://confluence.parasol.com/display/PERSONAL/property-data-enrichment-service
+      title: Internal Confluence Docs
+      icon: docs
+    - url: https://github.parasol.com/parasol/property-data-enrichment-service
+      title: Source Code
+      icon: github
+spec:
+  type: service
+  lifecycle: production
+  owner: group:default/personal-lines-engineering
+  system: property-valuation-system
+  dependsOn:
+    - component:default/property-valuation-service
+
+# ===========================================================================
+# FLOOD & SUBSIDENCE RISK SYSTEM
+# ===========================================================================
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: flood-risk-assessment-service
+  title: Flood Risk Assessment Service
+  description: |
+    Assesses flood risk for property addresses using Environment Agency flood
+    zone maps, historical flood event records, and terrain elevation data.
+    Returns flood zone classification and estimated return period for use in
+    underwriting eligibility checks and property premium rating.
+  annotations:
+    backstage.io/source-location: url:https://github.parasol.com/parasol/flood-risk-assessment-service
+  tags:
+    - personal-property
+    - home
+    - flood
+    - risk
+    - python
+    - rest
+  links:
+    - url: https://confluence.parasol.com/display/PERSONAL/flood-risk-assessment-service
+      title: Internal Confluence Docs
+      icon: docs
+    - url: https://github.parasol.com/parasol/flood-risk-assessment-service
+      title: Source Code
+      icon: github
+spec:
+  type: service
+  lifecycle: production
+  owner: group:default/personal-lines-engineering
+  system: flood-risk-system
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: subsidence-risk-assessment-service
+  title: Subsidence & Ground Movement Risk Service
+  description: |
+    Evaluates subsidence and ground movement risk based on geological survey
+    data, soil shrink-swell classification, proximity to mining areas, and
+    tree root distance analysis. High-risk properties are referred to senior
+    underwriters before cover is offered.
+  annotations:
+    backstage.io/source-location: url:https://github.parasol.com/parasol/subsidence-risk-assessment-service
+  tags:
+    - personal-property
+    - home
+    - subsidence
+    - risk
+    - python
+    - rest
+  links:
+    - url: https://confluence.parasol.com/display/PERSONAL/subsidence-risk-assessment-service
+      title: Internal Confluence Docs
+      icon: docs
+    - url: https://github.parasol.com/parasol/subsidence-risk-assessment-service
+      title: Source Code
+      icon: github
+spec:
+  type: service
+  lifecycle: production
+  owner: group:default/personal-lines-engineering
+  system: flood-risk-system
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: catastrophe-exposure-monitor
+  title: Catastrophe Exposure Monitor
+  description: |
+    Tracks Parasol's aggregate property exposure to catastrophe perils by
+    cresta zone and peril type. Monitors accumulation against reinsurance
+    programme limits and alerts the catastrophe management team when
+    aggregate exposure approaches treaty capacity thresholds.
+  annotations:
+    backstage.io/source-location: url:https://github.parasol.com/parasol/catastrophe-exposure-monitor
+  tags:
+    - personal-property
+    - catastrophe
+    - risk
+    - reinsurance
+    - python
+    - rest
+  links:
+    - url: https://confluence.parasol.com/display/PERSONAL/catastrophe-exposure-monitor
+      title: Internal Confluence Docs
+      icon: docs
+    - url: https://github.parasol.com/parasol/catastrophe-exposure-monitor
+      title: Source Code
+      icon: github
+spec:
+  type: service
+  lifecycle: production
+  owner: group:default/personal-lines-engineering
+  system: flood-risk-system
+  dependsOn:
+    - component:default/exposure-accumulation-service

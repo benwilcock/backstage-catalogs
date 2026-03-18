@@ -1,0 +1,1303 @@
+# Enterprise Software Catalog - Platform Infrastructure & Observability
+# 35 components across 8 systems. All projects are active with OSI-approved licenses.
+
+# =============================================================================
+# CONTAINER ORCHESTRATION (5)
+# =============================================================================
+
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: kubernetes
+  title: Kubernetes
+  description: |
+    The de facto standard for container orchestration. Kubernetes automates
+    deploying, scaling, and managing containerized applications. A CNCF
+    graduated project that forms the foundation of modern cloud infrastructure.
+  annotations:
+    github.com/project-slug: kubernetes/kubernetes
+    backstage.io/source-location: url:https://github.com/kubernetes/kubernetes
+  tags:
+    - container
+    - orchestration
+    - cloud-native
+    - go
+    - cncf
+  links:
+    - url: https://kubernetes.io/docs/
+      title: Documentation
+      icon: docs
+    - url: https://github.com/kubernetes/kubernetes
+      title: GitHub Repository
+      icon: github
+    - url: https://kubernetes.io/
+      title: Website
+      icon: web
+spec:
+  type: service
+  lifecycle: production
+  owner: group:default/platform-engineering
+  system: container-orchestration
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: containerd
+  title: containerd
+  description: |
+    An industry-standard container runtime with an emphasis on simplicity,
+    robustness, and portability. containerd is the default runtime for
+    Kubernetes and Docker, managing the complete container lifecycle.
+  annotations:
+    github.com/project-slug: containerd/containerd
+    backstage.io/source-location: url:https://github.com/containerd/containerd
+  tags:
+    - container
+    - runtime
+    - cloud-native
+    - go
+    - cncf
+  links:
+    - url: https://containerd.io/docs/
+      title: Documentation
+      icon: docs
+    - url: https://github.com/containerd/containerd
+      title: GitHub Repository
+      icon: github
+    - url: https://containerd.io/
+      title: Website
+      icon: web
+spec:
+  type: service
+  lifecycle: production
+  owner: group:default/platform-engineering
+  system: container-orchestration
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: podman
+  title: Podman
+  description: |
+    A daemonless, open source container engine for developing, managing, and
+    running OCI containers. Podman provides a Docker-compatible CLI and can
+    run containers as rootless for improved security.
+  annotations:
+    github.com/project-slug: containers/podman
+    backstage.io/source-location: url:https://github.com/containers/podman
+  tags:
+    - container
+    - runtime
+    - daemonless
+    - rootless
+    - go
+    - red-hat
+  links:
+    - url: https://podman.io/docs
+      title: Documentation
+      icon: docs
+    - url: https://github.com/containers/podman
+      title: GitHub Repository
+      icon: github
+    - url: https://podman.io/
+      title: Website
+      icon: web
+spec:
+  type: service
+  lifecycle: production
+  owner: group:default/platform-engineering
+  system: container-orchestration
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: helm
+  title: Helm
+  description: |
+    The package manager for Kubernetes. Helm helps define, install, and upgrade
+    complex Kubernetes applications using charts -- reusable, versioned,
+    shareable packages of pre-configured Kubernetes resources.
+  annotations:
+    github.com/project-slug: helm/helm
+    backstage.io/source-location: url:https://github.com/helm/helm
+  tags:
+    - kubernetes
+    - package-manager
+    - go
+    - cncf
+  links:
+    - url: https://helm.sh/docs/
+      title: Documentation
+      icon: docs
+    - url: https://github.com/helm/helm
+      title: GitHub Repository
+      icon: github
+    - url: https://helm.sh/
+      title: Website
+      icon: web
+spec:
+  type: tool
+  lifecycle: production
+  owner: group:default/platform-engineering
+  system: container-orchestration
+  dependsOn:
+    - component:default/kubernetes
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: k3s
+  title: k3s
+  description: |
+    A lightweight, certified Kubernetes distribution built for IoT, edge
+    computing, and resource-constrained environments. k3s packages Kubernetes
+    into a single binary under 100MB with reduced memory footprint.
+  annotations:
+    github.com/project-slug: k3s-io/k3s
+    backstage.io/source-location: url:https://github.com/k3s-io/k3s
+  tags:
+    - kubernetes
+    - lightweight
+    - edge
+    - iot
+    - go
+    - cncf
+  links:
+    - url: https://docs.k3s.io/
+      title: Documentation
+      icon: docs
+    - url: https://github.com/k3s-io/k3s
+      title: GitHub Repository
+      icon: github
+    - url: https://k3s.io/
+      title: Website
+      icon: web
+spec:
+  type: service
+  lifecycle: production
+  owner: group:default/platform-engineering
+  system: container-orchestration
+
+# =============================================================================
+# SERVICE MESH & NETWORKING (5)
+# =============================================================================
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: istio
+  title: Istio
+  description: |
+    An open source service mesh that layers transparently onto existing distributed
+    applications. Istio provides traffic management, security, and observability
+    for microservice architectures without changing application code.
+  annotations:
+    github.com/project-slug: istio/istio
+    backstage.io/source-location: url:https://github.com/istio/istio
+  tags:
+    - service-mesh
+    - networking
+    - cloud-native
+    - go
+    - cncf
+  links:
+    - url: https://istio.io/latest/docs/
+      title: Documentation
+      icon: docs
+    - url: https://github.com/istio/istio
+      title: GitHub Repository
+      icon: github
+    - url: https://istio.io/
+      title: Website
+      icon: web
+spec:
+  type: service
+  lifecycle: production
+  owner: group:default/infrastructure-team
+  system: service-mesh-networking
+  dependsOn:
+    - component:default/envoy-proxy
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: linkerd
+  title: Linkerd
+  description: |
+    An ultralight, security-first service mesh for Kubernetes. Linkerd adds
+    mutual TLS, observability, and reliability features with minimal resource
+    overhead. A CNCF graduated project focused on simplicity and performance.
+  annotations:
+    github.com/project-slug: linkerd/linkerd2
+    backstage.io/source-location: url:https://github.com/linkerd/linkerd2
+  tags:
+    - service-mesh
+    - networking
+    - security
+    - go
+    - rust
+    - cncf
+  links:
+    - url: https://linkerd.io/2/overview/
+      title: Documentation
+      icon: docs
+    - url: https://github.com/linkerd/linkerd2
+      title: GitHub Repository
+      icon: github
+    - url: https://linkerd.io/
+      title: Website
+      icon: web
+spec:
+  type: service
+  lifecycle: production
+  owner: group:default/infrastructure-team
+  system: service-mesh-networking
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: envoy-proxy
+  title: Envoy Proxy
+  description: |
+    A high-performance edge, middle, and service proxy designed for cloud-native
+    applications. Envoy is the data plane for Istio and many other service meshes.
+    A CNCF graduated project powering modern L7 networking.
+  annotations:
+    github.com/project-slug: envoyproxy/envoy
+    backstage.io/source-location: url:https://github.com/envoyproxy/envoy
+  tags:
+    - proxy
+    - networking
+    - cloud-native
+    - cpp
+    - cncf
+  links:
+    - url: https://www.envoyproxy.io/docs
+      title: Documentation
+      icon: docs
+    - url: https://github.com/envoyproxy/envoy
+      title: GitHub Repository
+      icon: github
+    - url: https://www.envoyproxy.io/
+      title: Website
+      icon: web
+spec:
+  type: service
+  lifecycle: production
+  owner: group:default/infrastructure-team
+  system: service-mesh-networking
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: cilium
+  title: Cilium
+  description: |
+    An eBPF-based networking, security, and observability solution for Kubernetes.
+    Cilium provides high-performance networking with transparent encryption,
+    network policy enforcement, and deep visibility. A CNCF graduated project.
+  annotations:
+    github.com/project-slug: cilium/cilium
+    backstage.io/source-location: url:https://github.com/cilium/cilium
+  tags:
+    - networking
+    - security
+    - ebpf
+    - kubernetes
+    - go
+    - cncf
+  links:
+    - url: https://docs.cilium.io/
+      title: Documentation
+      icon: docs
+    - url: https://github.com/cilium/cilium
+      title: GitHub Repository
+      icon: github
+    - url: https://cilium.io/
+      title: Website
+      icon: web
+spec:
+  type: service
+  lifecycle: production
+  owner: group:default/infrastructure-team
+  system: service-mesh-networking
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: calico
+  title: Calico
+  description: |
+    A networking and network security solution for containers, virtual machines,
+    and native host-based workloads. Calico provides a full networking stack
+    with network policy enforcement for Kubernetes clusters.
+  annotations:
+    github.com/project-slug: projectcalico/calico
+    backstage.io/source-location: url:https://github.com/projectcalico/calico
+  tags:
+    - networking
+    - security
+    - network-policy
+    - kubernetes
+    - go
+  links:
+    - url: https://docs.tigera.io/calico/latest/about/
+      title: Documentation
+      icon: docs
+    - url: https://github.com/projectcalico/calico
+      title: GitHub Repository
+      icon: github
+    - url: https://www.tigera.io/project-calico/
+      title: Website
+      icon: web
+spec:
+  type: service
+  lifecycle: production
+  owner: group:default/infrastructure-team
+  system: service-mesh-networking
+
+# =============================================================================
+# API GATEWAYS & INGRESS (5)
+# =============================================================================
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: kong
+  title: Kong Gateway
+  description: |
+    A cloud-native, platform-agnostic API gateway built on top of Nginx and
+    OpenResty. Kong provides traffic control, authentication, rate limiting,
+    and plugin extensibility for managing APIs at enterprise scale.
+  annotations:
+    github.com/project-slug: Kong/kong
+    backstage.io/source-location: url:https://github.com/Kong/kong
+  tags:
+    - api-gateway
+    - ingress
+    - lua
+    - cloud-native
+  links:
+    - url: https://docs.konghq.com/
+      title: Documentation
+      icon: docs
+    - url: https://github.com/Kong/kong
+      title: GitHub Repository
+      icon: github
+    - url: https://konghq.com/
+      title: Website
+      icon: web
+spec:
+  type: service
+  lifecycle: production
+  owner: group:default/platform-engineering
+  system: api-gateways
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: apache-apisix
+  title: Apache APISIX
+  description: |
+    A dynamic, real-time, high-performance cloud-native API gateway. APISIX
+    provides rich traffic management features like load balancing, dynamic
+    upstream, canary release, and fine-grained routing.
+  annotations:
+    github.com/project-slug: apache/apisix
+    backstage.io/source-location: url:https://github.com/apache/apisix
+  tags:
+    - api-gateway
+    - ingress
+    - cloud-native
+    - lua
+  links:
+    - url: https://apisix.apache.org/docs/
+      title: Documentation
+      icon: docs
+    - url: https://github.com/apache/apisix
+      title: GitHub Repository
+      icon: github
+    - url: https://apisix.apache.org/
+      title: Website
+      icon: web
+spec:
+  type: service
+  lifecycle: production
+  owner: group:default/platform-engineering
+  system: api-gateways
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: traefik
+  title: Traefik
+  description: |
+    A modern HTTP reverse proxy and load balancer that makes deploying
+    microservices easy. Traefik integrates with container orchestrators and
+    automatically discovers services with native Let's Encrypt support.
+  annotations:
+    github.com/project-slug: traefik/traefik
+    backstage.io/source-location: url:https://github.com/traefik/traefik
+  tags:
+    - api-gateway
+    - ingress
+    - reverse-proxy
+    - go
+  links:
+    - url: https://doc.traefik.io/traefik/
+      title: Documentation
+      icon: docs
+    - url: https://github.com/traefik/traefik
+      title: GitHub Repository
+      icon: github
+    - url: https://traefik.io/
+      title: Website
+      icon: web
+spec:
+  type: service
+  lifecycle: production
+  owner: group:default/platform-engineering
+  system: api-gateways
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: haproxy
+  title: HAProxy
+  description: |
+    A reliable, high-performance TCP/HTTP load balancer and proxy server.
+    HAProxy is the world's fastest and most widely used open source load
+    balancer, powering critical infrastructure at major enterprises globally.
+  annotations:
+    github.com/project-slug: haproxy/haproxy
+    backstage.io/source-location: url:https://github.com/haproxy/haproxy
+  tags:
+    - load-balancer
+    - proxy
+    - high-availability
+    - c
+  links:
+    - url: https://docs.haproxy.org/
+      title: Documentation
+      icon: docs
+    - url: https://github.com/haproxy/haproxy
+      title: GitHub Repository
+      icon: github
+    - url: https://www.haproxy.org/
+      title: Website
+      icon: web
+spec:
+  type: service
+  lifecycle: production
+  owner: group:default/platform-engineering
+  system: api-gateways
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: emissary-ingress
+  title: Emissary-Ingress
+  description: |
+    A Kubernetes-native API gateway built on Envoy Proxy. Emissary provides
+    self-service publishing, authentication, rate limiting, and TLS termination
+    for Kubernetes ingress. A CNCF incubating project.
+  annotations:
+    github.com/project-slug: emissary-ingress/emissary
+    backstage.io/source-location: url:https://github.com/emissary-ingress/emissary
+  tags:
+    - api-gateway
+    - ingress
+    - kubernetes
+    - envoy
+    - go
+    - cncf
+  links:
+    - url: https://www.getambassador.io/docs/emissary/
+      title: Documentation
+      icon: docs
+    - url: https://github.com/emissary-ingress/emissary
+      title: GitHub Repository
+      icon: github
+    - url: https://www.getambassador.io/
+      title: Website
+      icon: web
+spec:
+  type: service
+  lifecycle: production
+  owner: group:default/platform-engineering
+  system: api-gateways
+  dependsOn:
+    - component:default/envoy-proxy
+
+# =============================================================================
+# WEB SERVERS & REVERSE PROXIES (5)
+# =============================================================================
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: nginx
+  title: Nginx
+  description: |
+    A high-performance HTTP server and reverse proxy, as well as an IMAP/POP3
+    proxy server. Nginx powers a large percentage of the world's web sites,
+    known for its stability, rich feature set, and low resource consumption.
+  annotations:
+    github.com/project-slug: nginx/nginx
+    backstage.io/source-location: url:https://github.com/nginx/nginx
+  tags:
+    - web-server
+    - reverse-proxy
+    - load-balancer
+    - c
+  links:
+    - url: https://nginx.org/en/docs/
+      title: Documentation
+      icon: docs
+    - url: https://github.com/nginx/nginx
+      title: GitHub Repository
+      icon: github
+    - url: https://nginx.org/
+      title: Website
+      icon: web
+spec:
+  type: service
+  lifecycle: production
+  owner: group:default/infrastructure-team
+  system: web-servers
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: apache-httpd
+  title: Apache HTTP Server
+  description: |
+    The world's most used web server software. The Apache HTTP Server has been
+    the most popular web server on the Internet since 1996. It provides a
+    secure, efficient, and extensible HTTP services platform.
+  annotations:
+    github.com/project-slug: apache/httpd
+    backstage.io/source-location: url:https://github.com/apache/httpd
+  tags:
+    - web-server
+    - reverse-proxy
+    - c
+  links:
+    - url: https://httpd.apache.org/docs/
+      title: Documentation
+      icon: docs
+    - url: https://github.com/apache/httpd
+      title: GitHub Repository
+      icon: github
+    - url: https://httpd.apache.org/
+      title: Website
+      icon: web
+spec:
+  type: service
+  lifecycle: production
+  owner: group:default/infrastructure-team
+  system: web-servers
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: caddy
+  title: Caddy
+  description: |
+    A powerful, enterprise-ready web server with automatic HTTPS. Caddy
+    simplifies web infrastructure with a human-readable configuration format,
+    automatic TLS certificate management, and a modular architecture.
+  annotations:
+    github.com/project-slug: caddyserver/caddy
+    backstage.io/source-location: url:https://github.com/caddyserver/caddy
+  tags:
+    - web-server
+    - reverse-proxy
+    - automatic-https
+    - go
+  links:
+    - url: https://caddyserver.com/docs/
+      title: Documentation
+      icon: docs
+    - url: https://github.com/caddyserver/caddy
+      title: GitHub Repository
+      icon: github
+    - url: https://caddyserver.com/
+      title: Website
+      icon: web
+spec:
+  type: service
+  lifecycle: production
+  owner: group:default/infrastructure-team
+  system: web-servers
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: varnish-cache
+  title: Varnish Cache
+  description: |
+    A web application accelerator also known as a caching HTTP reverse proxy.
+    Varnish is installed in front of web servers to dramatically speed up
+    content delivery with configurable caching policies via VCL.
+  annotations:
+    github.com/project-slug: varnishcache/varnish-cache
+    backstage.io/source-location: url:https://github.com/varnishcache/varnish-cache
+  tags:
+    - web-server
+    - cache
+    - reverse-proxy
+    - http-accelerator
+    - c
+  links:
+    - url: https://varnish-cache.org/docs/
+      title: Documentation
+      icon: docs
+    - url: https://github.com/varnishcache/varnish-cache
+      title: GitHub Repository
+      icon: github
+    - url: https://varnish-cache.org/
+      title: Website
+      icon: web
+spec:
+  type: service
+  lifecycle: production
+  owner: group:default/infrastructure-team
+  system: web-servers
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: openresty
+  title: OpenResty
+  description: |
+    A full-fledged web platform that integrates Nginx with LuaJIT. OpenResty
+    enables building high-performance web applications, web services, and
+    dynamic gateways that handle extreme concurrency.
+  annotations:
+    github.com/project-slug: openresty/openresty
+    backstage.io/source-location: url:https://github.com/openresty/openresty
+  tags:
+    - web-server
+    - reverse-proxy
+    - lua
+    - nginx
+    - c
+  links:
+    - url: https://openresty.org/en/getting-started.html
+      title: Documentation
+      icon: docs
+    - url: https://github.com/openresty/openresty
+      title: GitHub Repository
+      icon: github
+    - url: https://openresty.org/
+      title: Website
+      icon: web
+spec:
+  type: service
+  lifecycle: production
+  owner: group:default/infrastructure-team
+  system: web-servers
+
+# =============================================================================
+# MONITORING & METRICS (5)
+# =============================================================================
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: prometheus
+  title: Prometheus
+  description: |
+    A systems monitoring and alerting toolkit that collects and stores metrics
+    as time-series data. Prometheus is the de facto standard for Kubernetes
+    monitoring. A CNCF graduated project with a powerful query language (PromQL).
+  annotations:
+    github.com/project-slug: prometheus/prometheus
+    backstage.io/source-location: url:https://github.com/prometheus/prometheus
+  tags:
+    - monitoring
+    - metrics
+    - alerting
+    - time-series
+    - go
+    - cncf
+  links:
+    - url: https://prometheus.io/docs/
+      title: Documentation
+      icon: docs
+    - url: https://github.com/prometheus/prometheus
+      title: GitHub Repository
+      icon: github
+    - url: https://prometheus.io/
+      title: Website
+      icon: web
+spec:
+  type: service
+  lifecycle: production
+  owner: group:default/platform-engineering
+  system: monitoring-metrics
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: grafana
+  title: Grafana
+  description: |
+    The open and composable observability and data visualization platform.
+    Grafana allows you to query, visualize, alert on, and explore metrics,
+    logs, and traces from any storage backend with rich, interactive dashboards.
+  annotations:
+    github.com/project-slug: grafana/grafana
+    backstage.io/source-location: url:https://github.com/grafana/grafana
+  tags:
+    - monitoring
+    - visualization
+    - dashboards
+    - go
+    - typescript
+  links:
+    - url: https://grafana.com/docs/grafana/latest/
+      title: Documentation
+      icon: docs
+    - url: https://github.com/grafana/grafana
+      title: GitHub Repository
+      icon: github
+    - url: https://grafana.com/
+      title: Website
+      icon: web
+spec:
+  type: service
+  lifecycle: production
+  owner: group:default/platform-engineering
+  system: monitoring-metrics
+  providesApis:
+    - grafana-api
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: thanos
+  title: Thanos
+  description: |
+    A set of components for highly available Prometheus setup with long-term
+    storage capabilities. Thanos provides global query view, unlimited
+    retention, and downsampling across multiple Prometheus instances.
+  annotations:
+    github.com/project-slug: thanos-io/thanos
+    backstage.io/source-location: url:https://github.com/thanos-io/thanos
+  tags:
+    - monitoring
+    - metrics
+    - prometheus-compatible
+    - long-term-storage
+    - go
+    - cncf
+  links:
+    - url: https://thanos.io/tip/thanos/getting-started.md/
+      title: Documentation
+      icon: docs
+    - url: https://github.com/thanos-io/thanos
+      title: GitHub Repository
+      icon: github
+    - url: https://thanos.io/
+      title: Website
+      icon: web
+spec:
+  type: service
+  lifecycle: production
+  owner: group:default/platform-engineering
+  system: monitoring-metrics
+  dependsOn:
+    - component:default/prometheus
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: cortex
+  title: Cortex
+  description: |
+    A horizontally scalable, highly available, multi-tenant, long-term storage
+    for Prometheus. Cortex provides a Prometheus-compatible write and query
+    API for operating Prometheus at massive scale.
+  annotations:
+    github.com/project-slug: cortexproject/cortex
+    backstage.io/source-location: url:https://github.com/cortexproject/cortex
+  tags:
+    - monitoring
+    - metrics
+    - prometheus-compatible
+    - multi-tenant
+    - go
+    - cncf
+  links:
+    - url: https://cortexmetrics.io/docs/
+      title: Documentation
+      icon: docs
+    - url: https://github.com/cortexproject/cortex
+      title: GitHub Repository
+      icon: github
+    - url: https://cortexmetrics.io/
+      title: Website
+      icon: web
+spec:
+  type: service
+  lifecycle: production
+  owner: group:default/platform-engineering
+  system: monitoring-metrics
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: alertmanager
+  title: Alertmanager
+  description: |
+    Handles alerts sent by Prometheus and other client applications. Alertmanager
+    manages deduplication, grouping, routing, silencing, and inhibition of
+    alerts, then sends notifications via email, PagerDuty, Slack, and more.
+  annotations:
+    github.com/project-slug: prometheus/alertmanager
+    backstage.io/source-location: url:https://github.com/prometheus/alertmanager
+  tags:
+    - monitoring
+    - alerting
+    - notifications
+    - go
+    - cncf
+  links:
+    - url: https://prometheus.io/docs/alerting/latest/alertmanager/
+      title: Documentation
+      icon: docs
+    - url: https://github.com/prometheus/alertmanager
+      title: GitHub Repository
+      icon: github
+    - url: https://prometheus.io/
+      title: Website
+      icon: web
+spec:
+  type: service
+  lifecycle: production
+  owner: group:default/platform-engineering
+  system: monitoring-metrics
+  dependsOn:
+    - component:default/prometheus
+
+# =============================================================================
+# LOGGING (5)
+# =============================================================================
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: grafana-loki
+  title: Grafana Loki
+  description: |
+    A horizontally scalable, highly available, multi-tenant log aggregation
+    system inspired by Prometheus. Loki indexes metadata (labels) rather than
+    log content, making it cost-effective and easy to operate.
+  annotations:
+    github.com/project-slug: grafana/loki
+    backstage.io/source-location: url:https://github.com/grafana/loki
+  tags:
+    - logging
+    - log-aggregation
+    - prometheus-inspired
+    - go
+  links:
+    - url: https://grafana.com/docs/loki/latest/
+      title: Documentation
+      icon: docs
+    - url: https://github.com/grafana/loki
+      title: GitHub Repository
+      icon: github
+    - url: https://grafana.com/oss/loki/
+      title: Website
+      icon: web
+spec:
+  type: service
+  lifecycle: production
+  owner: group:default/platform-engineering
+  system: logging-systems
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: fluentd
+  title: Fluentd
+  description: |
+    A unified logging layer that collects data from diverse sources, transforms
+    it, and sends it to multiple destinations. Fluentd decouples data sources
+    from backend systems. A CNCF graduated project.
+  annotations:
+    github.com/project-slug: fluent/fluentd
+    backstage.io/source-location: url:https://github.com/fluent/fluentd
+  tags:
+    - logging
+    - data-collection
+    - ruby
+    - cncf
+  links:
+    - url: https://docs.fluentd.org/
+      title: Documentation
+      icon: docs
+    - url: https://github.com/fluent/fluentd
+      title: GitHub Repository
+      icon: github
+    - url: https://www.fluentd.org/
+      title: Website
+      icon: web
+spec:
+  type: service
+  lifecycle: production
+  owner: group:default/platform-engineering
+  system: logging-systems
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: fluent-bit
+  title: Fluent Bit
+  description: |
+    A super fast, lightweight, and highly scalable logging and metrics processor
+    and forwarder. Fluent Bit is designed for high-throughput environments with
+    low CPU and memory footprint, ideal for edge and container deployments.
+  annotations:
+    github.com/project-slug: fluent/fluent-bit
+    backstage.io/source-location: url:https://github.com/fluent/fluent-bit
+  tags:
+    - logging
+    - data-collection
+    - lightweight
+    - c
+    - cncf
+  links:
+    - url: https://docs.fluentbit.io/
+      title: Documentation
+      icon: docs
+    - url: https://github.com/fluent/fluent-bit
+      title: GitHub Repository
+      icon: github
+    - url: https://fluentbit.io/
+      title: Website
+      icon: web
+spec:
+  type: service
+  lifecycle: production
+  owner: group:default/platform-engineering
+  system: logging-systems
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: vector
+  title: Vector
+  description: |
+    A high-performance observability data pipeline for collecting, transforming,
+    and routing logs, metrics, and traces. Vector is built in Rust for
+    reliability and performance with a rich ecosystem of sources and sinks.
+  annotations:
+    github.com/project-slug: vectordotdev/vector
+    backstage.io/source-location: url:https://github.com/vectordotdev/vector
+  tags:
+    - logging
+    - data-pipeline
+    - observability
+    - rust
+  links:
+    - url: https://vector.dev/docs/
+      title: Documentation
+      icon: docs
+    - url: https://github.com/vectordotdev/vector
+      title: GitHub Repository
+      icon: github
+    - url: https://vector.dev/
+      title: Website
+      icon: web
+spec:
+  type: service
+  lifecycle: production
+  owner: group:default/platform-engineering
+  system: logging-systems
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: openobserve
+  title: OpenObserve
+  description: |
+    A cloud-native observability platform for logs, metrics, traces, and
+    analytics. OpenObserve provides a unified platform with significantly
+    lower storage costs and a simple, easy-to-operate architecture.
+  annotations:
+    github.com/project-slug: openobserve/openobserve
+    backstage.io/source-location: url:https://github.com/openobserve/openobserve
+  tags:
+    - logging
+    - observability
+    - analytics
+    - rust
+  links:
+    - url: https://openobserve.ai/docs/
+      title: Documentation
+      icon: docs
+    - url: https://github.com/openobserve/openobserve
+      title: GitHub Repository
+      icon: github
+    - url: https://openobserve.ai/
+      title: Website
+      icon: web
+spec:
+  type: service
+  lifecycle: production
+  owner: group:default/platform-engineering
+  system: logging-systems
+
+# =============================================================================
+# DISTRIBUTED TRACING (5)
+# =============================================================================
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: jaeger
+  title: Jaeger
+  description: |
+    An end-to-end distributed tracing system for monitoring and troubleshooting
+    microservices-based distributed systems. Jaeger helps with performance
+    optimization, root cause analysis, and service dependency analysis.
+  annotations:
+    github.com/project-slug: jaegertracing/jaeger
+    backstage.io/source-location: url:https://github.com/jaegertracing/jaeger
+  tags:
+    - tracing
+    - distributed-tracing
+    - observability
+    - go
+    - cncf
+  links:
+    - url: https://www.jaegertracing.io/docs/
+      title: Documentation
+      icon: docs
+    - url: https://github.com/jaegertracing/jaeger
+      title: GitHub Repository
+      icon: github
+    - url: https://www.jaegertracing.io/
+      title: Website
+      icon: web
+spec:
+  type: service
+  lifecycle: production
+  owner: group:default/platform-engineering
+  system: tracing-systems
+  providesApis:
+    - jaeger-query-api
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: opentelemetry-collector
+  title: OpenTelemetry Collector
+  description: |
+    A vendor-agnostic implementation for receiving, processing, and exporting
+    telemetry data. The OpenTelemetry Collector provides a unified agent for
+    collecting traces, metrics, and logs from instrumented applications.
+  annotations:
+    github.com/project-slug: open-telemetry/opentelemetry-collector
+    backstage.io/source-location: url:https://github.com/open-telemetry/opentelemetry-collector
+  tags:
+    - tracing
+    - telemetry
+    - observability
+    - vendor-agnostic
+    - go
+    - cncf
+  links:
+    - url: https://opentelemetry.io/docs/collector/
+      title: Documentation
+      icon: docs
+    - url: https://github.com/open-telemetry/opentelemetry-collector
+      title: GitHub Repository
+      icon: github
+    - url: https://opentelemetry.io/
+      title: Website
+      icon: web
+spec:
+  type: service
+  lifecycle: production
+  owner: group:default/platform-engineering
+  system: tracing-systems
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: grafana-tempo
+  title: Grafana Tempo
+  description: |
+    A high-scale, minimal-dependency distributed tracing backend. Tempo
+    integrates deeply with Grafana, Loki, and Prometheus, requiring only
+    object storage to operate. Cost-effective tracing at enterprise scale.
+  annotations:
+    github.com/project-slug: grafana/tempo
+    backstage.io/source-location: url:https://github.com/grafana/tempo
+  tags:
+    - tracing
+    - distributed-tracing
+    - observability
+    - go
+  links:
+    - url: https://grafana.com/docs/tempo/latest/
+      title: Documentation
+      icon: docs
+    - url: https://github.com/grafana/tempo
+      title: GitHub Repository
+      icon: github
+    - url: https://grafana.com/oss/tempo/
+      title: Website
+      icon: web
+spec:
+  type: service
+  lifecycle: production
+  owner: group:default/platform-engineering
+  system: tracing-systems
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: zipkin
+  title: Zipkin
+  description: |
+    A distributed tracing system that helps gather timing data needed to
+    troubleshoot latency problems in service architectures. Zipkin is one
+    of the original open source distributed tracing systems.
+  annotations:
+    github.com/project-slug: openzipkin/zipkin
+    backstage.io/source-location: url:https://github.com/openzipkin/zipkin
+  tags:
+    - tracing
+    - distributed-tracing
+    - java
+  links:
+    - url: https://zipkin.io/pages/quickstart.html
+      title: Documentation
+      icon: docs
+    - url: https://github.com/openzipkin/zipkin
+      title: GitHub Repository
+      icon: github
+    - url: https://zipkin.io/
+      title: Website
+      icon: web
+spec:
+  type: service
+  lifecycle: production
+  owner: group:default/platform-engineering
+  system: tracing-systems
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: apache-skywalking
+  title: Apache SkyWalking
+  description: |
+    An application performance monitoring system that provides distributed
+    tracing, service mesh telemetry analysis, metric aggregation, and alerting.
+    Designed for microservices, cloud-native, and container-based architectures.
+  annotations:
+    github.com/project-slug: apache/skywalking
+    backstage.io/source-location: url:https://github.com/apache/skywalking
+  tags:
+    - tracing
+    - apm
+    - observability
+    - java
+    - go
+  links:
+    - url: https://skywalking.apache.org/docs/
+      title: Documentation
+      icon: docs
+    - url: https://github.com/apache/skywalking
+      title: GitHub Repository
+      icon: github
+    - url: https://skywalking.apache.org/
+      title: Website
+      icon: web
+spec:
+  type: service
+  lifecycle: production
+  owner: group:default/platform-engineering
+  system: tracing-systems
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: red-hat-developer-hub
+  title: Red Hat Developer Hub
+  description: |
+    Red Hat Developer Hub (RHDH) is an enterprise-grade, self-managed
+    Internal Developer Portal built on Backstage. It provides a unified
+    platform for software catalogs, templates, TechDocs, and plugins to
+    improve developer productivity and reduce cognitive load.
+  annotations:
+    github.com/project-slug: redhat-developer/rhdh
+    backstage.io/source-location: url:https://github.com/redhat-developer/rhdh
+    jira/project-key: RHIDP
+    backstage.io/techdocs-ref: url:https://github.com/redhat-developer/rhdh
+  tags:
+    - backstage
+    - developer-portal
+    - internal-developer-platform
+    - typescript
+    - nodejs
+    - red-hat
+  links:
+    - url: https://docs.redhat.com/en/documentation/red_hat_developer_hub/
+      title: Official Documentation
+      icon: docs
+    - url: https://github.com/redhat-developer/rhdh
+      title: GitHub Repository
+      icon: github
+    - url: https://issues.redhat.com/projects/RHIDP
+      title: Jira Project (RHIDP)
+      icon: dashboard
+spec:
+  type: service
+  lifecycle: production
+  owner: group:default/rhdh-team
+  system: rhdh-local
+  providesApis:
+    - backstage-api
+  dependsOn:
+    - resource:default/postgresql

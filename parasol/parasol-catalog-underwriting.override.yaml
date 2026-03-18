@@ -1,0 +1,656 @@
+# Parasol Insurance -- Underwriting Domain Components
+#
+# Covers all microservices in the underwriting domain:
+#   quote-bind-system, rating-engine-system, risk-assessment-system,
+#   policy-endorsement-system, renewal-management-system
+
+# ===========================================================================
+# QUOTE & BIND SYSTEM
+# ===========================================================================
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: quote-orchestration-service
+  title: Quote Orchestration Service
+  description: |
+    Orchestrates the end-to-end quote journey across all personal and
+    commercial lines products. Coordinates calls to rating, eligibility,
+    and document generation services, and manages quote versioning and
+    expiry. Acts as the primary entry point for all quote-to-bind flows.
+  annotations:
+    backstage.io/source-location: url:https://github.parasol.com/parasol/quote-orchestration-service
+  tags:
+    - underwriting
+    - quoting
+    - java
+    - rest
+  links:
+    - url: https://confluence.parasol.com/display/UW/quote-orchestration-service
+      title: Internal Confluence Docs
+      icon: docs
+    - url: https://github.parasol.com/parasol/quote-orchestration-service
+      title: Source Code
+      icon: github
+spec:
+  type: service
+  lifecycle: production
+  owner: group:default/underwriting-engineering
+  system: quote-bind-system
+  dependsOn:
+    - component:default/premium-rating-service
+    - component:default/eligibility-rules-service
+    - component:default/quote-document-service
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: bind-confirmation-service
+  title: Bind Confirmation Service
+  description: |
+    Converts an accepted quote into a bound policy. Validates that the quote
+    has not expired, checks underwriting authority limits, triggers policy
+    inception in the policy lifecycle system, and returns the bound policy
+    reference to the originating channel.
+  annotations:
+    backstage.io/source-location: url:https://github.parasol.com/parasol/bind-confirmation-service
+  tags:
+    - underwriting
+    - quoting
+    - java
+    - rest
+  links:
+    - url: https://confluence.parasol.com/display/UW/bind-confirmation-service
+      title: Internal Confluence Docs
+      icon: docs
+    - url: https://github.parasol.com/parasol/bind-confirmation-service
+      title: Source Code
+      icon: github
+spec:
+  type: service
+  lifecycle: production
+  owner: group:default/underwriting-engineering
+  system: quote-bind-system
+  dependsOn:
+    - component:default/quote-orchestration-service
+    - component:default/policy-inception-service
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: eligibility-rules-service
+  title: Eligibility Rules Service
+  description: |
+    Applies product eligibility rules and underwriting appetite controls to
+    determine whether a risk can be quoted and bound under Parasol's standard
+    terms. Rules include age restrictions, claims history thresholds, credit
+    score requirements, and geographic trading limits.
+  annotations:
+    backstage.io/source-location: url:https://github.parasol.com/parasol/eligibility-rules-service
+  tags:
+    - underwriting
+    - quoting
+    - rules-engine
+    - java
+    - rest
+  links:
+    - url: https://confluence.parasol.com/display/UW/eligibility-rules-service
+      title: Internal Confluence Docs
+      icon: docs
+    - url: https://github.parasol.com/parasol/eligibility-rules-service
+      title: Source Code
+      icon: github
+spec:
+  type: service
+  lifecycle: production
+  owner: group:default/underwriting-engineering
+  system: quote-bind-system
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: quote-document-service
+  title: Quote Document Service
+  description: |
+    Generates quote summary documents, insurance product information
+    documents (IPIDs), and key facts sheets for all personal and commercial
+    lines products. Renders to PDF and provides storage in the document
+    management platform with a time-limited retrieval URL.
+  annotations:
+    backstage.io/source-location: url:https://github.parasol.com/parasol/quote-document-service
+  tags:
+    - underwriting
+    - quoting
+    - documents
+    - python
+    - rest
+  links:
+    - url: https://confluence.parasol.com/display/UW/quote-document-service
+      title: Internal Confluence Docs
+      icon: docs
+    - url: https://github.parasol.com/parasol/quote-document-service
+      title: Source Code
+      icon: github
+spec:
+  type: service
+  lifecycle: production
+  owner: group:default/underwriting-engineering
+  system: quote-bind-system
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: aggregator-gateway-service
+  title: Aggregator Gateway Service
+  description: |
+    Provides a standardised API interface for price comparison websites
+    (PCWs) and insurance aggregators to request quotes from Parasol. Handles
+    rate limiting, credential management, quote mapping to/from aggregator
+    schemas, and conversion tracking.
+  annotations:
+    backstage.io/source-location: url:https://github.parasol.com/parasol/aggregator-gateway-service
+  tags:
+    - underwriting
+    - quoting
+    - integration
+    - java
+    - rest
+  links:
+    - url: https://confluence.parasol.com/display/UW/aggregator-gateway-service
+      title: Internal Confluence Docs
+      icon: docs
+    - url: https://github.parasol.com/parasol/aggregator-gateway-service
+      title: Source Code
+      icon: github
+spec:
+  type: service
+  lifecycle: production
+  owner: group:default/underwriting-engineering
+  system: quote-bind-system
+  dependsOn:
+    - component:default/quote-orchestration-service
+
+# ===========================================================================
+# RATING ENGINE SYSTEM
+# ===========================================================================
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: premium-rating-service
+  title: Premium Rating Service
+  description: |
+    Core actuarial rating service that calculates gross written premium for
+    all Parasol products. Applies filed rate tables, factor relativities,
+    minimum premiums, and taxes/levies. Supports real-time API calls
+    and bulk re-rating for renewal and book management.
+  annotations:
+    backstage.io/source-location: url:https://github.parasol.com/parasol/premium-rating-service
+  tags:
+    - underwriting
+    - rating
+    - actuarial
+    - java
+    - rest
+  links:
+    - url: https://confluence.parasol.com/display/UW/premium-rating-service
+      title: Internal Confluence Docs
+      icon: docs
+    - url: https://github.parasol.com/parasol/premium-rating-service
+      title: Source Code
+      icon: github
+spec:
+  type: service
+  lifecycle: production
+  owner: group:default/underwriting-engineering
+  system: rating-engine-system
+  dependsOn:
+    - component:default/rate-table-management-service
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: rate-table-management-service
+  title: Rate Table Management Service
+  description: |
+    Manages the lifecycle of actuarial rate tables and rating factors used
+    by the premium rating service. Supports rate change filing workflows,
+    effective date scheduling, version rollback, and A/B test rate cohorts
+    for actuarial rate validation exercises.
+  annotations:
+    backstage.io/source-location: url:https://github.parasol.com/parasol/rate-table-management-service
+  tags:
+    - underwriting
+    - rating
+    - actuarial
+    - python
+    - rest
+  links:
+    - url: https://confluence.parasol.com/display/UW/rate-table-management-service
+      title: Internal Confluence Docs
+      icon: docs
+    - url: https://github.parasol.com/parasol/rate-table-management-service
+      title: Source Code
+      icon: github
+spec:
+  type: service
+  lifecycle: production
+  owner: group:default/underwriting-engineering
+  system: rating-engine-system
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: tax-levy-calculator
+  title: Tax & Levy Calculator
+  description: |
+    Calculates insurance premium tax (IPT), surplus lines tax, FSLSO levies,
+    and other jurisdiction-specific taxes and fees applied to gross premium.
+    Maintains up-to-date tax rates for all US states and international
+    territories where Parasol writes business.
+  annotations:
+    backstage.io/source-location: url:https://github.parasol.com/parasol/tax-levy-calculator
+  tags:
+    - underwriting
+    - rating
+    - tax
+    - compliance
+    - java
+    - rest
+  links:
+    - url: https://confluence.parasol.com/display/UW/tax-levy-calculator
+      title: Internal Confluence Docs
+      icon: docs
+    - url: https://github.parasol.com/parasol/tax-levy-calculator
+      title: Source Code
+      icon: github
+spec:
+  type: service
+  lifecycle: production
+  owner: group:default/underwriting-engineering
+  system: rating-engine-system
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: credit-score-integration-service
+  title: Credit Score Integration Service
+  description: |
+    Integrates with Experian and Equifax credit bureaux to retrieve insurance
+    credit scores used as rating factors for personal lines products. Manages
+    consent, adverse action notices, and score refresh schedules for
+    renewing policies.
+  annotations:
+    backstage.io/source-location: url:https://github.parasol.com/parasol/credit-score-integration-service
+  tags:
+    - underwriting
+    - rating
+    - integration
+    - java
+    - rest
+  links:
+    - url: https://confluence.parasol.com/display/UW/credit-score-integration-service
+      title: Internal Confluence Docs
+      icon: docs
+    - url: https://github.parasol.com/parasol/credit-score-integration-service
+      title: Source Code
+      icon: github
+spec:
+  type: service
+  lifecycle: production
+  owner: group:default/underwriting-engineering
+  system: rating-engine-system
+
+# ===========================================================================
+# RISK ASSESSMENT SYSTEM
+# ===========================================================================
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: automated-uw-decisioning-service
+  title: Automated Underwriting Decisioning Service
+  description: |
+    Applies Parasol's underwriting guidelines and appetite rules to deliver
+    an automated accept, decline, or referral decision for each risk. Rules
+    are maintained in a business-readable decision table format, enabling
+    underwriters to adjust appetite without engineering involvement.
+  annotations:
+    backstage.io/source-location: url:https://github.parasol.com/parasol/automated-uw-decisioning-service
+  tags:
+    - underwriting
+    - risk
+    - rules-engine
+    - java
+    - rest
+  links:
+    - url: https://confluence.parasol.com/display/UW/automated-uw-decisioning-service
+      title: Internal Confluence Docs
+      icon: docs
+    - url: https://github.parasol.com/parasol/automated-uw-decisioning-service
+      title: Source Code
+      icon: github
+spec:
+  type: service
+  lifecycle: production
+  owner: group:default/underwriting-engineering
+  system: risk-assessment-system
+  dependsOn:
+    - component:default/exposure-accumulation-service
+    - component:default/sanctions-screening-service
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: exposure-accumulation-service
+  title: Exposure Accumulation Service
+  description: |
+    Tracks Parasol's total insured exposure by geography, peril, and industry
+    class in real time. Enforces aggregate limits and accumulation controls
+    to ensure new risks do not breach reinsurance treaty capacity or Parasol's
+    risk appetite for catastrophe exposure.
+  annotations:
+    backstage.io/source-location: url:https://github.parasol.com/parasol/exposure-accumulation-service
+  tags:
+    - underwriting
+    - risk
+    - actuarial
+    - python
+    - rest
+  links:
+    - url: https://confluence.parasol.com/display/UW/exposure-accumulation-service
+      title: Internal Confluence Docs
+      icon: docs
+    - url: https://github.parasol.com/parasol/exposure-accumulation-service
+      title: Source Code
+      icon: github
+spec:
+  type: service
+  lifecycle: production
+  owner: group:default/underwriting-engineering
+  system: risk-assessment-system
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: sanctions-screening-service
+  title: Sanctions Screening Service
+  description: |
+    Screens policyholders, claimants, and counterparties against OFAC,
+    HM Treasury, UN, and EU consolidated sanctions lists. Mandatory check
+    at quote, bind, and claims payment stages. Flags matches for compliance
+    officer review before policy or payment can proceed.
+  annotations:
+    backstage.io/source-location: url:https://github.parasol.com/parasol/sanctions-screening-service
+  tags:
+    - underwriting
+    - risk
+    - compliance
+    - security
+    - java
+    - rest
+  links:
+    - url: https://confluence.parasol.com/display/UW/sanctions-screening-service
+      title: Internal Confluence Docs
+      icon: docs
+    - url: https://github.parasol.com/parasol/sanctions-screening-service
+      title: Source Code
+      icon: github
+spec:
+  type: service
+  lifecycle: production
+  owner: group:default/underwriting-engineering
+  system: risk-assessment-system
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: referral-management-service
+  title: Referral Management Service
+  description: |
+    Manages underwriting referrals that cannot be auto-decided. Routes
+    risks to the appropriate senior underwriter or specialist team, tracks
+    referral resolution SLAs, and records referral decisions as a feedback
+    signal for rule and model improvement.
+  annotations:
+    backstage.io/source-location: url:https://github.parasol.com/parasol/referral-management-service
+  tags:
+    - underwriting
+    - risk
+    - workflow
+    - java
+    - rest
+  links:
+    - url: https://confluence.parasol.com/display/UW/referral-management-service
+      title: Internal Confluence Docs
+      icon: docs
+    - url: https://github.parasol.com/parasol/referral-management-service
+      title: Source Code
+      icon: github
+spec:
+  type: service
+  lifecycle: production
+  owner: group:default/underwriting-engineering
+  system: risk-assessment-system
+  dependsOn:
+    - component:default/automated-uw-decisioning-service
+
+# ===========================================================================
+# POLICY ENDORSEMENT SYSTEM
+# ===========================================================================
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: endorsement-request-service
+  title: Endorsement Request Service
+  description: |
+    Accepts mid-term change requests from policyholders and brokers via
+    all channels. Validates the requested change against product rules,
+    triggers re-rating, and creates a pending endorsement transaction
+    requiring underwriter approval for referred changes.
+  annotations:
+    backstage.io/source-location: url:https://github.parasol.com/parasol/endorsement-request-service
+  tags:
+    - underwriting
+    - endorsement
+    - java
+    - rest
+  links:
+    - url: https://confluence.parasol.com/display/UW/endorsement-request-service
+      title: Internal Confluence Docs
+      icon: docs
+    - url: https://github.parasol.com/parasol/endorsement-request-service
+      title: Source Code
+      icon: github
+spec:
+  type: service
+  lifecycle: production
+  owner: group:default/underwriting-engineering
+  system: policy-endorsement-system
+  dependsOn:
+    - component:default/premium-rating-service
+    - component:default/policy-coverage-query-service
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: pro-rata-adjustment-service
+  title: Pro-Rata Premium Adjustment Service
+  description: |
+    Calculates the pro-rata or short-rate premium adjustment for mid-term
+    endorsements and cancellations. Handles day-count conventions, minimum
+    earned premium rules, and instalment plan recalculation for billing
+    system updates.
+  annotations:
+    backstage.io/source-location: url:https://github.parasol.com/parasol/pro-rata-adjustment-service
+  tags:
+    - underwriting
+    - endorsement
+    - billing
+    - java
+    - rest
+  links:
+    - url: https://confluence.parasol.com/display/UW/pro-rata-adjustment-service
+      title: Internal Confluence Docs
+      icon: docs
+    - url: https://github.parasol.com/parasol/pro-rata-adjustment-service
+      title: Source Code
+      icon: github
+spec:
+  type: service
+  lifecycle: production
+  owner: group:default/underwriting-engineering
+  system: policy-endorsement-system
+  dependsOn:
+    - component:default/endorsement-request-service
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: endorsement-document-service
+  title: Endorsement Document Service
+  description: |
+    Generates endorsement notices, revised policy schedules, and certificate
+    updates following approved mid-term changes. Delivers documents to the
+    appropriate channel and archives them in the policy document store.
+  annotations:
+    backstage.io/source-location: url:https://github.parasol.com/parasol/endorsement-document-service
+  tags:
+    - underwriting
+    - endorsement
+    - documents
+    - python
+    - rest
+  links:
+    - url: https://confluence.parasol.com/display/UW/endorsement-document-service
+      title: Internal Confluence Docs
+      icon: docs
+    - url: https://github.parasol.com/parasol/endorsement-document-service
+      title: Source Code
+      icon: github
+spec:
+  type: service
+  lifecycle: production
+  owner: group:default/underwriting-engineering
+  system: policy-endorsement-system
+
+# ===========================================================================
+# RENEWAL MANAGEMENT SYSTEM
+# ===========================================================================
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: renewal-offer-generation-service
+  title: Renewal Offer Generation Service
+  description: |
+    Generates renewal invitation packs for expiring policies. Re-rates each
+    policy with the current rate table, applies retention pricing adjustments,
+    and produces renewal offer documents dispatched 28 days before expiry
+    in compliance with FCA and state notice requirements.
+  annotations:
+    backstage.io/source-location: url:https://github.parasol.com/parasol/renewal-offer-generation-service
+  tags:
+    - underwriting
+    - renewal
+    - java
+    - rest
+  links:
+    - url: https://confluence.parasol.com/display/UW/renewal-offer-generation-service
+      title: Internal Confluence Docs
+      icon: docs
+    - url: https://github.parasol.com/parasol/renewal-offer-generation-service
+      title: Source Code
+      icon: github
+spec:
+  type: service
+  lifecycle: production
+  owner: group:default/underwriting-engineering
+  system: renewal-management-system
+  dependsOn:
+    - component:default/premium-rating-service
+    - component:default/retention-score-service
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: retention-score-service
+  title: Retention Score Service
+  description: |
+    Predicts the probability that a renewing policyholder will lapse using
+    a gradient-boosted ML model trained on historical renewal outcomes.
+    Scores feed into retention pricing adjustments in the renewal offer
+    generation process and trigger targeted retention interventions.
+  annotations:
+    backstage.io/source-location: url:https://github.parasol.com/parasol/retention-score-service
+  tags:
+    - underwriting
+    - renewal
+    - machine-learning
+    - python
+    - experimental
+  links:
+    - url: https://confluence.parasol.com/display/UW/retention-score-service
+      title: Internal Confluence Docs
+      icon: docs
+    - url: https://github.parasol.com/parasol/retention-score-service
+      title: Source Code
+      icon: github
+spec:
+  type: service
+  lifecycle: experimental
+  owner: group:default/underwriting-engineering
+  system: renewal-management-system
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: auto-renewal-processor
+  title: Auto-Renewal Processor
+  description: |
+    Processes the automatic renewal of policies where the policyholder has
+    consented to auto-renewal. Confirms coverage continuation, issues the
+    renewed policy, triggers billing collection, and sends statutory renewal
+    confirmation within regulatory timeframes.
+  annotations:
+    backstage.io/source-location: url:https://github.parasol.com/parasol/auto-renewal-processor
+  tags:
+    - underwriting
+    - renewal
+    - java
+    - rest
+  links:
+    - url: https://confluence.parasol.com/display/UW/auto-renewal-processor
+      title: Internal Confluence Docs
+      icon: docs
+    - url: https://github.parasol.com/parasol/auto-renewal-processor
+      title: Source Code
+      icon: github
+spec:
+  type: service
+  lifecycle: production
+  owner: group:default/underwriting-engineering
+  system: renewal-management-system
+  dependsOn:
+    - component:default/renewal-offer-generation-service
+    - component:default/policy-inception-service

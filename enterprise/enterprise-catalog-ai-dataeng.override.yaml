@@ -1,0 +1,1102 @@
+# Enterprise Software Catalog - AI/ML & Data Engineering
+# 30 components across 7 systems. All projects are active with OSI-approved licenses.
+
+# =============================================================================
+# ML PLATFORMS & INFERENCE (5)
+# =============================================================================
+
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: kubeflow
+  title: Kubeflow
+  description: |
+    A machine learning toolkit for Kubernetes that makes deployments of ML
+    workflows on Kubernetes simple, portable, and scalable. Kubeflow provides
+    end-to-end ML pipelines, experiment tracking, and model serving.
+  annotations:
+    github.com/project-slug: kubeflow/kubeflow
+    backstage.io/source-location: url:https://github.com/kubeflow/kubeflow
+  tags:
+    - ai
+    - machine-learning
+    - kubernetes
+    - pipelines
+    - python
+  links:
+    - url: https://www.kubeflow.org/docs/
+      title: Documentation
+      icon: docs
+    - url: https://github.com/kubeflow/kubeflow
+      title: GitHub Repository
+      icon: github
+    - url: https://www.kubeflow.org/
+      title: Website
+      icon: web
+spec:
+  type: service
+  lifecycle: production
+  owner: group:default/ai-ml-team
+  system: ml-platforms
+  dependsOn:
+    - component:default/kubernetes
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: mlflow
+  title: MLflow
+  description: |
+    An open source platform for managing the end-to-end machine learning
+    lifecycle. MLflow provides experiment tracking, reproducible runs, model
+    packaging, and a model registry for team collaboration on ML projects.
+  annotations:
+    github.com/project-slug: mlflow/mlflow
+    backstage.io/source-location: url:https://github.com/mlflow/mlflow
+  tags:
+    - ai
+    - machine-learning
+    - experiment-tracking
+    - model-registry
+    - python
+  links:
+    - url: https://mlflow.org/docs/latest/
+      title: Documentation
+      icon: docs
+    - url: https://github.com/mlflow/mlflow
+      title: GitHub Repository
+      icon: github
+    - url: https://mlflow.org/
+      title: Website
+      icon: web
+spec:
+  type: service
+  lifecycle: production
+  owner: group:default/ai-ml-team
+  system: ml-platforms
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: ray
+  title: Ray
+  description: |
+    A unified framework for scaling AI and Python applications. Ray provides
+    a general-purpose distributed computing API along with specialized
+    libraries for training (Ray Train), serving (Ray Serve), tuning, and RL.
+  annotations:
+    github.com/project-slug: ray-project/ray
+    backstage.io/source-location: url:https://github.com/ray-project/ray
+  tags:
+    - ai
+    - distributed-computing
+    - machine-learning
+    - python
+  links:
+    - url: https://docs.ray.io/
+      title: Documentation
+      icon: docs
+    - url: https://github.com/ray-project/ray
+      title: GitHub Repository
+      icon: github
+    - url: https://www.ray.io/
+      title: Website
+      icon: web
+spec:
+  type: service
+  lifecycle: production
+  owner: group:default/ai-ml-team
+  system: ml-platforms
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: vllm
+  title: vLLM
+  description: |
+    A high-throughput and memory-efficient inference and serving engine for
+    large language models. vLLM uses PagedAttention for efficient memory
+    management, delivering state-of-the-art LLM serving performance.
+  annotations:
+    github.com/project-slug: vllm-project/vllm
+    backstage.io/source-location: url:https://github.com/vllm-project/vllm
+  tags:
+    - ai
+    - llm
+    - inference
+    - model-serving
+    - python
+  links:
+    - url: https://docs.vllm.ai/
+      title: Documentation
+      icon: docs
+    - url: https://github.com/vllm-project/vllm
+      title: GitHub Repository
+      icon: github
+    - url: https://vllm.ai/
+      title: Website
+      icon: web
+spec:
+  type: service
+  lifecycle: production
+  owner: group:default/ai-ml-team
+  system: ml-platforms
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: ollama
+  title: Ollama
+  description: |
+    A tool for running large language models locally. Ollama provides a simple
+    API for running, creating, and managing LLMs with a library of pre-built
+    models including Llama, Mistral, Gemma, and many more.
+  annotations:
+    github.com/project-slug: ollama/ollama
+    backstage.io/source-location: url:https://github.com/ollama/ollama
+  tags:
+    - ai
+    - llm
+    - inference
+    - local
+    - go
+  links:
+    - url: https://github.com/ollama/ollama#readme
+      title: Documentation
+      icon: docs
+    - url: https://github.com/ollama/ollama
+      title: GitHub Repository
+      icon: github
+    - url: https://ollama.com/
+      title: Website
+      icon: web
+spec:
+  type: service
+  lifecycle: production
+  owner: group:default/ai-ml-team
+  system: ml-platforms
+
+# =============================================================================
+# DATA PROCESSING (5)
+# =============================================================================
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: apache-spark
+  title: Apache Spark
+  description: |
+    A unified analytics engine for large-scale data processing. Spark provides
+    APIs in Java, Scala, Python, and R, with an optimized engine that supports
+    batch processing, SQL, streaming, machine learning, and graph processing.
+  annotations:
+    github.com/project-slug: apache/spark
+    backstage.io/source-location: url:https://github.com/apache/spark
+  tags:
+    - data-processing
+    - batch
+    - streaming
+    - analytics
+    - scala
+    - java
+    - python
+  links:
+    - url: https://spark.apache.org/docs/latest/
+      title: Documentation
+      icon: docs
+    - url: https://github.com/apache/spark
+      title: GitHub Repository
+      icon: github
+    - url: https://spark.apache.org/
+      title: Website
+      icon: web
+spec:
+  type: service
+  lifecycle: production
+  owner: group:default/data-engineering
+  system: data-processing
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: apache-flink
+  title: Apache Flink
+  description: |
+    A framework and distributed processing engine for stateful computations
+    over unbounded and bounded data streams. Flink provides exactly-once
+    processing semantics, event-time processing, and high throughput.
+  annotations:
+    github.com/project-slug: apache/flink
+    backstage.io/source-location: url:https://github.com/apache/flink
+  tags:
+    - data-processing
+    - streaming
+    - stateful
+    - java
+    - scala
+  links:
+    - url: https://nightlies.apache.org/flink/flink-docs-stable/
+      title: Documentation
+      icon: docs
+    - url: https://github.com/apache/flink
+      title: GitHub Repository
+      icon: github
+    - url: https://flink.apache.org/
+      title: Website
+      icon: web
+spec:
+  type: service
+  lifecycle: production
+  owner: group:default/data-engineering
+  system: data-processing
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: apache-airflow
+  title: Apache Airflow
+  description: |
+    A platform to programmatically author, schedule, and monitor workflows.
+    Airflow is the most widely adopted open source workflow orchestrator,
+    using Python DAGs to define complex data pipeline dependencies.
+  annotations:
+    github.com/project-slug: apache/airflow
+    backstage.io/source-location: url:https://github.com/apache/airflow
+  tags:
+    - data-processing
+    - workflow
+    - scheduling
+    - etl
+    - python
+  links:
+    - url: https://airflow.apache.org/docs/
+      title: Documentation
+      icon: docs
+    - url: https://github.com/apache/airflow
+      title: GitHub Repository
+      icon: github
+    - url: https://airflow.apache.org/
+      title: Website
+      icon: web
+spec:
+  type: service
+  lifecycle: production
+  owner: group:default/data-engineering
+  system: data-processing
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: apache-nifi
+  title: Apache NiFi
+  description: |
+    A dataflow system for automating the movement of data between disparate
+    systems. NiFi provides a web-based UI for designing, controlling, and
+    monitoring data flows with provenance tracking and back-pressure handling.
+  annotations:
+    github.com/project-slug: apache/nifi
+    backstage.io/source-location: url:https://github.com/apache/nifi
+  tags:
+    - data-processing
+    - dataflow
+    - etl
+    - integration
+    - java
+  links:
+    - url: https://nifi.apache.org/docs.html
+      title: Documentation
+      icon: docs
+    - url: https://github.com/apache/nifi
+      title: GitHub Repository
+      icon: github
+    - url: https://nifi.apache.org/
+      title: Website
+      icon: web
+spec:
+  type: service
+  lifecycle: production
+  owner: group:default/data-engineering
+  system: data-processing
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: debezium
+  title: Debezium
+  description: |
+    An open source distributed platform for change data capture (CDC).
+    Debezium monitors databases and produces event streams for each row-level
+    change, enabling real-time data integration and event-driven architectures.
+  annotations:
+    github.com/project-slug: debezium/debezium
+    backstage.io/source-location: url:https://github.com/debezium/debezium
+  tags:
+    - data-processing
+    - cdc
+    - change-data-capture
+    - streaming
+    - java
+    - red-hat
+  links:
+    - url: https://debezium.io/documentation/
+      title: Documentation
+      icon: docs
+    - url: https://github.com/debezium/debezium
+      title: GitHub Repository
+      icon: github
+    - url: https://debezium.io/
+      title: Website
+      icon: web
+spec:
+  type: service
+  lifecycle: production
+  owner: group:default/data-engineering
+  system: data-processing
+  dependsOn:
+    - component:default/apache-kafka
+
+# =============================================================================
+# INTEGRATION & WORKFLOW (5)
+# =============================================================================
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: apache-camel
+  title: Apache Camel
+  description: |
+    A versatile open source integration framework based on Enterprise
+    Integration Patterns. Camel provides 300+ connectors for integrating
+    diverse systems with a lightweight, embeddable routing and mediation engine.
+  annotations:
+    github.com/project-slug: apache/camel
+    backstage.io/source-location: url:https://github.com/apache/camel
+  tags:
+    - integration
+    - eip
+    - middleware
+    - connectors
+    - java
+    - red-hat
+  links:
+    - url: https://camel.apache.org/docs/
+      title: Documentation
+      icon: docs
+    - url: https://github.com/apache/camel
+      title: GitHub Repository
+      icon: github
+    - url: https://camel.apache.org/
+      title: Website
+      icon: web
+spec:
+  type: library
+  lifecycle: production
+  owner: group:default/data-engineering
+  system: integration-workflow
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: strimzi
+  title: Strimzi
+  description: |
+    A Kubernetes operator for running Apache Kafka on Kubernetes. Strimzi
+    provides container images and operators for deploying Kafka clusters,
+    topics, users, and connectors as Kubernetes-native resources. A CNCF project.
+  annotations:
+    github.com/project-slug: strimzi/strimzi-kafka-operator
+    backstage.io/source-location: url:https://github.com/strimzi/strimzi-kafka-operator
+  tags:
+    - integration
+    - kafka
+    - kubernetes
+    - operator
+    - java
+    - cncf
+  links:
+    - url: https://strimzi.io/documentation/
+      title: Documentation
+      icon: docs
+    - url: https://github.com/strimzi/strimzi-kafka-operator
+      title: GitHub Repository
+      icon: github
+    - url: https://strimzi.io/
+      title: Website
+      icon: web
+spec:
+  type: service
+  lifecycle: production
+  owner: group:default/data-engineering
+  system: integration-workflow
+  dependsOn:
+    - component:default/apache-kafka
+    - component:default/kubernetes
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: temporal
+  title: Temporal
+  description: |
+    A durable execution platform for building reliable distributed applications.
+    Temporal enables developers to write complex asynchronous workflows as
+    simple procedural code with automatic retries and failure handling.
+  annotations:
+    github.com/project-slug: temporalio/temporal
+    backstage.io/source-location: url:https://github.com/temporalio/temporal
+  tags:
+    - workflow
+    - orchestration
+    - distributed
+    - durable-execution
+    - go
+  links:
+    - url: https://docs.temporal.io/
+      title: Documentation
+      icon: docs
+    - url: https://github.com/temporalio/temporal
+      title: GitHub Repository
+      icon: github
+    - url: https://temporal.io/
+      title: Website
+      icon: web
+spec:
+  type: service
+  lifecycle: production
+  owner: group:default/data-engineering
+  system: integration-workflow
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: argo-workflows
+  title: Argo Workflows
+  description: |
+    A container-native workflow engine for orchestrating parallel jobs on
+    Kubernetes. Argo Workflows implements each step as a container, enabling
+    complex DAG and step-based workflows for CI/CD, data, and ML pipelines.
+  annotations:
+    github.com/project-slug: argoproj/argo-workflows
+    backstage.io/source-location: url:https://github.com/argoproj/argo-workflows
+  tags:
+    - workflow
+    - orchestration
+    - kubernetes
+    - go
+    - cncf
+  links:
+    - url: https://argo-workflows.readthedocs.io/
+      title: Documentation
+      icon: docs
+    - url: https://github.com/argoproj/argo-workflows
+      title: GitHub Repository
+      icon: github
+    - url: https://argoproj.github.io/
+      title: Website
+      icon: web
+spec:
+  type: service
+  lifecycle: production
+  owner: group:default/data-engineering
+  system: integration-workflow
+  providesApis:
+    - argo-workflows-api
+  dependsOn:
+    - component:default/kubernetes
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: kestra
+  title: Kestra
+  description: |
+    An open source, event-driven orchestration platform for building scheduled
+    and event-driven workflows. Kestra provides a declarative YAML interface
+    for defining data pipelines, ETL jobs, and business process automation.
+  annotations:
+    github.com/project-slug: kestra-io/kestra
+    backstage.io/source-location: url:https://github.com/kestra-io/kestra
+  tags:
+    - workflow
+    - orchestration
+    - event-driven
+    - java
+  links:
+    - url: https://kestra.io/docs
+      title: Documentation
+      icon: docs
+    - url: https://github.com/kestra-io/kestra
+      title: GitHub Repository
+      icon: github
+    - url: https://kestra.io/
+      title: Website
+      icon: web
+spec:
+  type: service
+  lifecycle: production
+  owner: group:default/data-engineering
+  system: integration-workflow
+
+# =============================================================================
+# INFRASTRUCTURE AS CODE (5)
+# =============================================================================
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: opentofu
+  title: OpenTofu
+  description: |
+    A fork of Terraform that is open source, community-driven, and managed by
+    the Linux Foundation. OpenTofu provides declarative infrastructure as code
+    for provisioning cloud resources with full Terraform compatibility.
+  annotations:
+    github.com/project-slug: opentofu/opentofu
+    backstage.io/source-location: url:https://github.com/opentofu/opentofu
+  tags:
+    - iac
+    - infrastructure
+    - declarative
+    - go
+    - linux-foundation
+  links:
+    - url: https://opentofu.org/docs/
+      title: Documentation
+      icon: docs
+    - url: https://github.com/opentofu/opentofu
+      title: GitHub Repository
+      icon: github
+    - url: https://opentofu.org/
+      title: Website
+      icon: web
+spec:
+  type: tool
+  lifecycle: production
+  owner: group:default/infrastructure-team
+  system: infrastructure-as-code
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: ansible
+  title: Ansible
+  description: |
+    A radically simple IT automation engine that automates cloud provisioning,
+    configuration management, application deployment, and orchestration.
+    Ansible uses human-readable YAML playbooks with agentless architecture.
+  annotations:
+    github.com/project-slug: ansible/ansible
+    backstage.io/source-location: url:https://github.com/ansible/ansible
+  tags:
+    - iac
+    - automation
+    - configuration-management
+    - python
+    - red-hat
+  links:
+    - url: https://docs.ansible.com/
+      title: Documentation
+      icon: docs
+    - url: https://github.com/ansible/ansible
+      title: GitHub Repository
+      icon: github
+    - url: https://www.ansible.com/
+      title: Website
+      icon: web
+spec:
+  type: tool
+  lifecycle: production
+  owner: group:default/infrastructure-team
+  system: infrastructure-as-code
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: pulumi
+  title: Pulumi
+  description: |
+    An infrastructure as code platform that lets you define cloud resources
+    using familiar programming languages (TypeScript, Python, Go, C#, Java).
+    Pulumi provides a unified programming model for multi-cloud infrastructure.
+  annotations:
+    github.com/project-slug: pulumi/pulumi
+    backstage.io/source-location: url:https://github.com/pulumi/pulumi
+  tags:
+    - iac
+    - infrastructure
+    - multi-cloud
+    - go
+    - typescript
+    - python
+  links:
+    - url: https://www.pulumi.com/docs/
+      title: Documentation
+      icon: docs
+    - url: https://github.com/pulumi/pulumi
+      title: GitHub Repository
+      icon: github
+    - url: https://www.pulumi.com/
+      title: Website
+      icon: web
+spec:
+  type: tool
+  lifecycle: production
+  owner: group:default/infrastructure-team
+  system: infrastructure-as-code
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: crossplane
+  title: Crossplane
+  description: |
+    A Kubernetes add-on that extends any cluster with the ability to provision
+    and manage cloud infrastructure and services using kubectl. Crossplane
+    brings cloud APIs into Kubernetes as CRDs. A CNCF graduated project.
+  annotations:
+    github.com/project-slug: crossplane/crossplane
+    backstage.io/source-location: url:https://github.com/crossplane/crossplane
+  tags:
+    - iac
+    - kubernetes
+    - cloud-native
+    - control-plane
+    - go
+    - cncf
+  links:
+    - url: https://docs.crossplane.io/
+      title: Documentation
+      icon: docs
+    - url: https://github.com/crossplane/crossplane
+      title: GitHub Repository
+      icon: github
+    - url: https://www.crossplane.io/
+      title: Website
+      icon: web
+spec:
+  type: service
+  lifecycle: production
+  owner: group:default/infrastructure-team
+  system: infrastructure-as-code
+  dependsOn:
+    - component:default/kubernetes
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: puppet
+  title: Puppet
+  description: |
+    An infrastructure automation and configuration management tool that manages
+    the state of IT infrastructure through a declarative language. Puppet ensures
+    systems are configured consistently across environments at scale.
+  annotations:
+    github.com/project-slug: puppetlabs/puppet
+    backstage.io/source-location: url:https://github.com/puppetlabs/puppet
+  tags:
+    - iac
+    - configuration-management
+    - automation
+    - ruby
+  links:
+    - url: https://www.puppet.com/docs/puppet/
+      title: Documentation
+      icon: docs
+    - url: https://github.com/puppetlabs/puppet
+      title: GitHub Repository
+      icon: github
+    - url: https://www.puppet.com/
+      title: Website
+      icon: web
+spec:
+  type: tool
+  lifecycle: production
+  owner: group:default/infrastructure-team
+  system: infrastructure-as-code
+
+# =============================================================================
+# STORAGE SYSTEMS (5)
+# =============================================================================
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: ceph
+  title: Ceph
+  description: |
+    A unified distributed storage system that provides object, block, and file
+    storage in a single platform. Ceph is designed for excellent performance,
+    reliability, and scalability powering exabyte-scale storage clusters.
+  annotations:
+    github.com/project-slug: ceph/ceph
+    backstage.io/source-location: url:https://github.com/ceph/ceph
+  tags:
+    - storage
+    - distributed
+    - object-storage
+    - block-storage
+    - file-storage
+    - cpp
+    - red-hat
+  links:
+    - url: https://docs.ceph.com/
+      title: Documentation
+      icon: docs
+    - url: https://github.com/ceph/ceph
+      title: GitHub Repository
+      icon: github
+    - url: https://ceph.io/
+      title: Website
+      icon: web
+spec:
+  type: service
+  lifecycle: production
+  owner: group:default/infrastructure-team
+  system: storage-systems
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: longhorn
+  title: Longhorn
+  description: |
+    A lightweight, reliable, and easy-to-use distributed block storage system
+    for Kubernetes. Longhorn creates replicated block storage using containers
+    and microservices. A CNCF graduated project.
+  annotations:
+    github.com/project-slug: longhorn/longhorn
+    backstage.io/source-location: url:https://github.com/longhorn/longhorn
+  tags:
+    - storage
+    - block-storage
+    - kubernetes
+    - go
+    - cncf
+  links:
+    - url: https://longhorn.io/docs/
+      title: Documentation
+      icon: docs
+    - url: https://github.com/longhorn/longhorn
+      title: GitHub Repository
+      icon: github
+    - url: https://longhorn.io/
+      title: Website
+      icon: web
+spec:
+  type: service
+  lifecycle: production
+  owner: group:default/infrastructure-team
+  system: storage-systems
+  dependsOn:
+    - component:default/kubernetes
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: rook
+  title: Rook
+  description: |
+    A storage orchestrator for Kubernetes that turns distributed storage
+    systems into self-managing, self-scaling, and self-healing storage services.
+    Rook automates Ceph deployment and management on Kubernetes.
+  annotations:
+    github.com/project-slug: rook/rook
+    backstage.io/source-location: url:https://github.com/rook/rook
+  tags:
+    - storage
+    - orchestration
+    - kubernetes
+    - go
+    - cncf
+  links:
+    - url: https://rook.io/docs/rook/latest/
+      title: Documentation
+      icon: docs
+    - url: https://github.com/rook/rook
+      title: GitHub Repository
+      icon: github
+    - url: https://rook.io/
+      title: Website
+      icon: web
+spec:
+  type: service
+  lifecycle: production
+  owner: group:default/infrastructure-team
+  system: storage-systems
+  dependsOn:
+    - component:default/ceph
+    - component:default/kubernetes
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: seaweedfs
+  title: SeaweedFS
+  description: |
+    A fast distributed storage system for blobs, objects, files, and data lake.
+    SeaweedFS implements an object store with an efficient small-file handling
+    design inspired by Facebook's Haystack paper, with S3 API compatibility.
+  annotations:
+    github.com/project-slug: seaweedfs/seaweedfs
+    backstage.io/source-location: url:https://github.com/seaweedfs/seaweedfs
+  tags:
+    - storage
+    - object-storage
+    - distributed
+    - s3-compatible
+    - go
+  links:
+    - url: https://github.com/seaweedfs/seaweedfs/wiki
+      title: Documentation
+      icon: docs
+    - url: https://github.com/seaweedfs/seaweedfs
+      title: GitHub Repository
+      icon: github
+spec:
+  type: service
+  lifecycle: production
+  owner: group:default/infrastructure-team
+  system: storage-systems
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: openebs
+  title: OpenEBS
+  description: |
+    A leading open source container-attached and container-native storage
+    solution for Kubernetes. OpenEBS provides multiple storage engines for
+    different workload requirements. A CNCF graduated project.
+  annotations:
+    github.com/project-slug: openebs/openebs
+    backstage.io/source-location: url:https://github.com/openebs/openebs
+  tags:
+    - storage
+    - kubernetes
+    - container-attached
+    - go
+    - cncf
+  links:
+    - url: https://openebs.io/docs
+      title: Documentation
+      icon: docs
+    - url: https://github.com/openebs/openebs
+      title: GitHub Repository
+      icon: github
+    - url: https://openebs.io/
+      title: Website
+      icon: web
+spec:
+  type: service
+  lifecycle: production
+  owner: group:default/infrastructure-team
+  system: storage-systems
+  dependsOn:
+    - component:default/kubernetes
+
+# =============================================================================
+# SERVERLESS & EVENT-DRIVEN (5)
+# =============================================================================
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: knative
+  title: Knative
+  description: |
+    A Kubernetes-based platform for deploying and managing serverless workloads.
+    Knative provides Serving (request-driven compute) and Eventing (event-driven
+    architecture) components for building modern applications on Kubernetes.
+  annotations:
+    github.com/project-slug: knative/serving
+    backstage.io/source-location: url:https://github.com/knative/serving
+  tags:
+    - serverless
+    - kubernetes
+    - event-driven
+    - go
+    - cncf
+  links:
+    - url: https://knative.dev/docs/
+      title: Documentation
+      icon: docs
+    - url: https://github.com/knative/serving
+      title: GitHub Repository
+      icon: github
+    - url: https://knative.dev/
+      title: Website
+      icon: web
+spec:
+  type: service
+  lifecycle: production
+  owner: group:default/platform-engineering
+  system: serverless-event-driven
+  dependsOn:
+    - component:default/kubernetes
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: keda
+  title: KEDA
+  description: |
+    Kubernetes-based Event-Driven Autoscaling. KEDA extends Kubernetes with
+    event-driven autoscaling for any container, allowing scale-to-zero and
+    scaling based on external event sources like Kafka, RabbitMQ, or cloud queues.
+  annotations:
+    github.com/project-slug: kedacore/keda
+    backstage.io/source-location: url:https://github.com/kedacore/keda
+  tags:
+    - serverless
+    - autoscaling
+    - event-driven
+    - kubernetes
+    - go
+    - cncf
+  links:
+    - url: https://keda.sh/docs/
+      title: Documentation
+      icon: docs
+    - url: https://github.com/kedacore/keda
+      title: GitHub Repository
+      icon: github
+    - url: https://keda.sh/
+      title: Website
+      icon: web
+spec:
+  type: service
+  lifecycle: production
+  owner: group:default/platform-engineering
+  system: serverless-event-driven
+  dependsOn:
+    - component:default/kubernetes
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: openfaas
+  title: OpenFaaS
+  description: |
+    A framework for building serverless functions with Docker and Kubernetes.
+    OpenFaaS makes it easy to turn anything into a serverless function that
+    runs on Linux or Windows, with auto-scaling and metrics built in.
+  annotations:
+    github.com/project-slug: openfaas/faas
+    backstage.io/source-location: url:https://github.com/openfaas/faas
+  tags:
+    - serverless
+    - functions
+    - kubernetes
+    - go
+  links:
+    - url: https://docs.openfaas.com/
+      title: Documentation
+      icon: docs
+    - url: https://github.com/openfaas/faas
+      title: GitHub Repository
+      icon: github
+    - url: https://www.openfaas.com/
+      title: Website
+      icon: web
+spec:
+  type: service
+  lifecycle: production
+  owner: group:default/platform-engineering
+  system: serverless-event-driven
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: dapr
+  title: Dapr
+  description: |
+    A portable, event-driven runtime that makes it easy for developers to build
+    resilient, stateless and stateful applications that run on the cloud and edge.
+    Dapr provides building blocks for pub/sub, state, secrets, and service invocation.
+  annotations:
+    github.com/project-slug: dapr/dapr
+    backstage.io/source-location: url:https://github.com/dapr/dapr
+  tags:
+    - serverless
+    - event-driven
+    - microservices
+    - runtime
+    - go
+    - cncf
+  links:
+    - url: https://docs.dapr.io/
+      title: Documentation
+      icon: docs
+    - url: https://github.com/dapr/dapr
+      title: GitHub Repository
+      icon: github
+    - url: https://dapr.io/
+      title: Website
+      icon: web
+spec:
+  type: service
+  lifecycle: production
+  owner: group:default/platform-engineering
+  system: serverless-event-driven
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: nuclio
+  title: Nuclio
+  description: |
+    A high-performance serverless framework focused on data, I/O, and
+    compute-intensive workloads. Nuclio provides real-time data processing
+    with auto-scaling, GPU support, and ultra-low latency function execution.
+  annotations:
+    github.com/project-slug: nuclio/nuclio
+    backstage.io/source-location: url:https://github.com/nuclio/nuclio
+  tags:
+    - serverless
+    - functions
+    - data-processing
+    - go
+  links:
+    - url: https://nuclio.io/docs/latest/
+      title: Documentation
+      icon: docs
+    - url: https://github.com/nuclio/nuclio
+      title: GitHub Repository
+      icon: github
+    - url: https://nuclio.io/
+      title: Website
+      icon: web
+spec:
+  type: service
+  lifecycle: production
+  owner: group:default/platform-engineering
+  system: serverless-event-driven

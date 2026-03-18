@@ -1,0 +1,363 @@
+# Enterprise Software Catalog - API Entities
+# 11 API entities with verified, publicly accessible OpenAPI specs.
+# Definitions are fetched from raw upstream sources using Backstage $text substitution.
+# All spec URLs are verified live as of March 2026.
+
+# =============================================================================
+# MONITORING & OBSERVABILITY APIs
+# =============================================================================
+
+apiVersion: backstage.io/v1alpha1
+kind: API
+metadata:
+  name: grafana-api
+  title: Grafana HTTP API
+  description: |
+    The Grafana HTTP API enables programmatic management of dashboards,
+    data sources, users, alerts, annotations, folders, and organisations.
+    The spec is generated from Grafana source code using go-swagger.
+  annotations:
+    github.com/project-slug: grafana/grafana
+    backstage.io/source-location: url:https://github.com/grafana/grafana
+  tags:
+    - monitoring
+    - visualization
+    - rest
+    - openapi
+  links:
+    - url: https://grafana.com/docs/grafana/latest/developers/http_api/
+      title: API Documentation
+      icon: docs
+    - url: https://github.com/grafana/grafana
+      title: GitHub Repository
+      icon: github
+spec:
+  type: openapi
+  lifecycle: production
+  owner: group:default/platform-engineering
+  system: monitoring-metrics
+  definition:
+    $text: https://raw.githubusercontent.com/grafana/grafana/main/public/openapi3.json
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: API
+metadata:
+  name: jaeger-query-api
+  title: Jaeger Query Service API
+  description: |
+    The Jaeger Query Service v3 REST API for retrieving traces, services,
+    operations, and dependencies from a Jaeger backend. Defined in the
+    jaeger-idl shared interface definition repository.
+  annotations:
+    github.com/project-slug: jaegertracing/jaeger-idl
+    backstage.io/source-location: url:https://github.com/jaegertracing/jaeger-idl
+  tags:
+    - tracing
+    - distributed-tracing
+    - rest
+    - openapi
+  links:
+    - url: https://www.jaegertracing.io/docs/latest/apis/
+      title: API Documentation
+      icon: docs
+    - url: https://github.com/jaegertracing/jaeger-idl
+      title: GitHub Repository
+      icon: github
+spec:
+  type: openapi
+  lifecycle: production
+  owner: group:default/platform-engineering
+  system: tracing-systems
+  definition:
+    $text: https://raw.githubusercontent.com/jaegertracing/jaeger-idl/main/swagger/api_v3/query_service.swagger.json
+
+# =============================================================================
+# VECTOR DATABASE APIs
+# =============================================================================
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: API
+metadata:
+  name: qdrant-api
+  title: Qdrant REST API
+  description: |
+    The Qdrant vector database REST API for managing collections, performing
+    vector similarity searches, upserting/deleting points, and cluster operations.
+    Published and maintained at api.qdrant.tech.
+  annotations:
+    github.com/project-slug: qdrant/qdrant
+    backstage.io/source-location: url:https://github.com/qdrant/qdrant
+  tags:
+    - vector-database
+    - similarity-search
+    - ai
+    - rest
+    - openapi
+  links:
+    - url: https://api.qdrant.tech/api-reference
+      title: API Reference
+      icon: docs
+    - url: https://qdrant.tech/documentation/interfaces/rest/
+      title: REST API Documentation
+      icon: docs
+    - url: https://github.com/qdrant/qdrant
+      title: GitHub Repository
+      icon: github
+spec:
+  type: openapi
+  lifecycle: production
+  owner: group:default/ai-ml-team
+  system: vector-databases
+  definition:
+    $text: https://api.qdrant.tech/openapi.yaml
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: API
+metadata:
+  name: milvus-restful-api
+  title: Milvus RESTful API
+  description: |
+    The Milvus vector database RESTful API v2.3 for managing collections,
+    partitions, entities, and performing vector search and query operations.
+    Enables building scalable AI applications with vector similarity search.
+  annotations:
+    github.com/project-slug: milvus-io/milvus
+    backstage.io/source-location: url:https://github.com/milvus-io/milvus
+  tags:
+    - vector-database
+    - similarity-search
+    - ai
+    - rest
+    - openapi
+  links:
+    - url: https://milvus.io/api-reference/restful/v2.3.x/About.md
+      title: API Reference
+      icon: docs
+    - url: https://github.com/milvus-io/milvus
+      title: GitHub Repository
+      icon: github
+spec:
+  type: openapi
+  lifecycle: production
+  owner: group:default/ai-ml-team
+  system: vector-databases
+  definition:
+    $text: https://raw.githubusercontent.com/milvus-io/web-content/master/API_Reference/milvus-restful/v2.3.x/Restful%20API.openapi.json
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: API
+metadata:
+  name: weaviate-api
+  title: Weaviate REST API
+  description: |
+    The Weaviate vector database REST API for managing schema, objects,
+    and vector search operations. Supports classification, batch operations,
+    and integration with multiple vectoriser modules.
+  annotations:
+    github.com/project-slug: weaviate/weaviate
+    backstage.io/source-location: url:https://github.com/weaviate/weaviate
+  tags:
+    - vector-database
+    - similarity-search
+    - ai
+    - rest
+    - openapi
+  links:
+    - url: https://weaviate.io/developers/weaviate/api/rest
+      title: API Documentation
+      icon: docs
+    - url: https://github.com/weaviate/weaviate
+      title: GitHub Repository
+      icon: github
+spec:
+  type: openapi
+  lifecycle: production
+  owner: group:default/ai-ml-team
+  system: vector-databases
+  definition:
+    $text: https://raw.githubusercontent.com/weaviate/weaviate/master/openapi-specs/schema.json
+
+# =============================================================================
+# SECURITY & IDENTITY APIs
+# =============================================================================
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: API
+metadata:
+  name: keycloak-admin-api
+  title: Keycloak Admin REST API
+  description: |
+    The Keycloak Admin REST API for managing realms, clients, users,
+    roles, identity providers, and authentication flows. Provides
+    programmatic access to all administrative functions of Keycloak.
+  annotations:
+    github.com/project-slug: keycloak/keycloak
+    backstage.io/source-location: url:https://github.com/keycloak/keycloak
+  tags:
+    - identity
+    - authentication
+    - sso
+    - admin
+    - rest
+    - openapi
+  links:
+    - url: https://www.keycloak.org/docs-api/latest/rest-api/
+      title: API Reference
+      icon: docs
+    - url: https://github.com/keycloak/keycloak
+      title: GitHub Repository
+      icon: github
+spec:
+  type: openapi
+  lifecycle: production
+  owner: group:default/security-operations
+  system: identity-access
+  definition:
+    $text: https://www.keycloak.org/docs-api/latest/rest-api/openapi.json
+
+# =============================================================================
+# CI/CD & SOURCE CONTROL APIs
+# =============================================================================
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: API
+metadata:
+  name: argocd-api
+  title: Argo CD REST API
+  description: |
+    The Argo CD REST API (Swagger 2.0) for managing applications, repositories,
+    clusters, projects, settings, certificates, accounts, and sync operations.
+    Used by the Argo CD CLI and web UI.
+  annotations:
+    github.com/project-slug: argoproj/argo-cd
+    backstage.io/source-location: url:https://github.com/argoproj/argo-cd
+  tags:
+    - gitops
+    - cicd
+    - kubernetes
+    - rest
+    - openapi
+  links:
+    - url: https://argo-cd.readthedocs.io/en/stable/developer-guide/api-docs/
+      title: API Documentation
+      icon: docs
+    - url: https://github.com/argoproj/argo-cd
+      title: GitHub Repository
+      icon: github
+spec:
+  type: openapi
+  lifecycle: production
+  owner: group:default/devops-team
+  system: cicd-pipelines
+  definition:
+    $text: https://raw.githubusercontent.com/argoproj/argo-cd/master/assets/swagger.json
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: API
+metadata:
+  name: argo-workflows-api
+  title: Argo Workflows REST API
+  description: |
+    The Argo Workflows REST API for managing workflow templates, cron workflows,
+    archived workflows, and event sources. Enables programmatic control of all
+    Kubernetes-native workflow orchestration operations.
+  annotations:
+    github.com/project-slug: argoproj/argo-workflows
+    backstage.io/source-location: url:https://github.com/argoproj/argo-workflows
+  tags:
+    - workflow
+    - orchestration
+    - kubernetes
+    - rest
+    - openapi
+  links:
+    - url: https://argo-workflows.readthedocs.io/en/latest/rest-api/
+      title: API Documentation
+      icon: docs
+    - url: https://github.com/argoproj/argo-workflows
+      title: GitHub Repository
+      icon: github
+spec:
+  type: openapi
+  lifecycle: production
+  owner: group:default/data-engineering
+  system: integration-workflow
+  definition:
+    $text: https://raw.githubusercontent.com/argoproj/argo-workflows/main/api/openapi-spec/swagger.json
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: API
+metadata:
+  name: harbor-api
+  title: Harbor Registry REST API
+  description: |
+    The Harbor container registry REST API v2.0 for managing projects,
+    repositories, images, tags, artifacts, replication policies, webhooks,
+    robot accounts, and vulnerability scan results.
+  annotations:
+    github.com/project-slug: goharbor/harbor
+    backstage.io/source-location: url:https://github.com/goharbor/harbor
+  tags:
+    - container-registry
+    - security
+    - rest
+    - openapi
+  links:
+    - url: https://goharbor.io/docs/main/working-with-projects/using-api-explorer/
+      title: API Documentation
+      icon: docs
+    - url: https://github.com/goharbor/harbor
+      title: GitHub Repository
+      icon: github
+spec:
+  type: openapi
+  lifecycle: production
+  owner: group:default/devops-team
+  system: source-control-registries
+  definition:
+    $text: https://raw.githubusercontent.com/goharbor/harbor/main/api/v2.0/swagger.yaml
+
+# =============================================================================
+# DEVELOPER PLATFORM APIs
+# =============================================================================
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: API
+metadata:
+  name: backstage-catalog-api
+  title: Backstage Catalog Backend API
+  description: |
+    The Backstage software catalog backend REST API for querying entities,
+    managing locations, refreshing entities, and retrieving entity ancestry
+    and facets. The backbone of the Backstage Internal Developer Portal.
+  annotations:
+    github.com/project-slug: backstage/backstage
+    backstage.io/source-location: url:https://github.com/backstage/backstage
+  tags:
+    - developer-portal
+    - catalog
+    - rest
+    - openapi
+  links:
+    - url: https://backstage.io/docs/features/software-catalog/software-catalog-api
+      title: API Documentation
+      icon: docs
+    - url: https://github.com/backstage/backstage
+      title: GitHub Repository
+      icon: github
+spec:
+  type: openapi
+  lifecycle: production
+  owner: group:default/application-development
+  system: developer-tools
+  definition:
+    $text: https://raw.githubusercontent.com/backstage/backstage/master/plugins/catalog-backend/src/schema/openapi.yaml

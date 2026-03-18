@@ -1,0 +1,1433 @@
+# Enterprise Software Catalog - Data Management, Messaging & Search
+# 40 components across 8 systems. All projects are active with OSI-approved licenses.
+
+# =============================================================================
+# RELATIONAL DATABASES (5)
+# =============================================================================
+
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: postgresql
+  title: PostgreSQL
+  description: |
+    The world's most advanced open source relational database. Known for
+    reliability, data integrity, extensibility, and strong SQL standards
+    compliance. Powers critical enterprise workloads worldwide.
+  annotations:
+    github.com/project-slug: postgres/postgres
+    backstage.io/source-location: url:https://github.com/postgres/postgres
+  tags:
+    - database
+    - relational
+    - sql
+    - c
+  links:
+    - url: https://www.postgresql.org/docs/
+      title: Documentation
+      icon: docs
+    - url: https://github.com/postgres/postgres
+      title: GitHub Repository
+      icon: github
+    - url: https://www.postgresql.org/
+      title: Website
+      icon: web
+spec:
+  type: service
+  lifecycle: production
+  owner: group:default/data-engineering
+  system: relational-databases
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: mysql
+  title: MySQL
+  description: |
+    One of the most popular open source relational databases. MySQL delivers
+    proven performance, reliability, and ease of use for web applications,
+    e-commerce platforms, and enterprise transactional systems.
+  annotations:
+    github.com/project-slug: mysql/mysql-server
+    backstage.io/source-location: url:https://github.com/mysql/mysql-server
+  tags:
+    - database
+    - relational
+    - sql
+    - cpp
+  links:
+    - url: https://dev.mysql.com/doc/
+      title: Documentation
+      icon: docs
+    - url: https://github.com/mysql/mysql-server
+      title: GitHub Repository
+      icon: github
+    - url: https://www.mysql.com/
+      title: Website
+      icon: web
+spec:
+  type: service
+  lifecycle: production
+  owner: group:default/data-engineering
+  system: relational-databases
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: mariadb
+  title: MariaDB
+  description: |
+    A community-developed fork of MySQL that guarantees to stay open source.
+    MariaDB offers high compatibility with MySQL while adding new storage
+    engines, security features, and performance improvements.
+  annotations:
+    github.com/project-slug: MariaDB/server
+    backstage.io/source-location: url:https://github.com/MariaDB/server
+  tags:
+    - database
+    - relational
+    - sql
+    - cpp
+  links:
+    - url: https://mariadb.com/kb/en/documentation/
+      title: Documentation
+      icon: docs
+    - url: https://github.com/MariaDB/server
+      title: GitHub Repository
+      icon: github
+    - url: https://mariadb.org/
+      title: Website
+      icon: web
+spec:
+  type: service
+  lifecycle: production
+  owner: group:default/data-engineering
+  system: relational-databases
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: tidb
+  title: TiDB
+  description: |
+    A distributed SQL database that supports Hybrid Transactional and Analytical
+    Processing (HTAP). TiDB is MySQL-compatible and provides horizontal
+    scalability, strong consistency, and high availability.
+  annotations:
+    github.com/project-slug: pingcap/tidb
+    backstage.io/source-location: url:https://github.com/pingcap/tidb
+  tags:
+    - database
+    - relational
+    - sql
+    - distributed
+    - go
+  links:
+    - url: https://docs.pingcap.com/
+      title: Documentation
+      icon: docs
+    - url: https://github.com/pingcap/tidb
+      title: GitHub Repository
+      icon: github
+    - url: https://www.pingcap.com/
+      title: Website
+      icon: web
+spec:
+  type: service
+  lifecycle: production
+  owner: group:default/data-engineering
+  system: relational-databases
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: vitess
+  title: Vitess
+  description: |
+    A database clustering system for horizontal scaling of MySQL. Originally
+    built at YouTube, Vitess is a CNCF graduated project that enables sharding,
+    connection pooling, and query routing for massive MySQL deployments.
+  annotations:
+    github.com/project-slug: vitessio/vitess
+    backstage.io/source-location: url:https://github.com/vitessio/vitess
+  tags:
+    - database
+    - relational
+    - sql
+    - distributed
+    - go
+    - cncf
+  links:
+    - url: https://vitess.io/docs/
+      title: Documentation
+      icon: docs
+    - url: https://github.com/vitessio/vitess
+      title: GitHub Repository
+      icon: github
+    - url: https://vitess.io/
+      title: Website
+      icon: web
+spec:
+  type: service
+  lifecycle: production
+  owner: group:default/data-engineering
+  system: relational-databases
+
+# =============================================================================
+# NOSQL / DOCUMENT DATABASES (5)
+# =============================================================================
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: apache-cassandra
+  title: Apache Cassandra
+  description: |
+    A highly scalable, distributed wide-column NoSQL database designed to handle
+    large amounts of data across many commodity servers with no single point of
+    failure. Used by Netflix, Apple, and other large-scale enterprises.
+  annotations:
+    github.com/project-slug: apache/cassandra
+    backstage.io/source-location: url:https://github.com/apache/cassandra
+  tags:
+    - database
+    - nosql
+    - wide-column
+    - distributed
+    - java
+  links:
+    - url: https://cassandra.apache.org/doc/latest/
+      title: Documentation
+      icon: docs
+    - url: https://github.com/apache/cassandra
+      title: GitHub Repository
+      icon: github
+    - url: https://cassandra.apache.org/
+      title: Website
+      icon: web
+spec:
+  type: service
+  lifecycle: production
+  owner: group:default/data-engineering
+  system: nosql-databases
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: scylladb
+  title: ScyllaDB
+  description: |
+    A high-performance NoSQL database compatible with Apache Cassandra and
+    Amazon DynamoDB. Written in C++ for close-to-hardware performance, ScyllaDB
+    delivers predictable low-latency at massive scale.
+  annotations:
+    github.com/project-slug: scylladb/scylladb
+    backstage.io/source-location: url:https://github.com/scylladb/scylladb
+  tags:
+    - database
+    - nosql
+    - wide-column
+    - distributed
+    - cpp
+  links:
+    - url: https://opensource.docs.scylladb.com/
+      title: Documentation
+      icon: docs
+    - url: https://github.com/scylladb/scylladb
+      title: GitHub Repository
+      icon: github
+    - url: https://www.scylladb.com/
+      title: Website
+      icon: web
+spec:
+  type: service
+  lifecycle: production
+  owner: group:default/data-engineering
+  system: nosql-databases
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: apache-couchdb
+  title: Apache CouchDB
+  description: |
+    A document-oriented NoSQL database that uses JSON for documents, JavaScript
+    for MapReduce queries, and HTTP for its API. CouchDB excels at multi-master
+    replication and offline-first applications.
+  annotations:
+    github.com/project-slug: apache/couchdb
+    backstage.io/source-location: url:https://github.com/apache/couchdb
+  tags:
+    - database
+    - nosql
+    - document
+    - erlang
+  links:
+    - url: https://docs.couchdb.org/
+      title: Documentation
+      icon: docs
+    - url: https://github.com/apache/couchdb
+      title: GitHub Repository
+      icon: github
+    - url: https://couchdb.apache.org/
+      title: Website
+      icon: web
+spec:
+  type: service
+  lifecycle: production
+  owner: group:default/data-engineering
+  system: nosql-databases
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: arangodb
+  title: ArangoDB
+  description: |
+    A native multi-model database that supports documents, graphs, and
+    key-value data in a single engine with a unified query language (AQL).
+    Ideal for applications that need flexible data modeling.
+  annotations:
+    github.com/project-slug: arangodb/arangodb
+    backstage.io/source-location: url:https://github.com/arangodb/arangodb
+  tags:
+    - database
+    - nosql
+    - multi-model
+    - graph
+    - document
+    - cpp
+  links:
+    - url: https://docs.arangodb.com/
+      title: Documentation
+      icon: docs
+    - url: https://github.com/arangodb/arangodb
+      title: GitHub Repository
+      icon: github
+    - url: https://arangodb.com/
+      title: Website
+      icon: web
+spec:
+  type: service
+  lifecycle: production
+  owner: group:default/data-engineering
+  system: nosql-databases
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: ferretdb
+  title: FerretDB
+  description: |
+    An open source document database that provides MongoDB wire protocol
+    compatibility backed by PostgreSQL or SQLite. FerretDB enables teams to
+    use familiar MongoDB drivers and tooling with a truly open source backend.
+  annotations:
+    github.com/project-slug: FerretDB/FerretDB
+    backstage.io/source-location: url:https://github.com/FerretDB/FerretDB
+  tags:
+    - database
+    - nosql
+    - document
+    - mongodb-compatible
+    - go
+  links:
+    - url: https://docs.ferretdb.io/
+      title: Documentation
+      icon: docs
+    - url: https://github.com/FerretDB/FerretDB
+      title: GitHub Repository
+      icon: github
+    - url: https://www.ferretdb.com/
+      title: Website
+      icon: web
+spec:
+  type: service
+  lifecycle: production
+  owner: group:default/data-engineering
+  system: nosql-databases
+  dependsOn:
+    - component:default/postgresql
+
+# =============================================================================
+# KEY-VALUE STORES & CACHES (5)
+# =============================================================================
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: valkey
+  title: Valkey
+  description: |
+    A high-performance key-value store forked from Redis under the Linux
+    Foundation. Valkey provides in-memory data structure storage for caching,
+    session management, rate limiting, and real-time analytics.
+  annotations:
+    github.com/project-slug: valkey-io/valkey
+    backstage.io/source-location: url:https://github.com/valkey-io/valkey
+  tags:
+    - database
+    - key-value
+    - cache
+    - in-memory
+    - c
+    - linux-foundation
+  links:
+    - url: https://valkey.io/docs/
+      title: Documentation
+      icon: docs
+    - url: https://github.com/valkey-io/valkey
+      title: GitHub Repository
+      icon: github
+    - url: https://valkey.io/
+      title: Website
+      icon: web
+spec:
+  type: service
+  lifecycle: production
+  owner: group:default/data-engineering
+  system: key-value-cache
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: redis
+  title: Redis
+  description: |
+    An in-memory data structure store used as a database, cache, and message
+    broker. Redis supports strings, hashes, lists, sets, sorted sets, streams,
+    and more. Redis 8 returned to open source under AGPLv3.
+  annotations:
+    github.com/project-slug: redis/redis
+    backstage.io/source-location: url:https://github.com/redis/redis
+  tags:
+    - database
+    - key-value
+    - cache
+    - in-memory
+    - c
+  links:
+    - url: https://redis.io/docs/
+      title: Documentation
+      icon: docs
+    - url: https://github.com/redis/redis
+      title: GitHub Repository
+      icon: github
+    - url: https://redis.io/
+      title: Website
+      icon: web
+spec:
+  type: service
+  lifecycle: production
+  owner: group:default/data-engineering
+  system: key-value-cache
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: memcached
+  title: Memcached
+  description: |
+    A high-performance, distributed memory object caching system intended for
+    speeding up dynamic web applications by alleviating database load. Simple
+    yet battle-tested at massive scale by companies like Facebook and Wikipedia.
+  annotations:
+    github.com/project-slug: memcached/memcached
+    backstage.io/source-location: url:https://github.com/memcached/memcached
+  tags:
+    - database
+    - key-value
+    - cache
+    - in-memory
+    - c
+  links:
+    - url: https://github.com/memcached/memcached/wiki
+      title: Documentation
+      icon: docs
+    - url: https://github.com/memcached/memcached
+      title: GitHub Repository
+      icon: github
+    - url: https://memcached.org/
+      title: Website
+      icon: web
+spec:
+  type: service
+  lifecycle: production
+  owner: group:default/data-engineering
+  system: key-value-cache
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: etcd
+  title: etcd
+  description: |
+    A distributed, reliable key-value store for the most critical data of a
+    distributed system. etcd is the backbone of Kubernetes, storing all cluster
+    state. A CNCF graduated project with strong consistency guarantees via Raft.
+  annotations:
+    github.com/project-slug: etcd-io/etcd
+    backstage.io/source-location: url:https://github.com/etcd-io/etcd
+  tags:
+    - database
+    - key-value
+    - distributed
+    - consensus
+    - go
+    - cncf
+  links:
+    - url: https://etcd.io/docs/
+      title: Documentation
+      icon: docs
+    - url: https://github.com/etcd-io/etcd
+      title: GitHub Repository
+      icon: github
+    - url: https://etcd.io/
+      title: Website
+      icon: web
+spec:
+  type: service
+  lifecycle: production
+  owner: group:default/data-engineering
+  system: key-value-cache
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: apache-ignite
+  title: Apache Ignite
+  description: |
+    A distributed database, caching, and processing platform for transactional,
+    analytical, and streaming workloads. Ignite provides an in-memory speed layer
+    with optional persistence and SQL support.
+  annotations:
+    github.com/project-slug: apache/ignite
+    backstage.io/source-location: url:https://github.com/apache/ignite
+  tags:
+    - database
+    - key-value
+    - cache
+    - distributed
+    - in-memory
+    - java
+  links:
+    - url: https://ignite.apache.org/docs/latest/
+      title: Documentation
+      icon: docs
+    - url: https://github.com/apache/ignite
+      title: GitHub Repository
+      icon: github
+    - url: https://ignite.apache.org/
+      title: Website
+      icon: web
+spec:
+  type: service
+  lifecycle: production
+  owner: group:default/data-engineering
+  system: key-value-cache
+
+# =============================================================================
+# TIME-SERIES DATABASES (5)
+# =============================================================================
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: influxdb
+  title: InfluxDB
+  description: |
+    A purpose-built time-series database designed for high-write and query
+    performance on time-stamped data. InfluxDB is widely used for monitoring,
+    IoT, real-time analytics, and DevOps metrics collection.
+  annotations:
+    github.com/project-slug: influxdata/influxdb
+    backstage.io/source-location: url:https://github.com/influxdata/influxdb
+  tags:
+    - database
+    - time-series
+    - metrics
+    - iot
+    - rust
+    - go
+  links:
+    - url: https://docs.influxdata.com/
+      title: Documentation
+      icon: docs
+    - url: https://github.com/influxdata/influxdb
+      title: GitHub Repository
+      icon: github
+    - url: https://www.influxdata.com/
+      title: Website
+      icon: web
+spec:
+  type: service
+  lifecycle: production
+  owner: group:default/data-engineering
+  system: time-series-databases
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: questdb
+  title: QuestDB
+  description: |
+    A high-performance time-series database built for fast ingestion and SQL
+    queries. QuestDB uses a column-oriented storage model and is optimized for
+    financial data, IoT, and real-time monitoring use cases.
+  annotations:
+    github.com/project-slug: questdb/questdb
+    backstage.io/source-location: url:https://github.com/questdb/questdb
+  tags:
+    - database
+    - time-series
+    - sql
+    - java
+  links:
+    - url: https://questdb.io/docs/
+      title: Documentation
+      icon: docs
+    - url: https://github.com/questdb/questdb
+      title: GitHub Repository
+      icon: github
+    - url: https://questdb.io/
+      title: Website
+      icon: web
+spec:
+  type: service
+  lifecycle: production
+  owner: group:default/data-engineering
+  system: time-series-databases
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: victoriametrics
+  title: VictoriaMetrics
+  description: |
+    A fast, cost-effective, and scalable monitoring solution and time-series
+    database. VictoriaMetrics is Prometheus-compatible and handles billions
+    of time series with high compression and low resource usage.
+  annotations:
+    github.com/project-slug: VictoriaMetrics/VictoriaMetrics
+    backstage.io/source-location: url:https://github.com/VictoriaMetrics/VictoriaMetrics
+  tags:
+    - database
+    - time-series
+    - monitoring
+    - prometheus-compatible
+    - go
+  links:
+    - url: https://docs.victoriametrics.com/
+      title: Documentation
+      icon: docs
+    - url: https://github.com/VictoriaMetrics/VictoriaMetrics
+      title: GitHub Repository
+      icon: github
+    - url: https://victoriametrics.com/
+      title: Website
+      icon: web
+spec:
+  type: service
+  lifecycle: production
+  owner: group:default/data-engineering
+  system: time-series-databases
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: tdengine
+  title: TDengine
+  description: |
+    A high-performance time-series database designed for IoT, connected
+    vehicles, industrial IoT, and DevOps. TDengine features built-in caching,
+    stream processing, and data subscription in a single platform.
+  annotations:
+    github.com/project-slug: taosdata/TDengine
+    backstage.io/source-location: url:https://github.com/taosdata/TDengine
+  tags:
+    - database
+    - time-series
+    - iot
+    - c
+  links:
+    - url: https://docs.tdengine.com/
+      title: Documentation
+      icon: docs
+    - url: https://github.com/taosdata/TDengine
+      title: GitHub Repository
+      icon: github
+    - url: https://tdengine.com/
+      title: Website
+      icon: web
+spec:
+  type: service
+  lifecycle: production
+  owner: group:default/data-engineering
+  system: time-series-databases
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: apache-iotdb
+  title: Apache IoTDB
+  description: |
+    An IoT-native time-series database that provides efficient data collection,
+    storage, and analysis for massive volumes of time-series data generated by
+    IoT devices and industrial systems.
+  annotations:
+    github.com/project-slug: apache/iotdb
+    backstage.io/source-location: url:https://github.com/apache/iotdb
+  tags:
+    - database
+    - time-series
+    - iot
+    - java
+  links:
+    - url: https://iotdb.apache.org/UserGuide/latest/
+      title: Documentation
+      icon: docs
+    - url: https://github.com/apache/iotdb
+      title: GitHub Repository
+      icon: github
+    - url: https://iotdb.apache.org/
+      title: Website
+      icon: web
+spec:
+  type: service
+  lifecycle: production
+  owner: group:default/data-engineering
+  system: time-series-databases
+
+# =============================================================================
+# GRAPH DATABASES (5)
+# =============================================================================
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: neo4j
+  title: Neo4j Community
+  description: |
+    The world's leading graph database, purpose-built to leverage data
+    relationships. Neo4j's Community Edition provides native graph storage
+    and processing with the Cypher query language.
+  annotations:
+    github.com/project-slug: neo4j/neo4j
+    backstage.io/source-location: url:https://github.com/neo4j/neo4j
+  tags:
+    - database
+    - graph
+    - cypher
+    - java
+  links:
+    - url: https://neo4j.com/docs/
+      title: Documentation
+      icon: docs
+    - url: https://github.com/neo4j/neo4j
+      title: GitHub Repository
+      icon: github
+    - url: https://neo4j.com/
+      title: Website
+      icon: web
+spec:
+  type: service
+  lifecycle: production
+  owner: group:default/data-engineering
+  system: graph-databases
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: janusgraph
+  title: JanusGraph
+  description: |
+    A scalable distributed graph database optimized for storing and querying
+    billions of vertices and edges. JanusGraph supports Apache TinkerPop and
+    can use Cassandra, HBase, or BerkeleyDB for storage backends.
+  annotations:
+    github.com/project-slug: JanusGraph/janusgraph
+    backstage.io/source-location: url:https://github.com/JanusGraph/janusgraph
+  tags:
+    - database
+    - graph
+    - distributed
+    - gremlin
+    - java
+    - linux-foundation
+  links:
+    - url: https://docs.janusgraph.org/
+      title: Documentation
+      icon: docs
+    - url: https://github.com/JanusGraph/janusgraph
+      title: GitHub Repository
+      icon: github
+    - url: https://janusgraph.org/
+      title: Website
+      icon: web
+spec:
+  type: service
+  lifecycle: production
+  owner: group:default/data-engineering
+  system: graph-databases
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: apache-age
+  title: Apache AGE
+  description: |
+    A PostgreSQL extension that adds graph database functionality. AGE enables
+    users to leverage graph query patterns alongside existing relational data
+    using openCypher queries within PostgreSQL.
+  annotations:
+    github.com/project-slug: apache/age
+    backstage.io/source-location: url:https://github.com/apache/age
+  tags:
+    - database
+    - graph
+    - postgresql-extension
+    - cypher
+    - c
+  links:
+    - url: https://age.apache.org/age-manual/master/
+      title: Documentation
+      icon: docs
+    - url: https://github.com/apache/age
+      title: GitHub Repository
+      icon: github
+    - url: https://age.apache.org/
+      title: Website
+      icon: web
+spec:
+  type: service
+  lifecycle: production
+  owner: group:default/data-engineering
+  system: graph-databases
+  dependsOn:
+    - component:default/postgresql
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: arcadedb
+  title: ArcadeDB
+  description: |
+    A multi-model database that supports graphs, documents, key-value, time-series,
+    and search in a single engine. ArcadeDB is designed for real-time performance
+    with ACID transactions and SQL, Cypher, Gremlin, and GraphQL support.
+  annotations:
+    github.com/project-slug: ArcadeData/arcadedb
+    backstage.io/source-location: url:https://github.com/ArcadeData/arcadedb
+  tags:
+    - database
+    - graph
+    - multi-model
+    - java
+  links:
+    - url: https://docs.arcadedb.com/
+      title: Documentation
+      icon: docs
+    - url: https://github.com/ArcadeData/arcadedb
+      title: GitHub Repository
+      icon: github
+    - url: https://arcadedb.com/
+      title: Website
+      icon: web
+spec:
+  type: service
+  lifecycle: production
+  owner: group:default/data-engineering
+  system: graph-databases
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: nebulagraph
+  title: NebulaGraph
+  description: |
+    A distributed, scalable, lightning-fast graph database designed for
+    super large-scale graphs with millisecond latency. NebulaGraph uses
+    a shared-nothing architecture and supports the nGQL query language.
+  annotations:
+    github.com/project-slug: vesoft-inc/nebula
+    backstage.io/source-location: url:https://github.com/vesoft-inc/nebula
+  tags:
+    - database
+    - graph
+    - distributed
+    - cpp
+  links:
+    - url: https://docs.nebula-graph.io/
+      title: Documentation
+      icon: docs
+    - url: https://github.com/vesoft-inc/nebula
+      title: GitHub Repository
+      icon: github
+    - url: https://www.nebula-graph.io/
+      title: Website
+      icon: web
+spec:
+  type: service
+  lifecycle: production
+  owner: group:default/data-engineering
+  system: graph-databases
+
+# =============================================================================
+# VECTOR DATABASES (5)
+# =============================================================================
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: milvus
+  title: Milvus
+  description: |
+    A cloud-native vector database built for scalable similarity search and
+    AI applications. A CNCF graduated project, Milvus powers RAG pipelines,
+    recommendation systems, and semantic search at enterprise scale.
+  annotations:
+    github.com/project-slug: milvus-io/milvus
+    backstage.io/source-location: url:https://github.com/milvus-io/milvus
+  tags:
+    - database
+    - vector
+    - ai
+    - similarity-search
+    - go
+    - cncf
+  links:
+    - url: https://milvus.io/docs
+      title: Documentation
+      icon: docs
+    - url: https://github.com/milvus-io/milvus
+      title: GitHub Repository
+      icon: github
+    - url: https://milvus.io/
+      title: Website
+      icon: web
+spec:
+  type: service
+  lifecycle: production
+  owner: group:default/ai-ml-team
+  system: vector-databases
+  providesApis:
+    - milvus-restful-api
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: qdrant
+  title: Qdrant
+  description: |
+    A high-performance vector similarity search engine and database written in
+    Rust. Qdrant provides a production-ready service with extended filtering
+    support, making it ideal for neural network and semantic matching applications.
+  annotations:
+    github.com/project-slug: qdrant/qdrant
+    backstage.io/source-location: url:https://github.com/qdrant/qdrant
+  tags:
+    - database
+    - vector
+    - ai
+    - similarity-search
+    - rust
+  links:
+    - url: https://qdrant.tech/documentation/
+      title: Documentation
+      icon: docs
+    - url: https://github.com/qdrant/qdrant
+      title: GitHub Repository
+      icon: github
+    - url: https://qdrant.tech/
+      title: Website
+      icon: web
+spec:
+  type: service
+  lifecycle: production
+  owner: group:default/ai-ml-team
+  system: vector-databases
+  providesApis:
+    - qdrant-api
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: weaviate
+  title: Weaviate
+  description: |
+    An AI-native vector database that stores both objects and vectors, allowing
+    for combining vector search with structured filtering. Weaviate supports
+    various ML models for automatic vectorization out of the box.
+  annotations:
+    github.com/project-slug: weaviate/weaviate
+    backstage.io/source-location: url:https://github.com/weaviate/weaviate
+  tags:
+    - database
+    - vector
+    - ai
+    - semantic-search
+    - go
+  links:
+    - url: https://weaviate.io/developers/weaviate
+      title: Documentation
+      icon: docs
+    - url: https://github.com/weaviate/weaviate
+      title: GitHub Repository
+      icon: github
+    - url: https://weaviate.io/
+      title: Website
+      icon: web
+spec:
+  type: service
+  lifecycle: production
+  owner: group:default/ai-ml-team
+  system: vector-databases
+  providesApis:
+    - weaviate-api
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: chromadb
+  title: ChromaDB
+  description: |
+    An AI-native embedding database designed for building LLM applications.
+    Chroma makes it easy to store embeddings and their metadata, search
+    embeddings, and integrate with LLM frameworks like LangChain.
+  annotations:
+    github.com/project-slug: chroma-core/chroma
+    backstage.io/source-location: url:https://github.com/chroma-core/chroma
+  tags:
+    - database
+    - vector
+    - ai
+    - embeddings
+    - python
+    - rust
+  links:
+    - url: https://docs.trychroma.com/
+      title: Documentation
+      icon: docs
+    - url: https://github.com/chroma-core/chroma
+      title: GitHub Repository
+      icon: github
+    - url: https://www.trychroma.com/
+      title: Website
+      icon: web
+spec:
+  type: service
+  lifecycle: production
+  owner: group:default/ai-ml-team
+  system: vector-databases
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: pgvector
+  title: pgvector
+  description: |
+    A PostgreSQL extension for vector similarity search. pgvector enables
+    storing and querying embeddings directly in PostgreSQL, making it easy
+    to add AI-powered search to existing PostgreSQL-based applications.
+  annotations:
+    github.com/project-slug: pgvector/pgvector
+    backstage.io/source-location: url:https://github.com/pgvector/pgvector
+  tags:
+    - database
+    - vector
+    - postgresql-extension
+    - ai
+    - c
+  links:
+    - url: https://github.com/pgvector/pgvector#readme
+      title: Documentation
+      icon: docs
+    - url: https://github.com/pgvector/pgvector
+      title: GitHub Repository
+      icon: github
+spec:
+  type: service
+  lifecycle: production
+  owner: group:default/ai-ml-team
+  system: vector-databases
+  dependsOn:
+    - component:default/postgresql
+
+# =============================================================================
+# MESSAGE BROKERS & STREAMING (5)
+# =============================================================================
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: apache-kafka
+  title: Apache Kafka
+  description: |
+    A distributed event streaming platform capable of handling trillions of
+    events per day. Kafka is used for building real-time data pipelines and
+    streaming applications. The backbone of event-driven enterprise architectures.
+  annotations:
+    github.com/project-slug: apache/kafka
+    backstage.io/source-location: url:https://github.com/apache/kafka
+  tags:
+    - messaging
+    - streaming
+    - event-driven
+    - distributed
+    - java
+    - scala
+  links:
+    - url: https://kafka.apache.org/documentation/
+      title: Documentation
+      icon: docs
+    - url: https://github.com/apache/kafka
+      title: GitHub Repository
+      icon: github
+    - url: https://kafka.apache.org/
+      title: Website
+      icon: web
+spec:
+  type: service
+  lifecycle: production
+  owner: group:default/platform-engineering
+  system: message-brokers
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: rabbitmq
+  title: RabbitMQ
+  description: |
+    A widely deployed open source message broker supporting AMQP, MQTT, and STOMP
+    protocols. RabbitMQ provides robust messaging for enterprise applications
+    with flexible routing, clustering, and high availability features.
+  annotations:
+    github.com/project-slug: rabbitmq/rabbitmq-server
+    backstage.io/source-location: url:https://github.com/rabbitmq/rabbitmq-server
+  tags:
+    - messaging
+    - amqp
+    - mqtt
+    - erlang
+  links:
+    - url: https://www.rabbitmq.com/docs
+      title: Documentation
+      icon: docs
+    - url: https://github.com/rabbitmq/rabbitmq-server
+      title: GitHub Repository
+      icon: github
+    - url: https://www.rabbitmq.com/
+      title: Website
+      icon: web
+spec:
+  type: service
+  lifecycle: production
+  owner: group:default/platform-engineering
+  system: message-brokers
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: nats
+  title: NATS
+  description: |
+    A connective technology for adaptive edge and distributed systems. NATS
+    provides a simple, secure, and performant messaging system for cloud-native
+    applications, IoT, and microservices. A CNCF incubating project.
+  annotations:
+    github.com/project-slug: nats-io/nats-server
+    backstage.io/source-location: url:https://github.com/nats-io/nats-server
+  tags:
+    - messaging
+    - cloud-native
+    - go
+    - cncf
+  links:
+    - url: https://docs.nats.io/
+      title: Documentation
+      icon: docs
+    - url: https://github.com/nats-io/nats-server
+      title: GitHub Repository
+      icon: github
+    - url: https://nats.io/
+      title: Website
+      icon: web
+spec:
+  type: service
+  lifecycle: production
+  owner: group:default/platform-engineering
+  system: message-brokers
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: apache-pulsar
+  title: Apache Pulsar
+  description: |
+    A cloud-native distributed messaging and streaming platform that combines
+    messaging and event streaming in a single unified model. Pulsar provides
+    multi-tenancy, geo-replication, and tiered storage for enterprise workloads.
+  annotations:
+    github.com/project-slug: apache/pulsar
+    backstage.io/source-location: url:https://github.com/apache/pulsar
+  tags:
+    - messaging
+    - streaming
+    - multi-tenant
+    - distributed
+    - java
+  links:
+    - url: https://pulsar.apache.org/docs/
+      title: Documentation
+      icon: docs
+    - url: https://github.com/apache/pulsar
+      title: GitHub Repository
+      icon: github
+    - url: https://pulsar.apache.org/
+      title: Website
+      icon: web
+spec:
+  type: service
+  lifecycle: production
+  owner: group:default/platform-engineering
+  system: message-brokers
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: apache-activemq
+  title: Apache ActiveMQ
+  description: |
+    A popular and powerful open source messaging broker supporting JMS, AMQP,
+    STOMP, MQTT, and OpenWire protocols. ActiveMQ Artemis provides a next-generation
+    high-performance, non-blocking architecture for enterprise messaging.
+  annotations:
+    github.com/project-slug: apache/activemq
+    backstage.io/source-location: url:https://github.com/apache/activemq
+  tags:
+    - messaging
+    - jms
+    - amqp
+    - java
+  links:
+    - url: https://activemq.apache.org/components/artemis/documentation/
+      title: Documentation
+      icon: docs
+    - url: https://github.com/apache/activemq
+      title: GitHub Repository
+      icon: github
+    - url: https://activemq.apache.org/
+      title: Website
+      icon: web
+spec:
+  type: service
+  lifecycle: production
+  owner: group:default/platform-engineering
+  system: message-brokers
+
+# =============================================================================
+# SEARCH ENGINES (5)
+# =============================================================================
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: opensearch
+  title: OpenSearch
+  description: |
+    A community-driven, open source search and analytics suite derived from
+    Elasticsearch 7.10.2. OpenSearch provides full-text search, log analytics,
+    security analytics, and observability with a permissive Apache 2.0 license.
+  annotations:
+    github.com/project-slug: opensearch-project/OpenSearch
+    backstage.io/source-location: url:https://github.com/opensearch-project/OpenSearch
+  tags:
+    - search
+    - analytics
+    - full-text
+    - distributed
+    - java
+  links:
+    - url: https://opensearch.org/docs/latest/
+      title: Documentation
+      icon: docs
+    - url: https://github.com/opensearch-project/OpenSearch
+      title: GitHub Repository
+      icon: github
+    - url: https://opensearch.org/
+      title: Website
+      icon: web
+spec:
+  type: service
+  lifecycle: production
+  owner: group:default/data-engineering
+  system: search-engines
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: apache-solr
+  title: Apache Solr
+  description: |
+    An enterprise-grade, highly reliable, scalable search platform built on
+    Apache Lucene. Solr powers search and navigation features for many of
+    the world's largest internet sites and enterprise applications.
+  annotations:
+    github.com/project-slug: apache/solr
+    backstage.io/source-location: url:https://github.com/apache/solr
+  tags:
+    - search
+    - full-text
+    - distributed
+    - java
+  links:
+    - url: https://solr.apache.org/guide/
+      title: Documentation
+      icon: docs
+    - url: https://github.com/apache/solr
+      title: GitHub Repository
+      icon: github
+    - url: https://solr.apache.org/
+      title: Website
+      icon: web
+spec:
+  type: service
+  lifecycle: production
+  owner: group:default/data-engineering
+  system: search-engines
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: meilisearch
+  title: Meilisearch
+  description: |
+    A lightning-fast search engine that fits effortlessly into applications.
+    Meilisearch provides typo-tolerant, relevant search results out of the box
+    with a simple RESTful API and instant search-as-you-type experience.
+  annotations:
+    github.com/project-slug: meilisearch/meilisearch
+    backstage.io/source-location: url:https://github.com/meilisearch/meilisearch
+  tags:
+    - search
+    - full-text
+    - rust
+  links:
+    - url: https://www.meilisearch.com/docs
+      title: Documentation
+      icon: docs
+    - url: https://github.com/meilisearch/meilisearch
+      title: GitHub Repository
+      icon: github
+    - url: https://www.meilisearch.com/
+      title: Website
+      icon: web
+spec:
+  type: service
+  lifecycle: production
+  owner: group:default/data-engineering
+  system: search-engines
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: typesense
+  title: Typesense
+  description: |
+    An open source, typo-tolerant search engine optimized for instant
+    search-as-you-type experiences. Typesense is designed as an easier-to-use
+    alternative to Elasticsearch with a focus on developer experience.
+  annotations:
+    github.com/project-slug: typesense/typesense
+    backstage.io/source-location: url:https://github.com/typesense/typesense
+  tags:
+    - search
+    - full-text
+    - cpp
+  links:
+    - url: https://typesense.org/docs/
+      title: Documentation
+      icon: docs
+    - url: https://github.com/typesense/typesense
+      title: GitHub Repository
+      icon: github
+    - url: https://typesense.org/
+      title: Website
+      icon: web
+spec:
+  type: service
+  lifecycle: production
+  owner: group:default/data-engineering
+  system: search-engines
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: apache-lucene
+  title: Apache Lucene
+  description: |
+    A high-performance, full-featured text search engine library written in
+    Java. Lucene is the foundation powering Solr, OpenSearch, and many other
+    search solutions. The gold standard for information retrieval.
+  annotations:
+    github.com/project-slug: apache/lucene
+    backstage.io/source-location: url:https://github.com/apache/lucene
+  tags:
+    - search
+    - full-text
+    - library
+    - java
+  links:
+    - url: https://lucene.apache.org/core/documentation.html
+      title: Documentation
+      icon: docs
+    - url: https://github.com/apache/lucene
+      title: GitHub Repository
+      icon: github
+    - url: https://lucene.apache.org/
+      title: Website
+      icon: web
+spec:
+  type: library
+  lifecycle: production
+  owner: group:default/data-engineering
+  system: search-engines

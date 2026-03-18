@@ -1,0 +1,1581 @@
+# Parasol Insurance -- API Entities
+#
+# Contains API entities (type: openapi) for the most important cross-domain
+# APIs in Parasol's internal service landscape. All definitions are inline
+# as there are no external URLs to reference for this fictional catalog.
+
+# ===========================================================================
+# CLAIMS APIS
+# ===========================================================================
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: API
+metadata:
+  name: fnol-submission-api
+  title: FNOL Submission API
+  description: |
+    Accepts first notice of loss submissions from all channels including the
+    customer web portal, mobile app, broker portal, and third-party loss
+    adjusters. Returns a claim reference number upon successful submission.
+  annotations:
+    backstage.io/source-location: url:https://github.parasol.com/parasol/fnol-intake-service
+  tags:
+    - claims
+    - fnol
+    - public-api
+spec:
+  type: openapi
+  lifecycle: production
+  owner: group:default/claims-engineering
+  system: fnol-system
+  definition: |
+    openapi: "3.0.3"
+    info:
+      title: FNOL Submission API
+      version: "2.1.0"
+      description: Accepts first notice of loss submissions from all channels.
+      contact:
+        name: Claims Engineering
+        email: claims-engineering@parasol.com
+    servers:
+      - url: https://api.parasol.com/claims/fnol/v2
+    paths:
+      /submissions:
+        post:
+          summary: Submit a new FNOL
+          operationId: submitFnol
+          requestBody:
+            required: true
+            content:
+              application/json:
+                schema:
+                  $ref: "#/components/schemas/FnolSubmission"
+          responses:
+            "202":
+              description: FNOL accepted and queued for processing
+              content:
+                application/json:
+                  schema:
+                    $ref: "#/components/schemas/FnolAcknowledgement"
+            "400":
+              description: Invalid submission data
+            "403":
+              description: Coverage not verified for this policy
+      /submissions/{submissionId}:
+        get:
+          summary: Retrieve an FNOL submission status
+          operationId: getFnolStatus
+          parameters:
+            - name: submissionId
+              in: path
+              required: true
+              schema:
+                type: string
+          responses:
+            "200":
+              description: FNOL submission details
+              content:
+                application/json:
+                  schema:
+                    $ref: "#/components/schemas/FnolSubmission"
+            "404":
+              description: Submission not found
+    components:
+      schemas:
+        FnolSubmission:
+          type: object
+          required: [policyNumber, dateOfLoss, lossType, description]
+          properties:
+            policyNumber:
+              type: string
+            dateOfLoss:
+              type: string
+              format: date
+            lossType:
+              type: string
+              enum: [MOTOR, PROPERTY, LIABILITY, LIFE, OTHER]
+            description:
+              type: string
+            lossLocation:
+              type: object
+              properties:
+                postcode:
+                  type: string
+                country:
+                  type: string
+        FnolAcknowledgement:
+          type: object
+          properties:
+            submissionId:
+              type: string
+            claimReference:
+              type: string
+            status:
+              type: string
+            estimatedContactTime:
+              type: string
+              format: date-time
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: API
+metadata:
+  name: claims-status-api
+  title: Claims Status API
+  description: |
+    Provides real-time claim status information to customers, brokers,
+    and third-party systems. Returns claim milestones, current handler,
+    reserve amounts (internal only), and payment history.
+  annotations:
+    backstage.io/source-location: url:https://github.parasol.com/parasol/claims-settlement-service
+  tags:
+    - claims
+    - status
+    - public-api
+spec:
+  type: openapi
+  lifecycle: production
+  owner: group:default/claims-engineering
+  system: claims-assessment-system
+  definition: |
+    openapi: "3.0.3"
+    info:
+      title: Claims Status API
+      version: "1.4.0"
+      description: Real-time claim status and milestone tracking.
+    servers:
+      - url: https://api.parasol.com/claims/status/v1
+    paths:
+      /claims/{claimReference}:
+        get:
+          summary: Get claim details and current status
+          operationId: getClaimStatus
+          parameters:
+            - name: claimReference
+              in: path
+              required: true
+              schema:
+                type: string
+          responses:
+            "200":
+              description: Claim status details
+              content:
+                application/json:
+                  schema:
+                    $ref: "#/components/schemas/ClaimStatus"
+            "403":
+              description: Not authorised to view this claim
+            "404":
+              description: Claim not found
+      /claims/{claimReference}/milestones:
+        get:
+          summary: List all milestones for a claim
+          operationId: getClaimMilestones
+          parameters:
+            - name: claimReference
+              in: path
+              required: true
+              schema:
+                type: string
+          responses:
+            "200":
+              description: List of claim milestones
+      /claims/{claimReference}/payments:
+        get:
+          summary: List payments made against a claim
+          operationId: getClaimPayments
+          parameters:
+            - name: claimReference
+              in: path
+              required: true
+              schema:
+                type: string
+          responses:
+            "200":
+              description: Claim payment history
+    components:
+      schemas:
+        ClaimStatus:
+          type: object
+          properties:
+            claimReference:
+              type: string
+            status:
+              type: string
+              enum: [OPEN, PENDING_INFORMATION, UNDER_ASSESSMENT, SETTLED, CLOSED, DENIED]
+            dateOpened:
+              type: string
+              format: date
+            handlerName:
+              type: string
+            handlerPhone:
+              type: string
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: API
+metadata:
+  name: fraud-score-api
+  title: Fraud Score API
+  description: |
+    Returns real-time fraud risk scores for claims and payment transactions.
+    Consumed by FNOL triage, adjuster assignment, and payment processing
+    services. Also available to authorised SIU investigators.
+  annotations:
+    backstage.io/source-location: url:https://github.parasol.com/parasol/fraud-score-service
+  tags:
+    - claims
+    - fraud
+    - internal-api
+spec:
+  type: openapi
+  lifecycle: production
+  owner: group:default/claims-engineering
+  system: claims-fraud-detection-system
+  definition: |
+    openapi: "3.0.3"
+    info:
+      title: Fraud Score API
+      version: "3.0.0"
+      description: Real-time fraud risk scoring for claims and payments.
+    servers:
+      - url: https://api-internal.parasol.com/fraud/v3
+    paths:
+      /scores/claim:
+        post:
+          summary: Score a claim submission for fraud risk
+          operationId: scoreClaimFraud
+          requestBody:
+            required: true
+            content:
+              application/json:
+                schema:
+                  $ref: "#/components/schemas/ClaimFraudRequest"
+          responses:
+            "200":
+              description: Fraud score result
+              content:
+                application/json:
+                  schema:
+                    $ref: "#/components/schemas/FraudScoreResult"
+      /scores/payment:
+        post:
+          summary: Score a payment transaction for fraud risk
+          operationId: scorePaymentFraud
+          requestBody:
+            required: true
+            content:
+              application/json:
+                schema:
+                  type: object
+          responses:
+            "200":
+              description: Payment fraud score result
+    components:
+      schemas:
+        ClaimFraudRequest:
+          type: object
+          required: [claimReference, policyNumber]
+          properties:
+            claimReference:
+              type: string
+            policyNumber:
+              type: string
+            claimantId:
+              type: string
+        FraudScoreResult:
+          type: object
+          properties:
+            score:
+              type: number
+              minimum: 0
+              maximum: 100
+            riskBand:
+              type: string
+              enum: [LOW, MEDIUM, HIGH, CRITICAL]
+            referToSiu:
+              type: boolean
+            scoreFactors:
+              type: array
+              items:
+                type: string
+
+# ===========================================================================
+# UNDERWRITING APIS
+# ===========================================================================
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: API
+metadata:
+  name: quote-bind-api
+  title: Quote & Bind API
+  description: |
+    Enables broker management systems and insurance aggregators to request
+    quotations from Parasol and bind accepted quotes into policies. Supports
+    personal auto, personal property, and SME commercial lines products.
+  annotations:
+    backstage.io/source-location: url:https://github.parasol.com/parasol/quote-orchestration-service
+  tags:
+    - underwriting
+    - quoting
+    - public-api
+spec:
+  type: openapi
+  lifecycle: production
+  owner: group:default/underwriting-engineering
+  system: quote-bind-system
+  definition: |
+    openapi: "3.0.3"
+    info:
+      title: Quote & Bind API
+      version: "4.2.0"
+      description: Request quotations and bind policies for personal and commercial lines.
+    servers:
+      - url: https://api.parasol.com/underwriting/quote/v4
+    paths:
+      /quotes:
+        post:
+          summary: Request a new quotation
+          operationId: createQuote
+          requestBody:
+            required: true
+            content:
+              application/json:
+                schema:
+                  $ref: "#/components/schemas/QuoteRequest"
+          responses:
+            "201":
+              description: Quotation created successfully
+              content:
+                application/json:
+                  schema:
+                    $ref: "#/components/schemas/QuoteResponse"
+            "422":
+              description: Risk declined or ineligible
+      /quotes/{quoteId}:
+        get:
+          summary: Retrieve a quotation
+          operationId: getQuote
+          parameters:
+            - name: quoteId
+              in: path
+              required: true
+              schema:
+                type: string
+          responses:
+            "200":
+              description: Quote details
+      /quotes/{quoteId}/bind:
+        post:
+          summary: Bind an accepted quotation into a policy
+          operationId: bindQuote
+          parameters:
+            - name: quoteId
+              in: path
+              required: true
+              schema:
+                type: string
+          requestBody:
+            required: true
+            content:
+              application/json:
+                schema:
+                  $ref: "#/components/schemas/BindRequest"
+          responses:
+            "201":
+              description: Policy bound successfully
+              content:
+                application/json:
+                  schema:
+                    $ref: "#/components/schemas/BindResponse"
+            "409":
+              description: Quote expired or already bound
+    components:
+      schemas:
+        QuoteRequest:
+          type: object
+          required: [productCode, riskData]
+          properties:
+            productCode:
+              type: string
+            riskData:
+              type: object
+            effectiveDate:
+              type: string
+              format: date
+        QuoteResponse:
+          type: object
+          properties:
+            quoteId:
+              type: string
+            annualPremium:
+              type: number
+            expiryDateTime:
+              type: string
+              format: date-time
+            terms:
+              type: array
+              items:
+                type: string
+        BindRequest:
+          type: object
+          required: [paymentMethod]
+          properties:
+            paymentMethod:
+              type: string
+              enum: [ANNUAL, MONTHLY_DD, QUARTERLY_CARD]
+        BindResponse:
+          type: object
+          properties:
+            policyNumber:
+              type: string
+            inceptionDate:
+              type: string
+              format: date
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: API
+metadata:
+  name: premium-rating-api
+  title: Premium Rating API
+  description: |
+    Internal rating API consumed by all quoting services and the renewal
+    engine. Calculates gross written premium for all Parasol products
+    using the current filed rate tables and actuarial factors.
+  annotations:
+    backstage.io/source-location: url:https://github.parasol.com/parasol/premium-rating-service
+  tags:
+    - underwriting
+    - rating
+    - internal-api
+spec:
+  type: openapi
+  lifecycle: production
+  owner: group:default/underwriting-engineering
+  system: rating-engine-system
+  definition: |
+    openapi: "3.0.3"
+    info:
+      title: Premium Rating API
+      version: "5.0.0"
+      description: Calculates gross written premium for all Parasol products.
+    servers:
+      - url: https://api-internal.parasol.com/rating/v5
+    paths:
+      /rates/calculate:
+        post:
+          summary: Calculate premium for a given risk
+          operationId: calculatePremium
+          requestBody:
+            required: true
+            content:
+              application/json:
+                schema:
+                  $ref: "#/components/schemas/RatingRequest"
+          responses:
+            "200":
+              description: Premium calculation result
+              content:
+                application/json:
+                  schema:
+                    $ref: "#/components/schemas/RatingResult"
+      /rates/tables/{productCode}:
+        get:
+          summary: Retrieve current rate tables for a product
+          operationId: getRateTables
+          parameters:
+            - name: productCode
+              in: path
+              required: true
+              schema:
+                type: string
+          responses:
+            "200":
+              description: Rate table details
+    components:
+      schemas:
+        RatingRequest:
+          type: object
+          required: [productCode, riskAttributes, effectiveDate]
+          properties:
+            productCode:
+              type: string
+            riskAttributes:
+              type: object
+            effectiveDate:
+              type: string
+              format: date
+        RatingResult:
+          type: object
+          properties:
+            grossPremium:
+              type: number
+            netPremium:
+              type: number
+            taxAmount:
+              type: number
+            ratingFactors:
+              type: array
+              items:
+                type: object
+
+# ===========================================================================
+# POLICY ADMINISTRATION APIS
+# ===========================================================================
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: API
+metadata:
+  name: policy-query-api
+  title: Policy Query API
+  description: |
+    High-performance read API for policy coverage and schedule data.
+    Consumed by the claims system for coverage verification, the customer
+    portal for self-service display, the broker portal, and third-party
+    loss adjusters. The most widely consumed API in Parasol's estate.
+  annotations:
+    backstage.io/source-location: url:https://github.parasol.com/parasol/policy-lookup-api-gateway
+  tags:
+    - policy
+    - public-api
+    - high-traffic
+spec:
+  type: openapi
+  lifecycle: production
+  owner: group:default/policy-platform-engineering
+  system: policy-lifecycle-system
+  definition: |
+    openapi: "3.0.3"
+    info:
+      title: Policy Query API
+      version: "3.1.0"
+      description: Read access to policy coverage and schedule data across all lines.
+    servers:
+      - url: https://api.parasol.com/policy/v3
+    paths:
+      /policies/{policyNumber}:
+        get:
+          summary: Retrieve policy details by policy number
+          operationId: getPolicyByNumber
+          parameters:
+            - name: policyNumber
+              in: path
+              required: true
+              schema:
+                type: string
+            - name: asOf
+              in: query
+              description: Return policy state as at this date (ISO 8601)
+              schema:
+                type: string
+                format: date
+          responses:
+            "200":
+              description: Policy details
+              content:
+                application/json:
+                  schema:
+                    $ref: "#/components/schemas/PolicySummary"
+            "403":
+              description: Insufficient permission to view this policy
+            "404":
+              description: Policy not found
+      /policies/search:
+        get:
+          summary: Search policies by insured identifiers
+          operationId: searchPolicies
+          parameters:
+            - name: surname
+              in: query
+              schema:
+                type: string
+            - name: postcode
+              in: query
+              schema:
+                type: string
+            - name: vehicleRegistration
+              in: query
+              schema:
+                type: string
+          responses:
+            "200":
+              description: Matching policies
+      /policies/{policyNumber}/coverage:
+        get:
+          summary: Retrieve detailed coverage schedule for a policy
+          operationId: getPolicyCoverage
+          parameters:
+            - name: policyNumber
+              in: path
+              required: true
+              schema:
+                type: string
+          responses:
+            "200":
+              description: Coverage schedule details
+    components:
+      schemas:
+        PolicySummary:
+          type: object
+          properties:
+            policyNumber:
+              type: string
+            status:
+              type: string
+              enum: [ACTIVE, LAPSED, CANCELLED, EXPIRED, PENDING]
+            product:
+              type: string
+            inceptionDate:
+              type: string
+              format: date
+            expiryDate:
+              type: string
+              format: date
+            insuredName:
+              type: string
+            annualPremium:
+              type: number
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: API
+metadata:
+  name: policy-endorsement-api
+  title: Policy Endorsement API
+  description: |
+    Enables submission of mid-term policy change requests from all channels.
+    Supports address changes, vehicle swaps, named driver amendments,
+    coverage limit changes, and voluntary extras additions.
+  annotations:
+    backstage.io/source-location: url:https://github.parasol.com/parasol/endorsement-request-service
+  tags:
+    - policy
+    - endorsement
+    - public-api
+spec:
+  type: openapi
+  lifecycle: production
+  owner: group:default/underwriting-engineering
+  system: policy-endorsement-system
+  definition: |
+    openapi: "3.0.3"
+    info:
+      title: Policy Endorsement API
+      version: "2.0.0"
+      description: Submits and tracks mid-term policy change requests.
+    servers:
+      - url: https://api.parasol.com/policy/endorsements/v2
+    paths:
+      /endorsements:
+        post:
+          summary: Submit a new endorsement request
+          operationId: createEndorsement
+          requestBody:
+            required: true
+            content:
+              application/json:
+                schema:
+                  $ref: "#/components/schemas/EndorsementRequest"
+          responses:
+            "202":
+              description: Endorsement request accepted
+              content:
+                application/json:
+                  schema:
+                    $ref: "#/components/schemas/EndorsementAcknowledgement"
+      /endorsements/{endorsementId}:
+        get:
+          summary: Retrieve endorsement status
+          operationId: getEndorsement
+          parameters:
+            - name: endorsementId
+              in: path
+              required: true
+              schema:
+                type: string
+          responses:
+            "200":
+              description: Endorsement details and status
+      /endorsements/{endorsementId}/quote:
+        get:
+          summary: Get premium adjustment quote for an endorsement
+          operationId: getEndorsementQuote
+          parameters:
+            - name: endorsementId
+              in: path
+              required: true
+              schema:
+                type: string
+          responses:
+            "200":
+              description: Pro-rata premium adjustment amount
+    components:
+      schemas:
+        EndorsementRequest:
+          type: object
+          required: [policyNumber, changeType, effectiveDate]
+          properties:
+            policyNumber:
+              type: string
+            changeType:
+              type: string
+            effectiveDate:
+              type: string
+              format: date
+            changeDetails:
+              type: object
+        EndorsementAcknowledgement:
+          type: object
+          properties:
+            endorsementId:
+              type: string
+            status:
+              type: string
+            premiumAdjustment:
+              type: number
+
+# ===========================================================================
+# BILLING & PAYMENTS APIS
+# ===========================================================================
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: API
+metadata:
+  name: premium-payment-api
+  title: Premium Payment API
+  description: |
+    Accepts premium payments from the customer web portal, mobile app,
+    and third-party payment integrations. Supports card, direct debit
+    setup, and Open Banking account-to-account payments.
+  annotations:
+    backstage.io/source-location: url:https://github.parasol.com/parasol/payment-gateway-service
+  tags:
+    - billing
+    - payments
+    - public-api
+    - pci-dss
+spec:
+  type: openapi
+  lifecycle: production
+  owner: group:default/billing-payments-engineering
+  system: payment-processing-system
+  definition: |
+    openapi: "3.0.3"
+    info:
+      title: Premium Payment API
+      version: "2.3.0"
+      description: Accepts premium payments via multiple payment methods.
+    servers:
+      - url: https://api.parasol.com/billing/payments/v2
+    paths:
+      /payments:
+        post:
+          summary: Submit a premium payment
+          operationId: submitPayment
+          requestBody:
+            required: true
+            content:
+              application/json:
+                schema:
+                  $ref: "#/components/schemas/PaymentRequest"
+          responses:
+            "202":
+              description: Payment accepted for processing
+              content:
+                application/json:
+                  schema:
+                    $ref: "#/components/schemas/PaymentAcknowledgement"
+            "402":
+              description: Payment declined
+      /payments/{paymentId}:
+        get:
+          summary: Retrieve payment status
+          operationId: getPaymentStatus
+          parameters:
+            - name: paymentId
+              in: path
+              required: true
+              schema:
+                type: string
+          responses:
+            "200":
+              description: Payment status details
+      /billing-accounts/{accountId}/balance:
+        get:
+          summary: Retrieve current billing account balance
+          operationId: getBillingBalance
+          parameters:
+            - name: accountId
+              in: path
+              required: true
+              schema:
+                type: string
+          responses:
+            "200":
+              description: Account balance and next payment details
+    components:
+      schemas:
+        PaymentRequest:
+          type: object
+          required: [policyNumber, amount, paymentMethod]
+          properties:
+            policyNumber:
+              type: string
+            amount:
+              type: number
+            currency:
+              type: string
+              default: GBP
+            paymentMethod:
+              type: string
+              enum: [CARD, DIRECT_DEBIT, OPEN_BANKING]
+            paymentToken:
+              type: string
+        PaymentAcknowledgement:
+          type: object
+          properties:
+            paymentId:
+              type: string
+            status:
+              type: string
+              enum: [PENDING, AUTHORISED, SETTLED, FAILED]
+            authCode:
+              type: string
+
+# ===========================================================================
+# DIGITAL CHANNEL APIS
+# ===========================================================================
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: API
+metadata:
+  name: broker-authentication-api
+  title: Broker Authentication API
+  description: |
+    Authenticates brokers and intermediaries for access to the Parasol
+    broker portal and Quote & Bind API. Validates FCA registration,
+    manages firm-level and individual credentials, and returns scoped
+    OAuth tokens with delegated authority permissions.
+  annotations:
+    backstage.io/source-location: url:https://github.parasol.com/parasol/broker-authentication-service
+  tags:
+    - customer-portal
+    - broker
+    - identity
+    - public-api
+spec:
+  type: openapi
+  lifecycle: production
+  owner: group:default/digital-channels-engineering
+  system: broker-portal-system
+  definition: |
+    openapi: "3.0.3"
+    info:
+      title: Broker Authentication API
+      version: "1.2.0"
+      description: OAuth 2.0 authentication for brokers and intermediaries.
+    servers:
+      - url: https://api.parasol.com/auth/broker/v1
+    paths:
+      /token:
+        post:
+          summary: Obtain an OAuth access token (client credentials)
+          operationId: getBrokerToken
+          requestBody:
+            required: true
+            content:
+              application/x-www-form-urlencoded:
+                schema:
+                  type: object
+                  required: [grant_type, client_id, client_secret]
+                  properties:
+                    grant_type:
+                      type: string
+                      enum: [client_credentials]
+                    client_id:
+                      type: string
+                    client_secret:
+                      type: string
+                    scope:
+                      type: string
+          responses:
+            "200":
+              description: Access token issued
+              content:
+                application/json:
+                  schema:
+                    $ref: "#/components/schemas/TokenResponse"
+            "401":
+              description: Invalid client credentials
+      /brokers/{firmId}/agents:
+        get:
+          summary: List agents registered under a broker firm
+          operationId: listBrokerAgents
+          parameters:
+            - name: firmId
+              in: path
+              required: true
+              schema:
+                type: string
+          responses:
+            "200":
+              description: List of agents
+      /brokers/{firmId}/binding-authority:
+        get:
+          summary: Retrieve binding authority limits for a broker firm
+          operationId: getBindingAuthority
+          parameters:
+            - name: firmId
+              in: path
+              required: true
+              schema:
+                type: string
+          responses:
+            "200":
+              description: Binding authority details
+    components:
+      schemas:
+        TokenResponse:
+          type: object
+          properties:
+            access_token:
+              type: string
+            token_type:
+              type: string
+            expires_in:
+              type: integer
+            scope:
+              type: string
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: API
+metadata:
+  name: customer-self-service-api-spec
+  title: Customer Self-Service API
+  description: |
+    Provides authenticated customers with self-service policy management
+    capabilities via the web portal and mobile app. Exposes policy data,
+    document download, change requests, and claims status.
+  annotations:
+    backstage.io/source-location: url:https://github.parasol.com/parasol/customer-self-service-api
+  tags:
+    - customer-portal
+    - web
+    - mobile
+    - public-api
+spec:
+  type: openapi
+  lifecycle: production
+  owner: group:default/digital-channels-engineering
+  system: web-portal-system
+  definition: |
+    openapi: "3.0.3"
+    info:
+      title: Customer Self-Service API
+      version: "3.0.0"
+      description: Self-service policy management for authenticated customers.
+    servers:
+      - url: https://api.parasol.com/customer/self-service/v3
+    paths:
+      /my/policies:
+        get:
+          summary: List all policies for the authenticated customer
+          operationId: listMyPolicies
+          responses:
+            "200":
+              description: Customer's policies
+      /my/policies/{policyNumber}/documents:
+        get:
+          summary: List available documents for a policy
+          operationId: listPolicyDocuments
+          parameters:
+            - name: policyNumber
+              in: path
+              required: true
+              schema:
+                type: string
+          responses:
+            "200":
+              description: Policy documents list
+      /my/policies/{policyNumber}/changes:
+        post:
+          summary: Request a mid-term policy change
+          operationId: requestPolicyChange
+          parameters:
+            - name: policyNumber
+              in: path
+              required: true
+              schema:
+                type: string
+          requestBody:
+            required: true
+            content:
+              application/json:
+                schema:
+                  type: object
+          responses:
+            "202":
+              description: Change request accepted
+      /my/claims:
+        get:
+          summary: List all claims for the authenticated customer
+          operationId: listMyClaims
+          responses:
+            "200":
+              description: Customer's claims
+
+# ===========================================================================
+# REINSURANCE APIS
+# ===========================================================================
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: API
+metadata:
+  name: reinsurance-bordereau-api
+  title: Reinsurance Bordereau API
+  description: |
+    Internal API used by the bordereau reporting system to extract cession
+    data and submit premium and loss bordereaux to treaty reinsurers.
+    Provides endpoints for cession queries, report generation, and
+    submission status tracking.
+  annotations:
+    backstage.io/source-location: url:https://github.parasol.com/parasol/premium-bordereau-service
+  tags:
+    - reinsurance
+    - bordereau
+    - internal-api
+spec:
+  type: openapi
+  lifecycle: production
+  owner: group:default/reinsurance-engineering
+  system: bordereau-reporting-system
+  definition: |
+    openapi: "3.0.3"
+    info:
+      title: Reinsurance Bordereau API
+      version: "1.3.0"
+      description: Generates and tracks reinsurance bordereau submissions.
+    servers:
+      - url: https://api-internal.parasol.com/reinsurance/bordereau/v1
+    paths:
+      /bordereaux:
+        post:
+          summary: Trigger generation of a bordereau report
+          operationId: generateBordereau
+          requestBody:
+            required: true
+            content:
+              application/json:
+                schema:
+                  $ref: "#/components/schemas/BordereauRequest"
+          responses:
+            "202":
+              description: Bordereau generation queued
+        get:
+          summary: List recent bordereau submissions
+          operationId: listBordereaux
+          parameters:
+            - name: treatyId
+              in: query
+              schema:
+                type: string
+            - name: periodFrom
+              in: query
+              schema:
+                type: string
+                format: date
+          responses:
+            "200":
+              description: List of bordereau submissions
+      /bordereaux/{bordereauxId}/status:
+        get:
+          summary: Get submission status for a bordereau
+          operationId: getBordereauxStatus
+          parameters:
+            - name: bordereauxId
+              in: path
+              required: true
+              schema:
+                type: string
+          responses:
+            "200":
+              description: Bordereau submission status
+    components:
+      schemas:
+        BordereauRequest:
+          type: object
+          required: [treatyId, reportingPeriod, bordereauxType]
+          properties:
+            treatyId:
+              type: string
+            reportingPeriod:
+              type: string
+              description: "YYYY-MM format"
+            bordereauxType:
+              type: string
+              enum: [PREMIUM, LOSS, COMBINED]
+
+# ===========================================================================
+# DATA & ANALYTICS APIS
+# ===========================================================================
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: API
+metadata:
+  name: data-catalogue-api
+  title: Data Catalogue API
+  description: |
+    Provides discovery and metadata access to the Parasol enterprise
+    data catalogue. Enables data consumers to search for datasets, view
+    lineage, check data quality scores, and request access to certified
+    data products.
+  annotations:
+    backstage.io/source-location: url:https://github.parasol.com/parasol/data-catalogue-service
+  tags:
+    - data-analytics
+    - governance
+    - internal-api
+spec:
+  type: openapi
+  lifecycle: production
+  owner: group:default/data-analytics-engineering
+  system: data-lake-system
+  definition: |
+    openapi: "3.0.3"
+    info:
+      title: Data Catalogue API
+      version: "2.0.0"
+      description: Enterprise data catalogue for dataset discovery and governance.
+    servers:
+      - url: https://api-internal.parasol.com/data/catalogue/v2
+    paths:
+      /datasets:
+        get:
+          summary: Search datasets in the catalogue
+          operationId: searchDatasets
+          parameters:
+            - name: q
+              in: query
+              description: Full-text search query
+              schema:
+                type: string
+            - name: domain
+              in: query
+              schema:
+                type: string
+            - name: certified
+              in: query
+              schema:
+                type: boolean
+          responses:
+            "200":
+              description: Matching datasets
+      /datasets/{datasetId}:
+        get:
+          summary: Get dataset metadata
+          operationId: getDataset
+          parameters:
+            - name: datasetId
+              in: path
+              required: true
+              schema:
+                type: string
+          responses:
+            "200":
+              description: Dataset metadata and lineage
+      /datasets/{datasetId}/quality:
+        get:
+          summary: Get data quality scores for a dataset
+          operationId: getDataQuality
+          parameters:
+            - name: datasetId
+              in: path
+              required: true
+              schema:
+                type: string
+          responses:
+            "200":
+              description: Data quality metrics
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: API
+metadata:
+  name: ml-model-inference-api
+  title: ML Model Inference API
+  description: |
+    Provides a unified inference API for all production ML models hosted
+    on the Parasol model serving platform. Consumers specify the model
+    name and version; the platform handles routing, feature fetching,
+    and prediction serving.
+  annotations:
+    backstage.io/source-location: url:https://github.parasol.com/parasol/model-serving-platform-service
+  tags:
+    - data-analytics
+    - machine-learning
+    - internal-api
+spec:
+  type: openapi
+  lifecycle: production
+  owner: group:default/data-analytics-engineering
+  system: ml-pipeline-system
+  definition: |
+    openapi: "3.0.3"
+    info:
+      title: ML Model Inference API
+      version: "1.1.0"
+      description: Unified inference endpoint for all production ML models.
+    servers:
+      - url: https://api-internal.parasol.com/ml/inference/v1
+    paths:
+      /predict/{modelName}:
+        post:
+          summary: Request a prediction from a named model
+          operationId: predict
+          parameters:
+            - name: modelName
+              in: path
+              required: true
+              schema:
+                type: string
+            - name: version
+              in: query
+              description: Model version (defaults to production champion)
+              schema:
+                type: string
+          requestBody:
+            required: true
+            content:
+              application/json:
+                schema:
+                  $ref: "#/components/schemas/InferenceRequest"
+          responses:
+            "200":
+              description: Model prediction result
+              content:
+                application/json:
+                  schema:
+                    $ref: "#/components/schemas/InferenceResponse"
+      /models:
+        get:
+          summary: List available production models
+          operationId: listModels
+          responses:
+            "200":
+              description: List of deployed models
+    components:
+      schemas:
+        InferenceRequest:
+          type: object
+          required: [features]
+          properties:
+            features:
+              type: object
+            requestId:
+              type: string
+        InferenceResponse:
+          type: object
+          properties:
+            prediction:
+              type: object
+            modelVersion:
+              type: string
+            latencyMs:
+              type: integer
+
+# ===========================================================================
+# PLATFORM APIS
+# ===========================================================================
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: API
+metadata:
+  name: iam-token-api
+  title: IAM Token API
+  description: |
+    Issues OAuth 2.0 access tokens and OIDC ID tokens for all internal
+    services and customer-facing applications. Provides JWKS endpoint
+    for token validation, token introspection, and token revocation.
+  annotations:
+    backstage.io/source-location: url:https://github.parasol.com/parasol/iam-token-service
+  tags:
+    - platform-engineering
+    - identity
+    - oauth
+    - internal-api
+spec:
+  type: openapi
+  lifecycle: production
+  owner: group:default/parasol-platform-engineering
+  system: identity-access-system
+  definition: |
+    openapi: "3.0.3"
+    info:
+      title: IAM Token API
+      version: "2.0.0"
+      description: OAuth 2.0 and OIDC token issuance and management.
+    servers:
+      - url: https://auth.parasol.com/oauth2/v2
+    paths:
+      /token:
+        post:
+          summary: Request an access token
+          operationId: requestToken
+          requestBody:
+            required: true
+            content:
+              application/x-www-form-urlencoded:
+                schema:
+                  type: object
+                  required: [grant_type]
+                  properties:
+                    grant_type:
+                      type: string
+                    code:
+                      type: string
+                    client_id:
+                      type: string
+                    client_secret:
+                      type: string
+          responses:
+            "200":
+              description: Token issued
+            "401":
+              description: Authentication failed
+      /introspect:
+        post:
+          summary: Introspect an access token
+          operationId: introspectToken
+          requestBody:
+            required: true
+            content:
+              application/x-www-form-urlencoded:
+                schema:
+                  type: object
+                  required: [token]
+                  properties:
+                    token:
+                      type: string
+          responses:
+            "200":
+              description: Token introspection result
+      /jwks:
+        get:
+          summary: Retrieve the JSON Web Key Set
+          operationId: getJwks
+          responses:
+            "200":
+              description: JWKS for token signature verification
+      /revoke:
+        post:
+          summary: Revoke an access or refresh token
+          operationId: revokeToken
+          requestBody:
+            required: true
+            content:
+              application/x-www-form-urlencoded:
+                schema:
+                  type: object
+                  required: [token]
+                  properties:
+                    token:
+                      type: string
+          responses:
+            "200":
+              description: Token revoked successfully
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: API
+metadata:
+  name: audit-log-api
+  title: Audit Log API
+  description: |
+    Internal API for submitting and querying the immutable enterprise
+    audit log. All Parasol systems must submit security and data access
+    events here for regulatory compliance and forensic investigation.
+  annotations:
+    backstage.io/source-location: url:https://github.parasol.com/parasol/immutable-audit-log-service
+  tags:
+    - compliance-regulatory
+    - audit
+    - security
+    - internal-api
+spec:
+  type: openapi
+  lifecycle: production
+  owner: group:default/compliance-engineering
+  system: audit-trail-system
+  definition: |
+    openapi: "3.0.3"
+    info:
+      title: Audit Log API
+      version: "1.0.0"
+      description: Append-only audit event submission and query interface.
+    servers:
+      - url: https://api-internal.parasol.com/compliance/audit/v1
+    paths:
+      /events:
+        post:
+          summary: Submit one or more audit events
+          operationId: submitAuditEvents
+          requestBody:
+            required: true
+            content:
+              application/json:
+                schema:
+                  $ref: "#/components/schemas/AuditEventBatch"
+          responses:
+            "204":
+              description: Events accepted
+            "400":
+              description: Invalid event format
+        get:
+          summary: Query audit events
+          operationId: queryAuditEvents
+          parameters:
+            - name: subjectId
+              in: query
+              schema:
+                type: string
+            - name: eventType
+              in: query
+              schema:
+                type: string
+            - name: from
+              in: query
+              schema:
+                type: string
+                format: date-time
+            - name: to
+              in: query
+              schema:
+                type: string
+                format: date-time
+          responses:
+            "200":
+              description: Matching audit events
+    components:
+      schemas:
+        AuditEventBatch:
+          type: object
+          required: [events]
+          properties:
+            events:
+              type: array
+              items:
+                type: object
+                required: [timestamp, eventType, actorId, subjectId]
+                properties:
+                  timestamp:
+                    type: string
+                    format: date-time
+                  eventType:
+                    type: string
+                  actorId:
+                    type: string
+                  subjectId:
+                    type: string
+                  resourceType:
+                    type: string
+                  outcome:
+                    type: string
+                    enum: [SUCCESS, FAILURE, DENIED]
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: API
+metadata:
+  name: data-subject-rights-api
+  title: Data Subject Rights API
+  description: |
+    Accepts and tracks GDPR and CCPA data subject rights requests. Provides
+    endpoints for access, erasure, portability, and objection requests,
+    with status tracking and deadline management built in.
+  annotations:
+    backstage.io/source-location: url:https://github.parasol.com/parasol/data-subject-rights-service
+  tags:
+    - compliance-regulatory
+    - gdpr
+    - privacy
+    - public-api
+spec:
+  type: openapi
+  lifecycle: production
+  owner: group:default/compliance-engineering
+  system: gdpr-compliance-system
+  definition: |
+    openapi: "3.0.3"
+    info:
+      title: Data Subject Rights API
+      version: "1.0.0"
+      description: GDPR and CCPA data subject rights request management.
+    servers:
+      - url: https://api.parasol.com/privacy/dsr/v1
+    paths:
+      /requests:
+        post:
+          summary: Submit a data subject rights request
+          operationId: submitDsrRequest
+          requestBody:
+            required: true
+            content:
+              application/json:
+                schema:
+                  $ref: "#/components/schemas/DsrRequest"
+          responses:
+            "202":
+              description: Request accepted
+              content:
+                application/json:
+                  schema:
+                    $ref: "#/components/schemas/DsrAcknowledgement"
+      /requests/{requestId}:
+        get:
+          summary: Check status of a data subject rights request
+          operationId: getDsrStatus
+          parameters:
+            - name: requestId
+              in: path
+              required: true
+              schema:
+                type: string
+          responses:
+            "200":
+              description: Request status and response details
+    components:
+      schemas:
+        DsrRequest:
+          type: object
+          required: [requestType, subjectEmail, subjectName]
+          properties:
+            requestType:
+              type: string
+              enum: [ACCESS, ERASURE, PORTABILITY, OBJECTION, RECTIFICATION]
+            subjectEmail:
+              type: string
+              format: email
+            subjectName:
+              type: string
+            verificationToken:
+              type: string
+        DsrAcknowledgement:
+          type: object
+          properties:
+            requestId:
+              type: string
+            deadline:
+              type: string
+              format: date
+            status:
+              type: string

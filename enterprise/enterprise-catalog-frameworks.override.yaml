@@ -1,0 +1,577 @@
+# Enterprise Software Catalog - Application Development Frameworks
+# 15 frameworks across 3 systems covering backend, frontend, and low-code tiers.
+# All projects are active with OSI-approved licences.
+#
+# Note: n8n was considered but uses the Sustainable Use Licence (not OSI-approved).
+# Activepieces (MIT) is the equivalent open-source composition platform included here.
+
+# =============================================================================
+# BACKEND & MICROSERVICE FRAMEWORKS (7)
+# =============================================================================
+
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: spring-boot
+  title: Spring Boot
+  description: |
+    The most widely used Java framework for building production-ready microservices
+    and enterprise applications. Spring Boot provides auto-configuration, an embedded
+    server, production metrics, and a vast ecosystem of integrations. The de facto
+    standard for Java enterprise development.
+  annotations:
+    github.com/project-slug: spring-projects/spring-boot
+    backstage.io/source-location: url:https://github.com/spring-projects/spring-boot
+  tags:
+    - framework
+    - java
+    - microservices
+    - enterprise
+    - backend
+    - rest
+  links:
+    - url: https://docs.spring.io/spring-boot/docs/current/reference/html/
+      title: Documentation
+      icon: docs
+    - url: https://github.com/spring-projects/spring-boot
+      title: GitHub Repository
+      icon: github
+    - url: https://spring.io/projects/spring-boot
+      title: Website
+      icon: web
+spec:
+  type: library
+  lifecycle: production
+  owner: group:default/application-development
+  system: backend-frameworks
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: quarkus
+  title: Quarkus
+  description: |
+    A Kubernetes-native Java framework tailored for GraalVM and HotSpot, crafted
+    from best-of-breed Java libraries and standards. Quarkus delivers supersonic
+    startup times and tiny memory footprint for cloud-native microservices.
+    Backed by Red Hat and the wider Java community.
+  annotations:
+    github.com/project-slug: quarkusio/quarkus
+    backstage.io/source-location: url:https://github.com/quarkusio/quarkus
+  tags:
+    - framework
+    - java
+    - microservices
+    - cloud-native
+    - graalvm
+    - kubernetes
+    - backend
+    - red-hat
+  links:
+    - url: https://quarkus.io/guides/
+      title: Documentation
+      icon: docs
+    - url: https://github.com/quarkusio/quarkus
+      title: GitHub Repository
+      icon: github
+    - url: https://quarkus.io/
+      title: Website
+      icon: web
+spec:
+  type: library
+  lifecycle: production
+  owner: group:default/application-development
+  system: backend-frameworks
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: micronaut
+  title: Micronaut
+  description: |
+    A modern, JVM-based full-stack framework for building modular, easily testable
+    microservice and serverless applications. Micronaut processes annotations at
+    compile time rather than runtime, enabling instant startup and ultra-low memory.
+    Supports Java, Kotlin, and Groovy.
+  annotations:
+    github.com/project-slug: micronaut-projects/micronaut-core
+    backstage.io/source-location: url:https://github.com/micronaut-projects/micronaut-core
+  tags:
+    - framework
+    - java
+    - kotlin
+    - groovy
+    - microservices
+    - serverless
+    - backend
+  links:
+    - url: https://docs.micronaut.io/latest/guide/
+      title: Documentation
+      icon: docs
+    - url: https://github.com/micronaut-projects/micronaut-core
+      title: GitHub Repository
+      icon: github
+    - url: https://micronaut.io/
+      title: Website
+      icon: web
+spec:
+  type: library
+  lifecycle: production
+  owner: group:default/application-development
+  system: backend-frameworks
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: vertx
+  title: Eclipse Vert.x
+  description: |
+    A tool-kit for building reactive applications on the JVM. Vert.x is
+    polyglot, event-driven, and non-blocking, enabling extremely high
+    concurrency with minimal threads. Supports Java, Kotlin, Groovy, Ruby,
+    and JavaScript. Ideal for high-throughput microservices and APIs.
+  annotations:
+    github.com/project-slug: eclipse-vertx/vert.x
+    backstage.io/source-location: url:https://github.com/eclipse-vertx/vert.x
+  tags:
+    - framework
+    - java
+    - kotlin
+    - reactive
+    - event-driven
+    - microservices
+    - backend
+  links:
+    - url: https://vertx.io/docs/
+      title: Documentation
+      icon: docs
+    - url: https://github.com/eclipse-vertx/vert.x
+      title: GitHub Repository
+      icon: github
+    - url: https://vertx.io/
+      title: Website
+      icon: web
+spec:
+  type: library
+  lifecycle: production
+  owner: group:default/application-development
+  system: backend-frameworks
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: fastapi
+  title: FastAPI
+  description: |
+    A modern, fast, web framework for building APIs with Python based on
+    standard Python type hints. FastAPI is one of the fastest Python frameworks
+    available, generates OpenAPI documentation automatically, and is used by
+    Microsoft, Uber, and Netflix for production microservices.
+  annotations:
+    github.com/project-slug: fastapi/fastapi
+    backstage.io/source-location: url:https://github.com/fastapi/fastapi
+  tags:
+    - framework
+    - python
+    - api
+    - openapi
+    - async
+    - microservices
+    - backend
+  links:
+    - url: https://fastapi.tiangolo.com/
+      title: Documentation
+      icon: docs
+    - url: https://github.com/fastapi/fastapi
+      title: GitHub Repository
+      icon: github
+    - url: https://fastapi.tiangolo.com/
+      title: Website
+      icon: web
+spec:
+  type: library
+  lifecycle: production
+  owner: group:default/application-development
+  system: backend-frameworks
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: nestjs
+  title: NestJS
+  description: |
+    A progressive Node.js framework for building efficient, reliable, and
+    scalable enterprise server-side applications. NestJS is built with TypeScript
+    and heavily inspired by Angular, providing strong typing, dependency injection,
+    decorators, and a modular architecture out of the box.
+  annotations:
+    github.com/project-slug: nestjs/nest
+    backstage.io/source-location: url:https://github.com/nestjs/nest
+  tags:
+    - framework
+    - nodejs
+    - typescript
+    - microservices
+    - enterprise
+    - backend
+  links:
+    - url: https://docs.nestjs.com/
+      title: Documentation
+      icon: docs
+    - url: https://github.com/nestjs/nest
+      title: GitHub Repository
+      icon: github
+    - url: https://nestjs.com/
+      title: Website
+      icon: web
+spec:
+  type: library
+  lifecycle: production
+  owner: group:default/application-development
+  system: backend-frameworks
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: gin
+  title: Gin
+  description: |
+    A high-performance HTTP web framework written in Go. Gin features a
+    Martini-like API with up to 40x faster performance due to httprouter.
+    Widely used for building microservices and APIs in Go, favoured for its
+    minimal footprint, speed, and clean routing model.
+  annotations:
+    github.com/project-slug: gin-gonic/gin
+    backstage.io/source-location: url:https://github.com/gin-gonic/gin
+  tags:
+    - framework
+    - go
+    - http
+    - microservices
+    - backend
+    - api
+  links:
+    - url: https://gin-gonic.com/docs/
+      title: Documentation
+      icon: docs
+    - url: https://github.com/gin-gonic/gin
+      title: GitHub Repository
+      icon: github
+    - url: https://gin-gonic.com/
+      title: Website
+      icon: web
+spec:
+  type: library
+  lifecycle: production
+  owner: group:default/application-development
+  system: backend-frameworks
+
+# =============================================================================
+# FRONTEND & GUI FRAMEWORKS (5)
+# =============================================================================
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: react
+  title: React
+  description: |
+    The library for web and native user interfaces. React lets you build UIs
+    from individual pieces called components. Used by Meta, Airbnb, Netflix,
+    and the vast majority of enterprise web applications. The foundation for
+    Next.js, Remix, and many other frontend frameworks.
+  annotations:
+    github.com/project-slug: facebook/react
+    backstage.io/source-location: url:https://github.com/facebook/react
+  tags:
+    - framework
+    - javascript
+    - typescript
+    - ui
+    - frontend
+    - components
+  links:
+    - url: https://react.dev/learn
+      title: Documentation
+      icon: docs
+    - url: https://github.com/facebook/react
+      title: GitHub Repository
+      icon: github
+    - url: https://react.dev/
+      title: Website
+      icon: web
+spec:
+  type: library
+  lifecycle: production
+  owner: group:default/application-development
+  system: frontend-frameworks
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: angular
+  title: Angular
+  description: |
+    A TypeScript-based web application framework backed by Google. Angular
+    provides a complete, opinionated platform for building large-scale enterprise
+    single-page applications with dependency injection, reactive forms, routing,
+    and first-class TypeScript support built in.
+  annotations:
+    github.com/project-slug: angular/angular
+    backstage.io/source-location: url:https://github.com/angular/angular
+  tags:
+    - framework
+    - typescript
+    - ui
+    - frontend
+    - enterprise
+    - spa
+  links:
+    - url: https://angular.dev/overview
+      title: Documentation
+      icon: docs
+    - url: https://github.com/angular/angular
+      title: GitHub Repository
+      icon: github
+    - url: https://angular.dev/
+      title: Website
+      icon: web
+spec:
+  type: library
+  lifecycle: production
+  owner: group:default/application-development
+  system: frontend-frameworks
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: vuejs
+  title: Vue.js
+  description: |
+    A progressive JavaScript framework for building user interfaces. Vue is
+    designed to be incrementally adoptable -- the core library focuses on the
+    view layer only, making it easy to integrate with other libraries or into
+    existing enterprise projects.
+  annotations:
+    github.com/project-slug: vuejs/vue
+    backstage.io/source-location: url:https://github.com/vuejs/vue
+  tags:
+    - framework
+    - javascript
+    - typescript
+    - ui
+    - frontend
+    - spa
+  links:
+    - url: https://vuejs.org/guide/
+      title: Documentation
+      icon: docs
+    - url: https://github.com/vuejs/vue
+      title: GitHub Repository
+      icon: github
+    - url: https://vuejs.org/
+      title: Website
+      icon: web
+spec:
+  type: library
+  lifecycle: production
+  owner: group:default/application-development
+  system: frontend-frameworks
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: nextjs
+  title: Next.js
+  description: |
+    The React framework for the web. Next.js enables full-stack web applications
+    built with React by providing server-side rendering, static site generation,
+    API routes, file-based routing, and incremental static regeneration.
+    The industry standard for production React applications.
+  annotations:
+    github.com/project-slug: vercel/next.js
+    backstage.io/source-location: url:https://github.com/vercel/next.js
+  tags:
+    - framework
+    - javascript
+    - typescript
+    - react
+    - fullstack
+    - ssr
+    - frontend
+  links:
+    - url: https://nextjs.org/docs
+      title: Documentation
+      icon: docs
+    - url: https://github.com/vercel/next.js
+      title: GitHub Repository
+      icon: github
+    - url: https://nextjs.org/
+      title: Website
+      icon: web
+spec:
+  type: library
+  lifecycle: production
+  owner: group:default/application-development
+  system: frontend-frameworks
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: svelte
+  title: Svelte
+  description: |
+    A radical new approach to building user interfaces. Where traditional
+    frameworks do most of their work in the browser, Svelte shifts that work
+    into a compile step, producing highly optimised vanilla JavaScript with
+    no runtime overhead. Ideal for performance-critical enterprise UIs.
+  annotations:
+    github.com/project-slug: sveltejs/svelte
+    backstage.io/source-location: url:https://github.com/sveltejs/svelte
+  tags:
+    - framework
+    - javascript
+    - typescript
+    - ui
+    - frontend
+    - compiler
+  links:
+    - url: https://svelte.dev/docs
+      title: Documentation
+      icon: docs
+    - url: https://github.com/sveltejs/svelte
+      title: GitHub Repository
+      icon: github
+    - url: https://svelte.dev/
+      title: Website
+      icon: web
+spec:
+  type: library
+  lifecycle: production
+  owner: group:default/application-development
+  system: frontend-frameworks
+
+# =============================================================================
+# LOW-CODE & COMPOSITION PLATFORMS (3)
+# =============================================================================
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: appsmith
+  title: Appsmith
+  description: |
+    An open source low-code platform for building internal tools, admin panels,
+    dashboards, and CRUD apps. Appsmith connects to any database or API and
+    lets teams drag-and-drop UI components to build business applications fast,
+    without needing dedicated frontend developers.
+  annotations:
+    github.com/project-slug: appsmithorg/appsmith
+    backstage.io/source-location: url:https://github.com/appsmithorg/appsmith
+  tags:
+    - low-code
+    - internal-tools
+    - dashboard
+    - admin
+    - javascript
+    - typescript
+  links:
+    - url: https://docs.appsmith.com/
+      title: Documentation
+      icon: docs
+    - url: https://github.com/appsmithorg/appsmith
+      title: GitHub Repository
+      icon: github
+    - url: https://www.appsmith.com/
+      title: Website
+      icon: web
+spec:
+  type: service
+  lifecycle: production
+  owner: group:default/application-development
+  system: low-code-platforms
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: budibase
+  title: Budibase
+  description: |
+    An open source low-code platform for creating internal apps, workflows,
+    and automations. Budibase connects to databases, REST APIs, and SaaS tools
+    to build forms, tables, dashboards, and automations with a visual builder
+    and built-in role-based access control.
+  annotations:
+    github.com/project-slug: Budibase/budibase
+    backstage.io/source-location: url:https://github.com/Budibase/budibase
+  tags:
+    - low-code
+    - internal-tools
+    - automation
+    - dashboard
+    - javascript
+  links:
+    - url: https://docs.budibase.com/
+      title: Documentation
+      icon: docs
+    - url: https://github.com/Budibase/budibase
+      title: GitHub Repository
+      icon: github
+    - url: https://budibase.com/
+      title: Website
+      icon: web
+spec:
+  type: service
+  lifecycle: production
+  owner: group:default/application-development
+  system: low-code-platforms
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: activepieces
+  title: Activepieces
+  description: |
+    An open source no-code business automation tool. Activepieces connects
+    applications and automates workflows visually -- the OSI-licensed alternative
+    to n8n and Zapier. Supports hundreds of integrations with a self-hostable
+    architecture suitable for enterprise data governance requirements.
+  annotations:
+    github.com/project-slug: activepieces/activepieces
+    backstage.io/source-location: url:https://github.com/activepieces/activepieces
+  tags:
+    - low-code
+    - automation
+    - workflow
+    - integration
+    - no-code
+    - typescript
+  links:
+    - url: https://www.activepieces.com/docs
+      title: Documentation
+      icon: docs
+    - url: https://github.com/activepieces/activepieces
+      title: GitHub Repository
+      icon: github
+    - url: https://www.activepieces.com/
+      title: Website
+      icon: web
+spec:
+  type: service
+  lifecycle: production
+  owner: group:default/application-development
+  system: low-code-platforms

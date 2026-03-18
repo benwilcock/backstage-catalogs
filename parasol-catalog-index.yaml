@@ -1,0 +1,33 @@
+# Parasol Insurance Internal Catalog - Location Index
+#
+# Points to all fictional Parasol Insurance catalog entity files in the parasol/ subdirectory.
+# Load this file from app-config.local.yaml to include the Parasol Insurance demo catalog.
+# Comment out the corresponding entry in app-config.local.yaml to exclude it from a demo environment.
+#
+# NOTE: All source locations point to the fictional https://github.parasol.com host.
+# A placeholder GitHub integration entry for github.parasol.com is required in app-config.local.yaml
+# to suppress SCM authentication warnings in RHDH.
+
+apiVersion: backstage.io/v1alpha1
+kind: Location
+metadata:
+  name: parasol-catalog-index
+  title: Parasol Insurance Internal Catalog
+  description: |
+    Fictional internal software catalog for Parasol Insurance Group.
+    Used for RHDH demonstration purposes. Covers claims, underwriting, policy
+    administration, billing, personal lines, commercial lines, specialty lines,
+    life & annuities, digital channels, reinsurance, data & analytics,
+    platform engineering, and compliance domains.
+spec:
+  targets:
+    - ./parasol/parasol-catalog-foundations.override.yaml
+    - ./parasol/parasol-catalog-claims.override.yaml
+    - ./parasol/parasol-catalog-underwriting.override.yaml
+    - ./parasol/parasol-catalog-policy.override.yaml
+    - ./parasol/parasol-catalog-personal-lines.override.yaml
+    - ./parasol/parasol-catalog-commercial-specialty.override.yaml
+    - ./parasol/parasol-catalog-life.override.yaml
+    - ./parasol/parasol-catalog-digital.override.yaml
+    - ./parasol/parasol-catalog-data-platform.override.yaml
+    - ./parasol/parasol-catalog-apis.override.yaml

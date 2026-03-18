@@ -1,0 +1,24 @@
+# Enterprise OSS Software Catalog - Location Index
+#
+# Points to all enterprise open-source catalog entity files in the enterprise/ subdirectory.
+# Load this file from app-config.local.yaml to include the full enterprise OSS catalog.
+# Comment out the corresponding entry in app-config.local.yaml to exclude it from a demo environment.
+
+apiVersion: backstage.io/v1alpha1
+kind: Location
+metadata:
+  name: enterprise-catalog-index
+  title: Enterprise OSS Software Catalog
+  description: |
+    Aggregates all enterprise open-source catalog entity files.
+    Covers foundations (Groups, Domains, Systems), data, platform, DevOps,
+    AI/data-engineering, application frameworks, and API entities.
+spec:
+  targets:
+    - ./enterprise/enterprise-catalog-foundations.override.yaml
+    - ./enterprise/enterprise-catalog-data.override.yaml
+    - ./enterprise/enterprise-catalog-platform.override.yaml
+    - ./enterprise/enterprise-catalog-devops-security.override.yaml
+    - ./enterprise/enterprise-catalog-ai-dataeng.override.yaml
+    - ./enterprise/enterprise-catalog-frameworks.override.yaml
+    - ./enterprise/enterprise-catalog-apis.override.yaml

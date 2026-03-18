@@ -1,0 +1,1176 @@
+# Parasol Insurance Group -- Foundations Catalog
+#
+# Contains all Group, Domain, and System entities for the Parasol Insurance
+# fictional internal software catalog. This file is the structural backbone;
+# all Component and API entities live in separate domain-specific files.
+#
+# Parasol Insurance Group: multinational P&C, life, and health insurer.
+# Headquarters: Chicago, IL. Operations: US, UK, EU, APAC.
+# ~25,000 employees; ~$18bn annual premium revenue.
+# All source code on internal GitHub Enterprise: https://github.parasol.com
+
+# ===========================================================================
+# GROUPS (Engineering Teams)
+# ===========================================================================
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Group
+metadata:
+  name: personal-lines-engineering
+  title: Personal Lines Engineering
+  description: |
+    Owns personal auto (motor) and personal property (home, renters, contents)
+    insurance systems. Responsible for policy issuance, rating, and claims
+    integration for individual and family customers.
+spec:
+  type: team
+  children: []
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Group
+metadata:
+  name: commercial-lines-engineering
+  title: Commercial Lines Engineering
+  description: |
+    Owns commercial liability, property, workers' compensation, and fleet
+    insurance systems. Serves business customers from SMEs to large corporates.
+spec:
+  type: team
+  children: []
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Group
+metadata:
+  name: specialty-lines-engineering
+  title: Specialty Lines Engineering
+  description: |
+    Owns cyber insurance, marine, aviation, and trade credit specialty
+    insurance systems. Handles complex, non-standard risk products.
+spec:
+  type: team
+  children: []
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Group
+metadata:
+  name: life-annuities-engineering
+  title: Life & Annuities Engineering
+  description: |
+    Owns life insurance products, annuities, and pension administration
+    systems. Manages long-duration contracts and mortality risk models.
+spec:
+  type: team
+  children: []
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Group
+metadata:
+  name: claims-engineering
+  title: Claims Engineering
+  description: |
+    Owns cross-line-of-business claims intake, triage, assessment, payment,
+    and fraud detection systems. Handles the full claims lifecycle from FNOL
+    through settlement and subrogation recovery.
+spec:
+  type: team
+  children: []
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Group
+metadata:
+  name: underwriting-engineering
+  title: Underwriting Engineering
+  description: |
+    Owns risk assessment, pricing models, quote and bind workflows, and
+    capacity management systems. Supports all lines of business with
+    underwriting decisioning and rating engine services.
+spec:
+  type: team
+  children: []
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Group
+metadata:
+  name: digital-channels-engineering
+  title: Digital Channels Engineering
+  description: |
+    Owns the customer-facing web portal, mobile apps, and broker portal.
+    Responsible for digital customer experience, self-service, and
+    third-party intermediary integrations.
+spec:
+  type: team
+  children: []
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Group
+metadata:
+  name: policy-platform-engineering
+  title: Policy Platform Engineering
+  description: |
+    Owns the core policy administration platform shared across all lines of
+    business. Manages policy lifecycle from inception through renewal,
+    endorsement, lapse, and cancellation.
+spec:
+  type: team
+  children: []
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Group
+metadata:
+  name: billing-payments-engineering
+  title: Billing & Payments Engineering
+  description: |
+    Owns premium collection, instalment scheduling, direct debit mandates,
+    payment processing, refund management, and lapse/reinstatement workflows.
+spec:
+  type: team
+  children: []
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Group
+metadata:
+  name: reinsurance-engineering
+  title: Reinsurance Engineering
+  description: |
+    Owns outward reinsurance treaty and facultative placement systems,
+    bordereau reporting, and cession management. Interfaces with external
+    reinsurers and Lloyd's market counterparties.
+spec:
+  type: team
+  children: []
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Group
+metadata:
+  name: data-analytics-engineering
+  title: Data & Analytics Engineering
+  description: |
+    Owns the enterprise data lake, actuarial modelling platforms, ML/AI
+    pipelines, and regulatory reporting infrastructure. Provides data
+    products consumed by all business domains.
+spec:
+  type: team
+  children: []
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Group
+metadata:
+  name: parasol-platform-engineering
+  title: Parasol Platform Engineering
+  description: |
+    Owns shared infrastructure including identity and access management,
+    API gateway, service mesh, observability stack, and the internal
+    developer platform. Serves all engineering teams as an internal platform.
+spec:
+  type: team
+  children: []
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Group
+metadata:
+  name: compliance-engineering
+  title: Compliance Engineering
+  description: |
+    Owns regulatory reporting systems, audit trail infrastructure, GDPR
+    data management tooling, and Solvency II compliance pipelines. Ensures
+    Parasol meets all regulatory obligations across jurisdictions.
+spec:
+  type: team
+  children: []
+
+# ===========================================================================
+# DOMAINS
+# ===========================================================================
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Domain
+metadata:
+  name: personal-auto
+  title: Personal Auto
+  description: |
+    Motor and auto insurance for individual customers and families. Covers
+    private passenger vehicles, motorcycles, and classic cars. Includes
+    telematics-based usage products and fleet policies for individuals.
+spec:
+  owner: group:default/personal-lines-engineering
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Domain
+metadata:
+  name: personal-property
+  title: Personal Property
+  description: |
+    Home, renters, and contents insurance for individuals and families.
+    Covers buildings, contents, and landlord policies. Includes high-net-worth
+    and overseas property extensions.
+spec:
+  owner: group:default/personal-lines-engineering
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Domain
+metadata:
+  name: life-annuities
+  title: Life & Annuities
+  description: |
+    Term life, whole-of-life, and universal life insurance products alongside
+    fixed and variable annuities. Includes group pension administration and
+    long-term care insurance products.
+spec:
+  owner: group:default/life-annuities-engineering
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Domain
+metadata:
+  name: commercial-lines
+  title: Commercial Lines
+  description: |
+    Business insurance products including commercial property, general
+    liability, workers' compensation, directors and officers liability,
+    professional indemnity, and commercial fleet.
+spec:
+  owner: group:default/commercial-lines-engineering
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Domain
+metadata:
+  name: specialty-lines
+  title: Specialty Lines
+  description: |
+    Non-standard and complex insurance risks including cyber liability, marine
+    cargo and hull, aviation hull and liability, and trade credit. These
+    products require specialist underwriting and bespoke policy wording.
+spec:
+  owner: group:default/specialty-lines-engineering
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Domain
+metadata:
+  name: claims
+  title: Claims
+  description: |
+    Cross-line-of-business claims management covering intake (FNOL), triage,
+    adjuster assignment, damage estimation, reserve setting, fraud detection,
+    settlement payment, subrogation recovery, and litigation management.
+spec:
+  owner: group:default/claims-engineering
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Domain
+metadata:
+  name: underwriting
+  title: Underwriting
+  description: |
+    Risk assessment, pricing, and capacity management across all lines.
+    Includes quote and bind workflows, rating engines, exposure management,
+    facultative referrals, and automated underwriting decisioning.
+spec:
+  owner: group:default/underwriting-engineering
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Domain
+metadata:
+  name: customer-portal
+  title: Customer Portal
+  description: |
+    Customer-facing digital channels including the self-service web portal,
+    iOS and Android mobile apps, and the broker/intermediary portal. Provides
+    policy management, claims tracking, and document access.
+spec:
+  owner: group:default/digital-channels-engineering
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Domain
+metadata:
+  name: policy-administration
+  title: Policy Administration
+  description: |
+    Core policy lifecycle management platform shared across all lines of
+    business. Handles policy inception, mid-term adjustments (endorsements),
+    renewals, lapses, cancellations, and reinstatements.
+spec:
+  owner: group:default/policy-platform-engineering
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Domain
+metadata:
+  name: billing-payments
+  title: Billing & Payments
+  description: |
+    Premium collection, instalment plan management, direct debit mandates,
+    credit card processing, refunds, and lapse/reinstatement payment flows.
+    Integrates with external payment acquirers and banking partners.
+spec:
+  owner: group:default/billing-payments-engineering
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Domain
+metadata:
+  name: reinsurance
+  title: Reinsurance
+  description: |
+    Outward reinsurance placement and management including proportional and
+    non-proportional treaty programmes, facultative reinsurance, bordereau
+    production, and cession accounting with reinsurer counterparties.
+spec:
+  owner: group:default/reinsurance-engineering
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Domain
+metadata:
+  name: data-analytics
+  title: Data & Analytics
+  description: |
+    Enterprise data platform, actuarial modelling, machine learning pipelines,
+    business intelligence reporting, and data governance. Provides certified
+    data products to all business domains for decision support.
+spec:
+  owner: group:default/data-analytics-engineering
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Domain
+metadata:
+  name: platform-engineering
+  title: Platform Engineering
+  description: |
+    Shared engineering infrastructure services including identity and access
+    management, API gateway, service mesh, secret management, observability,
+    and the internal developer platform (IDP).
+spec:
+  owner: group:default/parasol-platform-engineering
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Domain
+metadata:
+  name: compliance-regulatory
+  title: Compliance & Regulatory
+  description: |
+    Regulatory reporting (NAIC, FCA, EIOPA), audit trail systems, GDPR and
+    CCPA data subject rights tooling, Solvency II capital reporting, and
+    sanctions screening infrastructure.
+spec:
+  owner: group:default/compliance-engineering
+
+# ===========================================================================
+# SYSTEMS -- Claims Domain
+# ===========================================================================
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: System
+metadata:
+  name: fnol-system
+  title: FNOL System
+  description: |
+    First Notice of Loss intake and triage system. Accepts loss notifications
+    from all channels (web, mobile, phone, third-party adjusters), validates
+    coverage, and routes claims to the appropriate assessment workflow.
+spec:
+  owner: group:default/claims-engineering
+  domain: claims
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: System
+metadata:
+  name: claims-assessment-system
+  title: Claims Assessment System
+  description: |
+    Manages adjuster assignment, damage estimation, reserve calculation, and
+    claims decisioning workflows. Supports both field adjusters and desk-based
+    virtual adjustment for lower-severity claims.
+spec:
+  owner: group:default/claims-engineering
+  domain: claims
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: System
+metadata:
+  name: claims-payment-system
+  title: Claims Payment System
+  description: |
+    Processes approved claim settlements and interim payments. Supports bank
+    transfer, cheque, and digital wallet disbursements. Enforces dual-control
+    approval for payments above threshold limits.
+spec:
+  owner: group:default/claims-engineering
+  domain: claims
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: System
+metadata:
+  name: claims-fraud-detection-system
+  title: Claims Fraud Detection System
+  description: |
+    Real-time and batch fraud scoring for submitted claims using ML models,
+    network graph analysis, and third-party data enrichment. Flags suspicious
+    claims for Special Investigations Unit (SIU) review.
+spec:
+  owner: group:default/claims-engineering
+  domain: claims
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: System
+metadata:
+  name: claims-document-system
+  title: Claims Document System
+  description: |
+    Manages all claim-related documents including loss photographs, repair
+    estimates, medical reports, witness statements, and settlement letters.
+    Provides document capture, classification, and retrieval services.
+spec:
+  owner: group:default/claims-engineering
+  domain: claims
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: System
+metadata:
+  name: claims-litigation-system
+  title: Claims Litigation System
+  description: |
+    Manages claims that escalate to legal proceedings, including solicitor
+    appointment, court date tracking, subrogation recovery actions, and
+    inter-company recovery workflows.
+spec:
+  owner: group:default/claims-engineering
+  domain: claims
+
+# ===========================================================================
+# SYSTEMS -- Underwriting Domain
+# ===========================================================================
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: System
+metadata:
+  name: quote-bind-system
+  title: Quote & Bind System
+  description: |
+    End-to-end quote, bind, and issue workflow for all personal and commercial
+    lines. Orchestrates rating, eligibility checks, document generation, and
+    policy inception across all channels.
+spec:
+  owner: group:default/underwriting-engineering
+  domain: underwriting
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: System
+metadata:
+  name: rating-engine-system
+  title: Rating Engine System
+  description: |
+    Centralised actuarial rating engine that calculates premiums for all
+    products using filed rate tables, relativities, and surcharges. Supports
+    both real-time API calls and batch re-rating of renewal books.
+spec:
+  owner: group:default/underwriting-engineering
+  domain: underwriting
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: System
+metadata:
+  name: risk-assessment-system
+  title: Risk Assessment System
+  description: |
+    Automated underwriting decisioning and risk scoring platform. Applies
+    underwriting rules, exposure limits, sanctions checks, and referral
+    triggers to determine acceptability and pricing adjustments.
+spec:
+  owner: group:default/underwriting-engineering
+  domain: underwriting
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: System
+metadata:
+  name: policy-endorsement-system
+  title: Policy Endorsement System
+  description: |
+    Handles mid-term policy changes (endorsements) including coverage
+    amendments, named driver additions, address changes, and vehicle
+    substitutions. Calculates pro-rata premium adjustments.
+spec:
+  owner: group:default/underwriting-engineering
+  domain: underwriting
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: System
+metadata:
+  name: renewal-management-system
+  title: Renewal Management System
+  description: |
+    Manages the annual renewal cycle for all policy types: re-rating,
+    retention scoring, renewal offer generation, auto-renewal processing,
+    and lapse management for non-renewing policies.
+spec:
+  owner: group:default/underwriting-engineering
+  domain: underwriting
+
+# ===========================================================================
+# SYSTEMS -- Policy Administration Domain
+# ===========================================================================
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: System
+metadata:
+  name: policy-lifecycle-system
+  title: Policy Lifecycle System
+  description: |
+    Core policy record of truth managing the full lifecycle from inception
+    through cancellation. Stores policy terms, coverage schedules, insured
+    details, and all version history for regulatory audit purposes.
+spec:
+  owner: group:default/policy-platform-engineering
+  domain: policy-administration
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: System
+metadata:
+  name: policy-search-system
+  title: Policy Search System
+  description: |
+    High-performance search and retrieval of policy records across all lines
+    of business. Powers the call centre, claims intake, broker portal, and
+    customer self-service with sub-second policy lookup.
+spec:
+  owner: group:default/policy-platform-engineering
+  domain: policy-administration
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: System
+metadata:
+  name: policy-document-system
+  title: Policy Document System
+  description: |
+    Generates, stores, and distributes all policy documentation including
+    schedules, certificates, endorsement notices, and renewal invitations.
+    Supports print, email, and portal delivery channels.
+spec:
+  owner: group:default/policy-platform-engineering
+  domain: policy-administration
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: System
+metadata:
+  name: cancellation-reinstatement-system
+  title: Cancellation & Reinstatement System
+  description: |
+    Manages voluntary and involuntary policy cancellations, mid-term
+    cancellation calculations, and policy reinstatement after lapse.
+    Enforces statutory notice periods and state/jurisdiction rules.
+spec:
+  owner: group:default/policy-platform-engineering
+  domain: policy-administration
+
+# ===========================================================================
+# SYSTEMS -- Billing & Payments Domain
+# ===========================================================================
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: System
+metadata:
+  name: premium-collection-system
+  title: Premium Collection System
+  description: |
+    Manages the billing account lifecycle: instalment schedules, due date
+    management, arrears tracking, and lapse triggers. Supports annual,
+    monthly, and quarterly payment frequencies.
+spec:
+  owner: group:default/billing-payments-engineering
+  domain: billing-payments
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: System
+metadata:
+  name: payment-processing-system
+  title: Payment Processing System
+  description: |
+    Processes inbound premium payments via direct debit, card, bank transfer,
+    and digital wallets. Integrates with payment acquirers, banking partners,
+    and the Bacs/SEPA payment networks.
+spec:
+  owner: group:default/billing-payments-engineering
+  domain: billing-payments
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: System
+metadata:
+  name: refunds-adjustments-system
+  title: Refunds & Adjustments System
+  description: |
+    Processes premium refunds for cancellations, endorsements, and overpayments.
+    Manages credit note issuance, refund routing back to original payment
+    method, and regulatory refund timeline compliance.
+spec:
+  owner: group:default/billing-payments-engineering
+  domain: billing-payments
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: System
+metadata:
+  name: billing-account-system
+  title: Billing Account System
+  description: |
+    Maintains the customer billing account as the financial ledger for
+    premium transactions. Tracks credits, debits, instalments, fees, and
+    interest charges. Provides statements and payment history.
+spec:
+  owner: group:default/billing-payments-engineering
+  domain: billing-payments
+
+# ===========================================================================
+# SYSTEMS -- Personal Auto Domain
+# ===========================================================================
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: System
+metadata:
+  name: auto-policy-system
+  title: Auto Policy System
+  description: |
+    Core system for personal motor policy issuance, rating, and administration.
+    Handles private passenger, motorcycle, and classic vehicle policies
+    including named driver schedules and no-claims discount management.
+spec:
+  owner: group:default/personal-lines-engineering
+  domain: personal-auto
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: System
+metadata:
+  name: telematics-system
+  title: Telematics System
+  description: |
+    Usage-based insurance (UBI) platform processing telematics data from
+    in-vehicle devices and smartphone apps. Scores driving behaviour and
+    feeds premium adjustments into the rating engine.
+spec:
+  owner: group:default/personal-lines-engineering
+  domain: personal-auto
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: System
+metadata:
+  name: vehicle-data-system
+  title: Vehicle Data System
+  description: |
+    Maintains the vehicle reference data catalogue including make, model,
+    trim, DVLA/VIN lookups, theft statistics, repair cost indices, and
+    agreed value data for classic vehicles.
+spec:
+  owner: group:default/personal-lines-engineering
+  domain: personal-auto
+
+# ===========================================================================
+# SYSTEMS -- Personal Property Domain
+# ===========================================================================
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: System
+metadata:
+  name: property-policy-system
+  title: Property Policy System
+  description: |
+    Core system for home, renters, and landlord policy issuance and
+    administration. Manages buildings and contents coverage, sum insured
+    calculations, and high-value item scheduling.
+spec:
+  owner: group:default/personal-lines-engineering
+  domain: personal-property
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: System
+metadata:
+  name: property-valuation-system
+  title: Property Valuation System
+  description: |
+    Provides automated rebuild cost estimates and contents sum insured
+    recommendations using property data enrichment, postcode analytics,
+    and BCIS rebuild cost indices.
+spec:
+  owner: group:default/personal-lines-engineering
+  domain: personal-property
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: System
+metadata:
+  name: flood-risk-system
+  title: Flood & Subsidence Risk System
+  description: |
+    Assesses flood, subsidence, and ground movement risk for property
+    insurance using Ordnance Survey data, EA flood maps, and geological
+    surveys. Informs underwriting eligibility and pricing loadings.
+spec:
+  owner: group:default/personal-lines-engineering
+  domain: personal-property
+
+# ===========================================================================
+# SYSTEMS -- Commercial Lines Domain
+# ===========================================================================
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: System
+metadata:
+  name: commercial-policy-system
+  title: Commercial Policy System
+  description: |
+    Core commercial lines policy administration platform supporting property,
+    liability, and package policies for SME and mid-market business customers.
+    Handles multi-location schedules and blanket coverage structures.
+spec:
+  owner: group:default/commercial-lines-engineering
+  domain: commercial-lines
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: System
+metadata:
+  name: workers-comp-system
+  title: Workers' Compensation System
+  description: |
+    Manages workers' compensation policies across all US jurisdictions.
+    Handles payroll-based rating, class codes, experience modification
+    factors, and state bureau reporting obligations.
+spec:
+  owner: group:default/commercial-lines-engineering
+  domain: commercial-lines
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: System
+metadata:
+  name: commercial-fleet-system
+  title: Commercial Fleet System
+  description: |
+    Manages commercial vehicle fleet insurance policies. Supports rated and
+    unrated fleets, driver schedules, vehicle substitution, and telematics
+    integration for fleet risk management programmes.
+spec:
+  owner: group:default/commercial-lines-engineering
+  domain: commercial-lines
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: System
+metadata:
+  name: commercial-risk-system
+  title: Commercial Risk Assessment System
+  description: |
+    Automated and referral-based underwriting decisioning for commercial
+    risks. Applies industry-specific underwriting rules, accumulation
+    controls, and capacity limits for complex commercial accounts.
+spec:
+  owner: group:default/commercial-lines-engineering
+  domain: commercial-lines
+
+# ===========================================================================
+# SYSTEMS -- Specialty Lines Domain
+# ===========================================================================
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: System
+metadata:
+  name: cyber-insurance-system
+  title: Cyber Insurance System
+  description: |
+    End-to-end cyber liability insurance platform including risk questionnaire
+    collection, cyber risk scoring, policy issuance, and incident response
+    coordination with breach response vendors.
+spec:
+  owner: group:default/specialty-lines-engineering
+  domain: specialty-lines
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: System
+metadata:
+  name: marine-aviation-system
+  title: Marine & Aviation System
+  description: |
+    Manages marine cargo, hull, and P&I policies alongside aviation hull
+    and liability covers. Integrates with Lloyd's market systems for
+    risk placement and claims notification.
+spec:
+  owner: group:default/specialty-lines-engineering
+  domain: specialty-lines
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: System
+metadata:
+  name: trade-credit-system
+  title: Trade Credit System
+  description: |
+    Trade credit insurance platform protecting businesses against buyer
+    insolvency and protracted default. Manages credit limits, country risk
+    grades, and buyer monitoring for commercial credit exposure.
+spec:
+  owner: group:default/specialty-lines-engineering
+  domain: specialty-lines
+
+# ===========================================================================
+# SYSTEMS -- Life & Annuities Domain
+# ===========================================================================
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: System
+metadata:
+  name: life-policy-system
+  title: Life Policy System
+  description: |
+    Core life insurance policy administration for term, whole-of-life, and
+    universal life products. Manages beneficiary designations, premium
+    schedules, loans against cash value, and benefit payment processing.
+spec:
+  owner: group:default/life-annuities-engineering
+  domain: life-annuities
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: System
+metadata:
+  name: annuity-management-system
+  title: Annuity Management System
+  description: |
+    Administers fixed and variable annuity contracts. Manages accumulation
+    phase contributions, fund allocation, annuitisation elections, and
+    ongoing annuity payment disbursements to retirees.
+spec:
+  owner: group:default/life-annuities-engineering
+  domain: life-annuities
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: System
+metadata:
+  name: pension-admin-system
+  title: Pension Administration System
+  description: |
+    Group pension scheme administration for corporate clients. Manages
+    member enrolment, contribution processing, fund switching, retirement
+    benefit calculations, and pension transfer values.
+spec:
+  owner: group:default/life-annuities-engineering
+  domain: life-annuities
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: System
+metadata:
+  name: mortality-risk-system
+  title: Mortality & Morbidity Risk System
+  description: |
+    Actuarial risk assessment for life insurance underwriting. Applies
+    mortality tables, medical underwriting rules, and reinsurance
+    automatic binding limits for new life insurance applications.
+spec:
+  owner: group:default/life-annuities-engineering
+  domain: life-annuities
+
+# ===========================================================================
+# SYSTEMS -- Customer Portal Domain
+# ===========================================================================
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: System
+metadata:
+  name: web-portal-system
+  title: Web Portal System
+  description: |
+    Customer self-service web portal at my.parasol.com. Provides policy
+    management, claims submission and tracking, document download, payment
+    management, and secure messaging with the service centre.
+spec:
+  owner: group:default/digital-channels-engineering
+  domain: customer-portal
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: System
+metadata:
+  name: mobile-app-system
+  title: Mobile App System
+  description: |
+    iOS and Android native mobile applications for Parasol customers.
+    Supports FNOL photo capture, policy card display, roadside assistance
+    request, and push notification delivery for claims status updates.
+spec:
+  owner: group:default/digital-channels-engineering
+  domain: customer-portal
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: System
+metadata:
+  name: broker-portal-system
+  title: Broker Portal System
+  description: |
+    Web-based portal for insurance brokers and intermediaries to quote,
+    bind, and manage Parasol policies on behalf of their clients. Supports
+    delegated authority schemes and real-time API integrations.
+spec:
+  owner: group:default/digital-channels-engineering
+  domain: customer-portal
+
+# ===========================================================================
+# SYSTEMS -- Reinsurance Domain
+# ===========================================================================
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: System
+metadata:
+  name: treaty-management-system
+  title: Treaty Management System
+  description: |
+    Manages outward proportional and non-proportional reinsurance treaty
+    placements. Tracks treaty structure, shares, limits, retentions, and
+    inuring priorities across all lines of business.
+spec:
+  owner: group:default/reinsurance-engineering
+  domain: reinsurance
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: System
+metadata:
+  name: facultative-placement-system
+  title: Facultative Placement System
+  description: |
+    Manages individual facultative reinsurance submissions for risks that
+    exceed treaty automatic binding limits. Handles slip preparation,
+    reinsurer market approaches, and acceptance recording.
+spec:
+  owner: group:default/reinsurance-engineering
+  domain: reinsurance
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: System
+metadata:
+  name: bordereau-reporting-system
+  title: Bordereau Reporting System
+  description: |
+    Generates and distributes reinsurance bordereau reports to treaty
+    reinsurers on a monthly and quarterly basis. Manages cession accounting,
+    premium and loss statements, and reinsurer cash calls.
+spec:
+  owner: group:default/reinsurance-engineering
+  domain: reinsurance
+
+# ===========================================================================
+# SYSTEMS -- Data & Analytics Domain
+# ===========================================================================
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: System
+metadata:
+  name: data-lake-system
+  title: Enterprise Data Lake System
+  description: |
+    Central data lake ingesting raw data from all operational systems into
+    a governed data platform. Provides certified data products and curated
+    datasets for analytics, actuarial, and regulatory consumption.
+spec:
+  owner: group:default/data-analytics-engineering
+  domain: data-analytics
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: System
+metadata:
+  name: actuarial-platform-system
+  title: Actuarial Platform System
+  description: |
+    Actuarial modelling and reserving platform. Hosts chain-ladder and
+    stochastic reserve models, pricing actuarial workflows, and Solvency II
+    capital model inputs.
+spec:
+  owner: group:default/data-analytics-engineering
+  domain: data-analytics
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: System
+metadata:
+  name: ml-pipeline-system
+  title: ML Pipeline System
+  description: |
+    Machine learning model training, validation, and deployment platform.
+    Serves fraud detection, churn prediction, lifetime value, and
+    pricing optimisation models across all business domains.
+spec:
+  owner: group:default/data-analytics-engineering
+  domain: data-analytics
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: System
+metadata:
+  name: reporting-system
+  title: Business Intelligence & Reporting System
+  description: |
+    Enterprise BI platform delivering management dashboards, operational
+    reports, and regulatory returns. Integrates with the data lake and
+    provides self-service analytics for business users.
+spec:
+  owner: group:default/data-analytics-engineering
+  domain: data-analytics
+
+# ===========================================================================
+# SYSTEMS -- Platform Engineering Domain
+# ===========================================================================
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: System
+metadata:
+  name: identity-access-system
+  title: Identity & Access Management System
+  description: |
+    Enterprise IAM platform providing authentication, authorisation, and
+    directory services for all internal systems, customer-facing applications,
+    and machine-to-machine service identities.
+spec:
+  owner: group:default/parasol-platform-engineering
+  domain: platform-engineering
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: System
+metadata:
+  name: api-gateway-system
+  title: API Gateway System
+  description: |
+    Centralised API gateway and service mesh for all internal and external
+    APIs. Provides rate limiting, mTLS, JWT validation, API key management,
+    and traffic management across microservices.
+spec:
+  owner: group:default/parasol-platform-engineering
+  domain: platform-engineering
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: System
+metadata:
+  name: observability-system
+  title: Observability System
+  description: |
+    Enterprise observability platform aggregating metrics, logs, and
+    distributed traces from all services. Provides alerting, SLO tracking,
+    on-call management, and incident response tooling.
+spec:
+  owner: group:default/parasol-platform-engineering
+  domain: platform-engineering
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: System
+metadata:
+  name: developer-platform-system
+  title: Developer Platform System
+  description: |
+    Internal developer platform (IDP) providing self-service infrastructure
+    provisioning, CI/CD pipeline templates, secret management, container
+    registry, and developer portal (this catalog).
+spec:
+  owner: group:default/parasol-platform-engineering
+  domain: platform-engineering
+
+# ===========================================================================
+# SYSTEMS -- Compliance & Regulatory Domain
+# ===========================================================================
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: System
+metadata:
+  name: regulatory-reporting-system
+  title: Regulatory Reporting System
+  description: |
+    Produces and submits regulatory returns to NAIC (US), FCA (UK), and
+    EIOPA (EU) on statutory schedules. Manages Solvency II QRT production,
+    Lloyd's reporting, and state-specific insurance department filings.
+spec:
+  owner: group:default/compliance-engineering
+  domain: compliance-regulatory
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: System
+metadata:
+  name: audit-trail-system
+  title: Audit Trail System
+  description: |
+    Immutable audit log platform capturing all system events, data access,
+    and user actions across Parasol's IT estate. Supports forensic
+    investigation, regulatory audit, and SOX compliance evidence.
+spec:
+  owner: group:default/compliance-engineering
+  domain: compliance-regulatory
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: System
+metadata:
+  name: gdpr-compliance-system
+  title: GDPR & Privacy Compliance System
+  description: |
+    Manages GDPR and CCPA data subject rights requests: access, erasure,
+    portability, and objection. Maintains records of processing activities,
+    data retention schedules, and consent management across all systems.
+spec:
+  owner: group:default/compliance-engineering
+  domain: compliance-regulatory

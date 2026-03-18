@@ -1,0 +1,1267 @@
+# Enterprise Software Catalog - DevOps, CI/CD & Security
+# 35 components across 7 systems. All projects are active with OSI-approved licenses.
+
+# =============================================================================
+# CI/CD PIPELINES (5)
+# =============================================================================
+
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: jenkins
+  title: Jenkins
+  description: |
+    The leading open source automation server for building, deploying, and
+    automating software projects. Jenkins provides hundreds of plugins to
+    support CI/CD pipelines for virtually any technology stack.
+  annotations:
+    github.com/project-slug: jenkinsci/jenkins
+    backstage.io/source-location: url:https://github.com/jenkinsci/jenkins
+  tags:
+    - cicd
+    - automation
+    - pipelines
+    - java
+  links:
+    - url: https://www.jenkins.io/doc/
+      title: Documentation
+      icon: docs
+    - url: https://github.com/jenkinsci/jenkins
+      title: GitHub Repository
+      icon: github
+    - url: https://www.jenkins.io/
+      title: Website
+      icon: web
+spec:
+  type: service
+  lifecycle: production
+  owner: group:default/devops-team
+  system: cicd-pipelines
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: argocd
+  title: Argo CD
+  description: |
+    A declarative, GitOps continuous delivery tool for Kubernetes. Argo CD
+    automates the deployment of applications to Kubernetes by watching Git
+    repositories and synchronizing cluster state. A CNCF graduated project.
+  annotations:
+    github.com/project-slug: argoproj/argo-cd
+    backstage.io/source-location: url:https://github.com/argoproj/argo-cd
+  tags:
+    - cicd
+    - gitops
+    - kubernetes
+    - go
+    - cncf
+  links:
+    - url: https://argo-cd.readthedocs.io/
+      title: Documentation
+      icon: docs
+    - url: https://github.com/argoproj/argo-cd
+      title: GitHub Repository
+      icon: github
+    - url: https://argoproj.github.io/
+      title: Website
+      icon: web
+spec:
+  type: service
+  lifecycle: production
+  owner: group:default/devops-team
+  system: cicd-pipelines
+  providesApis:
+    - argocd-api
+  dependsOn:
+    - component:default/kubernetes
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: tekton-pipelines
+  title: Tekton Pipelines
+  description: |
+    A cloud-native framework for creating CI/CD systems as Kubernetes custom
+    resources. Tekton provides a set of building blocks (Tasks, Pipelines,
+    Runs) for composing declarative, reproducible build pipelines.
+  annotations:
+    github.com/project-slug: tektoncd/pipeline
+    backstage.io/source-location: url:https://github.com/tektoncd/pipeline
+  tags:
+    - cicd
+    - kubernetes-native
+    - pipelines
+    - go
+    - cdf
+  links:
+    - url: https://tekton.dev/docs/
+      title: Documentation
+      icon: docs
+    - url: https://github.com/tektoncd/pipeline
+      title: GitHub Repository
+      icon: github
+    - url: https://tekton.dev/
+      title: Website
+      icon: web
+spec:
+  type: service
+  lifecycle: production
+  owner: group:default/devops-team
+  system: cicd-pipelines
+  dependsOn:
+    - component:default/kubernetes
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: flux
+  title: Flux
+  description: |
+    A set of continuous and progressive delivery solutions for Kubernetes that
+    are open and extensible. Flux automates deployment from Git and Helm
+    repositories. A CNCF graduated project for GitOps on Kubernetes.
+  annotations:
+    github.com/project-slug: fluxcd/flux2
+    backstage.io/source-location: url:https://github.com/fluxcd/flux2
+  tags:
+    - cicd
+    - gitops
+    - kubernetes
+    - go
+    - cncf
+  links:
+    - url: https://fluxcd.io/flux/
+      title: Documentation
+      icon: docs
+    - url: https://github.com/fluxcd/flux2
+      title: GitHub Repository
+      icon: github
+    - url: https://fluxcd.io/
+      title: Website
+      icon: web
+spec:
+  type: service
+  lifecycle: production
+  owner: group:default/devops-team
+  system: cicd-pipelines
+  dependsOn:
+    - component:default/kubernetes
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: woodpecker-ci
+  title: Woodpecker CI
+  description: |
+    A community-driven, container-native CI/CD engine with a simple yet
+    powerful pipeline configuration. Woodpecker is a fork of Drone that
+    remains fully open source with a focus on simplicity and extensibility.
+  annotations:
+    github.com/project-slug: woodpecker-ci/woodpecker
+    backstage.io/source-location: url:https://github.com/woodpecker-ci/woodpecker
+  tags:
+    - cicd
+    - container-native
+    - go
+  links:
+    - url: https://woodpecker-ci.org/docs/intro
+      title: Documentation
+      icon: docs
+    - url: https://github.com/woodpecker-ci/woodpecker
+      title: GitHub Repository
+      icon: github
+    - url: https://woodpecker-ci.org/
+      title: Website
+      icon: web
+spec:
+  type: service
+  lifecycle: production
+  owner: group:default/devops-team
+  system: cicd-pipelines
+
+# =============================================================================
+# SOURCE CONTROL & REGISTRIES (5)
+# =============================================================================
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: gitea
+  title: Gitea
+  description: |
+    A painless, self-hosted Git service written in Go. Gitea provides
+    lightweight, cross-platform Git hosting with issue tracking, code review,
+    CI/CD integration, and package registries. Easy to install and maintain.
+  annotations:
+    github.com/project-slug: go-gitea/gitea
+    backstage.io/source-location: url:https://github.com/go-gitea/gitea
+  tags:
+    - git
+    - source-control
+    - self-hosted
+    - go
+  links:
+    - url: https://docs.gitea.com/
+      title: Documentation
+      icon: docs
+    - url: https://github.com/go-gitea/gitea
+      title: GitHub Repository
+      icon: github
+    - url: https://about.gitea.com/
+      title: Website
+      icon: web
+spec:
+  type: service
+  lifecycle: production
+  owner: group:default/devops-team
+  system: source-control-registries
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: forgejo
+  title: Forgejo
+  description: |
+    A self-hosted, community-governed Git forge. Forgejo is a soft fork of
+    Gitea focused on community ownership and long-term sustainability under
+    the Codeberg e.V. umbrella. Fully compatible with the Gitea ecosystem.
+  annotations:
+    github.com/project-slug: forgejo/forgejo
+    backstage.io/source-location: url:https://codeberg.org/forgejo/forgejo
+  tags:
+    - git
+    - source-control
+    - self-hosted
+    - community-governed
+    - go
+  links:
+    - url: https://forgejo.org/docs/latest/
+      title: Documentation
+      icon: docs
+    - url: https://codeberg.org/forgejo/forgejo
+      title: Source Repository
+      icon: github
+    - url: https://forgejo.org/
+      title: Website
+      icon: web
+spec:
+  type: service
+  lifecycle: production
+  owner: group:default/devops-team
+  system: source-control-registries
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: harbor
+  title: Harbor
+  description: |
+    An open source trusted cloud-native registry that stores, signs, and scans
+    container images for vulnerabilities. Harbor provides RBAC, audit logging,
+    replication, and policy-based image management. A CNCF graduated project.
+  annotations:
+    github.com/project-slug: goharbor/harbor
+    backstage.io/source-location: url:https://github.com/goharbor/harbor
+  tags:
+    - container-registry
+    - security
+    - cloud-native
+    - go
+    - cncf
+  links:
+    - url: https://goharbor.io/docs/
+      title: Documentation
+      icon: docs
+    - url: https://github.com/goharbor/harbor
+      title: GitHub Repository
+      icon: github
+    - url: https://goharbor.io/
+      title: Website
+      icon: web
+spec:
+  type: service
+  lifecycle: production
+  owner: group:default/devops-team
+  system: source-control-registries
+  providesApis:
+    - harbor-api
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: project-quay
+  title: Project Quay
+  description: |
+    A container image registry that provides storage, distribution, and
+    governance for containers and cloud-native artifacts. Quay features
+    automated security scanning, geo-replication, and fine-grained access control.
+  annotations:
+    github.com/project-slug: quay/quay
+    backstage.io/source-location: url:https://github.com/quay/quay
+  tags:
+    - container-registry
+    - security
+    - python
+    - red-hat
+  links:
+    - url: https://docs.projectquay.io/
+      title: Documentation
+      icon: docs
+    - url: https://github.com/quay/quay
+      title: GitHub Repository
+      icon: github
+    - url: https://www.projectquay.io/
+      title: Website
+      icon: web
+spec:
+  type: service
+  lifecycle: production
+  owner: group:default/devops-team
+  system: source-control-registries
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: zot-registry
+  title: Zot
+  description: |
+    A production-ready, vendor-neutral OCI-native container image registry.
+    Zot provides a minimal, standards-compliant registry with built-in
+    deduplication, garbage collection, and search capabilities.
+  annotations:
+    github.com/project-slug: project-zot/zot
+    backstage.io/source-location: url:https://github.com/project-zot/zot
+  tags:
+    - container-registry
+    - oci
+    - cloud-native
+    - go
+  links:
+    - url: https://zotregistry.dev/
+      title: Documentation
+      icon: docs
+    - url: https://github.com/project-zot/zot
+      title: GitHub Repository
+      icon: github
+    - url: https://zotregistry.dev/
+      title: Website
+      icon: web
+spec:
+  type: service
+  lifecycle: production
+  owner: group:default/devops-team
+  system: source-control-registries
+
+# =============================================================================
+# DEVELOPER TOOLS (5)
+# =============================================================================
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: backstage
+  title: Backstage
+  description: |
+    An open platform for building developer portals. Backstage unifies
+    infrastructure tooling, services, and documentation to create a streamlined
+    development environment. Originally created at Spotify, now a CNCF project.
+  annotations:
+    github.com/project-slug: backstage/backstage
+    backstage.io/source-location: url:https://github.com/backstage/backstage
+  tags:
+    - developer-portal
+    - internal-developer-platform
+    - typescript
+    - cncf
+  links:
+    - url: https://backstage.io/docs/
+      title: Documentation
+      icon: docs
+    - url: https://github.com/backstage/backstage
+      title: GitHub Repository
+      icon: github
+    - url: https://backstage.io/
+      title: Website
+      icon: web
+spec:
+  type: service
+  lifecycle: production
+  owner: group:default/application-development
+  system: developer-tools
+  providesApis:
+    - backstage-catalog-api
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: argo-rollouts
+  title: Argo Rollouts
+  description: |
+    A Kubernetes controller providing advanced deployment capabilities such as
+    blue-green, canary, canary analysis, and progressive delivery for
+    Kubernetes workloads. Part of the Argo project ecosystem.
+  annotations:
+    github.com/project-slug: argoproj/argo-rollouts
+    backstage.io/source-location: url:https://github.com/argoproj/argo-rollouts
+  tags:
+    - progressive-delivery
+    - canary
+    - blue-green
+    - kubernetes
+    - go
+    - cncf
+  links:
+    - url: https://argo-rollouts.readthedocs.io/
+      title: Documentation
+      icon: docs
+    - url: https://github.com/argoproj/argo-rollouts
+      title: GitHub Repository
+      icon: github
+    - url: https://argoproj.github.io/
+      title: Website
+      icon: web
+spec:
+  type: service
+  lifecycle: production
+  owner: group:default/application-development
+  system: developer-tools
+  dependsOn:
+    - component:default/kubernetes
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: skaffold
+  title: Skaffold
+  description: |
+    A command-line tool that facilitates continuous development for
+    container-based and Kubernetes applications. Skaffold handles the
+    workflow for building, pushing, and deploying during local development.
+  annotations:
+    github.com/project-slug: GoogleContainerTools/skaffold
+    backstage.io/source-location: url:https://github.com/GoogleContainerTools/skaffold
+  tags:
+    - developer-tools
+    - kubernetes
+    - local-development
+    - go
+  links:
+    - url: https://skaffold.dev/docs/
+      title: Documentation
+      icon: docs
+    - url: https://github.com/GoogleContainerTools/skaffold
+      title: GitHub Repository
+      icon: github
+    - url: https://skaffold.dev/
+      title: Website
+      icon: web
+spec:
+  type: tool
+  lifecycle: production
+  owner: group:default/application-development
+  system: developer-tools
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: tilt
+  title: Tilt
+  description: |
+    A dev environment toolkit for teams building microservices on Kubernetes.
+    Tilt automates the build-push-deploy loop, provides smart rebuilds, and
+    gives real-time feedback during local Kubernetes development.
+  annotations:
+    github.com/project-slug: tilt-dev/tilt
+    backstage.io/source-location: url:https://github.com/tilt-dev/tilt
+  tags:
+    - developer-tools
+    - kubernetes
+    - local-development
+    - go
+  links:
+    - url: https://docs.tilt.dev/
+      title: Documentation
+      icon: docs
+    - url: https://github.com/tilt-dev/tilt
+      title: GitHub Repository
+      icon: github
+    - url: https://tilt.dev/
+      title: Website
+      icon: web
+spec:
+  type: tool
+  lifecycle: production
+  owner: group:default/application-development
+  system: developer-tools
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: ko
+  title: Ko
+  description: |
+    A simple, fast container image builder for Go applications. Ko builds
+    Go binaries and packages them into container images without requiring
+    a Dockerfile, publishing directly to registries.
+  annotations:
+    github.com/project-slug: ko-build/ko
+    backstage.io/source-location: url:https://github.com/ko-build/ko
+  tags:
+    - developer-tools
+    - container
+    - go
+  links:
+    - url: https://ko.build/
+      title: Documentation
+      icon: docs
+    - url: https://github.com/ko-build/ko
+      title: GitHub Repository
+      icon: github
+    - url: https://ko.build/
+      title: Website
+      icon: web
+spec:
+  type: tool
+  lifecycle: production
+  owner: group:default/application-development
+  system: developer-tools
+
+# =============================================================================
+# IDENTITY & ACCESS MANAGEMENT (5)
+# =============================================================================
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: keycloak
+  title: Keycloak
+  description: |
+    An open source identity and access management solution for modern
+    applications and services. Keycloak provides SSO, identity brokering,
+    social login, user federation, and fine-grained authorization out of the box.
+  annotations:
+    github.com/project-slug: keycloak/keycloak
+    backstage.io/source-location: url:https://github.com/keycloak/keycloak
+  tags:
+    - identity
+    - authentication
+    - sso
+    - oauth2
+    - oidc
+    - java
+    - cncf
+  links:
+    - url: https://www.keycloak.org/documentation
+      title: Documentation
+      icon: docs
+    - url: https://github.com/keycloak/keycloak
+      title: GitHub Repository
+      icon: github
+    - url: https://www.keycloak.org/
+      title: Website
+      icon: web
+spec:
+  type: service
+  lifecycle: production
+  owner: group:default/security-operations
+  system: identity-access
+  providesApis:
+    - keycloak-admin-api
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: dex
+  title: Dex
+  description: |
+    A federated OpenID Connect provider. Dex acts as a portal to other
+    identity providers through connectors (LDAP, SAML, GitHub, Google, etc.),
+    providing a uniform OAuth2/OIDC interface for client applications.
+  annotations:
+    github.com/project-slug: dexidp/dex
+    backstage.io/source-location: url:https://github.com/dexidp/dex
+  tags:
+    - identity
+    - authentication
+    - oidc
+    - go
+  links:
+    - url: https://dexidp.io/docs/
+      title: Documentation
+      icon: docs
+    - url: https://github.com/dexidp/dex
+      title: GitHub Repository
+      icon: github
+    - url: https://dexidp.io/
+      title: Website
+      icon: web
+spec:
+  type: service
+  lifecycle: production
+  owner: group:default/security-operations
+  system: identity-access
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: authelia
+  title: Authelia
+  description: |
+    An open source authentication and authorization server providing
+    two-factor authentication and single sign-on for applications via a
+    web portal. Authelia acts as a companion for reverse proxies like Nginx and Traefik.
+  annotations:
+    github.com/project-slug: authelia/authelia
+    backstage.io/source-location: url:https://github.com/authelia/authelia
+  tags:
+    - identity
+    - authentication
+    - mfa
+    - sso
+    - go
+  links:
+    - url: https://www.authelia.com/docs/
+      title: Documentation
+      icon: docs
+    - url: https://github.com/authelia/authelia
+      title: GitHub Repository
+      icon: github
+    - url: https://www.authelia.com/
+      title: Website
+      icon: web
+spec:
+  type: service
+  lifecycle: production
+  owner: group:default/security-operations
+  system: identity-access
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: kanidm
+  title: Kanidm
+  description: |
+    A modern, fast, and secure identity management platform written in Rust.
+    Kanidm provides LDAP, OAuth2, OIDC, RADIUS, and SSH key distribution
+    with a focus on correctness, usability, and security-first design.
+  annotations:
+    github.com/project-slug: kanidm/kanidm
+    backstage.io/source-location: url:https://github.com/kanidm/kanidm
+  tags:
+    - identity
+    - authentication
+    - ldap
+    - oauth2
+    - rust
+  links:
+    - url: https://kanidm.github.io/kanidm/stable/
+      title: Documentation
+      icon: docs
+    - url: https://github.com/kanidm/kanidm
+      title: GitHub Repository
+      icon: github
+    - url: https://kanidm.com/
+      title: Website
+      icon: web
+spec:
+  type: service
+  lifecycle: production
+  owner: group:default/security-operations
+  system: identity-access
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: ory-hydra
+  title: Ory Hydra
+  description: |
+    A hardened, OpenID Certified OAuth 2.0 and OpenID Connect provider.
+    Ory Hydra is not an identity provider itself but integrates with existing
+    login systems to add OAuth2 and OIDC capabilities.
+  annotations:
+    github.com/project-slug: ory/hydra
+    backstage.io/source-location: url:https://github.com/ory/hydra
+  tags:
+    - identity
+    - oauth2
+    - oidc
+    - go
+  links:
+    - url: https://www.ory.sh/docs/hydra
+      title: Documentation
+      icon: docs
+    - url: https://github.com/ory/hydra
+      title: GitHub Repository
+      icon: github
+    - url: https://www.ory.sh/
+      title: Website
+      icon: web
+spec:
+  type: service
+  lifecycle: production
+  owner: group:default/security-operations
+  system: identity-access
+
+# =============================================================================
+# POLICY & COMPLIANCE (5)
+# =============================================================================
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: open-policy-agent
+  title: Open Policy Agent
+  description: |
+    A general-purpose policy engine that enables unified, context-aware policy
+    enforcement across the entire stack. OPA decouples policy decision-making
+    from policy enforcement using the Rego policy language. A CNCF graduated project.
+  annotations:
+    github.com/project-slug: open-policy-agent/opa
+    backstage.io/source-location: url:https://github.com/open-policy-agent/opa
+  tags:
+    - policy
+    - compliance
+    - authorization
+    - go
+    - cncf
+  links:
+    - url: https://www.openpolicyagent.org/docs/latest/
+      title: Documentation
+      icon: docs
+    - url: https://github.com/open-policy-agent/opa
+      title: GitHub Repository
+      icon: github
+    - url: https://www.openpolicyagent.org/
+      title: Website
+      icon: web
+spec:
+  type: service
+  lifecycle: production
+  owner: group:default/security-operations
+  system: policy-compliance
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: kyverno
+  title: Kyverno
+  description: |
+    A Kubernetes-native policy engine designed for Kubernetes. Kyverno policies
+    can validate, mutate, generate, and clean up Kubernetes resources using
+    simple YAML without learning a new policy language. A CNCF graduated project.
+  annotations:
+    github.com/project-slug: kyverno/kyverno
+    backstage.io/source-location: url:https://github.com/kyverno/kyverno
+  tags:
+    - policy
+    - kubernetes
+    - admission-controller
+    - go
+    - cncf
+  links:
+    - url: https://kyverno.io/docs/
+      title: Documentation
+      icon: docs
+    - url: https://github.com/kyverno/kyverno
+      title: GitHub Repository
+      icon: github
+    - url: https://kyverno.io/
+      title: Website
+      icon: web
+spec:
+  type: service
+  lifecycle: production
+  owner: group:default/security-operations
+  system: policy-compliance
+  dependsOn:
+    - component:default/kubernetes
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: gatekeeper
+  title: Gatekeeper
+  description: |
+    A customizable Kubernetes admission webhook that enforces policies executed
+    by the Open Policy Agent. Gatekeeper provides a Kubernetes-native way to
+    define and enforce OPA policies using CRDs.
+  annotations:
+    github.com/project-slug: open-policy-agent/gatekeeper
+    backstage.io/source-location: url:https://github.com/open-policy-agent/gatekeeper
+  tags:
+    - policy
+    - kubernetes
+    - admission-controller
+    - opa
+    - go
+  links:
+    - url: https://open-policy-agent.github.io/gatekeeper/
+      title: Documentation
+      icon: docs
+    - url: https://github.com/open-policy-agent/gatekeeper
+      title: GitHub Repository
+      icon: github
+    - url: https://open-policy-agent.github.io/gatekeeper/
+      title: Website
+      icon: web
+spec:
+  type: service
+  lifecycle: production
+  owner: group:default/security-operations
+  system: policy-compliance
+  dependsOn:
+    - component:default/open-policy-agent
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: cosign
+  title: Cosign (Sigstore)
+  description: |
+    A tool for container signing, verification, and storage in an OCI registry.
+    Part of the Sigstore project, Cosign makes it easy to sign and verify
+    container images and other artifacts for supply chain security.
+  annotations:
+    github.com/project-slug: sigstore/cosign
+    backstage.io/source-location: url:https://github.com/sigstore/cosign
+  tags:
+    - security
+    - signing
+    - supply-chain
+    - containers
+    - go
+  links:
+    - url: https://docs.sigstore.dev/cosign/overview/
+      title: Documentation
+      icon: docs
+    - url: https://github.com/sigstore/cosign
+      title: GitHub Repository
+      icon: github
+    - url: https://www.sigstore.dev/
+      title: Website
+      icon: web
+spec:
+  type: tool
+  lifecycle: production
+  owner: group:default/security-operations
+  system: policy-compliance
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: kubescape
+  title: Kubescape
+  description: |
+    A Kubernetes security platform that scans clusters, YAML files, and Helm
+    charts for misconfigurations, vulnerabilities, and compliance issues.
+    Kubescape supports NSA, MITRE ATT&CK, and CIS benchmark frameworks.
+  annotations:
+    github.com/project-slug: kubescape/kubescape
+    backstage.io/source-location: url:https://github.com/kubescape/kubescape
+  tags:
+    - security
+    - compliance
+    - kubernetes
+    - scanning
+    - go
+    - cncf
+  links:
+    - url: https://kubescape.io/docs/
+      title: Documentation
+      icon: docs
+    - url: https://github.com/kubescape/kubescape
+      title: GitHub Repository
+      icon: github
+    - url: https://kubescape.io/
+      title: Website
+      icon: web
+spec:
+  type: tool
+  lifecycle: production
+  owner: group:default/security-operations
+  system: policy-compliance
+
+# =============================================================================
+# SECRET MANAGEMENT (5)
+# =============================================================================
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: openbao
+  title: OpenBao
+  description: |
+    An open source fork of HashiCorp Vault, maintained by the Linux Foundation.
+    OpenBao provides secrets management, encryption as a service, and
+    identity-based access under a permissive MPL-2.0 license.
+  annotations:
+    github.com/project-slug: openbao/openbao
+    backstage.io/source-location: url:https://github.com/openbao/openbao
+  tags:
+    - secrets
+    - encryption
+    - identity
+    - go
+    - linux-foundation
+  links:
+    - url: https://openbao.org/docs/
+      title: Documentation
+      icon: docs
+    - url: https://github.com/openbao/openbao
+      title: GitHub Repository
+      icon: github
+    - url: https://openbao.org/
+      title: Website
+      icon: web
+spec:
+  type: service
+  lifecycle: production
+  owner: group:default/security-operations
+  system: secret-management
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: sealed-secrets
+  title: Sealed Secrets
+  description: |
+    A Kubernetes controller and CLI tool that encrypts secrets so they can be
+    safely stored in Git repositories. Only the controller running in the
+    cluster can decrypt the sealed secrets back into regular Kubernetes Secrets.
+  annotations:
+    github.com/project-slug: bitnami-labs/sealed-secrets
+    backstage.io/source-location: url:https://github.com/bitnami-labs/sealed-secrets
+  tags:
+    - secrets
+    - kubernetes
+    - gitops
+    - encryption
+    - go
+  links:
+    - url: https://github.com/bitnami-labs/sealed-secrets#readme
+      title: Documentation
+      icon: docs
+    - url: https://github.com/bitnami-labs/sealed-secrets
+      title: GitHub Repository
+      icon: github
+spec:
+  type: service
+  lifecycle: production
+  owner: group:default/security-operations
+  system: secret-management
+  dependsOn:
+    - component:default/kubernetes
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: external-secrets-operator
+  title: External Secrets Operator
+  description: |
+    A Kubernetes operator that integrates external secret management systems
+    (AWS Secrets Manager, Azure Key Vault, Google Secret Manager, HashiCorp
+    Vault, etc.) into Kubernetes as native Secret resources.
+  annotations:
+    github.com/project-slug: external-secrets/external-secrets
+    backstage.io/source-location: url:https://github.com/external-secrets/external-secrets
+  tags:
+    - secrets
+    - kubernetes
+    - operator
+    - go
+    - cncf
+  links:
+    - url: https://external-secrets.io/latest/
+      title: Documentation
+      icon: docs
+    - url: https://github.com/external-secrets/external-secrets
+      title: GitHub Repository
+      icon: github
+    - url: https://external-secrets.io/
+      title: Website
+      icon: web
+spec:
+  type: service
+  lifecycle: production
+  owner: group:default/security-operations
+  system: secret-management
+  dependsOn:
+    - component:default/kubernetes
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: sops
+  title: SOPS
+  description: |
+    Simple and flexible tool for managing secrets. SOPS encrypts files using
+    AWS KMS, GCP KMS, Azure Key Vault, age, and PGP while preserving the
+    file format (YAML, JSON, ENV, INI). Ideal for GitOps secret management.
+  annotations:
+    github.com/project-slug: getsops/sops
+    backstage.io/source-location: url:https://github.com/getsops/sops
+  tags:
+    - secrets
+    - encryption
+    - gitops
+    - go
+    - cncf
+  links:
+    - url: https://github.com/getsops/sops#readme
+      title: Documentation
+      icon: docs
+    - url: https://github.com/getsops/sops
+      title: GitHub Repository
+      icon: github
+spec:
+  type: tool
+  lifecycle: production
+  owner: group:default/security-operations
+  system: secret-management
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: bank-vaults
+  title: Bank-Vaults
+  description: |
+    A set of tools for managing HashiCorp Vault and OpenBao on Kubernetes.
+    Bank-Vaults provides a Kubernetes operator, CLI, SDK, and webhook mutator
+    for seamless secret injection into pods.
+  annotations:
+    github.com/project-slug: bank-vaults/bank-vaults
+    backstage.io/source-location: url:https://github.com/bank-vaults/bank-vaults
+  tags:
+    - secrets
+    - kubernetes
+    - operator
+    - go
+  links:
+    - url: https://bank-vaults.dev/docs/
+      title: Documentation
+      icon: docs
+    - url: https://github.com/bank-vaults/bank-vaults
+      title: GitHub Repository
+      icon: github
+    - url: https://bank-vaults.dev/
+      title: Website
+      icon: web
+spec:
+  type: service
+  lifecycle: production
+  owner: group:default/security-operations
+  system: secret-management
+  dependsOn:
+    - component:default/openbao
+
+# =============================================================================
+# VULNERABILITY SCANNING & CERTIFICATES (5)
+# =============================================================================
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: trivy
+  title: Trivy
+  description: |
+    A comprehensive and versatile security scanner for containers, file systems,
+    Git repositories, Kubernetes clusters, and cloud infrastructure. Trivy
+    detects vulnerabilities, misconfigurations, secrets, and license issues.
+  annotations:
+    github.com/project-slug: aquasecurity/trivy
+    backstage.io/source-location: url:https://github.com/aquasecurity/trivy
+  tags:
+    - security
+    - vulnerability-scanning
+    - containers
+    - go
+  links:
+    - url: https://aquasecurity.github.io/trivy/
+      title: Documentation
+      icon: docs
+    - url: https://github.com/aquasecurity/trivy
+      title: GitHub Repository
+      icon: github
+    - url: https://trivy.dev/
+      title: Website
+      icon: web
+spec:
+  type: tool
+  lifecycle: production
+  owner: group:default/security-operations
+  system: vulnerability-scanning
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: falco
+  title: Falco
+  description: |
+    A cloud-native runtime security tool that detects anomalous activity in
+    containers, hosts, Kubernetes, and cloud services. Falco uses eBPF and
+    kernel-level instrumentation for real-time threat detection. A CNCF graduated project.
+  annotations:
+    github.com/project-slug: falcosecurity/falco
+    backstage.io/source-location: url:https://github.com/falcosecurity/falco
+  tags:
+    - security
+    - runtime-detection
+    - ebpf
+    - cloud-native
+    - cpp
+    - cncf
+  links:
+    - url: https://falco.org/docs/
+      title: Documentation
+      icon: docs
+    - url: https://github.com/falcosecurity/falco
+      title: GitHub Repository
+      icon: github
+    - url: https://falco.org/
+      title: Website
+      icon: web
+spec:
+  type: service
+  lifecycle: production
+  owner: group:default/security-operations
+  system: vulnerability-scanning
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: grype
+  title: Grype
+  description: |
+    A vulnerability scanner for container images and filesystems. Grype
+    matches discovered packages against known vulnerability databases to
+    identify security issues in container images and software dependencies.
+  annotations:
+    github.com/project-slug: anchore/grype
+    backstage.io/source-location: url:https://github.com/anchore/grype
+  tags:
+    - security
+    - vulnerability-scanning
+    - containers
+    - sbom
+    - go
+  links:
+    - url: https://github.com/anchore/grype#readme
+      title: Documentation
+      icon: docs
+    - url: https://github.com/anchore/grype
+      title: GitHub Repository
+      icon: github
+    - url: https://anchore.com/
+      title: Website
+      icon: web
+spec:
+  type: tool
+  lifecycle: production
+  owner: group:default/security-operations
+  system: vulnerability-scanning
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: syft
+  title: Syft
+  description: |
+    A CLI tool and Go library for generating a Software Bill of Materials
+    (SBOM) from container images and filesystems. Syft supports multiple
+    output formats including SPDX, CycloneDX, and Syft's native JSON format.
+  annotations:
+    github.com/project-slug: anchore/syft
+    backstage.io/source-location: url:https://github.com/anchore/syft
+  tags:
+    - security
+    - sbom
+    - supply-chain
+    - containers
+    - go
+  links:
+    - url: https://github.com/anchore/syft#readme
+      title: Documentation
+      icon: docs
+    - url: https://github.com/anchore/syft
+      title: GitHub Repository
+      icon: github
+    - url: https://anchore.com/
+      title: Website
+      icon: web
+spec:
+  type: tool
+  lifecycle: production
+  owner: group:default/security-operations
+  system: vulnerability-scanning
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: cert-manager
+  title: cert-manager
+  description: |
+    A Kubernetes add-on to automate the management and issuance of TLS
+    certificates from various sources including Let's Encrypt, Venafi, and
+    self-signed CAs. A CNCF graduated project essential for Kubernetes TLS.
+  annotations:
+    github.com/project-slug: cert-manager/cert-manager
+    backstage.io/source-location: url:https://github.com/cert-manager/cert-manager
+  tags:
+    - security
+    - certificates
+    - tls
+    - kubernetes
+    - go
+    - cncf
+  links:
+    - url: https://cert-manager.io/docs/
+      title: Documentation
+      icon: docs
+    - url: https://github.com/cert-manager/cert-manager
+      title: GitHub Repository
+      icon: github
+    - url: https://cert-manager.io/
+      title: Website
+      icon: web
+spec:
+  type: service
+  lifecycle: production
+  owner: group:default/security-operations
+  system: vulnerability-scanning
+  dependsOn:
+    - component:default/kubernetes
