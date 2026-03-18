@@ -28,1107 +28,310 @@
       "id": "hold",
       "name": "HOLD",
       "color": "#E09B96",
-      "description": "Technologies that are deprecated, end-of-life, or superseded — avoid for new projects."
+      "description": "Products that are officially end-of-life, discontinued, or sold off — avoid for new projects and plan migration."
     }
   ],
   "entries": [
 
-
-    {
-      "key": "rhel",
-      "id": "rhel",
-      "title": "Red Hat Enterprise Linux (RHEL)",
-      "quadrant": "platforms",
+    { "key": "rhel", "id": "rhel", "title": "Red Hat Enterprise Linux (RHEL)", "quadrant": "platforms",
       "description": "The world's leading enterprise Linux platform. Foundation for Red Hat's entire portfolio and the primary OS for hybrid cloud workloads.",
       "links": [{ "url": "https://www.redhat.com/en/technologies/linux-platforms/enterprise-linux", "title": "Product page" }],
-      "timeline": [{ "moved": 0, "ringId": "adopt", "date": "2004-01-01T00:00:00.000Z", "description": "Enterprise Linux standard since RHEL 3" }]
-    },
-    {
-      "key": "openshift-4",
-      "id": "openshift-4",
-      "title": "Red Hat OpenShift Container Platform 4",
-      "quadrant": "platforms",
+      "timeline": [{ "moved": 0, "ringId": "adopt", "date": "2004-01-01T00:00:00.000Z" }] },
+
+    { "key": "openshift-4", "id": "openshift-4", "title": "Red Hat OpenShift Container Platform 4", "quadrant": "platforms",
       "description": "Enterprise Kubernetes platform with built-in operations, security, and developer tooling. The cornerstone of Red Hat's hybrid cloud strategy.",
       "links": [{ "url": "https://www.redhat.com/en/technologies/cloud-computing/openshift", "title": "Product page" }],
-      "timeline": [{ "moved": 1, "ringId": "adopt", "date": "2019-05-01T00:00:00.000Z", "description": "OCP 4 launched; Operator-based architecture" }]
-    },
-    {
-      "key": "cri-o",
-      "id": "cri-o",
-      "title": "CRI-O",
-      "quadrant": "platforms",
-      "description": "Lightweight OCI-compliant container runtime purpose-built for Kubernetes. Default container runtime in OpenShift 4.",
-      "links": [{ "url": "https://cri-o.io/", "title": "Project site" }],
-      "timeline": [{ "moved": 0, "ringId": "adopt", "date": "2019-05-01T00:00:00.000Z" }]
-    },
-    {
-      "key": "kvm",
-      "id": "kvm",
-      "title": "KVM Hypervisor",
-      "quadrant": "platforms",
-      "description": "Kernel-based Virtual Machine — the Linux hypervisor at the core of Red Hat Virtualization, OpenStack, and OpenShift Virtualization workloads.",
-      "timeline": [{ "moved": 0, "ringId": "adopt", "date": "2008-01-01T00:00:00.000Z" }]
-    },
-    {
-      "key": "fedora-coreos",
-      "id": "fedora-coreos",
-      "title": "Fedora CoreOS",
-      "quadrant": "platforms",
-      "description": "Immutable, automatically-updating OS for running containerised workloads. Community upstream for RHEL CoreOS (the OCP node OS).",
-      "links": [{ "url": "https://fedoraproject.org/coreos/", "title": "Project site" }],
-      "timeline": [{ "moved": 1, "ringId": "adopt", "date": "2020-01-01T00:00:00.000Z", "description": "Replaced CoreOS Container Linux" }]
-    },
-    {
-      "key": "centos-stream",
-      "id": "centos-stream",
-      "title": "CentOS Stream",
-      "quadrant": "platforms",
-      "description": "Continuously-delivered distribution that tracks just ahead of the next RHEL release. The official upstream for RHEL minor releases.",
-      "links": [{ "url": "https://centos.org/centos-stream/", "title": "Project site" }],
-      "timeline": [{ "moved": 0, "ringId": "adopt", "date": "2021-01-01T00:00:00.000Z" }]
-    },
-    {
-      "key": "rosa",
-      "id": "rosa",
-      "title": "Red Hat OpenShift Service on AWS (ROSA)",
-      "quadrant": "platforms",
+      "timeline": [{ "moved": 0, "ringId": "adopt", "date": "2019-05-01T00:00:00.000Z" }] },
+
+    { "key": "kvm", "id": "kvm", "title": "KVM Hypervisor", "quadrant": "platforms",
+      "description": "Kernel-based Virtual Machine — the Linux hypervisor at the core of Red Hat's virtualisation and OpenShift Virtualization workloads.",
+      "timeline": [{ "moved": 0, "ringId": "adopt", "date": "2008-01-01T00:00:00.000Z" }] },
+
+    { "key": "rosa", "id": "rosa", "title": "Red Hat OpenShift Service on AWS (ROSA)", "quadrant": "platforms",
       "description": "Fully-managed OpenShift service on AWS, jointly supported by Red Hat and AWS. Enables cloud-native development without cluster administration.",
       "links": [{ "url": "https://aws.amazon.com/rosa/", "title": "AWS product page" }],
-      "timeline": [{ "moved": 0, "ringId": "adopt", "date": "2021-03-01T00:00:00.000Z" }]
-    },
-    {
-      "key": "openshift-dedicated",
-      "id": "openshift-dedicated",
-      "title": "Red Hat OpenShift Dedicated",
-      "quadrant": "platforms",
-      "description": "Red Hat-managed OpenShift clusters on AWS or GCP. Removes operational burden while keeping full enterprise Kubernetes capabilities.",
-      "timeline": [{ "moved": 0, "ringId": "adopt", "date": "2016-01-01T00:00:00.000Z" }]
-    },
-    {
-      "key": "ibm-cloud",
-      "id": "ibm-cloud",
-      "title": "IBM Cloud",
-      "quadrant": "platforms",
-      "description": "IBM's public cloud platform spanning 60+ data centres. Offers IaaS, PaaS, and SaaS with strong AI, security, and hybrid cloud capabilities.",
+      "timeline": [{ "moved": 0, "ringId": "adopt", "date": "2021-03-01T00:00:00.000Z" }] },
+
+    { "key": "ibm-cloud", "id": "ibm-cloud", "title": "IBM Cloud", "quadrant": "platforms",
+      "description": "IBM's public cloud platform spanning 60+ data centres with strong AI, security, and hybrid cloud capabilities.",
       "links": [{ "url": "https://www.ibm.com/cloud", "title": "Product page" }],
-      "timeline": [{ "moved": 0, "ringId": "adopt", "date": "2014-01-01T00:00:00.000Z" }]
-    },
-    {
-      "key": "openshift-ibm-cloud",
-      "id": "openshift-ibm-cloud",
-      "title": "Red Hat OpenShift on IBM Cloud",
-      "quadrant": "platforms",
-      "description": "Managed OpenShift service on IBM Cloud. Combines OpenShift's developer experience with IBM Cloud's compliance and AI capabilities.",
-      "timeline": [{ "moved": 0, "ringId": "adopt", "date": "2019-01-01T00:00:00.000Z" }]
-    },
-    {
-      "key": "ibm-z",
-      "id": "ibm-z",
-      "title": "IBM Z (Mainframe)",
-      "quadrant": "platforms",
+      "timeline": [{ "moved": 0, "ringId": "adopt", "date": "2014-01-01T00:00:00.000Z" }] },
+
+    { "key": "ibm-z", "id": "ibm-z", "title": "IBM Z (Mainframe)", "quadrant": "platforms",
       "description": "IBM's mainframe platform (z16, z17) with on-chip AI via Telum processors. Handles billions of transactions daily with industry-leading reliability.",
       "links": [{ "url": "https://www.ibm.com/z", "title": "Product page" }],
-      "timeline": [{ "moved": 0, "ringId": "adopt", "date": "2004-01-01T00:00:00.000Z" }]
-    },
-    {
-      "key": "ibm-power",
-      "id": "ibm-power",
-      "title": "IBM Power Systems",
-      "quadrant": "platforms",
+      "timeline": [{ "moved": 0, "ringId": "adopt", "date": "2004-01-01T00:00:00.000Z" }] },
+
+    { "key": "ibm-power", "id": "ibm-power", "title": "IBM Power Systems", "quadrant": "platforms",
       "description": "High-performance RISC servers (Power10, Power11) for AI inference, ERP, and cloud workloads. Primary platform for AIX and IBM i.",
       "links": [{ "url": "https://www.ibm.com/power", "title": "Product page" }],
-      "timeline": [{ "moved": 0, "ringId": "adopt", "date": "2004-01-01T00:00:00.000Z" }]
-    },
-    {
-      "key": "fedora",
-      "id": "fedora",
-      "title": "Fedora Linux",
-      "quadrant": "platforms",
-      "description": "Community Linux distribution sponsored by Red Hat. The cutting-edge upstream from which RHEL is derived.",
-      "links": [{ "url": "https://fedoraproject.org/", "title": "Project site" }],
-      "timeline": [{ "moved": 0, "ringId": "adopt", "date": "2004-01-01T00:00:00.000Z" }]
-    },
-    {
-      "key": "rhel-edge",
-      "id": "rhel-edge",
-      "title": "Red Hat Enterprise Linux for Edge",
-      "quadrant": "platforms",
-      "description": "RHEL tailored for edge deployments — minimal footprint, image-based updates, and support for disconnected environments.",
-      "timeline": [{ "moved": 0, "ringId": "adopt", "date": "2021-01-01T00:00:00.000Z" }]
-    },
-    {
-      "key": "ibm-flashsystem",
-      "id": "ibm-flashsystem",
-      "title": "IBM FlashSystem",
-      "quadrant": "platforms",
-      "description": "High-performance all-flash SAN/NAS storage arrays for mission-critical workloads and AI data pipelines.",
-      "links": [{ "url": "https://www.ibm.com/flashsystem", "title": "Product page" }],
-      "timeline": [{ "moved": 0, "ringId": "adopt", "date": "2012-01-01T00:00:00.000Z" }]
-    },
-    {
-      "key": "ibm-storage-scale",
-      "id": "ibm-storage-scale",
-      "title": "IBM Storage Scale (Spectrum Scale)",
-      "quadrant": "platforms",
-      "description": "Parallel clustered file system for HPC, AI training, and big data analytics at petabyte scale.",
-      "timeline": [{ "moved": 0, "ringId": "adopt", "date": "2004-01-01T00:00:00.000Z" }]
-    },
-    {
-      "key": "openshift-virt",
-      "id": "openshift-virt",
-      "title": "Red Hat OpenShift Virtualization",
-      "quadrant": "platforms",
+      "timeline": [{ "moved": 0, "ringId": "adopt", "date": "2004-01-01T00:00:00.000Z" }] },
+
+    { "key": "openshift-virt", "id": "openshift-virt", "title": "Red Hat OpenShift Virtualization", "quadrant": "platforms",
       "description": "Run and manage virtual machines alongside containers on OpenShift, powered by KubeVirt. The strategic replacement for Red Hat Virtualization.",
       "links": [{ "url": "https://www.redhat.com/en/technologies/cloud-computing/openshift/virtualization", "title": "Product page" }],
-      "timeline": [{ "moved": 1, "ringId": "trial", "date": "2022-01-01T00:00:00.000Z", "description": "Gaining momentum as RHV replacement" }]
-    },
-    {
-      "key": "microshift",
-      "id": "microshift",
-      "title": "MicroShift",
-      "quadrant": "platforms",
+      "timeline": [{ "moved": 1, "ringId": "trial", "date": "2022-01-01T00:00:00.000Z", "description": "Gaining momentum as RHV replacement" }] },
+
+    { "key": "microshift", "id": "microshift", "title": "MicroShift", "quadrant": "platforms",
       "description": "Lightweight OpenShift optimised for resource-constrained edge devices. Provides Kubernetes API compatibility with a tiny footprint.",
-      "links": [{ "url": "https://www.redhat.com/en/blog/introducing-microshift", "title": "Announcement" }],
-      "timeline": [{ "moved": 0, "ringId": "trial", "date": "2023-01-01T00:00:00.000Z" }]
-    },
-    {
-      "key": "openshift-serverless",
-      "id": "openshift-serverless",
-      "title": "Red Hat OpenShift Serverless",
-      "quadrant": "platforms",
-      "description": "Knative-based serverless platform on OpenShift. Supports event-driven and scale-to-zero workloads.",
-      "timeline": [{ "moved": 0, "ringId": "trial", "date": "2020-01-01T00:00:00.000Z" }]
-    },
-    {
-      "key": "ibm-code-engine",
-      "id": "ibm-code-engine",
-      "title": "IBM Cloud Code Engine",
-      "quadrant": "platforms",
-      "description": "Fully-managed serverless platform for running containers, batch jobs, and functions on IBM Cloud without managing infrastructure.",
-      "links": [{ "url": "https://www.ibm.com/cloud/code-engine", "title": "Product page" }],
-      "timeline": [{ "moved": 0, "ringId": "trial", "date": "2021-01-01T00:00:00.000Z" }]
-    },
-    {
-      "key": "rhacm",
-      "id": "rhacm",
-      "title": "Red Hat Advanced Cluster Management (ACM)",
-      "quadrant": "platforms",
-      "description": "Multi-cluster Kubernetes management with policy-based governance, application lifecycle, and observability across hybrid cloud fleets.",
-      "timeline": [{ "moved": 0, "ringId": "trial", "date": "2020-01-01T00:00:00.000Z" }]
-    },
-    {
-      "key": "device-edge",
-      "id": "device-edge",
-      "title": "Red Hat Device Edge",
-      "quadrant": "platforms",
-      "description": "Combination of RHEL for Edge and MicroShift packaged for industrial and field edge deployments.",
-      "timeline": [{ "moved": 0, "ringId": "assess", "date": "2023-01-01T00:00:00.000Z" }]
-    },
-    {
-      "key": "openstack",
-      "id": "openstack",
-      "title": "Red Hat OpenStack Platform",
-      "quadrant": "platforms",
-      "description": "Red Hat's distribution of OpenStack for private cloud IaaS. Mainstream investment is shifting toward OpenShift Virtualization for new workloads.",
-      "timeline": [{ "moved": -1, "ringId": "assess", "date": "2023-01-01T00:00:00.000Z", "description": "Strategic focus moving to OpenShift Virtualization" }]
-    },
-    {
-      "key": "openshift-3",
-      "id": "openshift-3",
-      "title": "Red Hat OpenShift 3.x",
-      "quadrant": "platforms",
-      "description": "First-generation OpenShift based on Docker and Ansible. Extended Life Support ended June 2024 — migrate to OCP 4.",
-      "timeline": [{ "moved": -1, "ringId": "hold", "date": "2024-06-01T00:00:00.000Z", "description": "ELS ended" }]
-    },
-    {
-      "key": "openshift-online",
-      "id": "openshift-online",
-      "title": "OpenShift Online",
-      "quadrant": "platforms",
-      "description": "Red Hat's hosted OpenShift SaaS offering. Shut down September 2023; users migrated to ROSA or Developer Sandbox.",
-      "timeline": [{ "moved": -1, "ringId": "hold", "date": "2023-09-01T00:00:00.000Z", "description": "Service shut down" }]
-    },
-    {
-      "key": "coreos-container-linux",
-      "id": "coreos-container-linux",
-      "title": "CoreOS Container Linux",
-      "quadrant": "platforms",
-      "description": "Original immutable OS for containers from CoreOS Inc. EOL May 2020 after Red Hat acquisition; superseded by Fedora CoreOS.",
-      "timeline": [{ "moved": -1, "ringId": "hold", "date": "2020-05-01T00:00:00.000Z", "description": "EOL" }]
-    },
-    {
-      "key": "red-hat-virtualization",
-      "id": "red-hat-virtualization",
-      "title": "Red Hat Virtualization (RHV)",
-      "quadrant": "platforms",
+      "timeline": [{ "moved": 0, "ringId": "trial", "date": "2023-01-01T00:00:00.000Z" }] },
+
+    { "key": "openshift-3", "id": "openshift-3", "title": "Red Hat OpenShift 3.x", "quadrant": "platforms",
+      "description": "First-generation OpenShift based on Docker and Ansible. Extended Life Support ended June 2024 — all users should have migrated to OCP 4.",
+      "timeline": [{ "moved": -1, "ringId": "hold", "date": "2024-06-01T00:00:00.000Z", "description": "ELS ended June 2024" }] },
+
+    { "key": "openshift-online", "id": "openshift-online", "title": "OpenShift Online", "quadrant": "platforms",
+      "description": "Red Hat's hosted OpenShift SaaS. Shut down September 2023; users migrated to ROSA or Developer Sandbox.",
+      "timeline": [{ "moved": -1, "ringId": "hold", "date": "2023-09-01T00:00:00.000Z", "description": "Service shut down" }] },
+
+    { "key": "red-hat-virtualization", "id": "red-hat-virtualization", "title": "Red Hat Virtualization (RHV)", "quadrant": "platforms",
       "description": "oVirt-based enterprise VM platform. EOL August 2026; Red Hat recommends migrating to OpenShift Virtualization.",
-      "timeline": [{ "moved": -1, "ringId": "hold", "date": "2022-01-01T00:00:00.000Z", "description": "EOL announced; migration path to OpenShift Virtualization" }]
-    },
-    {
-      "key": "ovirt",
-      "id": "ovirt",
-      "title": "oVirt",
-      "quadrant": "platforms",
-      "description": "Community upstream of Red Hat Virtualization. In maintenance mode as investment moves to KubeVirt / OpenShift Virtualization.",
-      "links": [{ "url": "https://www.ovirt.org/", "title": "Project site" }],
-      "timeline": [{ "moved": -1, "ringId": "hold", "date": "2022-01-01T00:00:00.000Z" }]
-    },
+      "timeline": [{ "moved": -1, "ringId": "hold", "date": "2022-06-01T00:00:00.000Z", "description": "EOL announced; migrate to OpenShift Virtualization" }] },
 
-
-    {
-      "key": "quarkus",
-      "id": "quarkus",
-      "title": "Red Hat build of Quarkus",
-      "quadrant": "languages-runtimes",
+    { "key": "quarkus", "id": "quarkus", "title": "Red Hat build of Quarkus", "quadrant": "languages-runtimes",
       "description": "Cloud-native Java framework optimised for Kubernetes. Supersonic startup times and low memory via GraalVM native compilation or JVM mode.",
       "links": [{ "url": "https://quarkus.io/", "title": "Project site" }],
-      "timeline": [{ "moved": 1, "ringId": "adopt", "date": "2019-11-01T00:00:00.000Z", "description": "GA; rapidly adopted for microservices" }]
-    },
-    {
-      "key": "jboss-eap",
-      "id": "jboss-eap",
-      "title": "Red Hat JBoss EAP",
-      "quadrant": "languages-runtimes",
-      "description": "Enterprise Java application server (Jakarta EE / MicroProfile). JBoss EAP 8 targets Java 17/21 and modern cloud deployments.",
+      "timeline": [{ "moved": 1, "ringId": "adopt", "date": "2019-11-01T00:00:00.000Z" }] },
+
+    { "key": "jboss-eap", "id": "jboss-eap", "title": "Red Hat JBoss EAP", "quadrant": "languages-runtimes",
+      "description": "Enterprise Java application server (Jakarta EE / MicroProfile). EAP 8 targets Java 17/21 and modern cloud deployments.",
       "links": [{ "url": "https://www.redhat.com/en/technologies/jboss-middleware/application-platform", "title": "Product page" }],
-      "timeline": [{ "moved": 0, "ringId": "adopt", "date": "2004-01-01T00:00:00.000Z" }]
-    },
-    {
-      "key": "jboss-web-server",
-      "id": "jboss-web-server",
-      "title": "Red Hat JBoss Web Server",
-      "quadrant": "languages-runtimes",
-      "description": "Supported distribution of Apache Tomcat and Apache HTTP Server for enterprise Java web applications.",
-      "timeline": [{ "moved": 0, "ringId": "adopt", "date": "2009-01-01T00:00:00.000Z" }]
-    },
-    {
-      "key": "open-liberty",
-      "id": "open-liberty",
-      "title": "Open Liberty",
-      "quadrant": "languages-runtimes",
+      "timeline": [{ "moved": 0, "ringId": "adopt", "date": "2004-01-01T00:00:00.000Z" }] },
+
+    { "key": "open-liberty", "id": "open-liberty", "title": "Open Liberty", "quadrant": "languages-runtimes",
       "description": "IBM's open-source Jakarta EE and MicroProfile runtime. Lightweight, composable feature set ideal for cloud-native Java microservices.",
       "links": [{ "url": "https://openliberty.io/", "title": "Project site" }],
-      "timeline": [{ "moved": 0, "ringId": "adopt", "date": "2017-09-01T00:00:00.000Z" }]
-    },
-    {
-      "key": "openj9",
-      "id": "openj9",
-      "title": "Eclipse OpenJ9 / IBM Semeru Runtimes",
-      "quadrant": "languages-runtimes",
+      "timeline": [{ "moved": 0, "ringId": "adopt", "date": "2017-09-01T00:00:00.000Z" }] },
+
+    { "key": "openj9", "id": "openj9", "title": "Eclipse OpenJ9 / IBM Semeru Runtimes", "quadrant": "languages-runtimes",
       "description": "High-performance JVM with significantly lower memory footprint and fast startup. Packaged as IBM Semeru Runtimes (certified OpenJDK distributions).",
       "links": [{ "url": "https://eclipse.dev/openj9/", "title": "Project site" }],
-      "timeline": [{ "moved": 0, "ringId": "adopt", "date": "2017-09-01T00:00:00.000Z" }]
-    },
-    {
-      "key": "openjdk",
-      "id": "openjdk",
-      "title": "Red Hat build of OpenJDK",
-      "quadrant": "languages-runtimes",
-      "description": "Red Hat's supported OpenJDK distribution for RHEL, Quarkus, and JBoss middleware. Red Hat is a leading contributor to the OpenJDK project.",
-      "timeline": [{ "moved": 0, "ringId": "adopt", "date": "2007-01-01T00:00:00.000Z" }]
-    },
-    {
-      "key": "nodejs",
-      "id": "nodejs",
-      "title": "Red Hat build of Node.js",
-      "quadrant": "languages-runtimes",
-      "description": "Supported Node.js runtime for RHEL and OpenShift. Used for server-side JavaScript applications and tooling across the Red Hat ecosystem.",
-      "timeline": [{ "moved": 0, "ringId": "adopt", "date": "2015-01-01T00:00:00.000Z" }]
-    },
-    {
-      "key": "vertx",
-      "id": "vertx",
-      "title": "Eclipse Vert.x",
-      "quadrant": "languages-runtimes",
-      "description": "Reactive toolkit for building non-blocking, event-driven applications on the JVM. Core foundation of Quarkus's reactive stack.",
-      "links": [{ "url": "https://vertx.io/", "title": "Project site" }],
-      "timeline": [{ "moved": 0, "ringId": "adopt", "date": "2014-01-01T00:00:00.000Z" }]
-    },
-    {
-      "key": "microprofile",
-      "id": "microprofile",
-      "title": "MicroProfile",
-      "quadrant": "languages-runtimes",
+      "timeline": [{ "moved": 0, "ringId": "adopt", "date": "2017-09-01T00:00:00.000Z" }] },
+
+    { "key": "microprofile", "id": "microprofile", "title": "MicroProfile", "quadrant": "languages-runtimes",
       "description": "Community specification for cloud-native Java microservices. Supported by Red Hat (Quarkus) and IBM (Open Liberty, WebSphere Liberty).",
       "links": [{ "url": "https://microprofile.io/", "title": "Specification" }],
-      "timeline": [{ "moved": 0, "ringId": "adopt", "date": "2016-01-01T00:00:00.000Z" }]
-    },
-    {
-      "key": "camel-k",
-      "id": "camel-k",
-      "title": "Red Hat build of Camel K",
-      "quadrant": "languages-runtimes",
-      "description": "Serverless integration runtime for running Apache Camel routes natively on Kubernetes, with minimal configuration.",
+      "timeline": [{ "moved": 0, "ringId": "adopt", "date": "2016-01-01T00:00:00.000Z" }] },
+
+    { "key": "camel-k", "id": "camel-k", "title": "Red Hat build of Camel K", "quadrant": "languages-runtimes",
+      "description": "Serverless integration runtime for running Apache Camel routes natively on Kubernetes with minimal configuration.",
       "links": [{ "url": "https://camel.apache.org/camel-k/latest/", "title": "Project site" }],
-      "timeline": [{ "moved": 0, "ringId": "trial", "date": "2021-01-01T00:00:00.000Z" }]
-    },
-    {
-      "key": "knative",
-      "id": "knative",
-      "title": "Knative",
-      "quadrant": "languages-runtimes",
-      "description": "Kubernetes-based platform for deploying and managing serverless workloads. Upstream of Red Hat OpenShift Serverless.",
-      "links": [{ "url": "https://knative.dev/", "title": "Project site" }],
-      "timeline": [{ "moved": 0, "ringId": "trial", "date": "2020-01-01T00:00:00.000Z" }]
-    },
-    {
-      "key": "graalvm",
-      "id": "graalvm",
-      "title": "GraalVM Native Image",
-      "quadrant": "languages-runtimes",
+      "timeline": [{ "moved": 0, "ringId": "trial", "date": "2021-01-01T00:00:00.000Z" }] },
+
+    { "key": "graalvm", "id": "graalvm", "title": "GraalVM Native Image", "quadrant": "languages-runtimes",
       "description": "Ahead-of-time compiler turning JVM applications into fast-starting native binaries. Mandrel (Red Hat's distribution) targets Quarkus use cases.",
       "links": [{ "url": "https://www.graalvm.org/", "title": "Project site" }],
-      "timeline": [{ "moved": 0, "ringId": "assess", "date": "2022-01-01T00:00:00.000Z" }]
-    },
-    {
-      "key": "jboss-eap-legacy",
-      "id": "jboss-eap-legacy",
-      "title": "JBoss EAP 5 / 6",
-      "quadrant": "languages-runtimes",
+      "timeline": [{ "moved": 0, "ringId": "assess", "date": "2022-01-01T00:00:00.000Z" }] },
+
+    { "key": "jboss-eap-legacy", "id": "jboss-eap-legacy", "title": "JBoss EAP 5 / 6", "quadrant": "languages-runtimes",
       "description": "Legacy JBoss application server versions based on older Java EE specifications. Long past EOL — migrate to JBoss EAP 8 or Quarkus.",
-      "timeline": [{ "moved": -1, "ringId": "hold", "date": "2018-01-01T00:00:00.000Z", "description": "EOL; upgrade to EAP 8" }]
-    },
-    {
-      "key": "jboss-portal",
-      "id": "jboss-portal",
-      "title": "JBoss Portal",
-      "quadrant": "languages-runtimes",
-      "description": "Legacy Java EE portal server. Discontinued; replaced by modern SPA frameworks and developer portals such as RHDH.",
-      "timeline": [{ "moved": -1, "ringId": "hold", "date": "2014-01-01T00:00:00.000Z" }]
-    },
-    {
-      "key": "rhmap",
-      "id": "rhmap",
-      "title": "Red Hat Mobile Application Platform",
-      "quadrant": "languages-runtimes",
-      "description": "Mobile backend-as-a-service and app development platform. Discontinued; capabilities absorbed into broader OpenShift tooling.",
-      "timeline": [{ "moved": -1, "ringId": "hold", "date": "2019-01-01T00:00:00.000Z", "description": "Discontinued" }]
-    },
-    {
-      "key": "websphere-classic",
-      "id": "websphere-classic",
-      "title": "WebSphere Application Server (Classic)",
-      "quadrant": "languages-runtimes",
-      "description": "IBM's traditional monolithic Java EE app server. Still supported for legacy workloads, but Open Liberty is preferred for all new development.",
-      "timeline": [{ "moved": -1, "ringId": "hold", "date": "2020-01-01T00:00:00.000Z", "description": "Liberty preferred for new workloads" }]
-    },
-    {
-      "key": "switchyard",
-      "id": "switchyard",
-      "title": "SwitchYard ESB",
-      "quadrant": "languages-runtimes",
-      "description": "Legacy lightweight ESB built on CDI. Replaced by Red Hat Fuse and subsequently by Red Hat build of Apache Camel.",
-      "timeline": [{ "moved": -1, "ringId": "hold", "date": "2017-01-01T00:00:00.000Z" }]
-    },
+      "timeline": [{ "moved": -1, "ringId": "hold", "date": "2018-01-01T00:00:00.000Z", "description": "EOL; upgrade to EAP 8" }] },
 
+    { "key": "rhmap", "id": "rhmap", "title": "Red Hat Mobile Application Platform", "quadrant": "languages-runtimes",
+      "description": "Mobile backend-as-a-service and app development platform. Officially discontinued; capabilities absorbed into broader OpenShift tooling.",
+      "timeline": [{ "moved": -1, "ringId": "hold", "date": "2019-01-01T00:00:00.000Z", "description": "Discontinued" }] },
 
-    {
-      "key": "ansible",
-      "id": "ansible",
-      "title": "Red Hat Ansible Automation Platform",
-      "quadrant": "tools-frameworks",
+    { "key": "ansible", "id": "ansible", "title": "Red Hat Ansible Automation Platform", "quadrant": "tools-frameworks",
       "description": "Enterprise IT automation platform for configuration management, provisioning, and orchestration. Agentless, YAML-based, and widely adopted across hybrid cloud.",
       "links": [{ "url": "https://www.redhat.com/en/technologies/management/ansible", "title": "Product page" }],
-      "timeline": [{ "moved": 0, "ringId": "adopt", "date": "2013-01-01T00:00:00.000Z" }]
-    },
-    {
-      "key": "podman",
-      "id": "podman",
-      "title": "Podman",
-      "quadrant": "tools-frameworks",
+      "timeline": [{ "moved": 0, "ringId": "adopt", "date": "2013-01-01T00:00:00.000Z" }] },
+
+    { "key": "podman", "id": "podman", "title": "Podman", "quadrant": "tools-frameworks",
       "description": "Daemonless, rootless container engine with a Docker-compatible CLI. Default container tool in RHEL and Fedora.",
       "links": [{ "url": "https://podman.io/", "title": "Project site" }],
-      "timeline": [{ "moved": 1, "ringId": "adopt", "date": "2018-01-01T00:00:00.000Z" }]
-    },
-    {
-      "key": "buildah",
-      "id": "buildah",
-      "title": "Buildah",
-      "quadrant": "tools-frameworks",
-      "description": "OCI-compliant container image builder. Builds images without a daemon, enabling secure CI/CD pipelines and rootless builds.",
-      "links": [{ "url": "https://buildah.io/", "title": "Project site" }],
-      "timeline": [{ "moved": 0, "ringId": "adopt", "date": "2018-01-01T00:00:00.000Z" }]
-    },
-    {
-      "key": "skopeo",
-      "id": "skopeo",
-      "title": "Skopeo",
-      "quadrant": "tools-frameworks",
-      "description": "Command-line tool for inspecting, copying, and signing container images across registries without a local daemon.",
-      "links": [{ "url": "https://github.com/containers/skopeo", "title": "GitHub" }],
-      "timeline": [{ "moved": 0, "ringId": "adopt", "date": "2018-01-01T00:00:00.000Z" }]
-    },
-    {
-      "key": "helm",
-      "id": "helm",
-      "title": "Helm",
-      "quadrant": "tools-frameworks",
+      "timeline": [{ "moved": 1, "ringId": "adopt", "date": "2018-01-01T00:00:00.000Z" }] },
+
+    { "key": "helm", "id": "helm", "title": "Helm", "quadrant": "tools-frameworks",
       "description": "The Kubernetes package manager. First-class support in OpenShift via the OperatorHub and Developer Catalog.",
       "links": [{ "url": "https://helm.sh/", "title": "Project site" }],
-      "timeline": [{ "moved": 0, "ringId": "adopt", "date": "2018-01-01T00:00:00.000Z" }]
-    },
-    {
-      "key": "operator-framework",
-      "id": "operator-framework",
-      "title": "Operator Framework / OLM",
-      "quadrant": "tools-frameworks",
-      "description": "SDK and lifecycle manager (OLM) for building and running Kubernetes Operators. Originated at Red Hat and donated to CNCF.",
+      "timeline": [{ "moved": 0, "ringId": "adopt", "date": "2018-01-01T00:00:00.000Z" }] },
+
+    { "key": "operator-framework", "id": "operator-framework", "title": "Operator Framework / OLM", "quadrant": "tools-frameworks",
+      "description": "SDK and lifecycle manager for building and running Kubernetes Operators. Originated at Red Hat and donated to CNCF.",
       "links": [{ "url": "https://operatorframework.io/", "title": "Project site" }],
-      "timeline": [{ "moved": 0, "ringId": "adopt", "date": "2018-07-01T00:00:00.000Z" }]
-    },
-    {
-      "key": "openshift-pipelines",
-      "id": "openshift-pipelines",
-      "title": "Red Hat OpenShift Pipelines",
-      "quadrant": "tools-frameworks",
+      "timeline": [{ "moved": 0, "ringId": "adopt", "date": "2018-07-01T00:00:00.000Z" }] },
+
+    { "key": "openshift-pipelines", "id": "openshift-pipelines", "title": "Red Hat OpenShift Pipelines", "quadrant": "tools-frameworks",
       "description": "Tekton-based cloud-native CI/CD for Kubernetes. Pipelines run as isolated containers with no shared state.",
       "links": [{ "url": "https://docs.openshift.com/pipelines/latest/", "title": "Docs" }],
-      "timeline": [{ "moved": 0, "ringId": "adopt", "date": "2020-01-01T00:00:00.000Z" }]
-    },
-    {
-      "key": "openshift-gitops",
-      "id": "openshift-gitops",
-      "title": "Red Hat OpenShift GitOps",
-      "quadrant": "tools-frameworks",
+      "timeline": [{ "moved": 0, "ringId": "adopt", "date": "2020-01-01T00:00:00.000Z" }] },
+
+    { "key": "openshift-gitops", "id": "openshift-gitops", "title": "Red Hat OpenShift GitOps", "quadrant": "tools-frameworks",
       "description": "Argo CD-based GitOps operator for OpenShift. Ensures cluster state matches what is declared in Git.",
       "links": [{ "url": "https://docs.openshift.com/gitops/latest/", "title": "Docs" }],
-      "timeline": [{ "moved": 1, "ringId": "adopt", "date": "2021-01-01T00:00:00.000Z" }]
-    },
-    {
-      "key": "service-mesh",
-      "id": "service-mesh",
-      "title": "Red Hat Service Mesh",
-      "quadrant": "tools-frameworks",
-      "description": "Istio-based service mesh for OpenShift. Provides traffic management, mTLS, observability, and policy for microservices.",
-      "timeline": [{ "moved": 0, "ringId": "adopt", "date": "2019-01-01T00:00:00.000Z" }]
-    },
-    {
-      "key": "keycloak",
-      "id": "keycloak",
-      "title": "Red Hat build of Keycloak",
-      "quadrant": "tools-frameworks",
-      "description": "Enterprise identity and access management. Supports OIDC, SAML, and social login. Successor to Red Hat Single Sign-On.",
+      "timeline": [{ "moved": 1, "ringId": "adopt", "date": "2021-01-01T00:00:00.000Z" }] },
+
+    { "key": "keycloak", "id": "keycloak", "title": "Red Hat build of Keycloak", "quadrant": "tools-frameworks",
+      "description": "Enterprise identity and access management. Supports OIDC, SAML, and social login. The current Red Hat IAM product (formerly Red Hat SSO).",
       "links": [{ "url": "https://www.keycloak.org/", "title": "Project site" }],
-      "timeline": [{ "moved": 1, "ringId": "adopt", "date": "2023-01-01T00:00:00.000Z", "description": "Replaced Red Hat SSO branding" }]
-    },
-    {
-      "key": "3scale",
-      "id": "3scale",
-      "title": "Red Hat 3scale API Management",
-      "quadrant": "tools-frameworks",
-      "description": "Full lifecycle API management platform. Controls access, enforces policies, and provides developer portals for API consumers.",
-      "links": [{ "url": "https://www.redhat.com/en/technologies/jboss-middleware/3scale", "title": "Product page" }],
-      "timeline": [{ "moved": 0, "ringId": "adopt", "date": "2016-01-01T00:00:00.000Z" }]
-    },
-    {
-      "key": "satellite",
-      "id": "satellite",
-      "title": "Red Hat Satellite",
-      "quadrant": "tools-frameworks",
-      "description": "Lifecycle and patch management for RHEL fleets. Provides content management, subscription tracking, and remote execution at scale.",
-      "links": [{ "url": "https://www.redhat.com/en/technologies/management/satellite", "title": "Product page" }],
-      "timeline": [{ "moved": 0, "ringId": "adopt", "date": "2005-01-01T00:00:00.000Z" }]
-    },
-    {
-      "key": "acs",
-      "id": "acs",
-      "title": "Red Hat Advanced Cluster Security (ACS)",
-      "quadrant": "tools-frameworks",
+      "timeline": [{ "moved": 0, "ringId": "adopt", "date": "2023-01-01T00:00:00.000Z" }] },
+
+    { "key": "acs", "id": "acs", "title": "Red Hat Advanced Cluster Security (ACS)", "quadrant": "tools-frameworks",
       "description": "Kubernetes-native security platform (StackRox acquisition). Provides vulnerability management, policy enforcement, and runtime threat detection.",
       "links": [{ "url": "https://www.redhat.com/en/technologies/cloud-computing/openshift/advanced-cluster-security-kubernetes", "title": "Product page" }],
-      "timeline": [{ "moved": 1, "ringId": "adopt", "date": "2021-01-01T00:00:00.000Z", "description": "StackRox acquisition integrated into Red Hat portfolio" }]
-    },
-    {
-      "key": "turbonomic",
-      "id": "turbonomic",
-      "title": "IBM Turbonomic",
-      "quadrant": "tools-frameworks",
+      "timeline": [{ "moved": 1, "ringId": "adopt", "date": "2021-01-01T00:00:00.000Z", "description": "StackRox acquisition integrated" }] },
+
+    { "key": "turbonomic", "id": "turbonomic", "title": "IBM Turbonomic", "quadrant": "tools-frameworks",
       "description": "AI-powered application resource management. Continuously optimises performance and cost across hybrid cloud by making autonomous workload placement decisions.",
       "links": [{ "url": "https://www.ibm.com/products/turbonomic", "title": "Product page" }],
-      "timeline": [{ "moved": 0, "ringId": "adopt", "date": "2021-01-01T00:00:00.000Z" }]
-    },
-    {
-      "key": "instana",
-      "id": "instana",
-      "title": "IBM Instana Observability",
-      "quadrant": "tools-frameworks",
-      "description": "Automated APM and observability with sub-second granularity and AI-driven root-cause analysis. Supports containerised and microservice architectures.",
+      "timeline": [{ "moved": 0, "ringId": "adopt", "date": "2021-01-01T00:00:00.000Z" }] },
+
+    { "key": "instana", "id": "instana", "title": "IBM Instana Observability", "quadrant": "tools-frameworks",
+      "description": "Automated APM and observability with sub-second granularity and AI-driven root-cause analysis for containerised and microservice architectures.",
       "links": [{ "url": "https://www.ibm.com/products/instana", "title": "Product page" }],
-      "timeline": [{ "moved": 0, "ringId": "adopt", "date": "2020-01-01T00:00:00.000Z" }]
-    },
-    {
-      "key": "openshift-local",
-      "id": "openshift-local",
-      "title": "Red Hat OpenShift Local",
-      "quadrant": "tools-frameworks",
-      "description": "Run a full OpenShift cluster on a developer laptop. Formerly CodeReady Containers (CRC). Essential for local OpenShift development and testing.",
-      "links": [{ "url": "https://developers.redhat.com/products/openshift-local/overview", "title": "Product page" }],
-      "timeline": [{ "moved": 0, "ringId": "adopt", "date": "2021-01-01T00:00:00.000Z" }]
-    },
-    {
-      "key": "ibm-api-connect",
-      "id": "ibm-api-connect",
-      "title": "IBM API Connect",
-      "quadrant": "tools-frameworks",
-      "description": "Full-lifecycle API management with gateway, developer portal, and analytics. Supports REST, GraphQL, and event-driven APIs.",
-      "links": [{ "url": "https://www.ibm.com/products/api-connect", "title": "Product page" }],
-      "timeline": [{ "moved": 0, "ringId": "adopt", "date": "2015-01-01T00:00:00.000Z" }]
-    },
-    {
-      "key": "rhdh",
-      "id": "rhdh",
-      "title": "Red Hat Developer Hub",
-      "quadrant": "tools-frameworks",
+      "timeline": [{ "moved": 0, "ringId": "adopt", "date": "2020-01-01T00:00:00.000Z" }] },
+
+    { "key": "rhdh", "id": "rhdh", "title": "Red Hat Developer Hub", "quadrant": "tools-frameworks",
       "description": "Enterprise internal developer portal built on Backstage. Provides software catalogs, TechDocs, golden-path templates, and plugin ecosystem.",
       "links": [{ "url": "https://developers.redhat.com/rhdh", "title": "Product page" }],
-      "timeline": [{ "moved": 1, "ringId": "trial", "date": "2023-09-01T00:00:00.000Z", "description": "GA announced at Red Hat Summit 2023" }]
-    },
-    {
-      "key": "openshift-dev-spaces",
-      "id": "openshift-dev-spaces",
-      "title": "Red Hat OpenShift Dev Spaces",
-      "quadrant": "tools-frameworks",
+      "timeline": [{ "moved": 1, "ringId": "trial", "date": "2023-09-01T00:00:00.000Z", "description": "GA announced at Red Hat Summit 2023" }] },
+
+    { "key": "openshift-dev-spaces", "id": "openshift-dev-spaces", "title": "Red Hat OpenShift Dev Spaces", "quadrant": "tools-frameworks",
       "description": "Browser-based cloud development environments running on OpenShift. Successor to CodeReady Workspaces; based on Eclipse Che.",
       "links": [{ "url": "https://developers.redhat.com/products/openshift-dev-spaces/overview", "title": "Product page" }],
-      "timeline": [{ "moved": 0, "ringId": "trial", "date": "2022-01-01T00:00:00.000Z" }]
-    },
-    {
-      "key": "podman-desktop",
-      "id": "podman-desktop",
-      "title": "Podman Desktop",
-      "quadrant": "tools-frameworks",
-      "description": "Open-source GUI for managing containers and Kubernetes with Podman. Cross-platform alternative to Docker Desktop.",
-      "links": [{ "url": "https://podman-desktop.io/", "title": "Project site" }],
-      "timeline": [{ "moved": 1, "ringId": "trial", "date": "2022-01-01T00:00:00.000Z" }]
-    },
-    {
-      "key": "ansible-lightspeed",
-      "id": "ansible-lightspeed",
-      "title": "Ansible Lightspeed",
-      "quadrant": "tools-frameworks",
+      "timeline": [{ "moved": 0, "ringId": "trial", "date": "2022-01-01T00:00:00.000Z" }] },
+
+    { "key": "ansible-lightspeed", "id": "ansible-lightspeed", "title": "Ansible Lightspeed", "quadrant": "tools-frameworks",
       "description": "AI-powered Ansible content assistant using IBM watsonx. Generates playbook tasks from natural language prompts inside VS Code.",
       "links": [{ "url": "https://www.redhat.com/en/technologies/management/ansible/ansible-lightspeed", "title": "Product page" }],
-      "timeline": [{ "moved": 1, "ringId": "trial", "date": "2023-10-01T00:00:00.000Z", "description": "GA October 2023" }]
-    },
-    {
-      "key": "pipelines-as-code",
-      "id": "pipelines-as-code",
-      "title": "Pipelines as Code",
-      "quadrant": "tools-frameworks",
-      "description": "Define Tekton CI/CD pipelines in-repository as YAML, triggered by pull requests and pushes. Part of OpenShift Pipelines.",
-      "timeline": [{ "moved": 0, "ringId": "trial", "date": "2022-01-01T00:00:00.000Z" }]
-    },
-    {
-      "key": "watsonx-code-assistant",
-      "id": "watsonx-code-assistant",
-      "title": "watsonx Code Assistant",
-      "quadrant": "tools-frameworks",
-      "description": "IBM's AI code generation and explanation tool, powered by Granite models. Supports Java modernisation, Ansible, and Z/COBOL use cases.",
+      "timeline": [{ "moved": 1, "ringId": "trial", "date": "2023-10-01T00:00:00.000Z", "description": "GA October 2023" }] },
+
+    { "key": "watsonx-code-assistant", "id": "watsonx-code-assistant", "title": "IBM watsonx Code Assistant", "quadrant": "tools-frameworks",
+      "description": "AI code generation and explanation powered by Granite models. Supports Java modernisation, Ansible, and Z/COBOL use cases.",
       "links": [{ "url": "https://www.ibm.com/products/watsonx-code-assistant", "title": "Product page" }],
-      "timeline": [{ "moved": 1, "ringId": "trial", "date": "2023-10-01T00:00:00.000Z" }]
-    },
-    {
-      "key": "watsonx-orchestrate",
-      "id": "watsonx-orchestrate",
-      "title": "IBM watsonx Orchestrate",
-      "quadrant": "tools-frameworks",
-      "description": "AI-powered automation assistant that assembles multi-step business workflows from skills and API integrations.",
-      "links": [{ "url": "https://www.ibm.com/products/watsonx-orchestrate", "title": "Product page" }],
-      "timeline": [{ "moved": 0, "ringId": "trial", "date": "2023-01-01T00:00:00.000Z" }]
-    },
-    {
-      "key": "ibm-event-endpoint-mgmt",
-      "id": "ibm-event-endpoint-mgmt",
-      "title": "IBM Event Endpoint Management",
-      "quadrant": "tools-frameworks",
-      "description": "Unified catalog for discovering and managing Kafka topics and REST APIs as governed event endpoints.",
-      "links": [{ "url": "https://www.ibm.com/products/event-endpoint-management", "title": "Product page" }],
-      "timeline": [{ "moved": 0, "ringId": "trial", "date": "2023-01-01T00:00:00.000Z" }]
-    },
-    {
-      "key": "openshift-lightspeed",
-      "id": "openshift-lightspeed",
-      "title": "Red Hat OpenShift Lightspeed",
-      "quadrant": "tools-frameworks",
+      "timeline": [{ "moved": 1, "ringId": "trial", "date": "2023-10-01T00:00:00.000Z" }] },
+
+    { "key": "openshift-lightspeed", "id": "openshift-lightspeed", "title": "Red Hat OpenShift Lightspeed", "quadrant": "tools-frameworks",
       "description": "Generative AI assistant embedded in the OpenShift web console. Answers operational questions and helps with troubleshooting in natural language.",
-      "timeline": [{ "moved": 0, "ringId": "assess", "date": "2024-01-01T00:00:00.000Z" }]
-    },
-    {
-      "key": "instructlab",
-      "id": "instructlab",
-      "title": "InstructLab",
-      "quadrant": "tools-frameworks",
+      "timeline": [{ "moved": 0, "ringId": "assess", "date": "2024-01-01T00:00:00.000Z" }] },
+
+    { "key": "instructlab", "id": "instructlab", "title": "InstructLab", "quadrant": "tools-frameworks",
       "description": "Open-source tooling for aligning and fine-tuning LLMs using a taxonomy-driven data synthesis approach. Co-developed by Red Hat and IBM.",
       "links": [{ "url": "https://instructlab.ai/", "title": "Project site" }],
-      "timeline": [{ "moved": 0, "ringId": "assess", "date": "2024-05-01T00:00:00.000Z" }]
-    },
-    {
-      "key": "s2i",
-      "id": "s2i",
-      "title": "Source-to-Image (S2I)",
-      "quadrant": "tools-frameworks",
-      "description": "Builds reproducible container images directly from source code on OpenShift. Useful for brownfield apps; newer projects prefer Tekton and Dockerfiles.",
-      "timeline": [{ "moved": -1, "ringId": "assess", "date": "2020-01-01T00:00:00.000Z" }]
-    },
-    {
-      "key": "rook",
-      "id": "rook",
-      "title": "Rook",
-      "quadrant": "tools-frameworks",
-      "description": "Cloud-native storage orchestrator for Kubernetes, primarily used to deploy and manage Ceph clusters. Underpins OpenShift Data Foundation.",
-      "links": [{ "url": "https://rook.io/", "title": "Project site" }],
-      "timeline": [{ "moved": 0, "ringId": "assess", "date": "2021-01-01T00:00:00.000Z" }]
-    },
-    {
-      "key": "ibm-guardium-ai",
-      "id": "ibm-guardium-ai",
-      "title": "IBM Guardium AI Security",
-      "quadrant": "tools-frameworks",
-      "description": "Early-stage security controls for discovering, monitoring, and protecting AI models and training data from risks and compliance violations.",
-      "timeline": [{ "moved": 0, "ringId": "assess", "date": "2024-01-01T00:00:00.000Z" }]
-    },
-    {
-      "key": "minishift",
-      "id": "minishift",
-      "title": "Minishift",
-      "quadrant": "tools-frameworks",
-      "description": "Local OpenShift 3 environment via miniaturised VM. Unmaintained since OpenShift 4 launch; replaced by Red Hat OpenShift Local (CRC).",
-      "timeline": [{ "moved": -1, "ringId": "hold", "date": "2019-01-01T00:00:00.000Z" }]
-    },
-    {
-      "key": "cdk",
-      "id": "cdk",
-      "title": "Red Hat Container Development Kit (CDK)",
-      "quadrant": "tools-frameworks",
-      "description": "Pre-configured development environment for OpenShift 3. Superseded by Red Hat OpenShift Local (formerly CodeReady Containers).",
-      "timeline": [{ "moved": -1, "ringId": "hold", "date": "2020-01-01T00:00:00.000Z" }]
-    },
-    {
-      "key": "codeready-workspaces",
-      "id": "codeready-workspaces",
-      "title": "CodeReady Workspaces",
-      "quadrant": "tools-frameworks",
-      "description": "Browser-based IDE on OpenShift based on Eclipse Che. Rebranded and superseded by Red Hat OpenShift Dev Spaces.",
-      "timeline": [{ "moved": -1, "ringId": "hold", "date": "2022-01-01T00:00:00.000Z", "description": "Replaced by OpenShift Dev Spaces" }]
-    },
-    {
-      "key": "cloudforms",
-      "id": "cloudforms",
-      "title": "Red Hat CloudForms",
-      "quadrant": "tools-frameworks",
-      "description": "Hybrid cloud management platform. EOL March 2023; capabilities moved into Ansible Automation Platform and RHACM.",
-      "timeline": [{ "moved": -1, "ringId": "hold", "date": "2023-03-01T00:00:00.000Z", "description": "EOL" }]
-    },
-    {
-      "key": "managiq",
-      "id": "managiq",
-      "title": "ManageIQ",
-      "quadrant": "tools-frameworks",
-      "description": "Open-source upstream of Red Hat CloudForms. Community-maintained; investment has moved on.",
-      "links": [{ "url": "https://www.manageiq.org/", "title": "Project site" }],
-      "timeline": [{ "moved": -1, "ringId": "hold", "date": "2023-01-01T00:00:00.000Z" }]
-    },
-    {
-      "key": "developer-studio",
-      "id": "developer-studio",
-      "title": "Red Hat Developer Studio",
-      "quadrant": "tools-frameworks",
-      "description": "Eclipse-based IDE bundled with Red Hat middleware tooling. Discontinued; developers now use VS Code with Red Hat extensions or OpenShift Dev Spaces.",
-      "timeline": [{ "moved": -1, "ringId": "hold", "date": "2021-01-01T00:00:00.000Z" }]
-    },
-    {
-      "key": "rational-clearcase",
-      "id": "rational-clearcase",
-      "title": "IBM Rational ClearCase",
-      "quadrant": "tools-frameworks",
-      "description": "Legacy IBM version control system. Moving to limited support on many platforms — migrate to Git-based workflows.",
-      "timeline": [{ "moved": -1, "ringId": "hold", "date": "2018-01-01T00:00:00.000Z" }]
-    },
-    {
-      "key": "ibm-connections",
-      "id": "ibm-connections",
-      "title": "IBM Connections",
-      "quadrant": "tools-frameworks",
-      "description": "Social collaboration platform for the enterprise. Limited ongoing IBM investment; many organisations have moved to Microsoft 365 or Slack.",
-      "timeline": [{ "moved": -1, "ringId": "hold", "date": "2020-01-01T00:00:00.000Z" }]
-    },
-    {
-      "key": "red-hat-sso",
-      "id": "red-hat-sso",
-      "title": "Red Hat Single Sign-On (SSO)",
-      "quadrant": "tools-frameworks",
-      "description": "Earlier Red Hat branding for its Keycloak-based IAM product. Replaced by the 'Red Hat build of Keycloak' from version 22 onwards.",
-      "timeline": [{ "moved": -1, "ringId": "hold", "date": "2023-01-01T00:00:00.000Z", "description": "Replaced by Red Hat build of Keycloak" }]
-    },
+      "timeline": [{ "moved": 0, "ringId": "assess", "date": "2024-05-01T00:00:00.000Z" }] },
 
+    { "key": "minishift", "id": "minishift", "title": "Minishift", "quadrant": "tools-frameworks",
+      "description": "Local OpenShift 3 environment. Unmaintained since the OpenShift 4 launch in 2019 — replaced by Red Hat OpenShift Local (CRC).",
+      "timeline": [{ "moved": -1, "ringId": "hold", "date": "2019-01-01T00:00:00.000Z", "description": "Unmaintained; replaced by OpenShift Local" }] },
 
-    {
-      "key": "amq-streams",
-      "id": "amq-streams",
-      "title": "Red Hat AMQ Streams (Apache Kafka)",
-      "quadrant": "data-ai",
-      "description": "Enterprise Apache Kafka distribution for OpenShift and RHEL. Strimzi-based Operator provides lifecycle management, rebalancing, and mirror-maker.",
+    { "key": "cdk", "id": "cdk", "title": "Red Hat Container Development Kit (CDK)", "quadrant": "tools-frameworks",
+      "description": "Pre-configured development environment for OpenShift 3. Superseded by Red Hat OpenShift Local (formerly CodeReady Containers). No longer available.",
+      "timeline": [{ "moved": -1, "ringId": "hold", "date": "2020-01-01T00:00:00.000Z", "description": "Replaced by OpenShift Local" }] },
+
+    { "key": "codeready-workspaces", "id": "codeready-workspaces", "title": "CodeReady Workspaces", "quadrant": "tools-frameworks",
+      "description": "Browser-based IDE on OpenShift. Officially retired and replaced by Red Hat OpenShift Dev Spaces.",
+      "timeline": [{ "moved": -1, "ringId": "hold", "date": "2022-01-01T00:00:00.000Z", "description": "Replaced by OpenShift Dev Spaces" }] },
+
+    { "key": "cloudforms", "id": "cloudforms", "title": "Red Hat CloudForms", "quadrant": "tools-frameworks",
+      "description": "Hybrid cloud management platform. Reached end of life March 2023; capabilities moved into Ansible Automation Platform and ACM.",
+      "timeline": [{ "moved": -1, "ringId": "hold", "date": "2023-03-01T00:00:00.000Z", "description": "EOL March 2023" }] },
+
+    { "key": "red-hat-sso", "id": "red-hat-sso", "title": "Red Hat Single Sign-On (SSO)", "quadrant": "tools-frameworks",
+      "description": "Red Hat's Keycloak-based IAM product under the old branding. Fully replaced by the 'Red Hat build of Keycloak' from version 22 onwards.",
+      "timeline": [{ "moved": -1, "ringId": "hold", "date": "2023-01-01T00:00:00.000Z", "description": "Replaced by Red Hat build of Keycloak" }] },
+
+    { "key": "amq-streams", "id": "amq-streams", "title": "Red Hat AMQ Streams (Apache Kafka)", "quadrant": "data-ai",
+      "description": "Enterprise Apache Kafka distribution for OpenShift and RHEL. Strimzi-based Operator provides lifecycle management, rebalancing, and mirror maker.",
       "links": [{ "url": "https://www.redhat.com/en/technologies/jboss-middleware/amq", "title": "Product page" }],
-      "timeline": [{ "moved": 0, "ringId": "adopt", "date": "2018-01-01T00:00:00.000Z" }]
-    },
-    {
-      "key": "amq-broker",
-      "id": "amq-broker",
-      "title": "Red Hat AMQ Broker",
-      "quadrant": "data-ai",
-      "description": "High-performance messaging broker based on Apache ActiveMQ Artemis. Supports JMS, AMQP, MQTT, and STOMP protocols.",
-      "timeline": [{ "moved": 0, "ringId": "adopt", "date": "2017-01-01T00:00:00.000Z" }]
-    },
-    {
-      "key": "ceph-storage",
-      "id": "ceph-storage",
-      "title": "Red Hat Ceph Storage",
-      "quadrant": "data-ai",
-      "description": "Unified block, file, and object storage built on Ceph. Designed for cloud-scale deployments and underpins OpenShift Data Foundation.",
-      "links": [{ "url": "https://www.redhat.com/en/technologies/storage/ceph", "title": "Product page" }],
-      "timeline": [{ "moved": 0, "ringId": "adopt", "date": "2014-01-01T00:00:00.000Z" }]
-    },
-    {
-      "key": "odf",
-      "id": "odf",
-      "title": "Red Hat OpenShift Data Foundation",
-      "quadrant": "data-ai",
-      "description": "Software-defined storage for OpenShift, built on Ceph and NooBaa. Provides persistent block, file, and object storage for stateful applications.",
-      "links": [{ "url": "https://www.redhat.com/en/technologies/cloud-computing/openshift-data-foundation", "title": "Product page" }],
-      "timeline": [{ "moved": 0, "ringId": "adopt", "date": "2021-01-01T00:00:00.000Z" }]
-    },
-    {
-      "key": "camel",
-      "id": "camel",
-      "title": "Red Hat build of Apache Camel",
-      "quadrant": "data-ai",
-      "description": "Integration framework with 300+ connectors for enterprise integration patterns. The strategic replacement for Red Hat Fuse.",
+      "timeline": [{ "moved": 0, "ringId": "adopt", "date": "2018-01-01T00:00:00.000Z" }] },
+
+    { "key": "camel", "id": "camel", "title": "Red Hat build of Apache Camel", "quadrant": "data-ai",
+      "description": "Integration framework with 300+ connectors implementing enterprise integration patterns. The strategic replacement for Red Hat Fuse.",
       "links": [{ "url": "https://camel.apache.org/", "title": "Project site" }],
-      "timeline": [{ "moved": 1, "ringId": "adopt", "date": "2022-01-01T00:00:00.000Z", "description": "Replaced Red Hat Fuse branding" }]
-    },
-    {
-      "key": "ibm-mq",
-      "id": "ibm-mq",
-      "title": "IBM MQ",
-      "quadrant": "data-ai",
+      "timeline": [{ "moved": 1, "ringId": "adopt", "date": "2022-01-01T00:00:00.000Z", "description": "Replaced Red Hat Fuse branding" }] },
+
+    { "key": "ibm-mq", "id": "ibm-mq", "title": "IBM MQ", "quadrant": "data-ai",
       "description": "Enterprise message queue for guaranteed, once-and-only-once delivery. Industry standard for financial services and transactional integration.",
       "links": [{ "url": "https://www.ibm.com/products/mq", "title": "Product page" }],
-      "timeline": [{ "moved": 0, "ringId": "adopt", "date": "2004-01-01T00:00:00.000Z" }]
-    },
-    {
-      "key": "ibm-app-connect",
-      "id": "ibm-app-connect",
-      "title": "IBM App Connect Enterprise",
-      "quadrant": "data-ai",
+      "timeline": [{ "moved": 0, "ringId": "adopt", "date": "2004-01-01T00:00:00.000Z" }] },
+
+    { "key": "ibm-app-connect", "id": "ibm-app-connect", "title": "IBM App Connect Enterprise", "quadrant": "data-ai",
       "description": "Integration platform with AI-powered mapping, low-code flows, and 200+ pre-built connectors. Formerly IBM Integration Bus.",
       "links": [{ "url": "https://www.ibm.com/products/app-connect", "title": "Product page" }],
-      "timeline": [{ "moved": 0, "ringId": "adopt", "date": "2018-01-01T00:00:00.000Z" }]
-    },
-    {
-      "key": "ibm-event-streams",
-      "id": "ibm-event-streams",
-      "title": "IBM Event Streams",
-      "quadrant": "data-ai",
-      "description": "Managed Apache Kafka service on IBM Cloud and Cloud Pak for Integration. Provides event streaming for real-time data pipelines.",
-      "links": [{ "url": "https://www.ibm.com/products/event-streams", "title": "Product page" }],
-      "timeline": [{ "moved": 0, "ringId": "adopt", "date": "2018-01-01T00:00:00.000Z" }]
-    },
-    {
-      "key": "db2",
-      "id": "db2",
-      "title": "IBM Db2",
-      "quadrant": "data-ai",
+      "timeline": [{ "moved": 0, "ringId": "adopt", "date": "2018-01-01T00:00:00.000Z" }] },
+
+    { "key": "db2", "id": "db2", "title": "IBM Db2", "quadrant": "data-ai",
       "description": "IBM's flagship relational database for OLTP and analytics. Decades of enterprise adoption with deep Z and Power integration.",
       "links": [{ "url": "https://www.ibm.com/db2", "title": "Product page" }],
-      "timeline": [{ "moved": 0, "ringId": "adopt", "date": "2004-01-01T00:00:00.000Z" }]
-    },
-    {
-      "key": "cognos",
-      "id": "cognos",
-      "title": "IBM Cognos Analytics",
-      "quadrant": "data-ai",
-      "description": "Business intelligence and reporting platform with AI-driven data preparation, dashboards, and natural language query.",
-      "links": [{ "url": "https://www.ibm.com/products/cognos-analytics", "title": "Product page" }],
-      "timeline": [{ "moved": 0, "ringId": "adopt", "date": "2007-01-01T00:00:00.000Z" }]
-    },
-    {
-      "key": "cloudant",
-      "id": "cloudant",
-      "title": "IBM Cloudant",
-      "quadrant": "data-ai",
-      "description": "Fully managed NoSQL document database optimised for mobile, web, and IoT applications with a CouchDB-compatible API.",
-      "links": [{ "url": "https://www.ibm.com/cloud/cloudant", "title": "Product page" }],
-      "timeline": [{ "moved": 0, "ringId": "adopt", "date": "2014-01-01T00:00:00.000Z" }]
-    },
-    {
-      "key": "watsonx-ai",
-      "id": "watsonx-ai",
-      "title": "IBM watsonx.ai",
-      "quadrant": "data-ai",
+      "timeline": [{ "moved": 0, "ringId": "adopt", "date": "2004-01-01T00:00:00.000Z" }] },
+
+    { "key": "watsonx-ai", "id": "watsonx-ai", "title": "IBM watsonx.ai", "quadrant": "data-ai",
       "description": "AI studio for training, validating, tuning, and deploying foundation models. Hosts IBM Granite and supports third-party models.",
       "links": [{ "url": "https://www.ibm.com/products/watsonx-ai", "title": "Product page" }],
-      "timeline": [{ "moved": 1, "ringId": "adopt", "date": "2023-07-01T00:00:00.000Z", "description": "GA July 2023; rapid enterprise adoption" }]
-    },
-    {
-      "key": "watsonx-data",
-      "id": "watsonx-data",
-      "title": "IBM watsonx.data",
-      "quadrant": "data-ai",
+      "timeline": [{ "moved": 1, "ringId": "adopt", "date": "2023-07-01T00:00:00.000Z", "description": "GA July 2023; rapid enterprise adoption" }] },
+
+    { "key": "watsonx-data", "id": "watsonx-data", "title": "IBM watsonx.data", "quadrant": "data-ai",
       "description": "Open data lakehouse built on Presto and Apache Iceberg. Designed for cost-effective AI data preparation and analytics across hybrid cloud.",
       "links": [{ "url": "https://www.ibm.com/products/watsonx-data", "title": "Product page" }],
-      "timeline": [{ "moved": 1, "ringId": "adopt", "date": "2023-07-01T00:00:00.000Z" }]
-    },
-    {
-      "key": "watsonx-governance",
-      "id": "watsonx-governance",
-      "title": "IBM watsonx.governance",
-      "quadrant": "data-ai",
+      "timeline": [{ "moved": 1, "ringId": "adopt", "date": "2023-07-01T00:00:00.000Z" }] },
+
+    { "key": "watsonx-governance", "id": "watsonx-governance", "title": "IBM watsonx.governance", "quadrant": "data-ai",
       "description": "AI governance, risk, and compliance platform. Monitors models for drift, bias, and regulatory compliance.",
       "links": [{ "url": "https://www.ibm.com/products/watsonx-governance", "title": "Product page" }],
-      "timeline": [{ "moved": 1, "ringId": "adopt", "date": "2023-12-01T00:00:00.000Z" }]
-    },
-    {
-      "key": "watsonx-assistant",
-      "id": "watsonx-assistant",
-      "title": "IBM watsonx Assistant",
-      "quadrant": "data-ai",
+      "timeline": [{ "moved": 0, "ringId": "adopt", "date": "2023-12-01T00:00:00.000Z" }] },
+
+    { "key": "watsonx-assistant", "id": "watsonx-assistant", "title": "IBM watsonx Assistant", "quadrant": "data-ai",
       "description": "Enterprise conversational AI platform with RAG, GenAI answer generation, and multi-channel deployment capabilities.",
       "links": [{ "url": "https://www.ibm.com/products/watsonx-assistant", "title": "Product page" }],
-      "timeline": [{ "moved": 0, "ringId": "adopt", "date": "2020-01-01T00:00:00.000Z" }]
-    },
-    {
-      "key": "qradar",
-      "id": "qradar",
-      "title": "IBM QRadar SIEM",
-      "quadrant": "data-ai",
+      "timeline": [{ "moved": 0, "ringId": "adopt", "date": "2020-01-01T00:00:00.000Z" }] },
+
+    { "key": "qradar", "id": "qradar", "title": "IBM QRadar SIEM", "quadrant": "data-ai",
       "description": "Security information and event management platform for threat detection, correlation, and compliance reporting.",
       "links": [{ "url": "https://www.ibm.com/qradar", "title": "Product page" }],
-      "timeline": [{ "moved": 0, "ringId": "adopt", "date": "2009-01-01T00:00:00.000Z" }]
-    },
-    {
-      "key": "qradar-soar",
-      "id": "qradar-soar",
-      "title": "IBM QRadar SOAR",
-      "quadrant": "data-ai",
-      "description": "Security orchestration, automation, and response platform for incident response workflows and playbook execution.",
-      "links": [{ "url": "https://www.ibm.com/products/qradar-soar", "title": "Product page" }],
-      "timeline": [{ "moved": 0, "ringId": "adopt", "date": "2019-01-01T00:00:00.000Z" }]
-    },
-    {
-      "key": "guardium",
-      "id": "guardium",
-      "title": "IBM Guardium Data Security",
-      "quadrant": "data-ai",
-      "description": "Data discovery, classification, activity monitoring, and compliance automation for structured and unstructured data at rest and in motion.",
+      "timeline": [{ "moved": 0, "ringId": "adopt", "date": "2009-01-01T00:00:00.000Z" }] },
+
+    { "key": "guardium", "id": "guardium", "title": "IBM Guardium Data Security", "quadrant": "data-ai",
+      "description": "Data discovery, classification, activity monitoring, and compliance automation for structured and unstructured data.",
       "links": [{ "url": "https://www.ibm.com/guardium", "title": "Product page" }],
-      "timeline": [{ "moved": 0, "ringId": "adopt", "date": "2009-01-01T00:00:00.000Z" }]
-    },
-    {
-      "key": "cloud-pak-data",
-      "id": "cloud-pak-data",
-      "title": "IBM Cloud Pak for Data",
-      "quadrant": "data-ai",
-      "description": "Unified data and AI platform on OpenShift. Integrates data fabric, governance, analytics, and AI lifecycle in one system.",
-      "links": [{ "url": "https://www.ibm.com/products/cloud-pak-for-data", "title": "Product page" }],
-      "timeline": [{ "moved": 0, "ringId": "adopt", "date": "2019-01-01T00:00:00.000Z" }]
-    },
-    {
-      "key": "spss-statistics",
-      "id": "spss-statistics",
-      "title": "IBM SPSS Statistics",
-      "quadrant": "data-ai",
-      "description": "Statistical analysis software for survey analysis, hypothesis testing, and predictive analytics. Standard tool in research and social science.",
-      "links": [{ "url": "https://www.ibm.com/products/spss-statistics", "title": "Product page" }],
-      "timeline": [{ "moved": 0, "ringId": "adopt", "date": "2004-01-01T00:00:00.000Z" }]
-    },
-    {
-      "key": "netezza",
-      "id": "netezza",
-      "title": "IBM Netezza Performance Server",
-      "quadrant": "data-ai",
-      "description": "Cloud-native data warehouse with massively parallel processing and a watsonx-powered SQL assistant for analytics at scale.",
-      "links": [{ "url": "https://www.ibm.com/products/netezza", "title": "Product page" }],
-      "timeline": [{ "moved": 0, "ringId": "adopt", "date": "2010-01-01T00:00:00.000Z" }]
-    },
-    {
-      "key": "sterling-b2b",
-      "id": "sterling-b2b",
-      "title": "IBM Sterling B2B Integrator",
-      "quadrant": "data-ai",
-      "description": "Enterprise B2B integration for EDI, managed file transfer, and partner connectivity. Widely used in supply chain and logistics.",
-      "links": [{ "url": "https://www.ibm.com/products/b2b-integrator", "title": "Product page" }],
-      "timeline": [{ "moved": 0, "ringId": "adopt", "date": "2010-01-01T00:00:00.000Z" }]
-    },
-    {
-      "key": "hyperledger-fabric",
-      "id": "hyperledger-fabric",
-      "title": "Hyperledger Fabric",
-      "quadrant": "data-ai",
-      "description": "Permissioned enterprise blockchain framework for business networks. IBM was a founding contributor and primary driver.",
-      "links": [{ "url": "https://hyperledger-fabric.readthedocs.io/", "title": "Docs" }],
-      "timeline": [{ "moved": 0, "ringId": "adopt", "date": "2016-01-01T00:00:00.000Z" }]
-    },
-    {
-      "key": "ibm-verify",
-      "id": "ibm-verify",
-      "title": "IBM Verify (Trusteer)",
-      "quadrant": "data-ai",
-      "description": "Fraud detection and risk-based authentication for digital channels. Includes device fingerprinting, malware detection, and adaptive access.",
-      "links": [{ "url": "https://www.ibm.com/security/fraud-protection", "title": "Product page" }],
-      "timeline": [{ "moved": 0, "ringId": "adopt", "date": "2012-01-01T00:00:00.000Z" }]
-    },
-    {
-      "key": "openshift-ai",
-      "id": "openshift-ai",
-      "title": "Red Hat OpenShift AI",
-      "quadrant": "data-ai",
+      "timeline": [{ "moved": 0, "ringId": "adopt", "date": "2009-01-01T00:00:00.000Z" }] },
+
+    { "key": "openshift-ai", "id": "openshift-ai", "title": "Red Hat OpenShift AI", "quadrant": "data-ai",
       "description": "Data science and MLOps platform on OpenShift. Provides managed Jupyter notebooks, model serving, pipelines, and GPU resource management.",
       "links": [{ "url": "https://www.redhat.com/en/technologies/cloud-computing/openshift/openshift-ai", "title": "Product page" }],
-      "timeline": [{ "moved": 1, "ringId": "trial", "date": "2023-01-01T00:00:00.000Z" }]
-    },
-    {
-      "key": "noobaa",
-      "id": "noobaa",
-      "title": "NooBaa",
-      "quadrant": "data-ai",
-      "description": "Multicloud object data service providing a single namespace across S3-compatible stores. Core of the OpenShift Data Foundation object gateway.",
-      "links": [{ "url": "https://www.noobaa.io/", "title": "Project site" }],
-      "timeline": [{ "moved": 0, "ringId": "trial", "date": "2019-01-01T00:00:00.000Z" }]
-    },
-    {
-      "key": "ibm-granite",
-      "id": "ibm-granite",
-      "title": "IBM Granite Models",
-      "quadrant": "data-ai",
+      "timeline": [{ "moved": 1, "ringId": "trial", "date": "2023-01-01T00:00:00.000Z" }] },
+
+    { "key": "ibm-granite", "id": "ibm-granite", "title": "IBM Granite Models", "quadrant": "data-ai",
       "description": "Family of open-source foundation models (code, language, time series) developed by IBM Research. Available on watsonx.ai and Hugging Face.",
       "links": [{ "url": "https://www.ibm.com/granite", "title": "Product page" }],
-      "timeline": [{ "moved": 1, "ringId": "trial", "date": "2023-09-01T00:00:00.000Z" }]
-    },
-    {
-      "key": "qiskit-runtime",
-      "id": "qiskit-runtime",
-      "title": "IBM Qiskit / Quantum Runtime",
-      "quadrant": "data-ai",
-      "description": "Open-source SDK and server-side execution framework for IBM Quantum computers. Enables hybrid quantum-classical workloads.",
-      "links": [{ "url": "https://www.ibm.com/quantum/qiskit", "title": "Product page" }],
-      "timeline": [{ "moved": 0, "ringId": "trial", "date": "2021-01-01T00:00:00.000Z" }]
-    },
-    {
-      "key": "spss-modeler",
-      "id": "spss-modeler",
-      "title": "IBM SPSS Modeler",
-      "quadrant": "data-ai",
-      "description": "Visual predictive analytics and machine learning modelling tool. Used for churn prediction, fraud detection, and risk scoring.",
-      "links": [{ "url": "https://www.ibm.com/products/spss-modeler", "title": "Product page" }],
-      "timeline": [{ "moved": 0, "ringId": "trial", "date": "2010-01-01T00:00:00.000Z" }]
-    },
-    {
-      "key": "ibm-cp-integration",
-      "id": "ibm-cp-integration",
-      "title": "IBM Cloud Pak for Integration",
-      "quadrant": "data-ai",
-      "description": "Unified integration platform on OpenShift bundling MQ, App Connect, API Connect, Event Streams, and DataPower Gateway.",
-      "links": [{ "url": "https://www.ibm.com/cloud/cloud-pak-for-integration", "title": "Product page" }],
-      "timeline": [{ "moved": 0, "ringId": "trial", "date": "2020-01-01T00:00:00.000Z" }]
-    },
-    {
-      "key": "rhel-ai",
-      "id": "rhel-ai",
-      "title": "Red Hat Enterprise Linux AI",
-      "quadrant": "data-ai",
+      "timeline": [{ "moved": 1, "ringId": "trial", "date": "2023-09-01T00:00:00.000Z" }] },
+
+    { "key": "ibm-quantum", "id": "ibm-quantum", "title": "IBM Quantum", "quadrant": "data-ai",
+      "description": "IBM's gate-based quantum computers and cloud access platform (Qiskit Runtime). Roadmap targets fault-tolerant quantum advantage.",
+      "links": [{ "url": "https://www.ibm.com/quantum", "title": "Product page" }],
+      "timeline": [{ "moved": 0, "ringId": "trial", "date": "2021-01-01T00:00:00.000Z" }] },
+
+    { "key": "rhel-ai", "id": "rhel-ai", "title": "Red Hat Enterprise Linux AI", "quadrant": "data-ai",
       "description": "Foundation model image built on RHEL for running IBM Granite models locally with hardware acceleration on bare metal or VMs.",
       "links": [{ "url": "https://www.redhat.com/en/products/rhel-ai", "title": "Product page" }],
-      "timeline": [{ "moved": 0, "ringId": "assess", "date": "2024-05-01T00:00:00.000Z" }]
-    },
-    {
-      "key": "ai-inference-server",
-      "id": "ai-inference-server",
-      "title": "Red Hat AI Inference Server",
-      "quadrant": "data-ai",
+      "timeline": [{ "moved": 0, "ringId": "assess", "date": "2024-05-01T00:00:00.000Z" }] },
+
+    { "key": "ai-inference-server", "id": "ai-inference-server", "title": "Red Hat AI Inference Server", "quadrant": "data-ai",
       "description": "vLLM-based inference server optimised for running large language models at scale across hybrid cloud and on-premises deployments.",
-      "timeline": [{ "moved": 0, "ringId": "assess", "date": "2024-09-01T00:00:00.000Z" }]
-    },
-    {
-      "key": "neural-magic",
-      "id": "neural-magic",
-      "title": "Neural Magic (Red Hat)",
-      "quadrant": "data-ai",
-      "description": "AI model optimisation and sparse inference acquired by Red Hat in 2024. Enables LLM deployment on CPU and GPU without performance compromise.",
-      "timeline": [{ "moved": 0, "ringId": "assess", "date": "2024-01-01T00:00:00.000Z" }]
-    },
-    {
-      "key": "ibm-quantum",
-      "id": "ibm-quantum",
-      "title": "IBM Quantum Systems",
-      "quadrant": "data-ai",
-      "description": "IBM's gate-based quantum computers (Heron, Condor processors) available via IBM Cloud. Roadmap targets fault-tolerant quantum advantage.",
-      "links": [{ "url": "https://www.ibm.com/quantum", "title": "Product page" }],
-      "timeline": [{ "moved": 0, "ringId": "assess", "date": "2019-01-01T00:00:00.000Z" }]
-    },
-    {
-      "key": "gluster-storage",
-      "id": "gluster-storage",
-      "title": "Red Hat Gluster Storage",
-      "quadrant": "data-ai",
-      "description": "Scale-out network-attached storage based on GlusterFS. EOL December 2024; Red Hat recommends migrating to Ceph / OpenShift Data Foundation.",
-      "timeline": [{ "moved": -1, "ringId": "hold", "date": "2024-12-01T00:00:00.000Z", "description": "EOL" }]
-    },
-    {
-      "key": "red-hat-fuse",
-      "id": "red-hat-fuse",
-      "title": "Red Hat Fuse 7",
-      "quadrant": "data-ai",
-      "description": "Camel-based integration platform. EOL June 2024; migrate to Red Hat build of Apache Camel or Camel K.",
-      "timeline": [{ "moved": -1, "ringId": "hold", "date": "2024-06-01T00:00:00.000Z", "description": "EOL; replaced by Red Hat build of Apache Camel" }]
-    },
-    {
-      "key": "jboss-amq-6",
-      "id": "jboss-amq-6",
-      "title": "Red Hat JBoss A-MQ 6",
-      "quadrant": "data-ai",
-      "description": "ActiveMQ 5-based message broker. EOL February 2025; upgrade to Red Hat AMQ Broker 7 (ActiveMQ Artemis).",
-      "timeline": [{ "moved": -1, "ringId": "hold", "date": "2025-02-01T00:00:00.000Z", "description": "EOL" }]
-    },
-    {
-      "key": "hornetq",
-      "id": "hornetq",
-      "title": "HornetQ",
-      "quadrant": "data-ai",
-      "description": "Legacy Red Hat messaging system that evolved into ActiveMQ Artemis. Fully superseded; use AMQ Broker.",
-      "timeline": [{ "moved": -1, "ringId": "hold", "date": "2015-01-01T00:00:00.000Z" }]
-    },
-    {
-      "key": "heketi",
-      "id": "heketi",
-      "title": "Heketi",
-      "quadrant": "data-ai",
-      "description": "REST-based volume management for GlusterFS on Kubernetes. Superseded by Rook/Ceph and OpenShift Data Foundation.",
-      "timeline": [{ "moved": -1, "ringId": "hold", "date": "2021-01-01T00:00:00.000Z" }]
-    },
-    {
-      "key": "ibm-blockchain-platform",
-      "id": "ibm-blockchain-platform",
-      "title": "IBM Blockchain Platform (SaaS)",
-      "quadrant": "data-ai",
-      "description": "IBM's managed blockchain SaaS on IBM Cloud has been wound down. The underlying Hyperledger Fabric remains open source and active.",
-      "timeline": [{ "moved": -1, "ringId": "hold", "date": "2023-01-01T00:00:00.000Z", "description": "SaaS offering discontinued" }]
-    },
-    {
-      "key": "watson-discovery",
-      "id": "watson-discovery",
-      "title": "Watson Discovery",
-      "quadrant": "data-ai",
-      "description": "AI-powered search and text analytics service. Capabilities moving into watsonx.ai RAG and enterprise search features.",
-      "timeline": [{ "moved": -1, "ringId": "hold", "date": "2023-01-01T00:00:00.000Z", "description": "Superseded by watsonx.ai" }]
-    },
-    {
-      "key": "lotus-notes",
-      "id": "lotus-notes",
-      "title": "Lotus Notes / Domino",
-      "quadrant": "data-ai",
-      "description": "Collaborative messaging and application platform sold to HCL in 2019. IBM support ended 2024. Avoid for new projects.",
-      "timeline": [{ "moved": -1, "ringId": "hold", "date": "2019-01-01T00:00:00.000Z", "description": "Divested to HCL" }]
-    }
+      "timeline": [{ "moved": 0, "ringId": "assess", "date": "2024-09-01T00:00:00.000Z" }] },
+
+    { "key": "gluster-storage", "id": "gluster-storage", "title": "Red Hat Gluster Storage", "quadrant": "data-ai",
+      "description": "Scale-out NAS based on GlusterFS. Reached end of life December 2024 — migrate to Red Hat Ceph / OpenShift Data Foundation.",
+      "timeline": [{ "moved": -1, "ringId": "hold", "date": "2024-12-01T00:00:00.000Z", "description": "EOL December 2024" }] },
+
+    { "key": "red-hat-fuse", "id": "red-hat-fuse", "title": "Red Hat Fuse 7", "quadrant": "data-ai",
+      "description": "Camel-based integration platform. Reached end of life June 2024 — migrate to Red Hat build of Apache Camel or Camel K.",
+      "timeline": [{ "moved": -1, "ringId": "hold", "date": "2024-06-01T00:00:00.000Z", "description": "EOL June 2024" }] },
+
+    { "key": "jboss-amq-6", "id": "jboss-amq-6", "title": "Red Hat JBoss A-MQ 6", "quadrant": "data-ai",
+      "description": "ActiveMQ 5-based message broker. Reached end of life February 2025 — migrate to Red Hat AMQ Broker 7 (ActiveMQ Artemis).",
+      "timeline": [{ "moved": -1, "ringId": "hold", "date": "2025-02-01T00:00:00.000Z", "description": "EOL February 2025" }] },
+
+    { "key": "ibm-blockchain-platform", "id": "ibm-blockchain-platform", "title": "IBM Blockchain Platform (SaaS)", "quadrant": "data-ai",
+      "description": "IBM's managed Hyperledger Fabric SaaS on IBM Cloud. The cloud service has been wound down — the open-source Hyperledger Fabric project continues.",
+      "timeline": [{ "moved": -1, "ringId": "hold", "date": "2023-01-01T00:00:00.000Z", "description": "SaaS offering discontinued" }] },
+
+    { "key": "watson-discovery", "id": "watson-discovery", "title": "Watson Discovery", "quadrant": "data-ai",
+      "description": "Watson-branded AI search and text analytics service. Actively superseded by watsonx.ai RAG capabilities; IBM is directing customers to migrate.",
+      "timeline": [{ "moved": -1, "ringId": "hold", "date": "2023-06-01T00:00:00.000Z", "description": "Superseded by watsonx.ai" }] },
+
+    { "key": "lotus-notes", "id": "lotus-notes", "title": "Lotus Notes / Domino", "quadrant": "data-ai",
+      "description": "Collaborative messaging and application platform. Sold to HCL Technologies in 2019; IBM support fully ended 2024.",
+      "timeline": [{ "moved": -1, "ringId": "hold", "date": "2019-07-01T00:00:00.000Z", "description": "Divested to HCL; IBM support ended" }] }
 
   ]
 }
