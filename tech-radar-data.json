@@ -78,16 +78,16 @@
       ],
       "timeline": [
         {
-          "date": "2019-05-01T00:00:00.000Z",
-          "ringId": "trial",
-          "moved": 1,
-          "description": "OCP 4.0 GA \u2014 new Operator-based architecture, rough edges expected"
-        },
-        {
           "date": "2020-06-01T00:00:00.000Z",
           "ringId": "adopt",
           "moved": 1,
           "description": "OCP 4.4 \u2014 stable enough for broad production adoption"
+        },
+        {
+          "date": "2019-05-01T00:00:00.000Z",
+          "ringId": "trial",
+          "moved": 1,
+          "description": "OCP 4.0 GA \u2014 new Operator-based architecture, rough edges expected"
         }
       ]
     },
@@ -139,10 +139,10 @@
       ],
       "timeline": [
         {
-          "date": "2014-02-01T00:00:00.000Z",
-          "ringId": "assess",
-          "moved": 0,
-          "description": "IBM Bluemix public beta launched"
+          "date": "2017-10-01T00:00:00.000Z",
+          "ringId": "adopt",
+          "moved": 1,
+          "description": "Rebranded IBM Cloud; expanded regions and enterprise services"
         },
         {
           "date": "2015-07-01T00:00:00.000Z",
@@ -151,10 +151,10 @@
           "description": "Bluemix GA \u2014 viable public cloud option"
         },
         {
-          "date": "2017-10-01T00:00:00.000Z",
-          "ringId": "adopt",
-          "moved": 1,
-          "description": "Rebranded IBM Cloud; expanded regions and enterprise services"
+          "date": "2014-02-01T00:00:00.000Z",
+          "ringId": "assess",
+          "moved": 0,
+          "description": "IBM Bluemix public beta launched"
         }
       ]
     },
@@ -212,16 +212,16 @@
       ],
       "timeline": [
         {
-          "date": "2019-09-01T00:00:00.000Z",
-          "ringId": "assess",
-          "moved": 0,
-          "description": "Container Native Virtualization (CNV) tech preview"
-        },
-        {
           "date": "2020-10-01T00:00:00.000Z",
           "ringId": "trial",
           "moved": 1,
           "description": "OpenShift Virtualization 2.4 GA \u2014 first fully supported release"
+        },
+        {
+          "date": "2019-09-01T00:00:00.000Z",
+          "ringId": "assess",
+          "moved": 0,
+          "description": "Container Native Virtualization (CNV) tech preview"
         }
       ]
     },
@@ -277,10 +277,10 @@
       "description": "oVirt-based enterprise VM platform. EOL August 2026; Red Hat recommends migrating to OpenShift Virtualization.",
       "timeline": [
         {
-          "date": "2010-01-01T00:00:00.000Z",
-          "ringId": "adopt",
-          "moved": 0,
-          "description": "RHV / oVirt widely adopted for enterprise VM workloads"
+          "date": "2024-01-01T00:00:00.000Z",
+          "ringId": "hold",
+          "moved": -1,
+          "description": "EOL August 2026 \u2014 begin migration planning now"
         },
         {
           "date": "2022-06-01T00:00:00.000Z",
@@ -289,10 +289,10 @@
           "description": "EOL announced; OpenShift Virtualization named strategic replacement"
         },
         {
-          "date": "2024-01-01T00:00:00.000Z",
-          "ringId": "hold",
-          "moved": -1,
-          "description": "EOL August 2026 \u2014 begin migration planning now"
+          "date": "2010-01-01T00:00:00.000Z",
+          "ringId": "adopt",
+          "moved": 0,
+          "description": "RHV / oVirt widely adopted for enterprise VM workloads"
         }
       ]
     },
@@ -310,10 +310,10 @@
       ],
       "timeline": [
         {
-          "date": "2019-03-01T00:00:00.000Z",
-          "ringId": "assess",
-          "moved": 0,
-          "description": "Quarkus 0.x public preview \u2014 Supersonic Subatomic Java announced"
+          "date": "2021-06-01T00:00:00.000Z",
+          "ringId": "adopt",
+          "moved": 1,
+          "description": "Broad enterprise adoption; native image support mature"
         },
         {
           "date": "2019-11-01T00:00:00.000Z",
@@ -322,10 +322,10 @@
           "description": "Quarkus 1.0 GA \u2014 production-ready for early adopters"
         },
         {
-          "date": "2021-06-01T00:00:00.000Z",
-          "ringId": "adopt",
-          "moved": 1,
-          "description": "Broad enterprise adoption; native image support mature"
+          "date": "2019-03-01T00:00:00.000Z",
+          "ringId": "assess",
+          "moved": 0,
+          "description": "Quarkus 0.x public preview \u2014 Supersonic Subatomic Java announced"
         }
       ]
     },
@@ -343,16 +343,16 @@
       ],
       "timeline": [
         {
-          "date": "2004-01-01T00:00:00.000Z",
-          "ringId": "trial",
-          "moved": 0,
-          "description": "JBoss 3/4 \u2014 open-source J2EE gaining enterprise traction"
-        },
-        {
           "date": "2007-01-01T00:00:00.000Z",
           "ringId": "adopt",
           "moved": 1,
           "description": "JBoss EAP 5 \u2014 fully supported enterprise Java standard"
+        },
+        {
+          "date": "2004-01-01T00:00:00.000Z",
+          "ringId": "trial",
+          "moved": 0,
+          "description": "JBoss 3/4 \u2014 open-source J2EE gaining enterprise traction"
         }
       ]
     },
@@ -370,16 +370,16 @@
       ],
       "timeline": [
         {
-          "date": "2017-09-01T00:00:00.000Z",
-          "ringId": "trial",
-          "moved": 0,
-          "description": "Open Liberty 1.0 open-sourced from WebSphere Liberty"
-        },
-        {
           "date": "2019-06-01T00:00:00.000Z",
           "ringId": "adopt",
           "moved": 1,
           "description": "Mature, cloud-native Java runtime; preferred for new IBM workloads"
+        },
+        {
+          "date": "2017-09-01T00:00:00.000Z",
+          "ringId": "trial",
+          "moved": 0,
+          "description": "Open Liberty 1.0 open-sourced from WebSphere Liberty"
         }
       ]
     },
@@ -437,16 +437,16 @@
       ],
       "timeline": [
         {
-          "date": "2019-10-01T00:00:00.000Z",
-          "ringId": "assess",
-          "moved": 0,
-          "description": "Camel K 1.0 \u2014 experimental Kubernetes-native Camel"
-        },
-        {
           "date": "2021-06-01T00:00:00.000Z",
           "ringId": "trial",
           "moved": 1,
           "description": "Included in Red Hat Integration; gaining traction for serverless integration"
+        },
+        {
+          "date": "2019-10-01T00:00:00.000Z",
+          "ringId": "assess",
+          "moved": 0,
+          "description": "Camel K 1.0 \u2014 experimental Kubernetes-native Camel"
         }
       ]
     },
@@ -478,10 +478,10 @@
       "description": "Legacy JBoss application server versions based on older Java EE specifications. Long past EOL \u2014 migrate to JBoss EAP 8 or Quarkus.",
       "timeline": [
         {
-          "date": "2005-01-01T00:00:00.000Z",
-          "ringId": "adopt",
-          "moved": 0,
-          "description": "JBoss EAP 4/5 \u2014 de facto enterprise Java standard"
+          "date": "2018-01-01T00:00:00.000Z",
+          "ringId": "hold",
+          "moved": -1,
+          "description": "EOL \u2014 migrate to JBoss EAP 8 or Quarkus"
         },
         {
           "date": "2015-01-01T00:00:00.000Z",
@@ -490,10 +490,10 @@
           "description": "EAP 7 released; EAP 5/6 users urged to upgrade"
         },
         {
-          "date": "2018-01-01T00:00:00.000Z",
-          "ringId": "hold",
-          "moved": -1,
-          "description": "EOL \u2014 migrate to JBoss EAP 8 or Quarkus"
+          "date": "2005-01-01T00:00:00.000Z",
+          "ringId": "adopt",
+          "moved": 0,
+          "description": "JBoss EAP 4/5 \u2014 de facto enterprise Java standard"
         }
       ]
     },
@@ -526,10 +526,10 @@
       ],
       "timeline": [
         {
-          "date": "2013-03-01T00:00:00.000Z",
-          "ringId": "assess",
-          "moved": 0,
-          "description": "Ansible open-source project founded by Michael DeHaan"
+          "date": "2019-09-01T00:00:00.000Z",
+          "ringId": "adopt",
+          "moved": 1,
+          "description": "Ansible Automation Platform 1.0 \u2014 enterprise standard for hybrid cloud automation"
         },
         {
           "date": "2015-10-01T00:00:00.000Z",
@@ -538,10 +538,10 @@
           "description": "Red Hat acquires Ansible \u2014 enterprise product launched"
         },
         {
-          "date": "2019-09-01T00:00:00.000Z",
-          "ringId": "adopt",
-          "moved": 1,
-          "description": "Ansible Automation Platform 1.0 \u2014 enterprise standard for hybrid cloud automation"
+          "date": "2013-03-01T00:00:00.000Z",
+          "ringId": "assess",
+          "moved": 0,
+          "description": "Ansible open-source project founded by Michael DeHaan"
         }
       ]
     },
@@ -559,10 +559,10 @@
       ],
       "timeline": [
         {
-          "date": "2018-01-01T00:00:00.000Z",
-          "ringId": "assess",
-          "moved": 0,
-          "description": "Podman 0.x \u2014 daemonless container tool, early adopter phase"
+          "date": "2022-05-01T00:00:00.000Z",
+          "ringId": "adopt",
+          "moved": 1,
+          "description": "RHEL 9 ships Podman 4; Docker CLI compatibility mature"
         },
         {
           "date": "2019-05-01T00:00:00.000Z",
@@ -571,10 +571,10 @@
           "description": "Included in RHEL 8 as the default container CLI"
         },
         {
-          "date": "2022-05-01T00:00:00.000Z",
-          "ringId": "adopt",
-          "moved": 1,
-          "description": "RHEL 9 ships Podman 4; Docker CLI compatibility mature"
+          "date": "2018-01-01T00:00:00.000Z",
+          "ringId": "assess",
+          "moved": 0,
+          "description": "Podman 0.x \u2014 daemonless container tool, early adopter phase"
         }
       ]
     },
@@ -652,10 +652,10 @@
       ],
       "timeline": [
         {
-          "date": "2020-03-01T00:00:00.000Z",
-          "ringId": "assess",
-          "moved": 0,
-          "description": "Argo CD gaining traction; GitOps pattern emerging in OpenShift"
+          "date": "2022-06-01T00:00:00.000Z",
+          "ringId": "adopt",
+          "moved": 1,
+          "description": "Recommended by default for application delivery on OpenShift"
         },
         {
           "date": "2021-03-01T00:00:00.000Z",
@@ -664,10 +664,10 @@
           "description": "OpenShift GitOps 1.0 GA \u2014 Argo CD as supported product"
         },
         {
-          "date": "2022-06-01T00:00:00.000Z",
-          "ringId": "adopt",
-          "moved": 1,
-          "description": "Recommended by default for application delivery on OpenShift"
+          "date": "2020-03-01T00:00:00.000Z",
+          "ringId": "assess",
+          "moved": 0,
+          "description": "Argo CD gaining traction; GitOps pattern emerging in OpenShift"
         }
       ]
     },
@@ -685,10 +685,10 @@
       ],
       "timeline": [
         {
-          "date": "2014-09-01T00:00:00.000Z",
-          "ringId": "trial",
+          "date": "2023-06-01T00:00:00.000Z",
+          "ringId": "adopt",
           "moved": 0,
-          "description": "Red Hat SSO 6 (based on Keycloak) launched for JBoss middleware"
+          "description": "Rebranded 'Red Hat build of Keycloak' \u2014 same product, modernised packaging"
         },
         {
           "date": "2017-06-01T00:00:00.000Z",
@@ -697,10 +697,10 @@
           "description": "Red Hat SSO 7 \u2014 standard enterprise IAM across the portfolio"
         },
         {
-          "date": "2023-06-01T00:00:00.000Z",
-          "ringId": "adopt",
+          "date": "2014-09-01T00:00:00.000Z",
+          "ringId": "trial",
           "moved": 0,
-          "description": "Rebranded 'Red Hat build of Keycloak' \u2014 same product, modernised packaging"
+          "description": "Red Hat SSO 6 (based on Keycloak) launched for JBoss middleware"
         }
       ]
     },
@@ -718,10 +718,10 @@
       ],
       "timeline": [
         {
-          "date": "2020-01-01T00:00:00.000Z",
-          "ringId": "assess",
-          "moved": 0,
-          "description": "StackRox standalone Kubernetes security platform \u2014 evaluate for cloud-native security"
+          "date": "2022-03-01T00:00:00.000Z",
+          "ringId": "adopt",
+          "moved": 1,
+          "description": "ACS 3.70 fully integrated with OpenShift; recommended for all OCP deployments"
         },
         {
           "date": "2021-02-01T00:00:00.000Z",
@@ -730,10 +730,10 @@
           "description": "Red Hat acquires StackRox \u2014 integration into OpenShift begins"
         },
         {
-          "date": "2022-03-01T00:00:00.000Z",
-          "ringId": "adopt",
-          "moved": 1,
-          "description": "ACS 3.70 fully integrated with OpenShift; recommended for all OCP deployments"
+          "date": "2020-01-01T00:00:00.000Z",
+          "ringId": "assess",
+          "moved": 0,
+          "description": "StackRox standalone Kubernetes security platform \u2014 evaluate for cloud-native security"
         }
       ]
     },
@@ -791,16 +791,16 @@
       ],
       "timeline": [
         {
-          "date": "2023-01-01T00:00:00.000Z",
-          "ringId": "assess",
-          "moved": 0,
-          "description": "Red Hat Developer Hub Tech Preview \u2014 Backstage-based portal in evaluation"
-        },
-        {
           "date": "2023-09-01T00:00:00.000Z",
           "ringId": "trial",
           "moved": 1,
           "description": "RHDH 1.0 GA \u2014 generally available for enterprise deployment"
+        },
+        {
+          "date": "2023-01-01T00:00:00.000Z",
+          "ringId": "assess",
+          "moved": 0,
+          "description": "Red Hat Developer Hub Tech Preview \u2014 Backstage-based portal in evaluation"
         }
       ]
     },
@@ -838,16 +838,16 @@
       ],
       "timeline": [
         {
-          "date": "2023-05-01T00:00:00.000Z",
-          "ringId": "assess",
-          "moved": 0,
-          "description": "Announced at Red Hat Summit 2023 \u2014 Technical Preview with IBM watsonx"
-        },
-        {
           "date": "2023-10-01T00:00:00.000Z",
           "ringId": "trial",
           "moved": 1,
           "description": "GA \u2014 first AI assistant in Ansible Automation Platform"
+        },
+        {
+          "date": "2023-05-01T00:00:00.000Z",
+          "ringId": "assess",
+          "moved": 0,
+          "description": "Announced at Red Hat Summit 2023 \u2014 Technical Preview with IBM watsonx"
         }
       ]
     },
@@ -958,16 +958,10 @@
       "description": "Hybrid cloud management platform. Reached end of life March 2023; capabilities moved into Ansible Automation Platform and ACM.",
       "timeline": [
         {
-          "date": "2012-07-01T00:00:00.000Z",
-          "ringId": "trial",
-          "moved": 0,
-          "description": "CloudForms 1.0 GA \u2014 hybrid cloud management platform"
-        },
-        {
-          "date": "2015-01-01T00:00:00.000Z",
-          "ringId": "adopt",
-          "moved": 1,
-          "description": "Widely deployed for managing VMware, OpenStack, and OpenShift environments"
+          "date": "2023-03-01T00:00:00.000Z",
+          "ringId": "hold",
+          "moved": -1,
+          "description": "EOL March 2023"
         },
         {
           "date": "2021-01-01T00:00:00.000Z",
@@ -976,10 +970,16 @@
           "description": "Capabilities moving to Ansible and ACM; investment declining"
         },
         {
-          "date": "2023-03-01T00:00:00.000Z",
-          "ringId": "hold",
-          "moved": -1,
-          "description": "EOL March 2023"
+          "date": "2015-01-01T00:00:00.000Z",
+          "ringId": "adopt",
+          "moved": 1,
+          "description": "Widely deployed for managing VMware, OpenStack, and OpenShift environments"
+        },
+        {
+          "date": "2012-07-01T00:00:00.000Z",
+          "ringId": "trial",
+          "moved": 0,
+          "description": "CloudForms 1.0 GA \u2014 hybrid cloud management platform"
         }
       ]
     },
@@ -991,10 +991,10 @@
       "description": "Red Hat's Keycloak-based IAM product under the old branding. Fully replaced by the 'Red Hat build of Keycloak' from version 22 onwards.",
       "timeline": [
         {
-          "date": "2014-09-01T00:00:00.000Z",
-          "ringId": "trial",
-          "moved": 0,
-          "description": "Red Hat SSO 6 launched"
+          "date": "2023-06-01T00:00:00.000Z",
+          "ringId": "hold",
+          "moved": -1,
+          "description": "Replaced by 'Red Hat build of Keycloak' \u2014 migrate to new product name and packaging"
         },
         {
           "date": "2017-06-01T00:00:00.000Z",
@@ -1003,10 +1003,10 @@
           "description": "Red Hat SSO 7 \u2014 enterprise IAM standard"
         },
         {
-          "date": "2023-06-01T00:00:00.000Z",
-          "ringId": "hold",
-          "moved": -1,
-          "description": "Replaced by 'Red Hat build of Keycloak' \u2014 migrate to new product name and packaging"
+          "date": "2014-09-01T00:00:00.000Z",
+          "ringId": "trial",
+          "moved": 0,
+          "description": "Red Hat SSO 6 launched"
         }
       ]
     },
@@ -1024,16 +1024,16 @@
       ],
       "timeline": [
         {
-          "date": "2018-06-01T00:00:00.000Z",
-          "ringId": "trial",
-          "moved": 0,
-          "description": "AMQ Streams 1.0 \u2014 Strimzi-based Kafka on OpenShift, first release"
-        },
-        {
           "date": "2020-06-01T00:00:00.000Z",
           "ringId": "adopt",
           "moved": 1,
           "description": "Kafka on Kubernetes mature; standard for event streaming in Red Hat portfolio"
+        },
+        {
+          "date": "2018-06-01T00:00:00.000Z",
+          "ringId": "trial",
+          "moved": 0,
+          "description": "AMQ Streams 1.0 \u2014 Strimzi-based Kafka on OpenShift, first release"
         }
       ]
     },
@@ -1051,16 +1051,10 @@
       ],
       "timeline": [
         {
-          "date": "2015-01-01T00:00:00.000Z",
-          "ringId": "trial",
-          "moved": 0,
-          "description": "Apache Camel gaining enterprise traction through Red Hat Fuse"
-        },
-        {
-          "date": "2018-01-01T00:00:00.000Z",
+          "date": "2022-06-01T00:00:00.000Z",
           "ringId": "adopt",
-          "moved": 1,
-          "description": "Camel 2.x \u2014 backbone of Red Hat Fuse integration platform"
+          "moved": 0,
+          "description": "Rebranded as 'Red Hat build of Apache Camel' replacing Fuse"
         },
         {
           "date": "2020-06-01T00:00:00.000Z",
@@ -1069,10 +1063,16 @@
           "description": "Camel 3 released \u2014 Quarkus-native mode, cloud-native first"
         },
         {
-          "date": "2022-06-01T00:00:00.000Z",
+          "date": "2018-01-01T00:00:00.000Z",
           "ringId": "adopt",
+          "moved": 1,
+          "description": "Camel 2.x \u2014 backbone of Red Hat Fuse integration platform"
+        },
+        {
+          "date": "2015-01-01T00:00:00.000Z",
+          "ringId": "trial",
           "moved": 0,
-          "description": "Rebranded as 'Red Hat build of Apache Camel' replacing Fuse"
+          "description": "Apache Camel gaining enterprise traction through Red Hat Fuse"
         }
       ]
     },
@@ -1150,10 +1150,10 @@
       ],
       "timeline": [
         {
-          "date": "2023-05-01T00:00:00.000Z",
-          "ringId": "assess",
-          "moved": 0,
-          "description": "Announced at Think 2023 \u2014 IBM's new AI and data platform"
+          "date": "2024-01-01T00:00:00.000Z",
+          "ringId": "adopt",
+          "moved": 1,
+          "description": "Rapid enterprise adoption; integrated across IBM Cloud Pak for Data"
         },
         {
           "date": "2023-07-01T00:00:00.000Z",
@@ -1162,10 +1162,10 @@
           "description": "watsonx.ai GA \u2014 enterprise AI studio with Granite models"
         },
         {
-          "date": "2024-01-01T00:00:00.000Z",
-          "ringId": "adopt",
-          "moved": 1,
-          "description": "Rapid enterprise adoption; integrated across IBM Cloud Pak for Data"
+          "date": "2023-05-01T00:00:00.000Z",
+          "ringId": "assess",
+          "moved": 0,
+          "description": "Announced at Think 2023 \u2014 IBM's new AI and data platform"
         }
       ]
     },
@@ -1223,10 +1223,10 @@
       ],
       "timeline": [
         {
-          "date": "2018-11-01T00:00:00.000Z",
-          "ringId": "trial",
+          "date": "2023-07-01T00:00:00.000Z",
+          "ringId": "adopt",
           "moved": 0,
-          "description": "Watson Assistant GA \u2014 conversational AI for enterprise chatbots"
+          "description": "Rebranded as IBM watsonx Assistant; RAG and GenAI capabilities added"
         },
         {
           "date": "2020-06-01T00:00:00.000Z",
@@ -1235,10 +1235,10 @@
           "description": "Widely deployed in banking, retail, and healthcare for virtual agents"
         },
         {
-          "date": "2023-07-01T00:00:00.000Z",
-          "ringId": "adopt",
+          "date": "2018-11-01T00:00:00.000Z",
+          "ringId": "trial",
           "moved": 0,
-          "description": "Rebranded as IBM watsonx Assistant; RAG and GenAI capabilities added"
+          "description": "Watson Assistant GA \u2014 conversational AI for enterprise chatbots"
         }
       ]
     },
@@ -1296,10 +1296,10 @@
       ],
       "timeline": [
         {
-          "date": "2020-06-01T00:00:00.000Z",
-          "ringId": "assess",
+          "date": "2023-11-01T00:00:00.000Z",
+          "ringId": "trial",
           "moved": 0,
-          "description": "Open Data Hub (ODH) \u2014 upstream community project for ML on OpenShift"
+          "description": "Rebranded Red Hat OpenShift AI; GPU scheduling and model serving added"
         },
         {
           "date": "2022-06-01T00:00:00.000Z",
@@ -1308,10 +1308,10 @@
           "description": "Red Hat OpenShift Data Science (RHODS) GA \u2014 supported MLOps platform"
         },
         {
-          "date": "2023-11-01T00:00:00.000Z",
-          "ringId": "trial",
+          "date": "2020-06-01T00:00:00.000Z",
+          "ringId": "assess",
           "moved": 0,
-          "description": "Rebranded Red Hat OpenShift AI; GPU scheduling and model serving added"
+          "description": "Open Data Hub (ODH) \u2014 upstream community project for ML on OpenShift"
         }
       ]
     },
@@ -1329,16 +1329,16 @@
       ],
       "timeline": [
         {
-          "date": "2023-05-01T00:00:00.000Z",
-          "ringId": "assess",
-          "moved": 0,
-          "description": "IBM Granite models unveiled at Think 2023 \u2014 enterprise-focused foundation models"
-        },
-        {
           "date": "2023-09-01T00:00:00.000Z",
           "ringId": "trial",
           "moved": 1,
           "description": "Granite code and language models released on watsonx.ai and Hugging Face"
+        },
+        {
+          "date": "2023-05-01T00:00:00.000Z",
+          "ringId": "assess",
+          "moved": 0,
+          "description": "IBM Granite models unveiled at Think 2023 \u2014 enterprise-focused foundation models"
         }
       ]
     },
@@ -1404,16 +1404,10 @@
       "description": "Scale-out NAS based on GlusterFS. Reached end of life December 2024 \u2014 migrate to Red Hat Ceph / OpenShift Data Foundation.",
       "timeline": [
         {
-          "date": "2011-10-01T00:00:00.000Z",
-          "ringId": "trial",
-          "moved": 0,
-          "description": "Red Hat acquires Gluster Inc. \u2014 scale-out NAS for cloud storage"
-        },
-        {
-          "date": "2014-01-01T00:00:00.000Z",
-          "ringId": "adopt",
-          "moved": 1,
-          "description": "Widely deployed for OpenShift persistent storage and HPC"
+          "date": "2024-12-01T00:00:00.000Z",
+          "ringId": "hold",
+          "moved": -1,
+          "description": "EOL December 2024"
         },
         {
           "date": "2021-01-01T00:00:00.000Z",
@@ -1422,10 +1416,16 @@
           "description": "Red Hat Ceph / OpenShift Data Foundation named preferred storage path"
         },
         {
-          "date": "2024-12-01T00:00:00.000Z",
-          "ringId": "hold",
-          "moved": -1,
-          "description": "EOL December 2024"
+          "date": "2014-01-01T00:00:00.000Z",
+          "ringId": "adopt",
+          "moved": 1,
+          "description": "Widely deployed for OpenShift persistent storage and HPC"
+        },
+        {
+          "date": "2011-10-01T00:00:00.000Z",
+          "ringId": "trial",
+          "moved": 0,
+          "description": "Red Hat acquires Gluster Inc. \u2014 scale-out NAS for cloud storage"
         }
       ]
     },
@@ -1437,16 +1437,10 @@
       "description": "Camel-based integration platform. Reached end of life June 2024 \u2014 migrate to Red Hat build of Apache Camel or Camel K.",
       "timeline": [
         {
-          "date": "2013-01-01T00:00:00.000Z",
-          "ringId": "trial",
-          "moved": 0,
-          "description": "Red Hat Fuse 6 \u2014 enterprise ESB and integration platform"
-        },
-        {
-          "date": "2017-01-01T00:00:00.000Z",
-          "ringId": "adopt",
-          "moved": 1,
-          "description": "Fuse 7 GA \u2014 widely deployed integration platform"
+          "date": "2024-06-01T00:00:00.000Z",
+          "ringId": "hold",
+          "moved": -1,
+          "description": "EOL June 2024 \u2014 migrate to Red Hat build of Apache Camel"
         },
         {
           "date": "2022-06-01T00:00:00.000Z",
@@ -1455,10 +1449,16 @@
           "description": "Red Hat build of Apache Camel named strategic replacement for Fuse"
         },
         {
-          "date": "2024-06-01T00:00:00.000Z",
-          "ringId": "hold",
-          "moved": -1,
-          "description": "EOL June 2024 \u2014 migrate to Red Hat build of Apache Camel"
+          "date": "2017-01-01T00:00:00.000Z",
+          "ringId": "adopt",
+          "moved": 1,
+          "description": "Fuse 7 GA \u2014 widely deployed integration platform"
+        },
+        {
+          "date": "2013-01-01T00:00:00.000Z",
+          "ringId": "trial",
+          "moved": 0,
+          "description": "Red Hat Fuse 6 \u2014 enterprise ESB and integration platform"
         }
       ]
     },
@@ -1485,10 +1485,10 @@
       "description": "IBM's managed Hyperledger Fabric SaaS on IBM Cloud. The cloud service has been wound down \u2014 the open-source Hyperledger Fabric project continues.",
       "timeline": [
         {
-          "date": "2017-03-01T00:00:00.000Z",
-          "ringId": "assess",
-          "moved": 0,
-          "description": "IBM Blockchain Platform launched on Bluemix \u2014 early Hyperledger Fabric SaaS"
+          "date": "2023-01-01T00:00:00.000Z",
+          "ringId": "hold",
+          "moved": -1,
+          "description": "SaaS offering wound down \u2014 Hyperledger Fabric open-source project continues"
         },
         {
           "date": "2018-06-01T00:00:00.000Z",
@@ -1497,10 +1497,10 @@
           "description": "Broad availability; IBM Food Trust and TradeLens built on platform"
         },
         {
-          "date": "2023-01-01T00:00:00.000Z",
-          "ringId": "hold",
-          "moved": -1,
-          "description": "SaaS offering wound down \u2014 Hyperledger Fabric open-source project continues"
+          "date": "2017-03-01T00:00:00.000Z",
+          "ringId": "assess",
+          "moved": 0,
+          "description": "IBM Blockchain Platform launched on Bluemix \u2014 early Hyperledger Fabric SaaS"
         }
       ]
     },
@@ -1512,16 +1512,10 @@
       "description": "Watson-branded AI search and text analytics service. Actively superseded by watsonx.ai RAG capabilities; IBM is directing customers to migrate.",
       "timeline": [
         {
-          "date": "2016-10-01T00:00:00.000Z",
-          "ringId": "assess",
-          "moved": 0,
-          "description": "Watson Discovery launched \u2014 AI-powered search and insights"
-        },
-        {
-          "date": "2018-06-01T00:00:00.000Z",
-          "ringId": "trial",
-          "moved": 1,
-          "description": "Widely adopted for document intelligence and enterprise search"
+          "date": "2023-06-01T00:00:00.000Z",
+          "ringId": "hold",
+          "moved": -1,
+          "description": "Superseded by watsonx.ai RAG capabilities \u2014 IBM directing customers to migrate"
         },
         {
           "date": "2021-01-01T00:00:00.000Z",
@@ -1530,10 +1524,16 @@
           "description": "Watson Discovery Premium \u2014 enterprise RAG before RAG was mainstream"
         },
         {
-          "date": "2023-06-01T00:00:00.000Z",
-          "ringId": "hold",
-          "moved": -1,
-          "description": "Superseded by watsonx.ai RAG capabilities \u2014 IBM directing customers to migrate"
+          "date": "2018-06-01T00:00:00.000Z",
+          "ringId": "trial",
+          "moved": 1,
+          "description": "Widely adopted for document intelligence and enterprise search"
+        },
+        {
+          "date": "2016-10-01T00:00:00.000Z",
+          "ringId": "assess",
+          "moved": 0,
+          "description": "Watson Discovery launched \u2014 AI-powered search and insights"
         }
       ]
     },
@@ -1545,10 +1545,10 @@
       "description": "Collaborative messaging and application platform. Sold to HCL Technologies in 2019; IBM support fully ended 2024.",
       "timeline": [
         {
-          "date": "2004-01-01T00:00:00.000Z",
-          "ringId": "adopt",
-          "moved": 0,
-          "description": "Lotus Notes / Domino 6/7 \u2014 dominant enterprise collaboration platform"
+          "date": "2019-07-01T00:00:00.000Z",
+          "ringId": "hold",
+          "moved": -1,
+          "description": "IBM divests to HCL Technologies \u2014 no longer an IBM product"
         },
         {
           "date": "2012-01-01T00:00:00.000Z",
@@ -1557,10 +1557,10 @@
           "description": "Microsoft Exchange and SharePoint eroding market share; declining investment"
         },
         {
-          "date": "2019-07-01T00:00:00.000Z",
-          "ringId": "hold",
-          "moved": -1,
-          "description": "IBM divests to HCL Technologies \u2014 no longer an IBM product"
+          "date": "2004-01-01T00:00:00.000Z",
+          "ringId": "adopt",
+          "moved": 0,
+          "description": "Lotus Notes / Domino 6/7 \u2014 dominant enterprise collaboration platform"
         }
       ]
     }
