@@ -126,7 +126,6 @@ metadata:
   annotations:
     github.com/project-slug: vllm-project/vllm
     backstage.io/source-location: url:https://github.com/vllm-project/vllm
-    openssf/scorecard-location: https://api.securityscorecards.dev/projects/github.com/vllm-project/vllm
   tags:
     - ai
     - llm
@@ -162,7 +161,6 @@ metadata:
   annotations:
     github.com/project-slug: ollama/ollama
     backstage.io/source-location: url:https://github.com/ollama/ollama
-    openssf/scorecard-location: https://api.securityscorecards.dev/projects/github.com/ollama/ollama
   tags:
     - ai
     - llm
@@ -583,7 +581,6 @@ metadata:
   annotations:
     github.com/project-slug: opentofu/opentofu
     backstage.io/source-location: url:https://github.com/opentofu/opentofu
-    openssf/scorecard-location: https://api.securityscorecards.dev/projects/github.com/opentofu/opentofu
   tags:
     - iac
     - infrastructure
@@ -885,7 +882,6 @@ metadata:
   annotations:
     github.com/project-slug: seaweedfs/seaweedfs
     backstage.io/source-location: url:https://github.com/seaweedfs/seaweedfs
-    openssf/scorecard-location: https://api.securityscorecards.dev/projects/github.com/seaweedfs/seaweedfs
   tags:
     - storage
     - object-storage

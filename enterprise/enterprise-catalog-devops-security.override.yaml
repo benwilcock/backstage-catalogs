@@ -241,7 +241,6 @@ metadata:
   annotations:
     github.com/project-slug: forgejo/forgejo
     backstage.io/source-location: url:https://codeberg.org/forgejo/forgejo
-    openssf/scorecard-location: https://api.securityscorecards.dev/projects/github.com/forgejo/forgejo
   tags:
     - git
     - source-control
@@ -535,7 +534,6 @@ metadata:
   annotations:
     github.com/project-slug: ko-build/ko
     backstage.io/source-location: url:https://github.com/ko-build/ko
-    openssf/scorecard-location: https://api.securityscorecards.dev/projects/github.com/ko-build/ko
   tags:
     - developer-tools
     - container
@@ -1057,7 +1055,6 @@ metadata:
   annotations:
     github.com/project-slug: getsops/sops
     backstage.io/source-location: url:https://github.com/getsops/sops
-    openssf/scorecard-location: https://api.securityscorecards.dev/projects/github.com/getsops/sops
   tags:
     - secrets
     - encryption

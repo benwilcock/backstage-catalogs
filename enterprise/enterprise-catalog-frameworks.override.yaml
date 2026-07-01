@@ -178,7 +178,6 @@ metadata:
   annotations:
     github.com/project-slug: fastapi/fastapi
     backstage.io/source-location: url:https://github.com/fastapi/fastapi
-    openssf/scorecard-location: https://api.securityscorecards.dev/projects/github.com/fastapi/fastapi
   tags:
     - framework
     - python
@@ -567,7 +566,6 @@ metadata:
   annotations:
     github.com/project-slug: activepieces/activepieces
     backstage.io/source-location: url:https://github.com/activepieces/activepieces
-    openssf/scorecard-location: https://api.securityscorecards.dev/projects/github.com/activepieces/activepieces
   tags:
     - low-code
     - automation

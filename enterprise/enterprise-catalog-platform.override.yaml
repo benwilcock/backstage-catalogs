@@ -1089,7 +1089,6 @@ metadata:
   annotations:
     github.com/project-slug: openobserve/openobserve
     backstage.io/source-location: url:https://github.com/openobserve/openobserve
-    openssf/scorecard-location: https://api.securityscorecards.dev/projects/github.com/openobserve/openobserve
   tags:
     - logging
     - observability
@@ -1308,7 +1307,6 @@ metadata:
   annotations:
     github.com/project-slug: redhat-developer/rhdh
     backstage.io/source-location: url:https://github.com/redhat-developer/rhdh
-    openssf/scorecard-location: https://api.securityscorecards.dev/projects/github.com/redhat-developer/rhdh
     jira/project-key: RHIDP
     backstage.io/techdocs-ref: url:https://github.com/redhat-developer/rhdh
   tags:
