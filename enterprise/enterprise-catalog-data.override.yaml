@@ -16,6 +16,7 @@ metadata:
     compliance. Powers critical enterprise workloads worldwide.
   annotations:
     github.com/project-slug: postgres/postgres
+    github.com/dependabot: "true"
     backstage.io/source-location: url:https://github.com/postgres/postgres
     openssf/scorecard-location: https://api.securityscorecards.dev/projects/github.com/postgres/postgres
   tags:
@@ -51,6 +52,7 @@ metadata:
     e-commerce platforms, and enterprise transactional systems.
   annotations:
     github.com/project-slug: mysql/mysql-server
+    github.com/dependabot: "true"
     backstage.io/source-location: url:https://github.com/mysql/mysql-server
     openssf/scorecard-location: https://api.securityscorecards.dev/projects/github.com/mysql/mysql-server
   tags:
@@ -86,6 +88,7 @@ metadata:
     engines, security features, and performance improvements.
   annotations:
     github.com/project-slug: MariaDB/server
+    github.com/dependabot: "true"
     backstage.io/source-location: url:https://github.com/MariaDB/server
     openssf/scorecard-location: https://api.securityscorecards.dev/projects/github.com/MariaDB/server
   tags:
@@ -121,6 +124,7 @@ metadata:
     scalability, strong consistency, and high availability.
   annotations:
     github.com/project-slug: pingcap/tidb
+    github.com/dependabot: "true"
     backstage.io/source-location: url:https://github.com/pingcap/tidb
     openssf/scorecard-location: https://api.securityscorecards.dev/projects/github.com/pingcap/tidb
   tags:
@@ -157,6 +161,7 @@ metadata:
     connection pooling, and query routing for massive MySQL deployments.
   annotations:
     github.com/project-slug: vitessio/vitess
+    github.com/dependabot: "true"
     backstage.io/source-location: url:https://github.com/vitessio/vitess
     openssf/scorecard-location: https://api.securityscorecards.dev/projects/github.com/vitessio/vitess
   tags:
@@ -198,6 +203,7 @@ metadata:
     failure. Used by Netflix, Apple, and other large-scale enterprises.
   annotations:
     github.com/project-slug: apache/cassandra
+    github.com/dependabot: "true"
     backstage.io/source-location: url:https://github.com/apache/cassandra
     openssf/scorecard-location: https://api.securityscorecards.dev/projects/github.com/apache/cassandra
   tags:
@@ -234,6 +240,7 @@ metadata:
     delivers predictable low-latency at massive scale.
   annotations:
     github.com/project-slug: scylladb/scylladb
+    github.com/dependabot: "true"
     backstage.io/source-location: url:https://github.com/scylladb/scylladb
   tags:
     - database
@@ -269,6 +276,7 @@ metadata:
     replication and offline-first applications.
   annotations:
     github.com/project-slug: apache/couchdb
+    github.com/dependabot: "true"
     backstage.io/source-location: url:https://github.com/apache/couchdb
     openssf/scorecard-location: https://api.securityscorecards.dev/projects/github.com/apache/couchdb
   tags:
@@ -304,6 +312,7 @@ metadata:
     Ideal for applications that need flexible data modeling.
   annotations:
     github.com/project-slug: arangodb/arangodb
+    github.com/dependabot: "true"
     backstage.io/source-location: url:https://github.com/arangodb/arangodb
     openssf/scorecard-location: https://api.securityscorecards.dev/projects/github.com/arangodb/arangodb
   tags:
@@ -341,6 +350,7 @@ metadata:
     use familiar MongoDB drivers and tooling with a truly open source backend.
   annotations:
     github.com/project-slug: FerretDB/FerretDB
+    github.com/dependabot: "true"
     backstage.io/source-location: url:https://github.com/FerretDB/FerretDB
   tags:
     - database
@@ -382,6 +392,7 @@ metadata:
     session management, rate limiting, and real-time analytics.
   annotations:
     github.com/project-slug: valkey-io/valkey
+    github.com/dependabot: "true"
     backstage.io/source-location: url:https://github.com/valkey-io/valkey
     openssf/scorecard-location: https://api.securityscorecards.dev/projects/github.com/valkey-io/valkey
   tags:
@@ -419,6 +430,7 @@ metadata:
     and more. Redis 8 returned to open source under AGPLv3.
   annotations:
     github.com/project-slug: redis/redis
+    github.com/dependabot: "true"
     backstage.io/source-location: url:https://github.com/redis/redis
     openssf/scorecard-location: https://api.securityscorecards.dev/projects/github.com/redis/redis
   tags:
@@ -455,6 +467,7 @@ metadata:
     yet battle-tested at massive scale by companies like Facebook and Wikipedia.
   annotations:
     github.com/project-slug: memcached/memcached
+    github.com/dependabot: "true"
     backstage.io/source-location: url:https://github.com/memcached/memcached
     openssf/scorecard-location: https://api.securityscorecards.dev/projects/github.com/memcached/memcached
   tags:
@@ -491,6 +504,7 @@ metadata:
     state. A CNCF graduated project with strong consistency guarantees via Raft.
   annotations:
     github.com/project-slug: etcd-io/etcd
+    github.com/dependabot: "true"
     backstage.io/source-location: url:https://github.com/etcd-io/etcd
     openssf/scorecard-location: https://api.securityscorecards.dev/projects/github.com/etcd-io/etcd
   tags:
@@ -528,6 +542,7 @@ metadata:
     with optional persistence and SQL support.
   annotations:
     github.com/project-slug: apache/ignite
+    github.com/dependabot: "true"
     backstage.io/source-location: url:https://github.com/apache/ignite
     openssf/scorecard-location: https://api.securityscorecards.dev/projects/github.com/apache/ignite
   tags:
@@ -569,6 +584,7 @@ metadata:
     IoT, real-time analytics, and DevOps metrics collection.
   annotations:
     github.com/project-slug: influxdata/influxdb
+    github.com/dependabot: "true"
     backstage.io/source-location: url:https://github.com/influxdata/influxdb
     openssf/scorecard-location: https://api.securityscorecards.dev/projects/github.com/influxdata/influxdb
   tags:
@@ -606,6 +622,7 @@ metadata:
     financial data, IoT, and real-time monitoring use cases.
   annotations:
     github.com/project-slug: questdb/questdb
+    github.com/dependabot: "true"
     backstage.io/source-location: url:https://github.com/questdb/questdb
     openssf/scorecard-location: https://api.securityscorecards.dev/projects/github.com/questdb/questdb
   tags:
@@ -641,6 +658,7 @@ metadata:
     of time series with high compression and low resource usage.
   annotations:
     github.com/project-slug: VictoriaMetrics/VictoriaMetrics
+    github.com/dependabot: "true"
     backstage.io/source-location: url:https://github.com/VictoriaMetrics/VictoriaMetrics
     openssf/scorecard-location: https://api.securityscorecards.dev/projects/github.com/VictoriaMetrics/VictoriaMetrics
   tags:
@@ -677,6 +695,7 @@ metadata:
     stream processing, and data subscription in a single platform.
   annotations:
     github.com/project-slug: taosdata/TDengine
+    github.com/dependabot: "true"
     backstage.io/source-location: url:https://github.com/taosdata/TDengine
     openssf/scorecard-location: https://api.securityscorecards.dev/projects/github.com/taosdata/TDengine
   tags:
@@ -712,6 +731,7 @@ metadata:
     IoT devices and industrial systems.
   annotations:
     github.com/project-slug: apache/iotdb
+    github.com/dependabot: "true"
     backstage.io/source-location: url:https://github.com/apache/iotdb
     openssf/scorecard-location: https://api.securityscorecards.dev/projects/github.com/apache/iotdb
   tags:
@@ -751,6 +771,7 @@ metadata:
     and processing with the Cypher query language.
   annotations:
     github.com/project-slug: neo4j/neo4j
+    github.com/dependabot: "true"
     backstage.io/source-location: url:https://github.com/neo4j/neo4j
     openssf/scorecard-location: https://api.securityscorecards.dev/projects/github.com/neo4j/neo4j
   tags:
@@ -786,6 +807,7 @@ metadata:
     can use Cassandra, HBase, or BerkeleyDB for storage backends.
   annotations:
     github.com/project-slug: JanusGraph/janusgraph
+    github.com/dependabot: "true"
     backstage.io/source-location: url:https://github.com/JanusGraph/janusgraph
     openssf/scorecard-location: https://api.securityscorecards.dev/projects/github.com/JanusGraph/janusgraph
   tags:
@@ -823,6 +845,7 @@ metadata:
     using openCypher queries within PostgreSQL.
   annotations:
     github.com/project-slug: apache/age
+    github.com/dependabot: "true"
     backstage.io/source-location: url:https://github.com/apache/age
   tags:
     - database
@@ -860,6 +883,7 @@ metadata:
     with ACID transactions and SQL, Cypher, Gremlin, and GraphQL support.
   annotations:
     github.com/project-slug: ArcadeData/arcadedb
+    github.com/dependabot: "true"
     backstage.io/source-location: url:https://github.com/ArcadeData/arcadedb
   tags:
     - database
@@ -894,6 +918,7 @@ metadata:
     a shared-nothing architecture and supports the nGQL query language.
   annotations:
     github.com/project-slug: vesoft-inc/nebula
+    github.com/dependabot: "true"
     backstage.io/source-location: url:https://github.com/vesoft-inc/nebula
     openssf/scorecard-location: https://api.securityscorecards.dev/projects/github.com/vesoft-inc/nebula
   tags:
@@ -933,6 +958,7 @@ metadata:
     recommendation systems, and semantic search at enterprise scale.
   annotations:
     github.com/project-slug: milvus-io/milvus
+    github.com/dependabot: "true"
     backstage.io/source-location: url:https://github.com/milvus-io/milvus
     openssf/scorecard-location: https://api.securityscorecards.dev/projects/github.com/milvus-io/milvus
   tags:
@@ -972,6 +998,7 @@ metadata:
     support, making it ideal for neural network and semantic matching applications.
   annotations:
     github.com/project-slug: qdrant/qdrant
+    github.com/dependabot: "true"
     backstage.io/source-location: url:https://github.com/qdrant/qdrant
   tags:
     - database
@@ -1009,6 +1036,7 @@ metadata:
     various ML models for automatic vectorization out of the box.
   annotations:
     github.com/project-slug: weaviate/weaviate
+    github.com/dependabot: "true"
     backstage.io/source-location: url:https://github.com/weaviate/weaviate
     openssf/scorecard-location: https://api.securityscorecards.dev/projects/github.com/weaviate/weaviate
   tags:
@@ -1047,6 +1075,7 @@ metadata:
     embeddings, and integrate with LLM frameworks like LangChain.
   annotations:
     github.com/project-slug: chroma-core/chroma
+    github.com/dependabot: "true"
     backstage.io/source-location: url:https://github.com/chroma-core/chroma
     openssf/scorecard-location: https://api.securityscorecards.dev/projects/github.com/chroma-core/chroma
   tags:
@@ -1084,6 +1113,7 @@ metadata:
     to add AI-powered search to existing PostgreSQL-based applications.
   annotations:
     github.com/project-slug: pgvector/pgvector
+    github.com/dependabot: "true"
     backstage.io/source-location: url:https://github.com/pgvector/pgvector
     openssf/scorecard-location: https://api.securityscorecards.dev/projects/github.com/pgvector/pgvector
   tags:
@@ -1123,6 +1153,7 @@ metadata:
     streaming applications. The backbone of event-driven enterprise architectures.
   annotations:
     github.com/project-slug: apache/kafka
+    github.com/dependabot: "true"
     backstage.io/source-location: url:https://github.com/apache/kafka
     openssf/scorecard-location: https://api.securityscorecards.dev/projects/github.com/apache/kafka
   tags:
@@ -1160,6 +1191,7 @@ metadata:
     with flexible routing, clustering, and high availability features.
   annotations:
     github.com/project-slug: rabbitmq/rabbitmq-server
+    github.com/dependabot: "true"
     backstage.io/source-location: url:https://github.com/rabbitmq/rabbitmq-server
     openssf/scorecard-location: https://api.securityscorecards.dev/projects/github.com/rabbitmq/rabbitmq-server
   tags:
@@ -1195,6 +1227,7 @@ metadata:
     applications, IoT, and microservices. A CNCF incubating project.
   annotations:
     github.com/project-slug: nats-io/nats-server
+    github.com/dependabot: "true"
     backstage.io/source-location: url:https://github.com/nats-io/nats-server
     openssf/scorecard-location: https://api.securityscorecards.dev/projects/github.com/nats-io/nats-server
   tags:
@@ -1230,6 +1263,7 @@ metadata:
     multi-tenancy, geo-replication, and tiered storage for enterprise workloads.
   annotations:
     github.com/project-slug: apache/pulsar
+    github.com/dependabot: "true"
     backstage.io/source-location: url:https://github.com/apache/pulsar
     openssf/scorecard-location: https://api.securityscorecards.dev/projects/github.com/apache/pulsar
   tags:
@@ -1266,6 +1300,7 @@ metadata:
     high-performance, non-blocking architecture for enterprise messaging.
   annotations:
     github.com/project-slug: apache/activemq
+    github.com/dependabot: "true"
     backstage.io/source-location: url:https://github.com/apache/activemq
     openssf/scorecard-location: https://api.securityscorecards.dev/projects/github.com/apache/activemq
   tags:
@@ -1305,6 +1340,7 @@ metadata:
     security analytics, and observability with a permissive Apache 2.0 license.
   annotations:
     github.com/project-slug: opensearch-project/OpenSearch
+    github.com/dependabot: "true"
     backstage.io/source-location: url:https://github.com/opensearch-project/OpenSearch
   tags:
     - search
@@ -1340,6 +1376,7 @@ metadata:
     the world's largest internet sites and enterprise applications.
   annotations:
     github.com/project-slug: apache/solr
+    github.com/dependabot: "true"
     backstage.io/source-location: url:https://github.com/apache/solr
   tags:
     - search
@@ -1374,6 +1411,7 @@ metadata:
     with a simple RESTful API and instant search-as-you-type experience.
   annotations:
     github.com/project-slug: meilisearch/meilisearch
+    github.com/dependabot: "true"
     backstage.io/source-location: url:https://github.com/meilisearch/meilisearch
   tags:
     - search
@@ -1407,6 +1445,7 @@ metadata:
     alternative to Elasticsearch with a focus on developer experience.
   annotations:
     github.com/project-slug: typesense/typesense
+    github.com/dependabot: "true"
     backstage.io/source-location: url:https://github.com/typesense/typesense
     openssf/scorecard-location: https://api.securityscorecards.dev/projects/github.com/typesense/typesense
   tags:
@@ -1441,6 +1480,7 @@ metadata:
     search solutions. The gold standard for information retrieval.
   annotations:
     github.com/project-slug: apache/lucene
+    github.com/dependabot: "true"
     backstage.io/source-location: url:https://github.com/apache/lucene
     openssf/scorecard-location: https://api.securityscorecards.dev/projects/github.com/apache/lucene
   tags:

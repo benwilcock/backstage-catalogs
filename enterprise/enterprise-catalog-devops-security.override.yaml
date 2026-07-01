@@ -16,6 +16,7 @@ metadata:
     support CI/CD pipelines for virtually any technology stack.
   annotations:
     github.com/project-slug: jenkinsci/jenkins
+    github.com/dependabot: "true"
     backstage.io/source-location: url:https://github.com/jenkinsci/jenkins
     openssf/scorecard-location: https://api.securityscorecards.dev/projects/github.com/jenkinsci/jenkins
   tags:
@@ -51,6 +52,7 @@ metadata:
     repositories and synchronizing cluster state. A CNCF graduated project.
   annotations:
     github.com/project-slug: argoproj/argo-cd
+    github.com/dependabot: "true"
     backstage.io/source-location: url:https://github.com/argoproj/argo-cd
     openssf/scorecard-location: https://api.securityscorecards.dev/projects/github.com/argoproj/argo-cd
   tags:
@@ -91,6 +93,7 @@ metadata:
     Runs) for composing declarative, reproducible build pipelines.
   annotations:
     github.com/project-slug: tektoncd/pipeline
+    github.com/dependabot: "true"
     backstage.io/source-location: url:https://github.com/tektoncd/pipeline
     openssf/scorecard-location: https://api.securityscorecards.dev/projects/github.com/tektoncd/pipeline
   tags:
@@ -129,6 +132,7 @@ metadata:
     repositories. A CNCF graduated project for GitOps on Kubernetes.
   annotations:
     github.com/project-slug: fluxcd/flux2
+    github.com/dependabot: "true"
     backstage.io/source-location: url:https://github.com/fluxcd/flux2
     openssf/scorecard-location: https://api.securityscorecards.dev/projects/github.com/fluxcd/flux2
   tags:
@@ -167,6 +171,7 @@ metadata:
     remains fully open source with a focus on simplicity and extensibility.
   annotations:
     github.com/project-slug: woodpecker-ci/woodpecker
+    github.com/dependabot: "true"
     backstage.io/source-location: url:https://github.com/woodpecker-ci/woodpecker
     openssf/scorecard-location: https://api.securityscorecards.dev/projects/github.com/woodpecker-ci/woodpecker
   tags:
@@ -205,6 +210,7 @@ metadata:
     CI/CD integration, and package registries. Easy to install and maintain.
   annotations:
     github.com/project-slug: go-gitea/gitea
+    github.com/dependabot: "true"
     backstage.io/source-location: url:https://github.com/go-gitea/gitea
     openssf/scorecard-location: https://api.securityscorecards.dev/projects/github.com/go-gitea/gitea
   tags:
@@ -240,6 +246,7 @@ metadata:
     the Codeberg e.V. umbrella. Fully compatible with the Gitea ecosystem.
   annotations:
     github.com/project-slug: forgejo/forgejo
+    github.com/dependabot: "true"
     backstage.io/source-location: url:https://codeberg.org/forgejo/forgejo
   tags:
     - git
@@ -275,6 +282,7 @@ metadata:
     replication, and policy-based image management. A CNCF graduated project.
   annotations:
     github.com/project-slug: goharbor/harbor
+    github.com/dependabot: "true"
     backstage.io/source-location: url:https://github.com/goharbor/harbor
     openssf/scorecard-location: https://api.securityscorecards.dev/projects/github.com/goharbor/harbor
   tags:
@@ -313,6 +321,7 @@ metadata:
     automated security scanning, geo-replication, and fine-grained access control.
   annotations:
     github.com/project-slug: quay/quay
+    github.com/dependabot: "true"
     backstage.io/source-location: url:https://github.com/quay/quay
     openssf/scorecard-location: https://api.securityscorecards.dev/projects/github.com/quay/quay
   tags:
@@ -348,6 +357,7 @@ metadata:
     deduplication, garbage collection, and search capabilities.
   annotations:
     github.com/project-slug: project-zot/zot
+    github.com/dependabot: "true"
     backstage.io/source-location: url:https://github.com/project-zot/zot
     openssf/scorecard-location: https://api.securityscorecards.dev/projects/github.com/project-zot/zot
   tags:
@@ -387,6 +397,7 @@ metadata:
     development environment. Originally created at Spotify, now a CNCF project.
   annotations:
     github.com/project-slug: backstage/backstage
+    github.com/dependabot: "true"
     backstage.io/source-location: url:https://github.com/backstage/backstage
     openssf/scorecard-location: https://api.securityscorecards.dev/projects/github.com/backstage/backstage
   tags:
@@ -424,6 +435,7 @@ metadata:
     Kubernetes workloads. Part of the Argo project ecosystem.
   annotations:
     github.com/project-slug: argoproj/argo-rollouts
+    github.com/dependabot: "true"
     backstage.io/source-location: url:https://github.com/argoproj/argo-rollouts
     openssf/scorecard-location: https://api.securityscorecards.dev/projects/github.com/argoproj/argo-rollouts
   tags:
@@ -463,6 +475,7 @@ metadata:
     workflow for building, pushing, and deploying during local development.
   annotations:
     github.com/project-slug: GoogleContainerTools/skaffold
+    github.com/dependabot: "true"
     backstage.io/source-location: url:https://github.com/GoogleContainerTools/skaffold
     openssf/scorecard-location: https://api.securityscorecards.dev/projects/github.com/GoogleContainerTools/skaffold
   tags:
@@ -498,6 +511,7 @@ metadata:
     gives real-time feedback during local Kubernetes development.
   annotations:
     github.com/project-slug: tilt-dev/tilt
+    github.com/dependabot: "true"
     backstage.io/source-location: url:https://github.com/tilt-dev/tilt
     openssf/scorecard-location: https://api.securityscorecards.dev/projects/github.com/tilt-dev/tilt
   tags:
@@ -533,6 +547,7 @@ metadata:
     a Dockerfile, publishing directly to registries.
   annotations:
     github.com/project-slug: ko-build/ko
+    github.com/dependabot: "true"
     backstage.io/source-location: url:https://github.com/ko-build/ko
   tags:
     - developer-tools
@@ -570,6 +585,7 @@ metadata:
     social login, user federation, and fine-grained authorization out of the box.
   annotations:
     github.com/project-slug: keycloak/keycloak
+    github.com/dependabot: "true"
     backstage.io/source-location: url:https://github.com/keycloak/keycloak
     openssf/scorecard-location: https://api.securityscorecards.dev/projects/github.com/keycloak/keycloak
   tags:
@@ -610,6 +626,7 @@ metadata:
     providing a uniform OAuth2/OIDC interface for client applications.
   annotations:
     github.com/project-slug: dexidp/dex
+    github.com/dependabot: "true"
     backstage.io/source-location: url:https://github.com/dexidp/dex
     openssf/scorecard-location: https://api.securityscorecards.dev/projects/github.com/dexidp/dex
   tags:
@@ -645,6 +662,7 @@ metadata:
     web portal. Authelia acts as a companion for reverse proxies like Nginx and Traefik.
   annotations:
     github.com/project-slug: authelia/authelia
+    github.com/dependabot: "true"
     backstage.io/source-location: url:https://github.com/authelia/authelia
     openssf/scorecard-location: https://api.securityscorecards.dev/projects/github.com/authelia/authelia
   tags:
@@ -681,6 +699,7 @@ metadata:
     with a focus on correctness, usability, and security-first design.
   annotations:
     github.com/project-slug: kanidm/kanidm
+    github.com/dependabot: "true"
     backstage.io/source-location: url:https://github.com/kanidm/kanidm
     openssf/scorecard-location: https://api.securityscorecards.dev/projects/github.com/kanidm/kanidm
   tags:
@@ -717,6 +736,7 @@ metadata:
     login systems to add OAuth2 and OIDC capabilities.
   annotations:
     github.com/project-slug: ory/hydra
+    github.com/dependabot: "true"
     backstage.io/source-location: url:https://github.com/ory/hydra
     openssf/scorecard-location: https://api.securityscorecards.dev/projects/github.com/ory/hydra
   tags:
@@ -756,6 +776,7 @@ metadata:
     from policy enforcement using the Rego policy language. A CNCF graduated project.
   annotations:
     github.com/project-slug: open-policy-agent/opa
+    github.com/dependabot: "true"
     backstage.io/source-location: url:https://github.com/open-policy-agent/opa
     openssf/scorecard-location: https://api.securityscorecards.dev/projects/github.com/open-policy-agent/opa
   tags:
@@ -792,6 +813,7 @@ metadata:
     simple YAML without learning a new policy language. A CNCF graduated project.
   annotations:
     github.com/project-slug: kyverno/kyverno
+    github.com/dependabot: "true"
     backstage.io/source-location: url:https://github.com/kyverno/kyverno
     openssf/scorecard-location: https://api.securityscorecards.dev/projects/github.com/kyverno/kyverno
   tags:
@@ -830,6 +852,7 @@ metadata:
     define and enforce OPA policies using CRDs.
   annotations:
     github.com/project-slug: open-policy-agent/gatekeeper
+    github.com/dependabot: "true"
     backstage.io/source-location: url:https://github.com/open-policy-agent/gatekeeper
     openssf/scorecard-location: https://api.securityscorecards.dev/projects/github.com/open-policy-agent/gatekeeper
   tags:
@@ -868,6 +891,7 @@ metadata:
     container images and other artifacts for supply chain security.
   annotations:
     github.com/project-slug: sigstore/cosign
+    github.com/dependabot: "true"
     backstage.io/source-location: url:https://github.com/sigstore/cosign
     openssf/scorecard-location: https://api.securityscorecards.dev/projects/github.com/sigstore/cosign
   tags:
@@ -904,6 +928,7 @@ metadata:
     Kubescape supports NSA, MITRE ATT&CK, and CIS benchmark frameworks.
   annotations:
     github.com/project-slug: kubescape/kubescape
+    github.com/dependabot: "true"
     backstage.io/source-location: url:https://github.com/kubescape/kubescape
     openssf/scorecard-location: https://api.securityscorecards.dev/projects/github.com/kubescape/kubescape
   tags:
@@ -945,6 +970,7 @@ metadata:
     identity-based access under a permissive MPL-2.0 license.
   annotations:
     github.com/project-slug: openbao/openbao
+    github.com/dependabot: "true"
     backstage.io/source-location: url:https://github.com/openbao/openbao
     openssf/scorecard-location: https://api.securityscorecards.dev/projects/github.com/openbao/openbao
   tags:
@@ -981,6 +1007,7 @@ metadata:
     cluster can decrypt the sealed secrets back into regular Kubernetes Secrets.
   annotations:
     github.com/project-slug: bitnami-labs/sealed-secrets
+    github.com/dependabot: "true"
     backstage.io/source-location: url:https://github.com/bitnami-labs/sealed-secrets
     openssf/scorecard-location: https://api.securityscorecards.dev/projects/github.com/bitnami-labs/sealed-secrets
   tags:
@@ -1016,6 +1043,7 @@ metadata:
     Vault, etc.) into Kubernetes as native Secret resources.
   annotations:
     github.com/project-slug: external-secrets/external-secrets
+    github.com/dependabot: "true"
     backstage.io/source-location: url:https://github.com/external-secrets/external-secrets
     openssf/scorecard-location: https://api.securityscorecards.dev/projects/github.com/external-secrets/external-secrets
   tags:
@@ -1054,6 +1082,7 @@ metadata:
     file format (YAML, JSON, ENV, INI). Ideal for GitOps secret management.
   annotations:
     github.com/project-slug: getsops/sops
+    github.com/dependabot: "true"
     backstage.io/source-location: url:https://github.com/getsops/sops
   tags:
     - secrets
@@ -1086,6 +1115,7 @@ metadata:
     for seamless secret injection into pods.
   annotations:
     github.com/project-slug: bank-vaults/bank-vaults
+    github.com/dependabot: "true"
     backstage.io/source-location: url:https://github.com/bank-vaults/bank-vaults
     openssf/scorecard-location: https://api.securityscorecards.dev/projects/github.com/bank-vaults/bank-vaults
   tags:
@@ -1127,6 +1157,7 @@ metadata:
     detects vulnerabilities, misconfigurations, secrets, and license issues.
   annotations:
     github.com/project-slug: aquasecurity/trivy
+    github.com/dependabot: "true"
     backstage.io/source-location: url:https://github.com/aquasecurity/trivy
     openssf/scorecard-location: https://api.securityscorecards.dev/projects/github.com/aquasecurity/trivy
   tags:
@@ -1162,6 +1193,7 @@ metadata:
     kernel-level instrumentation for real-time threat detection. A CNCF graduated project.
   annotations:
     github.com/project-slug: falcosecurity/falco
+    github.com/dependabot: "true"
     backstage.io/source-location: url:https://github.com/falcosecurity/falco
     openssf/scorecard-location: https://api.securityscorecards.dev/projects/github.com/falcosecurity/falco
   tags:
@@ -1199,6 +1231,7 @@ metadata:
     identify security issues in container images and software dependencies.
   annotations:
     github.com/project-slug: anchore/grype
+    github.com/dependabot: "true"
     backstage.io/source-location: url:https://github.com/anchore/grype
     openssf/scorecard-location: https://api.securityscorecards.dev/projects/github.com/anchore/grype
   tags:
@@ -1235,6 +1268,7 @@ metadata:
     output formats including SPDX, CycloneDX, and Syft's native JSON format.
   annotations:
     github.com/project-slug: anchore/syft
+    github.com/dependabot: "true"
     backstage.io/source-location: url:https://github.com/anchore/syft
     openssf/scorecard-location: https://api.securityscorecards.dev/projects/github.com/anchore/syft
   tags:
@@ -1271,6 +1305,7 @@ metadata:
     self-signed CAs. A CNCF graduated project essential for Kubernetes TLS.
   annotations:
     github.com/project-slug: cert-manager/cert-manager
+    github.com/dependabot: "true"
     backstage.io/source-location: url:https://github.com/cert-manager/cert-manager
     openssf/scorecard-location: https://api.securityscorecards.dev/projects/github.com/cert-manager/cert-manager
   tags:

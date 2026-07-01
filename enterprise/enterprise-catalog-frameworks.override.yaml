@@ -21,6 +21,7 @@ metadata:
     standard for Java enterprise development.
   annotations:
     github.com/project-slug: spring-projects/spring-boot
+    github.com/dependabot: "true"
     backstage.io/source-location: url:https://github.com/spring-projects/spring-boot
     openssf/scorecard-location: https://api.securityscorecards.dev/projects/github.com/spring-projects/spring-boot
   tags:
@@ -59,6 +60,7 @@ metadata:
     Backed by Red Hat and the wider Java community.
   annotations:
     github.com/project-slug: quarkusio/quarkus
+    github.com/dependabot: "true"
     backstage.io/source-location: url:https://github.com/quarkusio/quarkus
     openssf/scorecard-location: https://api.securityscorecards.dev/projects/github.com/quarkusio/quarkus
   tags:
@@ -99,6 +101,7 @@ metadata:
     Supports Java, Kotlin, and Groovy.
   annotations:
     github.com/project-slug: micronaut-projects/micronaut-core
+    github.com/dependabot: "true"
     backstage.io/source-location: url:https://github.com/micronaut-projects/micronaut-core
     openssf/scorecard-location: https://api.securityscorecards.dev/projects/github.com/micronaut-projects/micronaut-core
   tags:
@@ -138,6 +141,7 @@ metadata:
     and JavaScript. Ideal for high-throughput microservices and APIs.
   annotations:
     github.com/project-slug: eclipse-vertx/vert.x
+    github.com/dependabot: "true"
     backstage.io/source-location: url:https://github.com/eclipse-vertx/vert.x
     openssf/scorecard-location: https://api.securityscorecards.dev/projects/github.com/eclipse-vertx/vert.x
   tags:
@@ -177,6 +181,7 @@ metadata:
     Microsoft, Uber, and Netflix for production microservices.
   annotations:
     github.com/project-slug: fastapi/fastapi
+    github.com/dependabot: "true"
     backstage.io/source-location: url:https://github.com/fastapi/fastapi
   tags:
     - framework
@@ -215,6 +220,7 @@ metadata:
     decorators, and a modular architecture out of the box.
   annotations:
     github.com/project-slug: nestjs/nest
+    github.com/dependabot: "true"
     backstage.io/source-location: url:https://github.com/nestjs/nest
     openssf/scorecard-location: https://api.securityscorecards.dev/projects/github.com/nestjs/nest
   tags:
@@ -253,6 +259,7 @@ metadata:
     minimal footprint, speed, and clean routing model.
   annotations:
     github.com/project-slug: gin-gonic/gin
+    github.com/dependabot: "true"
     backstage.io/source-location: url:https://github.com/gin-gonic/gin
     openssf/scorecard-location: https://api.securityscorecards.dev/projects/github.com/gin-gonic/gin
   tags:
@@ -295,6 +302,7 @@ metadata:
     Next.js, Remix, and many other frontend frameworks.
   annotations:
     github.com/project-slug: facebook/react
+    github.com/dependabot: "true"
     backstage.io/source-location: url:https://github.com/facebook/react
     openssf/scorecard-location: https://api.securityscorecards.dev/projects/github.com/facebook/react
   tags:
@@ -333,6 +341,7 @@ metadata:
     and first-class TypeScript support built in.
   annotations:
     github.com/project-slug: angular/angular
+    github.com/dependabot: "true"
     backstage.io/source-location: url:https://github.com/angular/angular
     openssf/scorecard-location: https://api.securityscorecards.dev/projects/github.com/angular/angular
   tags:
@@ -371,6 +380,7 @@ metadata:
     existing enterprise projects.
   annotations:
     github.com/project-slug: vuejs/vue
+    github.com/dependabot: "true"
     backstage.io/source-location: url:https://github.com/vuejs/vue
     openssf/scorecard-location: https://api.securityscorecards.dev/projects/github.com/vuejs/vue
   tags:
@@ -409,6 +419,7 @@ metadata:
     The industry standard for production React applications.
   annotations:
     github.com/project-slug: vercel/next.js
+    github.com/dependabot: "true"
     backstage.io/source-location: url:https://github.com/vercel/next.js
     openssf/scorecard-location: https://api.securityscorecards.dev/projects/github.com/vercel/next.js
   tags:
@@ -448,6 +459,7 @@ metadata:
     no runtime overhead. Ideal for performance-critical enterprise UIs.
   annotations:
     github.com/project-slug: sveltejs/svelte
+    github.com/dependabot: "true"
     backstage.io/source-location: url:https://github.com/sveltejs/svelte
     openssf/scorecard-location: https://api.securityscorecards.dev/projects/github.com/sveltejs/svelte
   tags:
@@ -490,6 +502,7 @@ metadata:
     without needing dedicated frontend developers.
   annotations:
     github.com/project-slug: appsmithorg/appsmith
+    github.com/dependabot: "true"
     backstage.io/source-location: url:https://github.com/appsmithorg/appsmith
     openssf/scorecard-location: https://api.securityscorecards.dev/projects/github.com/appsmithorg/appsmith
   tags:
@@ -528,6 +541,7 @@ metadata:
     and built-in role-based access control.
   annotations:
     github.com/project-slug: Budibase/budibase
+    github.com/dependabot: "true"
     backstage.io/source-location: url:https://github.com/Budibase/budibase
     openssf/scorecard-location: https://api.securityscorecards.dev/projects/github.com/Budibase/budibase
   tags:
@@ -565,6 +579,7 @@ metadata:
     architecture suitable for enterprise data governance requirements.
   annotations:
     github.com/project-slug: activepieces/activepieces
+    github.com/dependabot: "true"
     backstage.io/source-location: url:https://github.com/activepieces/activepieces
   tags:
     - low-code

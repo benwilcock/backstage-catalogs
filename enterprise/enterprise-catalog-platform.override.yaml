@@ -16,6 +16,7 @@ metadata:
     graduated project that forms the foundation of modern cloud infrastructure.
   annotations:
     github.com/project-slug: kubernetes/kubernetes
+    github.com/dependabot: "true"
     backstage.io/source-location: url:https://github.com/kubernetes/kubernetes
     openssf/scorecard-location: https://api.securityscorecards.dev/projects/github.com/kubernetes/kubernetes
   tags:
@@ -52,6 +53,7 @@ metadata:
     Kubernetes and Docker, managing the complete container lifecycle.
   annotations:
     github.com/project-slug: containerd/containerd
+    github.com/dependabot: "true"
     backstage.io/source-location: url:https://github.com/containerd/containerd
     openssf/scorecard-location: https://api.securityscorecards.dev/projects/github.com/containerd/containerd
   tags:
@@ -88,6 +90,7 @@ metadata:
     run containers as rootless for improved security.
   annotations:
     github.com/project-slug: containers/podman
+    github.com/dependabot: "true"
     backstage.io/source-location: url:https://github.com/containers/podman
     openssf/scorecard-location: https://api.securityscorecards.dev/projects/github.com/containers/podman
   tags:
@@ -125,6 +128,7 @@ metadata:
     shareable packages of pre-configured Kubernetes resources.
   annotations:
     github.com/project-slug: helm/helm
+    github.com/dependabot: "true"
     backstage.io/source-location: url:https://github.com/helm/helm
     openssf/scorecard-location: https://api.securityscorecards.dev/projects/github.com/helm/helm
   tags:
@@ -162,6 +166,7 @@ metadata:
     into a single binary under 100MB with reduced memory footprint.
   annotations:
     github.com/project-slug: k3s-io/k3s
+    github.com/dependabot: "true"
     backstage.io/source-location: url:https://github.com/k3s-io/k3s
     openssf/scorecard-location: https://api.securityscorecards.dev/projects/github.com/k3s-io/k3s
   tags:
@@ -203,6 +208,7 @@ metadata:
     for microservice architectures without changing application code.
   annotations:
     github.com/project-slug: istio/istio
+    github.com/dependabot: "true"
     backstage.io/source-location: url:https://github.com/istio/istio
     openssf/scorecard-location: https://api.securityscorecards.dev/projects/github.com/istio/istio
   tags:
@@ -241,6 +247,7 @@ metadata:
     overhead. A CNCF graduated project focused on simplicity and performance.
   annotations:
     github.com/project-slug: linkerd/linkerd2
+    github.com/dependabot: "true"
     backstage.io/source-location: url:https://github.com/linkerd/linkerd2
     openssf/scorecard-location: https://api.securityscorecards.dev/projects/github.com/linkerd/linkerd2
   tags:
@@ -278,6 +285,7 @@ metadata:
     A CNCF graduated project powering modern L7 networking.
   annotations:
     github.com/project-slug: envoyproxy/envoy
+    github.com/dependabot: "true"
     backstage.io/source-location: url:https://github.com/envoyproxy/envoy
     openssf/scorecard-location: https://api.securityscorecards.dev/projects/github.com/envoyproxy/envoy
   tags:
@@ -314,6 +322,7 @@ metadata:
     network policy enforcement, and deep visibility. A CNCF graduated project.
   annotations:
     github.com/project-slug: cilium/cilium
+    github.com/dependabot: "true"
     backstage.io/source-location: url:https://github.com/cilium/cilium
     openssf/scorecard-location: https://api.securityscorecards.dev/projects/github.com/cilium/cilium
   tags:
@@ -351,6 +360,7 @@ metadata:
     with network policy enforcement for Kubernetes clusters.
   annotations:
     github.com/project-slug: projectcalico/calico
+    github.com/dependabot: "true"
     backstage.io/source-location: url:https://github.com/projectcalico/calico
     openssf/scorecard-location: https://api.securityscorecards.dev/projects/github.com/projectcalico/calico
   tags:
@@ -391,6 +401,7 @@ metadata:
     and plugin extensibility for managing APIs at enterprise scale.
   annotations:
     github.com/project-slug: Kong/kong
+    github.com/dependabot: "true"
     backstage.io/source-location: url:https://github.com/Kong/kong
     openssf/scorecard-location: https://api.securityscorecards.dev/projects/github.com/Kong/kong
   tags:
@@ -426,6 +437,7 @@ metadata:
     upstream, canary release, and fine-grained routing.
   annotations:
     github.com/project-slug: apache/apisix
+    github.com/dependabot: "true"
     backstage.io/source-location: url:https://github.com/apache/apisix
     openssf/scorecard-location: https://api.securityscorecards.dev/projects/github.com/apache/apisix
   tags:
@@ -461,6 +473,7 @@ metadata:
     automatically discovers services with native Let's Encrypt support.
   annotations:
     github.com/project-slug: traefik/traefik
+    github.com/dependabot: "true"
     backstage.io/source-location: url:https://github.com/traefik/traefik
     openssf/scorecard-location: https://api.securityscorecards.dev/projects/github.com/traefik/traefik
   tags:
@@ -496,6 +509,7 @@ metadata:
     balancer, powering critical infrastructure at major enterprises globally.
   annotations:
     github.com/project-slug: haproxy/haproxy
+    github.com/dependabot: "true"
     backstage.io/source-location: url:https://github.com/haproxy/haproxy
     openssf/scorecard-location: https://api.securityscorecards.dev/projects/github.com/haproxy/haproxy
   tags:
@@ -531,6 +545,7 @@ metadata:
     for Kubernetes ingress. A CNCF incubating project.
   annotations:
     github.com/project-slug: emissary-ingress/emissary
+    github.com/dependabot: "true"
     backstage.io/source-location: url:https://github.com/emissary-ingress/emissary
     openssf/scorecard-location: https://api.securityscorecards.dev/projects/github.com/emissary-ingress/emissary
   tags:
@@ -574,6 +589,7 @@ metadata:
     known for its stability, rich feature set, and low resource consumption.
   annotations:
     github.com/project-slug: nginx/nginx
+    github.com/dependabot: "true"
     backstage.io/source-location: url:https://github.com/nginx/nginx
     openssf/scorecard-location: https://api.securityscorecards.dev/projects/github.com/nginx/nginx
   tags:
@@ -609,6 +625,7 @@ metadata:
     secure, efficient, and extensible HTTP services platform.
   annotations:
     github.com/project-slug: apache/httpd
+    github.com/dependabot: "true"
     backstage.io/source-location: url:https://github.com/apache/httpd
     openssf/scorecard-location: https://api.securityscorecards.dev/projects/github.com/apache/httpd
   tags:
@@ -643,6 +660,7 @@ metadata:
     automatic TLS certificate management, and a modular architecture.
   annotations:
     github.com/project-slug: caddyserver/caddy
+    github.com/dependabot: "true"
     backstage.io/source-location: url:https://github.com/caddyserver/caddy
     openssf/scorecard-location: https://api.securityscorecards.dev/projects/github.com/caddyserver/caddy
   tags:
@@ -678,6 +696,7 @@ metadata:
     content delivery with configurable caching policies via VCL.
   annotations:
     github.com/project-slug: varnishcache/varnish-cache
+    github.com/dependabot: "true"
     backstage.io/source-location: url:https://github.com/varnishcache/varnish-cache
     openssf/scorecard-location: https://api.securityscorecards.dev/projects/github.com/varnishcache/varnish-cache
   tags:
@@ -714,6 +733,7 @@ metadata:
     dynamic gateways that handle extreme concurrency.
   annotations:
     github.com/project-slug: openresty/openresty
+    github.com/dependabot: "true"
     backstage.io/source-location: url:https://github.com/openresty/openresty
     openssf/scorecard-location: https://api.securityscorecards.dev/projects/github.com/openresty/openresty
   tags:
@@ -754,6 +774,7 @@ metadata:
     monitoring. A CNCF graduated project with a powerful query language (PromQL).
   annotations:
     github.com/project-slug: prometheus/prometheus
+    github.com/dependabot: "true"
     backstage.io/source-location: url:https://github.com/prometheus/prometheus
     openssf/scorecard-location: https://api.securityscorecards.dev/projects/github.com/prometheus/prometheus
   tags:
@@ -791,6 +812,7 @@ metadata:
     logs, and traces from any storage backend with rich, interactive dashboards.
   annotations:
     github.com/project-slug: grafana/grafana
+    github.com/dependabot: "true"
     backstage.io/source-location: url:https://github.com/grafana/grafana
     openssf/scorecard-location: https://api.securityscorecards.dev/projects/github.com/grafana/grafana
   tags:
@@ -829,6 +851,7 @@ metadata:
     retention, and downsampling across multiple Prometheus instances.
   annotations:
     github.com/project-slug: thanos-io/thanos
+    github.com/dependabot: "true"
     backstage.io/source-location: url:https://github.com/thanos-io/thanos
     openssf/scorecard-location: https://api.securityscorecards.dev/projects/github.com/thanos-io/thanos
   tags:
@@ -868,6 +891,7 @@ metadata:
     API for operating Prometheus at massive scale.
   annotations:
     github.com/project-slug: cortexproject/cortex
+    github.com/dependabot: "true"
     backstage.io/source-location: url:https://github.com/cortexproject/cortex
     openssf/scorecard-location: https://api.securityscorecards.dev/projects/github.com/cortexproject/cortex
   tags:
@@ -905,6 +929,7 @@ metadata:
     alerts, then sends notifications via email, PagerDuty, Slack, and more.
   annotations:
     github.com/project-slug: prometheus/alertmanager
+    github.com/dependabot: "true"
     backstage.io/source-location: url:https://github.com/prometheus/alertmanager
     openssf/scorecard-location: https://api.securityscorecards.dev/projects/github.com/prometheus/alertmanager
   tags:
@@ -947,6 +972,7 @@ metadata:
     log content, making it cost-effective and easy to operate.
   annotations:
     github.com/project-slug: grafana/loki
+    github.com/dependabot: "true"
     backstage.io/source-location: url:https://github.com/grafana/loki
     openssf/scorecard-location: https://api.securityscorecards.dev/projects/github.com/grafana/loki
   tags:
@@ -982,6 +1008,7 @@ metadata:
     from backend systems. A CNCF graduated project.
   annotations:
     github.com/project-slug: fluent/fluentd
+    github.com/dependabot: "true"
     backstage.io/source-location: url:https://github.com/fluent/fluentd
     openssf/scorecard-location: https://api.securityscorecards.dev/projects/github.com/fluent/fluentd
   tags:
@@ -1017,6 +1044,7 @@ metadata:
     low CPU and memory footprint, ideal for edge and container deployments.
   annotations:
     github.com/project-slug: fluent/fluent-bit
+    github.com/dependabot: "true"
     backstage.io/source-location: url:https://github.com/fluent/fluent-bit
     openssf/scorecard-location: https://api.securityscorecards.dev/projects/github.com/fluent/fluent-bit
   tags:
@@ -1053,6 +1081,7 @@ metadata:
     reliability and performance with a rich ecosystem of sources and sinks.
   annotations:
     github.com/project-slug: vectordotdev/vector
+    github.com/dependabot: "true"
     backstage.io/source-location: url:https://github.com/vectordotdev/vector
     openssf/scorecard-location: https://api.securityscorecards.dev/projects/github.com/vectordotdev/vector
   tags:
@@ -1088,6 +1117,7 @@ metadata:
     lower storage costs and a simple, easy-to-operate architecture.
   annotations:
     github.com/project-slug: openobserve/openobserve
+    github.com/dependabot: "true"
     backstage.io/source-location: url:https://github.com/openobserve/openobserve
   tags:
     - logging
@@ -1126,6 +1156,7 @@ metadata:
     optimization, root cause analysis, and service dependency analysis.
   annotations:
     github.com/project-slug: jaegertracing/jaeger
+    github.com/dependabot: "true"
     backstage.io/source-location: url:https://github.com/jaegertracing/jaeger
     openssf/scorecard-location: https://api.securityscorecards.dev/projects/github.com/jaegertracing/jaeger
   tags:
@@ -1164,6 +1195,7 @@ metadata:
     collecting traces, metrics, and logs from instrumented applications.
   annotations:
     github.com/project-slug: open-telemetry/opentelemetry-collector
+    github.com/dependabot: "true"
     backstage.io/source-location: url:https://github.com/open-telemetry/opentelemetry-collector
     openssf/scorecard-location: https://api.securityscorecards.dev/projects/github.com/open-telemetry/opentelemetry-collector
   tags:
@@ -1201,6 +1233,7 @@ metadata:
     object storage to operate. Cost-effective tracing at enterprise scale.
   annotations:
     github.com/project-slug: grafana/tempo
+    github.com/dependabot: "true"
     backstage.io/source-location: url:https://github.com/grafana/tempo
     openssf/scorecard-location: https://api.securityscorecards.dev/projects/github.com/grafana/tempo
   tags:
@@ -1236,6 +1269,7 @@ metadata:
     of the original open source distributed tracing systems.
   annotations:
     github.com/project-slug: openzipkin/zipkin
+    github.com/dependabot: "true"
     backstage.io/source-location: url:https://github.com/openzipkin/zipkin
     openssf/scorecard-location: https://api.securityscorecards.dev/projects/github.com/openzipkin/zipkin
   tags:
@@ -1270,6 +1304,7 @@ metadata:
     Designed for microservices, cloud-native, and container-based architectures.
   annotations:
     github.com/project-slug: apache/skywalking
+    github.com/dependabot: "true"
     backstage.io/source-location: url:https://github.com/apache/skywalking
     openssf/scorecard-location: https://api.securityscorecards.dev/projects/github.com/apache/skywalking
   tags:
@@ -1306,6 +1341,7 @@ metadata:
     improve developer productivity and reduce cognitive load.
   annotations:
     github.com/project-slug: redhat-developer/rhdh
+    github.com/dependabot: "true"
     backstage.io/source-location: url:https://github.com/redhat-developer/rhdh
     jira/project-key: RHIDP
     backstage.io/techdocs-ref: url:https://github.com/redhat-developer/rhdh

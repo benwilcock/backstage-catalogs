@@ -16,6 +16,7 @@ metadata:
     end-to-end ML pipelines, experiment tracking, and model serving.
   annotations:
     github.com/project-slug: kubeflow/kubeflow
+    github.com/dependabot: "true"
     backstage.io/source-location: url:https://github.com/kubeflow/kubeflow
     openssf/scorecard-location: https://api.securityscorecards.dev/projects/github.com/kubeflow/kubeflow
   tags:
@@ -54,6 +55,7 @@ metadata:
     packaging, and a model registry for team collaboration on ML projects.
   annotations:
     github.com/project-slug: mlflow/mlflow
+    github.com/dependabot: "true"
     backstage.io/source-location: url:https://github.com/mlflow/mlflow
     openssf/scorecard-location: https://api.securityscorecards.dev/projects/github.com/mlflow/mlflow
   tags:
@@ -90,6 +92,7 @@ metadata:
     libraries for training (Ray Train), serving (Ray Serve), tuning, and RL.
   annotations:
     github.com/project-slug: ray-project/ray
+    github.com/dependabot: "true"
     backstage.io/source-location: url:https://github.com/ray-project/ray
     openssf/scorecard-location: https://api.securityscorecards.dev/projects/github.com/ray-project/ray
   tags:
@@ -125,6 +128,7 @@ metadata:
     management, delivering state-of-the-art LLM serving performance.
   annotations:
     github.com/project-slug: vllm-project/vllm
+    github.com/dependabot: "true"
     backstage.io/source-location: url:https://github.com/vllm-project/vllm
   tags:
     - ai
@@ -160,6 +164,7 @@ metadata:
     models including Llama, Mistral, Gemma, and many more.
   annotations:
     github.com/project-slug: ollama/ollama
+    github.com/dependabot: "true"
     backstage.io/source-location: url:https://github.com/ollama/ollama
   tags:
     - ai
@@ -199,6 +204,7 @@ metadata:
     batch processing, SQL, streaming, machine learning, and graph processing.
   annotations:
     github.com/project-slug: apache/spark
+    github.com/dependabot: "true"
     backstage.io/source-location: url:https://github.com/apache/spark
     openssf/scorecard-location: https://api.securityscorecards.dev/projects/github.com/apache/spark
   tags:
@@ -237,6 +243,7 @@ metadata:
     processing semantics, event-time processing, and high throughput.
   annotations:
     github.com/project-slug: apache/flink
+    github.com/dependabot: "true"
     backstage.io/source-location: url:https://github.com/apache/flink
     openssf/scorecard-location: https://api.securityscorecards.dev/projects/github.com/apache/flink
   tags:
@@ -273,6 +280,7 @@ metadata:
     using Python DAGs to define complex data pipeline dependencies.
   annotations:
     github.com/project-slug: apache/airflow
+    github.com/dependabot: "true"
     backstage.io/source-location: url:https://github.com/apache/airflow
     openssf/scorecard-location: https://api.securityscorecards.dev/projects/github.com/apache/airflow
   tags:
@@ -309,6 +317,7 @@ metadata:
     monitoring data flows with provenance tracking and back-pressure handling.
   annotations:
     github.com/project-slug: apache/nifi
+    github.com/dependabot: "true"
     backstage.io/source-location: url:https://github.com/apache/nifi
     openssf/scorecard-location: https://api.securityscorecards.dev/projects/github.com/apache/nifi
   tags:
@@ -345,6 +354,7 @@ metadata:
     change, enabling real-time data integration and event-driven architectures.
   annotations:
     github.com/project-slug: debezium/debezium
+    github.com/dependabot: "true"
     backstage.io/source-location: url:https://github.com/debezium/debezium
     openssf/scorecard-location: https://api.securityscorecards.dev/projects/github.com/debezium/debezium
   tags:
@@ -388,6 +398,7 @@ metadata:
     diverse systems with a lightweight, embeddable routing and mediation engine.
   annotations:
     github.com/project-slug: apache/camel
+    github.com/dependabot: "true"
     backstage.io/source-location: url:https://github.com/apache/camel
     openssf/scorecard-location: https://api.securityscorecards.dev/projects/github.com/apache/camel
   tags:
@@ -425,6 +436,7 @@ metadata:
     topics, users, and connectors as Kubernetes-native resources. A CNCF project.
   annotations:
     github.com/project-slug: strimzi/strimzi-kafka-operator
+    github.com/dependabot: "true"
     backstage.io/source-location: url:https://github.com/strimzi/strimzi-kafka-operator
     openssf/scorecard-location: https://api.securityscorecards.dev/projects/github.com/strimzi/strimzi-kafka-operator
   tags:
@@ -465,6 +477,7 @@ metadata:
     simple procedural code with automatic retries and failure handling.
   annotations:
     github.com/project-slug: temporalio/temporal
+    github.com/dependabot: "true"
     backstage.io/source-location: url:https://github.com/temporalio/temporal
     openssf/scorecard-location: https://api.securityscorecards.dev/projects/github.com/temporalio/temporal
   tags:
@@ -501,6 +514,7 @@ metadata:
     complex DAG and step-based workflows for CI/CD, data, and ML pipelines.
   annotations:
     github.com/project-slug: argoproj/argo-workflows
+    github.com/dependabot: "true"
     backstage.io/source-location: url:https://github.com/argoproj/argo-workflows
     openssf/scorecard-location: https://api.securityscorecards.dev/projects/github.com/argoproj/argo-workflows
   tags:
@@ -541,6 +555,7 @@ metadata:
     for defining data pipelines, ETL jobs, and business process automation.
   annotations:
     github.com/project-slug: kestra-io/kestra
+    github.com/dependabot: "true"
     backstage.io/source-location: url:https://github.com/kestra-io/kestra
     openssf/scorecard-location: https://api.securityscorecards.dev/projects/github.com/kestra-io/kestra
   tags:
@@ -580,6 +595,7 @@ metadata:
     for provisioning cloud resources with full Terraform compatibility.
   annotations:
     github.com/project-slug: opentofu/opentofu
+    github.com/dependabot: "true"
     backstage.io/source-location: url:https://github.com/opentofu/opentofu
   tags:
     - iac
@@ -615,6 +631,7 @@ metadata:
     Ansible uses human-readable YAML playbooks with agentless architecture.
   annotations:
     github.com/project-slug: ansible/ansible
+    github.com/dependabot: "true"
     backstage.io/source-location: url:https://github.com/ansible/ansible
     openssf/scorecard-location: https://api.securityscorecards.dev/projects/github.com/ansible/ansible
   tags:
@@ -651,6 +668,7 @@ metadata:
     Pulumi provides a unified programming model for multi-cloud infrastructure.
   annotations:
     github.com/project-slug: pulumi/pulumi
+    github.com/dependabot: "true"
     backstage.io/source-location: url:https://github.com/pulumi/pulumi
     openssf/scorecard-location: https://api.securityscorecards.dev/projects/github.com/pulumi/pulumi
   tags:
@@ -688,6 +706,7 @@ metadata:
     brings cloud APIs into Kubernetes as CRDs. A CNCF graduated project.
   annotations:
     github.com/project-slug: crossplane/crossplane
+    github.com/dependabot: "true"
     backstage.io/source-location: url:https://github.com/crossplane/crossplane
     openssf/scorecard-location: https://api.securityscorecards.dev/projects/github.com/crossplane/crossplane
   tags:
@@ -727,6 +746,7 @@ metadata:
     systems are configured consistently across environments at scale.
   annotations:
     github.com/project-slug: puppetlabs/puppet
+    github.com/dependabot: "true"
     backstage.io/source-location: url:https://github.com/puppetlabs/puppet
     openssf/scorecard-location: https://api.securityscorecards.dev/projects/github.com/puppetlabs/puppet
   tags:
@@ -766,6 +786,7 @@ metadata:
     reliability, and scalability powering exabyte-scale storage clusters.
   annotations:
     github.com/project-slug: ceph/ceph
+    github.com/dependabot: "true"
     backstage.io/source-location: url:https://github.com/ceph/ceph
     openssf/scorecard-location: https://api.securityscorecards.dev/projects/github.com/ceph/ceph
   tags:
@@ -804,6 +825,7 @@ metadata:
     and microservices. A CNCF graduated project.
   annotations:
     github.com/project-slug: longhorn/longhorn
+    github.com/dependabot: "true"
     backstage.io/source-location: url:https://github.com/longhorn/longhorn
     openssf/scorecard-location: https://api.securityscorecards.dev/projects/github.com/longhorn/longhorn
   tags:
@@ -842,6 +864,7 @@ metadata:
     Rook automates Ceph deployment and management on Kubernetes.
   annotations:
     github.com/project-slug: rook/rook
+    github.com/dependabot: "true"
     backstage.io/source-location: url:https://github.com/rook/rook
     openssf/scorecard-location: https://api.securityscorecards.dev/projects/github.com/rook/rook
   tags:
@@ -881,6 +904,7 @@ metadata:
     design inspired by Facebook's Haystack paper, with S3 API compatibility.
   annotations:
     github.com/project-slug: seaweedfs/seaweedfs
+    github.com/dependabot: "true"
     backstage.io/source-location: url:https://github.com/seaweedfs/seaweedfs
   tags:
     - storage
@@ -913,6 +937,7 @@ metadata:
     different workload requirements. A CNCF graduated project.
   annotations:
     github.com/project-slug: openebs/openebs
+    github.com/dependabot: "true"
     backstage.io/source-location: url:https://github.com/openebs/openebs
     openssf/scorecard-location: https://api.securityscorecards.dev/projects/github.com/openebs/openebs
   tags:
@@ -955,6 +980,7 @@ metadata:
     architecture) components for building modern applications on Kubernetes.
   annotations:
     github.com/project-slug: knative/serving
+    github.com/dependabot: "true"
     backstage.io/source-location: url:https://github.com/knative/serving
     openssf/scorecard-location: https://api.securityscorecards.dev/projects/github.com/knative/serving
   tags:
@@ -993,6 +1019,7 @@ metadata:
     scaling based on external event sources like Kafka, RabbitMQ, or cloud queues.
   annotations:
     github.com/project-slug: kedacore/keda
+    github.com/dependabot: "true"
     backstage.io/source-location: url:https://github.com/kedacore/keda
     openssf/scorecard-location: https://api.securityscorecards.dev/projects/github.com/kedacore/keda
   tags:
@@ -1032,6 +1059,7 @@ metadata:
     runs on Linux or Windows, with auto-scaling and metrics built in.
   annotations:
     github.com/project-slug: openfaas/faas
+    github.com/dependabot: "true"
     backstage.io/source-location: url:https://github.com/openfaas/faas
     openssf/scorecard-location: https://api.securityscorecards.dev/projects/github.com/openfaas/faas
   tags:
@@ -1067,6 +1095,7 @@ metadata:
     Dapr provides building blocks for pub/sub, state, secrets, and service invocation.
   annotations:
     github.com/project-slug: dapr/dapr
+    github.com/dependabot: "true"
     backstage.io/source-location: url:https://github.com/dapr/dapr
     openssf/scorecard-location: https://api.securityscorecards.dev/projects/github.com/dapr/dapr
   tags:
@@ -1104,6 +1133,7 @@ metadata:
     with auto-scaling, GPU support, and ultra-low latency function execution.
   annotations:
     github.com/project-slug: nuclio/nuclio
+    github.com/dependabot: "true"
     backstage.io/source-location: url:https://github.com/nuclio/nuclio
     openssf/scorecard-location: https://api.securityscorecards.dev/projects/github.com/nuclio/nuclio
   tags:

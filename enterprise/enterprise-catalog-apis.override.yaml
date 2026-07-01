@@ -18,6 +18,7 @@ metadata:
     The spec is generated from Grafana source code using go-swagger.
   annotations:
     github.com/project-slug: grafana/grafana
+    github.com/dependabot: "true"
     backstage.io/source-location: url:https://github.com/grafana/grafana
   tags:
     - monitoring
@@ -51,6 +52,7 @@ metadata:
     jaeger-idl shared interface definition repository.
   annotations:
     github.com/project-slug: jaegertracing/jaeger-idl
+    github.com/dependabot: "true"
     backstage.io/source-location: url:https://github.com/jaegertracing/jaeger-idl
   tags:
     - tracing
@@ -88,6 +90,7 @@ metadata:
     Published and maintained at api.qdrant.tech.
   annotations:
     github.com/project-slug: qdrant/qdrant
+    github.com/dependabot: "true"
     backstage.io/source-location: url:https://github.com/qdrant/qdrant
   tags:
     - vector-database
@@ -125,6 +128,7 @@ metadata:
     Enables building scalable AI applications with vector similarity search.
   annotations:
     github.com/project-slug: milvus-io/milvus
+    github.com/dependabot: "true"
     backstage.io/source-location: url:https://github.com/milvus-io/milvus
   tags:
     - vector-database
@@ -159,6 +163,7 @@ metadata:
     and integration with multiple vectoriser modules.
   annotations:
     github.com/project-slug: weaviate/weaviate
+    github.com/dependabot: "true"
     backstage.io/source-location: url:https://github.com/weaviate/weaviate
   tags:
     - vector-database
@@ -197,6 +202,7 @@ metadata:
     programmatic access to all administrative functions of Keycloak.
   annotations:
     github.com/project-slug: keycloak/keycloak
+    github.com/dependabot: "true"
     backstage.io/source-location: url:https://github.com/keycloak/keycloak
   tags:
     - identity
@@ -236,6 +242,7 @@ metadata:
     Used by the Argo CD CLI and web UI.
   annotations:
     github.com/project-slug: argoproj/argo-cd
+    github.com/dependabot: "true"
     backstage.io/source-location: url:https://github.com/argoproj/argo-cd
   tags:
     - gitops
@@ -270,6 +277,7 @@ metadata:
     Kubernetes-native workflow orchestration operations.
   annotations:
     github.com/project-slug: argoproj/argo-workflows
+    github.com/dependabot: "true"
     backstage.io/source-location: url:https://github.com/argoproj/argo-workflows
   tags:
     - workflow
@@ -304,6 +312,7 @@ metadata:
     robot accounts, and vulnerability scan results.
   annotations:
     github.com/project-slug: goharbor/harbor
+    github.com/dependabot: "true"
     backstage.io/source-location: url:https://github.com/goharbor/harbor
   tags:
     - container-registry
@@ -341,6 +350,7 @@ metadata:
     and facets. The backbone of the Backstage Internal Developer Portal.
   annotations:
     github.com/project-slug: backstage/backstage
+    github.com/dependabot: "true"
     backstage.io/source-location: url:https://github.com/backstage/backstage
   tags:
     - developer-portal
