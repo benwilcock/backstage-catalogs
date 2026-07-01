@@ -17,6 +17,7 @@ metadata:
   annotations:
     github.com/project-slug: postgres/postgres
     backstage.io/source-location: url:https://github.com/postgres/postgres
+    openssf/scorecard-location: https://api.securityscorecards.dev/projects/github.com/postgres/postgres
   tags:
     - database
     - relational
@@ -51,6 +52,7 @@ metadata:
   annotations:
     github.com/project-slug: mysql/mysql-server
     backstage.io/source-location: url:https://github.com/mysql/mysql-server
+    openssf/scorecard-location: https://api.securityscorecards.dev/projects/github.com/mysql/mysql-server
   tags:
     - database
     - relational
@@ -85,6 +87,7 @@ metadata:
   annotations:
     github.com/project-slug: MariaDB/server
     backstage.io/source-location: url:https://github.com/MariaDB/server
+    openssf/scorecard-location: https://api.securityscorecards.dev/projects/github.com/MariaDB/server
   tags:
     - database
     - relational
@@ -119,6 +122,7 @@ metadata:
   annotations:
     github.com/project-slug: pingcap/tidb
     backstage.io/source-location: url:https://github.com/pingcap/tidb
+    openssf/scorecard-location: https://api.securityscorecards.dev/projects/github.com/pingcap/tidb
   tags:
     - database
     - relational
@@ -154,6 +158,7 @@ metadata:
   annotations:
     github.com/project-slug: vitessio/vitess
     backstage.io/source-location: url:https://github.com/vitessio/vitess
+    openssf/scorecard-location: https://api.securityscorecards.dev/projects/github.com/vitessio/vitess
   tags:
     - database
     - relational
@@ -194,6 +199,7 @@ metadata:
   annotations:
     github.com/project-slug: apache/cassandra
     backstage.io/source-location: url:https://github.com/apache/cassandra
+    openssf/scorecard-location: https://api.securityscorecards.dev/projects/github.com/apache/cassandra
   tags:
     - database
     - nosql
@@ -229,6 +235,7 @@ metadata:
   annotations:
     github.com/project-slug: scylladb/scylladb
     backstage.io/source-location: url:https://github.com/scylladb/scylladb
+    openssf/scorecard-location: https://api.securityscorecards.dev/projects/github.com/scylladb/scylladb
   tags:
     - database
     - nosql
@@ -264,6 +271,7 @@ metadata:
   annotations:
     github.com/project-slug: apache/couchdb
     backstage.io/source-location: url:https://github.com/apache/couchdb
+    openssf/scorecard-location: https://api.securityscorecards.dev/projects/github.com/apache/couchdb
   tags:
     - database
     - nosql
@@ -298,6 +306,7 @@ metadata:
   annotations:
     github.com/project-slug: arangodb/arangodb
     backstage.io/source-location: url:https://github.com/arangodb/arangodb
+    openssf/scorecard-location: https://api.securityscorecards.dev/projects/github.com/arangodb/arangodb
   tags:
     - database
     - nosql
@@ -334,6 +343,7 @@ metadata:
   annotations:
     github.com/project-slug: FerretDB/FerretDB
     backstage.io/source-location: url:https://github.com/FerretDB/FerretDB
+    openssf/scorecard-location: https://api.securityscorecards.dev/projects/github.com/FerretDB/FerretDB
   tags:
     - database
     - nosql
@@ -375,6 +385,7 @@ metadata:
   annotations:
     github.com/project-slug: valkey-io/valkey
     backstage.io/source-location: url:https://github.com/valkey-io/valkey
+    openssf/scorecard-location: https://api.securityscorecards.dev/projects/github.com/valkey-io/valkey
   tags:
     - database
     - key-value
@@ -411,6 +422,7 @@ metadata:
   annotations:
     github.com/project-slug: redis/redis
     backstage.io/source-location: url:https://github.com/redis/redis
+    openssf/scorecard-location: https://api.securityscorecards.dev/projects/github.com/redis/redis
   tags:
     - database
     - key-value
@@ -446,6 +458,7 @@ metadata:
   annotations:
     github.com/project-slug: memcached/memcached
     backstage.io/source-location: url:https://github.com/memcached/memcached
+    openssf/scorecard-location: https://api.securityscorecards.dev/projects/github.com/memcached/memcached
   tags:
     - database
     - key-value
@@ -481,6 +494,7 @@ metadata:
   annotations:
     github.com/project-slug: etcd-io/etcd
     backstage.io/source-location: url:https://github.com/etcd-io/etcd
+    openssf/scorecard-location: https://api.securityscorecards.dev/projects/github.com/etcd-io/etcd
   tags:
     - database
     - key-value
@@ -517,6 +531,7 @@ metadata:
   annotations:
     github.com/project-slug: apache/ignite
     backstage.io/source-location: url:https://github.com/apache/ignite
+    openssf/scorecard-location: https://api.securityscorecards.dev/projects/github.com/apache/ignite
   tags:
     - database
     - key-value
@@ -557,6 +572,7 @@ metadata:
   annotations:
     github.com/project-slug: influxdata/influxdb
     backstage.io/source-location: url:https://github.com/influxdata/influxdb
+    openssf/scorecard-location: https://api.securityscorecards.dev/projects/github.com/influxdata/influxdb
   tags:
     - database
     - time-series
@@ -593,6 +609,7 @@ metadata:
   annotations:
     github.com/project-slug: questdb/questdb
     backstage.io/source-location: url:https://github.com/questdb/questdb
+    openssf/scorecard-location: https://api.securityscorecards.dev/projects/github.com/questdb/questdb
   tags:
     - database
     - time-series
@@ -627,6 +644,7 @@ metadata:
   annotations:
     github.com/project-slug: VictoriaMetrics/VictoriaMetrics
     backstage.io/source-location: url:https://github.com/VictoriaMetrics/VictoriaMetrics
+    openssf/scorecard-location: https://api.securityscorecards.dev/projects/github.com/VictoriaMetrics/VictoriaMetrics
   tags:
     - database
     - time-series
@@ -662,6 +680,7 @@ metadata:
   annotations:
     github.com/project-slug: taosdata/TDengine
     backstage.io/source-location: url:https://github.com/taosdata/TDengine
+    openssf/scorecard-location: https://api.securityscorecards.dev/projects/github.com/taosdata/TDengine
   tags:
     - database
     - time-series
@@ -696,6 +715,7 @@ metadata:
   annotations:
     github.com/project-slug: apache/iotdb
     backstage.io/source-location: url:https://github.com/apache/iotdb
+    openssf/scorecard-location: https://api.securityscorecards.dev/projects/github.com/apache/iotdb
   tags:
     - database
     - time-series
@@ -734,6 +754,7 @@ metadata:
   annotations:
     github.com/project-slug: neo4j/neo4j
     backstage.io/source-location: url:https://github.com/neo4j/neo4j
+    openssf/scorecard-location: https://api.securityscorecards.dev/projects/github.com/neo4j/neo4j
   tags:
     - database
     - graph
@@ -768,6 +789,7 @@ metadata:
   annotations:
     github.com/project-slug: JanusGraph/janusgraph
     backstage.io/source-location: url:https://github.com/JanusGraph/janusgraph
+    openssf/scorecard-location: https://api.securityscorecards.dev/projects/github.com/JanusGraph/janusgraph
   tags:
     - database
     - graph
@@ -804,6 +826,7 @@ metadata:
   annotations:
     github.com/project-slug: apache/age
     backstage.io/source-location: url:https://github.com/apache/age
+    openssf/scorecard-location: https://api.securityscorecards.dev/projects/github.com/apache/age
   tags:
     - database
     - graph
@@ -841,6 +864,7 @@ metadata:
   annotations:
     github.com/project-slug: ArcadeData/arcadedb
     backstage.io/source-location: url:https://github.com/ArcadeData/arcadedb
+    openssf/scorecard-location: https://api.securityscorecards.dev/projects/github.com/ArcadeData/arcadedb
   tags:
     - database
     - graph
@@ -875,6 +899,7 @@ metadata:
   annotations:
     github.com/project-slug: vesoft-inc/nebula
     backstage.io/source-location: url:https://github.com/vesoft-inc/nebula
+    openssf/scorecard-location: https://api.securityscorecards.dev/projects/github.com/vesoft-inc/nebula
   tags:
     - database
     - graph
@@ -913,6 +938,7 @@ metadata:
   annotations:
     github.com/project-slug: milvus-io/milvus
     backstage.io/source-location: url:https://github.com/milvus-io/milvus
+    openssf/scorecard-location: https://api.securityscorecards.dev/projects/github.com/milvus-io/milvus
   tags:
     - database
     - vector
@@ -951,6 +977,7 @@ metadata:
   annotations:
     github.com/project-slug: qdrant/qdrant
     backstage.io/source-location: url:https://github.com/qdrant/qdrant
+    openssf/scorecard-location: https://api.securityscorecards.dev/projects/github.com/qdrant/qdrant
   tags:
     - database
     - vector
@@ -988,6 +1015,7 @@ metadata:
   annotations:
     github.com/project-slug: weaviate/weaviate
     backstage.io/source-location: url:https://github.com/weaviate/weaviate
+    openssf/scorecard-location: https://api.securityscorecards.dev/projects/github.com/weaviate/weaviate
   tags:
     - database
     - vector
@@ -1025,6 +1053,7 @@ metadata:
   annotations:
     github.com/project-slug: chroma-core/chroma
     backstage.io/source-location: url:https://github.com/chroma-core/chroma
+    openssf/scorecard-location: https://api.securityscorecards.dev/projects/github.com/chroma-core/chroma
   tags:
     - database
     - vector
@@ -1061,6 +1090,7 @@ metadata:
   annotations:
     github.com/project-slug: pgvector/pgvector
     backstage.io/source-location: url:https://github.com/pgvector/pgvector
+    openssf/scorecard-location: https://api.securityscorecards.dev/projects/github.com/pgvector/pgvector
   tags:
     - database
     - vector
@@ -1099,6 +1129,7 @@ metadata:
   annotations:
     github.com/project-slug: apache/kafka
     backstage.io/source-location: url:https://github.com/apache/kafka
+    openssf/scorecard-location: https://api.securityscorecards.dev/projects/github.com/apache/kafka
   tags:
     - messaging
     - streaming
@@ -1135,6 +1166,7 @@ metadata:
   annotations:
     github.com/project-slug: rabbitmq/rabbitmq-server
     backstage.io/source-location: url:https://github.com/rabbitmq/rabbitmq-server
+    openssf/scorecard-location: https://api.securityscorecards.dev/projects/github.com/rabbitmq/rabbitmq-server
   tags:
     - messaging
     - amqp
@@ -1169,6 +1201,7 @@ metadata:
   annotations:
     github.com/project-slug: nats-io/nats-server
     backstage.io/source-location: url:https://github.com/nats-io/nats-server
+    openssf/scorecard-location: https://api.securityscorecards.dev/projects/github.com/nats-io/nats-server
   tags:
     - messaging
     - cloud-native
@@ -1203,6 +1236,7 @@ metadata:
   annotations:
     github.com/project-slug: apache/pulsar
     backstage.io/source-location: url:https://github.com/apache/pulsar
+    openssf/scorecard-location: https://api.securityscorecards.dev/projects/github.com/apache/pulsar
   tags:
     - messaging
     - streaming
@@ -1238,6 +1272,7 @@ metadata:
   annotations:
     github.com/project-slug: apache/activemq
     backstage.io/source-location: url:https://github.com/apache/activemq
+    openssf/scorecard-location: https://api.securityscorecards.dev/projects/github.com/apache/activemq
   tags:
     - messaging
     - jms
@@ -1276,6 +1311,7 @@ metadata:
   annotations:
     github.com/project-slug: opensearch-project/OpenSearch
     backstage.io/source-location: url:https://github.com/opensearch-project/OpenSearch
+    openssf/scorecard-location: https://api.securityscorecards.dev/projects/github.com/opensearch-project/OpenSearch
   tags:
     - search
     - analytics
@@ -1311,6 +1347,7 @@ metadata:
   annotations:
     github.com/project-slug: apache/solr
     backstage.io/source-location: url:https://github.com/apache/solr
+    openssf/scorecard-location: https://api.securityscorecards.dev/projects/github.com/apache/solr
   tags:
     - search
     - full-text
@@ -1345,6 +1382,7 @@ metadata:
   annotations:
     github.com/project-slug: meilisearch/meilisearch
     backstage.io/source-location: url:https://github.com/meilisearch/meilisearch
+    openssf/scorecard-location: https://api.securityscorecards.dev/projects/github.com/meilisearch/meilisearch
   tags:
     - search
     - full-text
@@ -1378,6 +1416,7 @@ metadata:
   annotations:
     github.com/project-slug: typesense/typesense
     backstage.io/source-location: url:https://github.com/typesense/typesense
+    openssf/scorecard-location: https://api.securityscorecards.dev/projects/github.com/typesense/typesense
   tags:
     - search
     - full-text
@@ -1411,6 +1450,7 @@ metadata:
   annotations:
     github.com/project-slug: apache/lucene
     backstage.io/source-location: url:https://github.com/apache/lucene
+    openssf/scorecard-location: https://api.securityscorecards.dev/projects/github.com/apache/lucene
   tags:
     - search
     - full-text

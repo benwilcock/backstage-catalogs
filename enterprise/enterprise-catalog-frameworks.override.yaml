@@ -22,6 +22,7 @@ metadata:
   annotations:
     github.com/project-slug: spring-projects/spring-boot
     backstage.io/source-location: url:https://github.com/spring-projects/spring-boot
+    openssf/scorecard-location: https://api.securityscorecards.dev/projects/github.com/spring-projects/spring-boot
   tags:
     - framework
     - java
@@ -59,6 +60,7 @@ metadata:
   annotations:
     github.com/project-slug: quarkusio/quarkus
     backstage.io/source-location: url:https://github.com/quarkusio/quarkus
+    openssf/scorecard-location: https://api.securityscorecards.dev/projects/github.com/quarkusio/quarkus
   tags:
     - framework
     - java
@@ -98,6 +100,7 @@ metadata:
   annotations:
     github.com/project-slug: micronaut-projects/micronaut-core
     backstage.io/source-location: url:https://github.com/micronaut-projects/micronaut-core
+    openssf/scorecard-location: https://api.securityscorecards.dev/projects/github.com/micronaut-projects/micronaut-core
   tags:
     - framework
     - java
@@ -136,6 +139,7 @@ metadata:
   annotations:
     github.com/project-slug: eclipse-vertx/vert.x
     backstage.io/source-location: url:https://github.com/eclipse-vertx/vert.x
+    openssf/scorecard-location: https://api.securityscorecards.dev/projects/github.com/eclipse-vertx/vert.x
   tags:
     - framework
     - java
@@ -174,6 +178,7 @@ metadata:
   annotations:
     github.com/project-slug: fastapi/fastapi
     backstage.io/source-location: url:https://github.com/fastapi/fastapi
+    openssf/scorecard-location: https://api.securityscorecards.dev/projects/github.com/fastapi/fastapi
   tags:
     - framework
     - python
@@ -212,6 +217,7 @@ metadata:
   annotations:
     github.com/project-slug: nestjs/nest
     backstage.io/source-location: url:https://github.com/nestjs/nest
+    openssf/scorecard-location: https://api.securityscorecards.dev/projects/github.com/nestjs/nest
   tags:
     - framework
     - nodejs
@@ -249,6 +255,7 @@ metadata:
   annotations:
     github.com/project-slug: gin-gonic/gin
     backstage.io/source-location: url:https://github.com/gin-gonic/gin
+    openssf/scorecard-location: https://api.securityscorecards.dev/projects/github.com/gin-gonic/gin
   tags:
     - framework
     - go
@@ -290,6 +297,7 @@ metadata:
   annotations:
     github.com/project-slug: facebook/react
     backstage.io/source-location: url:https://github.com/facebook/react
+    openssf/scorecard-location: https://api.securityscorecards.dev/projects/github.com/facebook/react
   tags:
     - framework
     - javascript
@@ -327,6 +335,7 @@ metadata:
   annotations:
     github.com/project-slug: angular/angular
     backstage.io/source-location: url:https://github.com/angular/angular
+    openssf/scorecard-location: https://api.securityscorecards.dev/projects/github.com/angular/angular
   tags:
     - framework
     - typescript
@@ -364,6 +373,7 @@ metadata:
   annotations:
     github.com/project-slug: vuejs/vue
     backstage.io/source-location: url:https://github.com/vuejs/vue
+    openssf/scorecard-location: https://api.securityscorecards.dev/projects/github.com/vuejs/vue
   tags:
     - framework
     - javascript
@@ -401,6 +411,7 @@ metadata:
   annotations:
     github.com/project-slug: vercel/next.js
     backstage.io/source-location: url:https://github.com/vercel/next.js
+    openssf/scorecard-location: https://api.securityscorecards.dev/projects/github.com/vercel/next.js
   tags:
     - framework
     - javascript
@@ -439,6 +450,7 @@ metadata:
   annotations:
     github.com/project-slug: sveltejs/svelte
     backstage.io/source-location: url:https://github.com/sveltejs/svelte
+    openssf/scorecard-location: https://api.securityscorecards.dev/projects/github.com/sveltejs/svelte
   tags:
     - framework
     - javascript
@@ -480,6 +492,7 @@ metadata:
   annotations:
     github.com/project-slug: appsmithorg/appsmith
     backstage.io/source-location: url:https://github.com/appsmithorg/appsmith
+    openssf/scorecard-location: https://api.securityscorecards.dev/projects/github.com/appsmithorg/appsmith
   tags:
     - low-code
     - internal-tools
@@ -517,6 +530,7 @@ metadata:
   annotations:
     github.com/project-slug: Budibase/budibase
     backstage.io/source-location: url:https://github.com/Budibase/budibase
+    openssf/scorecard-location: https://api.securityscorecards.dev/projects/github.com/Budibase/budibase
   tags:
     - low-code
     - internal-tools
@@ -553,6 +567,7 @@ metadata:
   annotations:
     github.com/project-slug: activepieces/activepieces
     backstage.io/source-location: url:https://github.com/activepieces/activepieces
+    openssf/scorecard-location: https://api.securityscorecards.dev/projects/github.com/activepieces/activepieces
   tags:
     - low-code
     - automation

@@ -17,6 +17,7 @@ metadata:
   annotations:
     github.com/project-slug: jenkinsci/jenkins
     backstage.io/source-location: url:https://github.com/jenkinsci/jenkins
+    openssf/scorecard-location: https://api.securityscorecards.dev/projects/github.com/jenkinsci/jenkins
   tags:
     - cicd
     - automation
@@ -51,6 +52,7 @@ metadata:
   annotations:
     github.com/project-slug: argoproj/argo-cd
     backstage.io/source-location: url:https://github.com/argoproj/argo-cd
+    openssf/scorecard-location: https://api.securityscorecards.dev/projects/github.com/argoproj/argo-cd
   tags:
     - cicd
     - gitops
@@ -90,6 +92,7 @@ metadata:
   annotations:
     github.com/project-slug: tektoncd/pipeline
     backstage.io/source-location: url:https://github.com/tektoncd/pipeline
+    openssf/scorecard-location: https://api.securityscorecards.dev/projects/github.com/tektoncd/pipeline
   tags:
     - cicd
     - kubernetes-native
@@ -127,6 +130,7 @@ metadata:
   annotations:
     github.com/project-slug: fluxcd/flux2
     backstage.io/source-location: url:https://github.com/fluxcd/flux2
+    openssf/scorecard-location: https://api.securityscorecards.dev/projects/github.com/fluxcd/flux2
   tags:
     - cicd
     - gitops
@@ -164,6 +168,7 @@ metadata:
   annotations:
     github.com/project-slug: woodpecker-ci/woodpecker
     backstage.io/source-location: url:https://github.com/woodpecker-ci/woodpecker
+    openssf/scorecard-location: https://api.securityscorecards.dev/projects/github.com/woodpecker-ci/woodpecker
   tags:
     - cicd
     - container-native
@@ -201,6 +206,7 @@ metadata:
   annotations:
     github.com/project-slug: go-gitea/gitea
     backstage.io/source-location: url:https://github.com/go-gitea/gitea
+    openssf/scorecard-location: https://api.securityscorecards.dev/projects/github.com/go-gitea/gitea
   tags:
     - git
     - source-control
@@ -235,6 +241,7 @@ metadata:
   annotations:
     github.com/project-slug: forgejo/forgejo
     backstage.io/source-location: url:https://codeberg.org/forgejo/forgejo
+    openssf/scorecard-location: https://api.securityscorecards.dev/projects/github.com/forgejo/forgejo
   tags:
     - git
     - source-control
@@ -270,6 +277,7 @@ metadata:
   annotations:
     github.com/project-slug: goharbor/harbor
     backstage.io/source-location: url:https://github.com/goharbor/harbor
+    openssf/scorecard-location: https://api.securityscorecards.dev/projects/github.com/goharbor/harbor
   tags:
     - container-registry
     - security
@@ -307,6 +315,7 @@ metadata:
   annotations:
     github.com/project-slug: quay/quay
     backstage.io/source-location: url:https://github.com/quay/quay
+    openssf/scorecard-location: https://api.securityscorecards.dev/projects/github.com/quay/quay
   tags:
     - container-registry
     - security
@@ -341,6 +350,7 @@ metadata:
   annotations:
     github.com/project-slug: project-zot/zot
     backstage.io/source-location: url:https://github.com/project-zot/zot
+    openssf/scorecard-location: https://api.securityscorecards.dev/projects/github.com/project-zot/zot
   tags:
     - container-registry
     - oci
@@ -379,6 +389,7 @@ metadata:
   annotations:
     github.com/project-slug: backstage/backstage
     backstage.io/source-location: url:https://github.com/backstage/backstage
+    openssf/scorecard-location: https://api.securityscorecards.dev/projects/github.com/backstage/backstage
   tags:
     - developer-portal
     - internal-developer-platform
@@ -415,6 +426,7 @@ metadata:
   annotations:
     github.com/project-slug: argoproj/argo-rollouts
     backstage.io/source-location: url:https://github.com/argoproj/argo-rollouts
+    openssf/scorecard-location: https://api.securityscorecards.dev/projects/github.com/argoproj/argo-rollouts
   tags:
     - progressive-delivery
     - canary
@@ -453,6 +465,7 @@ metadata:
   annotations:
     github.com/project-slug: GoogleContainerTools/skaffold
     backstage.io/source-location: url:https://github.com/GoogleContainerTools/skaffold
+    openssf/scorecard-location: https://api.securityscorecards.dev/projects/github.com/GoogleContainerTools/skaffold
   tags:
     - developer-tools
     - kubernetes
@@ -487,6 +500,7 @@ metadata:
   annotations:
     github.com/project-slug: tilt-dev/tilt
     backstage.io/source-location: url:https://github.com/tilt-dev/tilt
+    openssf/scorecard-location: https://api.securityscorecards.dev/projects/github.com/tilt-dev/tilt
   tags:
     - developer-tools
     - kubernetes
@@ -521,6 +535,7 @@ metadata:
   annotations:
     github.com/project-slug: ko-build/ko
     backstage.io/source-location: url:https://github.com/ko-build/ko
+    openssf/scorecard-location: https://api.securityscorecards.dev/projects/github.com/ko-build/ko
   tags:
     - developer-tools
     - container
@@ -558,6 +573,7 @@ metadata:
   annotations:
     github.com/project-slug: keycloak/keycloak
     backstage.io/source-location: url:https://github.com/keycloak/keycloak
+    openssf/scorecard-location: https://api.securityscorecards.dev/projects/github.com/keycloak/keycloak
   tags:
     - identity
     - authentication
@@ -597,6 +613,7 @@ metadata:
   annotations:
     github.com/project-slug: dexidp/dex
     backstage.io/source-location: url:https://github.com/dexidp/dex
+    openssf/scorecard-location: https://api.securityscorecards.dev/projects/github.com/dexidp/dex
   tags:
     - identity
     - authentication
@@ -631,6 +648,7 @@ metadata:
   annotations:
     github.com/project-slug: authelia/authelia
     backstage.io/source-location: url:https://github.com/authelia/authelia
+    openssf/scorecard-location: https://api.securityscorecards.dev/projects/github.com/authelia/authelia
   tags:
     - identity
     - authentication
@@ -666,6 +684,7 @@ metadata:
   annotations:
     github.com/project-slug: kanidm/kanidm
     backstage.io/source-location: url:https://github.com/kanidm/kanidm
+    openssf/scorecard-location: https://api.securityscorecards.dev/projects/github.com/kanidm/kanidm
   tags:
     - identity
     - authentication
@@ -701,6 +720,7 @@ metadata:
   annotations:
     github.com/project-slug: ory/hydra
     backstage.io/source-location: url:https://github.com/ory/hydra
+    openssf/scorecard-location: https://api.securityscorecards.dev/projects/github.com/ory/hydra
   tags:
     - identity
     - oauth2
@@ -739,6 +759,7 @@ metadata:
   annotations:
     github.com/project-slug: open-policy-agent/opa
     backstage.io/source-location: url:https://github.com/open-policy-agent/opa
+    openssf/scorecard-location: https://api.securityscorecards.dev/projects/github.com/open-policy-agent/opa
   tags:
     - policy
     - compliance
@@ -774,6 +795,7 @@ metadata:
   annotations:
     github.com/project-slug: kyverno/kyverno
     backstage.io/source-location: url:https://github.com/kyverno/kyverno
+    openssf/scorecard-location: https://api.securityscorecards.dev/projects/github.com/kyverno/kyverno
   tags:
     - policy
     - kubernetes
@@ -811,6 +833,7 @@ metadata:
   annotations:
     github.com/project-slug: open-policy-agent/gatekeeper
     backstage.io/source-location: url:https://github.com/open-policy-agent/gatekeeper
+    openssf/scorecard-location: https://api.securityscorecards.dev/projects/github.com/open-policy-agent/gatekeeper
   tags:
     - policy
     - kubernetes
@@ -848,6 +871,7 @@ metadata:
   annotations:
     github.com/project-slug: sigstore/cosign
     backstage.io/source-location: url:https://github.com/sigstore/cosign
+    openssf/scorecard-location: https://api.securityscorecards.dev/projects/github.com/sigstore/cosign
   tags:
     - security
     - signing
@@ -883,6 +907,7 @@ metadata:
   annotations:
     github.com/project-slug: kubescape/kubescape
     backstage.io/source-location: url:https://github.com/kubescape/kubescape
+    openssf/scorecard-location: https://api.securityscorecards.dev/projects/github.com/kubescape/kubescape
   tags:
     - security
     - compliance
@@ -923,6 +948,7 @@ metadata:
   annotations:
     github.com/project-slug: openbao/openbao
     backstage.io/source-location: url:https://github.com/openbao/openbao
+    openssf/scorecard-location: https://api.securityscorecards.dev/projects/github.com/openbao/openbao
   tags:
     - secrets
     - encryption
@@ -958,6 +984,7 @@ metadata:
   annotations:
     github.com/project-slug: bitnami-labs/sealed-secrets
     backstage.io/source-location: url:https://github.com/bitnami-labs/sealed-secrets
+    openssf/scorecard-location: https://api.securityscorecards.dev/projects/github.com/bitnami-labs/sealed-secrets
   tags:
     - secrets
     - kubernetes
@@ -992,6 +1019,7 @@ metadata:
   annotations:
     github.com/project-slug: external-secrets/external-secrets
     backstage.io/source-location: url:https://github.com/external-secrets/external-secrets
+    openssf/scorecard-location: https://api.securityscorecards.dev/projects/github.com/external-secrets/external-secrets
   tags:
     - secrets
     - kubernetes
@@ -1029,6 +1057,7 @@ metadata:
   annotations:
     github.com/project-slug: getsops/sops
     backstage.io/source-location: url:https://github.com/getsops/sops
+    openssf/scorecard-location: https://api.securityscorecards.dev/projects/github.com/getsops/sops
   tags:
     - secrets
     - encryption
@@ -1061,6 +1090,7 @@ metadata:
   annotations:
     github.com/project-slug: bank-vaults/bank-vaults
     backstage.io/source-location: url:https://github.com/bank-vaults/bank-vaults
+    openssf/scorecard-location: https://api.securityscorecards.dev/projects/github.com/bank-vaults/bank-vaults
   tags:
     - secrets
     - kubernetes
@@ -1101,6 +1131,7 @@ metadata:
   annotations:
     github.com/project-slug: aquasecurity/trivy
     backstage.io/source-location: url:https://github.com/aquasecurity/trivy
+    openssf/scorecard-location: https://api.securityscorecards.dev/projects/github.com/aquasecurity/trivy
   tags:
     - security
     - vulnerability-scanning
@@ -1135,6 +1166,7 @@ metadata:
   annotations:
     github.com/project-slug: falcosecurity/falco
     backstage.io/source-location: url:https://github.com/falcosecurity/falco
+    openssf/scorecard-location: https://api.securityscorecards.dev/projects/github.com/falcosecurity/falco
   tags:
     - security
     - runtime-detection
@@ -1171,6 +1203,7 @@ metadata:
   annotations:
     github.com/project-slug: anchore/grype
     backstage.io/source-location: url:https://github.com/anchore/grype
+    openssf/scorecard-location: https://api.securityscorecards.dev/projects/github.com/anchore/grype
   tags:
     - security
     - vulnerability-scanning
@@ -1206,6 +1239,7 @@ metadata:
   annotations:
     github.com/project-slug: anchore/syft
     backstage.io/source-location: url:https://github.com/anchore/syft
+    openssf/scorecard-location: https://api.securityscorecards.dev/projects/github.com/anchore/syft
   tags:
     - security
     - sbom
@@ -1241,6 +1275,7 @@ metadata:
   annotations:
     github.com/project-slug: cert-manager/cert-manager
     backstage.io/source-location: url:https://github.com/cert-manager/cert-manager
+    openssf/scorecard-location: https://api.securityscorecards.dev/projects/github.com/cert-manager/cert-manager
   tags:
     - security
     - certificates

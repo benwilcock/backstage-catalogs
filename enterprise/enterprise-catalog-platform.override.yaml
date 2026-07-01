@@ -17,6 +17,7 @@ metadata:
   annotations:
     github.com/project-slug: kubernetes/kubernetes
     backstage.io/source-location: url:https://github.com/kubernetes/kubernetes
+    openssf/scorecard-location: https://api.securityscorecards.dev/projects/github.com/kubernetes/kubernetes
   tags:
     - container
     - orchestration
@@ -52,6 +53,7 @@ metadata:
   annotations:
     github.com/project-slug: containerd/containerd
     backstage.io/source-location: url:https://github.com/containerd/containerd
+    openssf/scorecard-location: https://api.securityscorecards.dev/projects/github.com/containerd/containerd
   tags:
     - container
     - runtime
@@ -87,6 +89,7 @@ metadata:
   annotations:
     github.com/project-slug: containers/podman
     backstage.io/source-location: url:https://github.com/containers/podman
+    openssf/scorecard-location: https://api.securityscorecards.dev/projects/github.com/containers/podman
   tags:
     - container
     - runtime
@@ -123,6 +126,7 @@ metadata:
   annotations:
     github.com/project-slug: helm/helm
     backstage.io/source-location: url:https://github.com/helm/helm
+    openssf/scorecard-location: https://api.securityscorecards.dev/projects/github.com/helm/helm
   tags:
     - kubernetes
     - package-manager
@@ -159,6 +163,7 @@ metadata:
   annotations:
     github.com/project-slug: k3s-io/k3s
     backstage.io/source-location: url:https://github.com/k3s-io/k3s
+    openssf/scorecard-location: https://api.securityscorecards.dev/projects/github.com/k3s-io/k3s
   tags:
     - kubernetes
     - lightweight
@@ -199,6 +204,7 @@ metadata:
   annotations:
     github.com/project-slug: istio/istio
     backstage.io/source-location: url:https://github.com/istio/istio
+    openssf/scorecard-location: https://api.securityscorecards.dev/projects/github.com/istio/istio
   tags:
     - service-mesh
     - networking
@@ -236,6 +242,7 @@ metadata:
   annotations:
     github.com/project-slug: linkerd/linkerd2
     backstage.io/source-location: url:https://github.com/linkerd/linkerd2
+    openssf/scorecard-location: https://api.securityscorecards.dev/projects/github.com/linkerd/linkerd2
   tags:
     - service-mesh
     - networking
@@ -272,6 +279,7 @@ metadata:
   annotations:
     github.com/project-slug: envoyproxy/envoy
     backstage.io/source-location: url:https://github.com/envoyproxy/envoy
+    openssf/scorecard-location: https://api.securityscorecards.dev/projects/github.com/envoyproxy/envoy
   tags:
     - proxy
     - networking
@@ -307,6 +315,7 @@ metadata:
   annotations:
     github.com/project-slug: cilium/cilium
     backstage.io/source-location: url:https://github.com/cilium/cilium
+    openssf/scorecard-location: https://api.securityscorecards.dev/projects/github.com/cilium/cilium
   tags:
     - networking
     - security
@@ -343,6 +352,7 @@ metadata:
   annotations:
     github.com/project-slug: projectcalico/calico
     backstage.io/source-location: url:https://github.com/projectcalico/calico
+    openssf/scorecard-location: https://api.securityscorecards.dev/projects/github.com/projectcalico/calico
   tags:
     - networking
     - security
@@ -382,6 +392,7 @@ metadata:
   annotations:
     github.com/project-slug: Kong/kong
     backstage.io/source-location: url:https://github.com/Kong/kong
+    openssf/scorecard-location: https://api.securityscorecards.dev/projects/github.com/Kong/kong
   tags:
     - api-gateway
     - ingress
@@ -416,6 +427,7 @@ metadata:
   annotations:
     github.com/project-slug: apache/apisix
     backstage.io/source-location: url:https://github.com/apache/apisix
+    openssf/scorecard-location: https://api.securityscorecards.dev/projects/github.com/apache/apisix
   tags:
     - api-gateway
     - ingress
@@ -450,6 +462,7 @@ metadata:
   annotations:
     github.com/project-slug: traefik/traefik
     backstage.io/source-location: url:https://github.com/traefik/traefik
+    openssf/scorecard-location: https://api.securityscorecards.dev/projects/github.com/traefik/traefik
   tags:
     - api-gateway
     - ingress
@@ -484,6 +497,7 @@ metadata:
   annotations:
     github.com/project-slug: haproxy/haproxy
     backstage.io/source-location: url:https://github.com/haproxy/haproxy
+    openssf/scorecard-location: https://api.securityscorecards.dev/projects/github.com/haproxy/haproxy
   tags:
     - load-balancer
     - proxy
@@ -518,6 +532,7 @@ metadata:
   annotations:
     github.com/project-slug: emissary-ingress/emissary
     backstage.io/source-location: url:https://github.com/emissary-ingress/emissary
+    openssf/scorecard-location: https://api.securityscorecards.dev/projects/github.com/emissary-ingress/emissary
   tags:
     - api-gateway
     - ingress
@@ -560,6 +575,7 @@ metadata:
   annotations:
     github.com/project-slug: nginx/nginx
     backstage.io/source-location: url:https://github.com/nginx/nginx
+    openssf/scorecard-location: https://api.securityscorecards.dev/projects/github.com/nginx/nginx
   tags:
     - web-server
     - reverse-proxy
@@ -594,6 +610,7 @@ metadata:
   annotations:
     github.com/project-slug: apache/httpd
     backstage.io/source-location: url:https://github.com/apache/httpd
+    openssf/scorecard-location: https://api.securityscorecards.dev/projects/github.com/apache/httpd
   tags:
     - web-server
     - reverse-proxy
@@ -627,6 +644,7 @@ metadata:
   annotations:
     github.com/project-slug: caddyserver/caddy
     backstage.io/source-location: url:https://github.com/caddyserver/caddy
+    openssf/scorecard-location: https://api.securityscorecards.dev/projects/github.com/caddyserver/caddy
   tags:
     - web-server
     - reverse-proxy
@@ -661,6 +679,7 @@ metadata:
   annotations:
     github.com/project-slug: varnishcache/varnish-cache
     backstage.io/source-location: url:https://github.com/varnishcache/varnish-cache
+    openssf/scorecard-location: https://api.securityscorecards.dev/projects/github.com/varnishcache/varnish-cache
   tags:
     - web-server
     - cache
@@ -696,6 +715,7 @@ metadata:
   annotations:
     github.com/project-slug: openresty/openresty
     backstage.io/source-location: url:https://github.com/openresty/openresty
+    openssf/scorecard-location: https://api.securityscorecards.dev/projects/github.com/openresty/openresty
   tags:
     - web-server
     - reverse-proxy
@@ -735,6 +755,7 @@ metadata:
   annotations:
     github.com/project-slug: prometheus/prometheus
     backstage.io/source-location: url:https://github.com/prometheus/prometheus
+    openssf/scorecard-location: https://api.securityscorecards.dev/projects/github.com/prometheus/prometheus
   tags:
     - monitoring
     - metrics
@@ -771,6 +792,7 @@ metadata:
   annotations:
     github.com/project-slug: grafana/grafana
     backstage.io/source-location: url:https://github.com/grafana/grafana
+    openssf/scorecard-location: https://api.securityscorecards.dev/projects/github.com/grafana/grafana
   tags:
     - monitoring
     - visualization
@@ -808,6 +830,7 @@ metadata:
   annotations:
     github.com/project-slug: thanos-io/thanos
     backstage.io/source-location: url:https://github.com/thanos-io/thanos
+    openssf/scorecard-location: https://api.securityscorecards.dev/projects/github.com/thanos-io/thanos
   tags:
     - monitoring
     - metrics
@@ -846,6 +869,7 @@ metadata:
   annotations:
     github.com/project-slug: cortexproject/cortex
     backstage.io/source-location: url:https://github.com/cortexproject/cortex
+    openssf/scorecard-location: https://api.securityscorecards.dev/projects/github.com/cortexproject/cortex
   tags:
     - monitoring
     - metrics
@@ -882,6 +906,7 @@ metadata:
   annotations:
     github.com/project-slug: prometheus/alertmanager
     backstage.io/source-location: url:https://github.com/prometheus/alertmanager
+    openssf/scorecard-location: https://api.securityscorecards.dev/projects/github.com/prometheus/alertmanager
   tags:
     - monitoring
     - alerting
@@ -923,6 +948,7 @@ metadata:
   annotations:
     github.com/project-slug: grafana/loki
     backstage.io/source-location: url:https://github.com/grafana/loki
+    openssf/scorecard-location: https://api.securityscorecards.dev/projects/github.com/grafana/loki
   tags:
     - logging
     - log-aggregation
@@ -957,6 +983,7 @@ metadata:
   annotations:
     github.com/project-slug: fluent/fluentd
     backstage.io/source-location: url:https://github.com/fluent/fluentd
+    openssf/scorecard-location: https://api.securityscorecards.dev/projects/github.com/fluent/fluentd
   tags:
     - logging
     - data-collection
@@ -991,6 +1018,7 @@ metadata:
   annotations:
     github.com/project-slug: fluent/fluent-bit
     backstage.io/source-location: url:https://github.com/fluent/fluent-bit
+    openssf/scorecard-location: https://api.securityscorecards.dev/projects/github.com/fluent/fluent-bit
   tags:
     - logging
     - data-collection
@@ -1026,6 +1054,7 @@ metadata:
   annotations:
     github.com/project-slug: vectordotdev/vector
     backstage.io/source-location: url:https://github.com/vectordotdev/vector
+    openssf/scorecard-location: https://api.securityscorecards.dev/projects/github.com/vectordotdev/vector
   tags:
     - logging
     - data-pipeline
@@ -1060,6 +1089,7 @@ metadata:
   annotations:
     github.com/project-slug: openobserve/openobserve
     backstage.io/source-location: url:https://github.com/openobserve/openobserve
+    openssf/scorecard-location: https://api.securityscorecards.dev/projects/github.com/openobserve/openobserve
   tags:
     - logging
     - observability
@@ -1098,6 +1128,7 @@ metadata:
   annotations:
     github.com/project-slug: jaegertracing/jaeger
     backstage.io/source-location: url:https://github.com/jaegertracing/jaeger
+    openssf/scorecard-location: https://api.securityscorecards.dev/projects/github.com/jaegertracing/jaeger
   tags:
     - tracing
     - distributed-tracing
@@ -1135,6 +1166,7 @@ metadata:
   annotations:
     github.com/project-slug: open-telemetry/opentelemetry-collector
     backstage.io/source-location: url:https://github.com/open-telemetry/opentelemetry-collector
+    openssf/scorecard-location: https://api.securityscorecards.dev/projects/github.com/open-telemetry/opentelemetry-collector
   tags:
     - tracing
     - telemetry
@@ -1171,6 +1203,7 @@ metadata:
   annotations:
     github.com/project-slug: grafana/tempo
     backstage.io/source-location: url:https://github.com/grafana/tempo
+    openssf/scorecard-location: https://api.securityscorecards.dev/projects/github.com/grafana/tempo
   tags:
     - tracing
     - distributed-tracing
@@ -1205,6 +1238,7 @@ metadata:
   annotations:
     github.com/project-slug: openzipkin/zipkin
     backstage.io/source-location: url:https://github.com/openzipkin/zipkin
+    openssf/scorecard-location: https://api.securityscorecards.dev/projects/github.com/openzipkin/zipkin
   tags:
     - tracing
     - distributed-tracing
@@ -1238,6 +1272,7 @@ metadata:
   annotations:
     github.com/project-slug: apache/skywalking
     backstage.io/source-location: url:https://github.com/apache/skywalking
+    openssf/scorecard-location: https://api.securityscorecards.dev/projects/github.com/apache/skywalking
   tags:
     - tracing
     - apm
@@ -1273,6 +1308,7 @@ metadata:
   annotations:
     github.com/project-slug: redhat-developer/rhdh
     backstage.io/source-location: url:https://github.com/redhat-developer/rhdh
+    openssf/scorecard-location: https://api.securityscorecards.dev/projects/github.com/redhat-developer/rhdh
     jira/project-key: RHIDP
     backstage.io/techdocs-ref: url:https://github.com/redhat-developer/rhdh
   tags:
